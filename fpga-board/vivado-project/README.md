@@ -23,7 +23,7 @@
 
 ### Xilinx Vivado
 <p align="center">
-    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\vivado-logo.jpg" alt="vivado-logo" width="40%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/a30f16839fd1793619d0ba5d4ddf67e8121f1fb3/fpga-board/vivado-project/resources/vivado-logo.jpg" alt="vivado-logo" width="40%" />
 </p>
 
 
@@ -38,7 +38,7 @@ Vivado design suite is an integrated design environment (IDE) developed by Xilin
 ### PYNQ Framework
 
 <p align="center">
-    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\pynq-logo.png" alt="pynq-logo" width="40%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/a30f16839fd1793619d0ba5d4ddf67e8121f1fb3/fpga-board/vivado-project/resources/pynq-logo.png" alt="pynq-logo" width="40%" />
 </p>
 
 
@@ -60,20 +60,20 @@ There are four possible configurations of I2C which are:
 To begin the transaction, master device sends START signal followed by 7-bit address of the slave device, which then followed by single bit representing whether the master wants to write data (0) or read data (1) from slave. If the slave device exists, it will send back ACK signal bit for that address. After receiving ACK signal from slave, master will continue to read or write data from or to slave. The START signal is usually indicated by high-to-low transition of SDA line with SCL being high. Meanwhile, the STOP signal is indicated by a low-to-high transition of SDA with SCL in high [2].
 
 <p align="center">
-    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\i2c-timing.png" alt="i2c-timing" width="60%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/a30f16839fd1793619d0ba5d4ddf67e8121f1fb3/fpga-board/vivado-project/resources/i2c-timing.png" alt="i2c-timing" width="60%" />
 </p>
 
 
 
 
-## <img style="vertical-align:middle" src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\chip.png" width="32px" title=":chip:"/> AXI-based I2C and Interrupt Controller
+## <img style="vertical-align:middle" src="https://github.com/kaistseed/jahwa-project/blob/a30f16839fd1793619d0ba5d4ddf67e8121f1fb3/fpga-board/vivado-project/resources/chip.png" width="32px" title=":chip:"/> AXI-based I2C and Interrupt Controller
 
 ### Installing Vivado
 
 To install Xilinx Vivado on your computer, first, you need to download the installer from the Xilinx website. You can download the software through this link: **https://www.xilinx.com/support/download.html** . On the download page, you can choose either the online installer or offline installer. If you choose an offline installer, then the downloaded software can be used in either Linux or Windows operating systems. 
 
 <p align="center">
-    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\vivado-install.jpg" alt="vivado-install" width="70%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/a30f16839fd1793619d0ba5d4ddf67e8121f1fb3/fpga-board/vivado-project/resources/vivado-install.jpg" alt="vivado-install" width="70%" />
 </p>
 
 
@@ -95,14 +95,14 @@ After preparing those items, the first thing to do is to download the correct PY
 **http://www.pynq.io/board.html**. For this tutorial, you will use the PYNQ Z1 board from Digilent. So, download the PYNQ image for the PYNQ Z1 board.
 
 <p align="center">
-    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\pynq-download.jpg" width="70%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/a30f16839fd1793619d0ba5d4ddf67e8121f1fb3/fpga-board/vivado-project/resources/pynq-download.jpg" width="70%" />
 </p>
 
 
 After downloading the PYNQ Image, flash the image into the SD card using an OS flasher tool such as `Balena Etcher`. You can download Balena Etcher software from **https://www.balena.io/etcher/**. After flashing the PYNQ image to an SD card, now you can try to connect the board to your computer by following the steps below:
 
 <p align="center">
-    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\pynq-setup.jpg" width="50%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/a30f16839fd1793619d0ba5d4ddf67e8121f1fb3/fpga-board/vivado-project/resources/pynq-setup.jpg" width="50%" />
 </p>
 
 
@@ -133,7 +133,7 @@ First, open up Vivado application and create a new project.
    You can find PYNQ-Z1 board files on **https://pynq.readthedocs.io/en/latest/overlay_design_methodology/board_settings.html**. You need to restart Vivado after copying the board file.
 
 <p align="center">
-    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\pynq-board.png" width="70%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/a30f16839fd1793619d0ba5d4ddf67e8121f1fb3/fpga-board/vivado-project/resources/pynq-board.png" width="70%" />
 </p>
 
 
@@ -143,7 +143,7 @@ First, open up Vivado application and create a new project.
 In this guide, you will configure the FPGA fabric to perform I2C communication with the external sensor with precise time delay. To do so, you will need to create the system block diagram which define the connection between the AXI IIC IP core and AXI Interrupt Timer with ARM core. The system block diagram is shown below. 
 
 <p align="center">
-    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\interrupt-final-bd.jpg" width="70%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/a30f16839fd1793619d0ba5d4ddf67e8121f1fb3/fpga-board/vivado-project/resources/interrupt-final-bd.jpg" width="70%" />
 </p>
 
 In order to recreate the block diagram above in your Vivado project, you can follow the steps below:
@@ -159,7 +159,7 @@ In order to recreate the block diagram above in your Vivado project, you can fol
 5. After you add the ZYNQ IP core, you will see a green option window with `Run Block Automation` text in it. This block automation option will help you to connect the IP core in the design. But sometimes, the connection created by this automation process is not correct. So, make sure to recheck the connection after performing a block automation operation.
 
 <p align="center">
-    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\block-automation.png" width="90%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/a30f16839fd1793619d0ba5d4ddf67e8121f1fb3/fpga-board/vivado-project/resources/block-automation.png" width="75%" />
 </p>
 
 6. After running block automation, some new wires and `external interfaces` such as `DDR` and `FIXED_IO` will appear in the design which corresponds to the board output pins.
@@ -167,13 +167,13 @@ In order to recreate the block diagram above in your Vivado project, you can fol
 7. The next step is to customize the `ZYNQ Processing System` core to meet the design requirement. For this design, you need to enable the `interrupt` port on the ZYNQ core so that the interrupt signal from the `AXI Interrupt Controller` trigger the interrupt event on the ARM core. You can enable the `interrupt` port by double-clicking the ZYNQ IP core and click `Interrupts` section. In the `Interrupts` section check the box next to `Fabric Interrupts` and `IRQ_F2P` under `PL-PS Interrupt Ports` section.
 
 <p align="center">
-    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\interrupt-port.jpg" width="70%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/a30f16839fd1793619d0ba5d4ddf67e8121f1fb3/fpga-board/vivado-project/resources/interrupt-port.jpg" width="60%" />
 </p>
 
 8. After finish configuring the ZYNQ IP core parameter, click `OK` and Vivado will update the ZYNQ IP core block diagram and the ZYNQ block should look like the figure below.
 
 <p align="center">
-    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\irq-bd.jpg" width="60%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/a30f16839fd1793619d0ba5d4ddf67e8121f1fb3/fpga-board/vivado-project/resources/irq-bd.jpg" width="60%" />
 </p>
 
 
@@ -192,13 +192,13 @@ In this section, you will add AXI IIC interface to the design. Follow the instru
 5. Next step is to adjust the `address mode` and `SDA active state` configuration. For Meissner sensor, you need to set `address mode` to `7-bit` since Meissner address is 7-bit long and `active state of SDA` to `0`. These configurations depend on the sensor setting. So, make sure to check the sensor datasheet before changing the `AXI IIC IP configuration`.
 
    <p align="center">
-       <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\axi-iic-ip.png" width="65%" />
+       <img src="https://github.com/kaistseed/jahwa-project/blob/a30f16839fd1793619d0ba5d4ddf67e8121f1fb3/fpga-board/vivado-project/resources/axi-iic-ip.png" width="60%" />
    </p>
 
 6. After that, you need to add IIC interface port in order to map the `AXI IIC` core output to the board pins. To add interface port, right click at the block diagram window and click `Create Interface Port` or use `Ctrl+L` keyboard shortcut. In the interface port window, set `interface name`, select `IIC interface`, and set the mode to `Master`. Finally, connect the `newly created interface port` with `IIC port`of AXI IIC IP core.
 
 <p align="center">
-    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\axi-iic-port.png" width="40%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/a30f16839fd1793619d0ba5d4ddf67e8121f1fb3/fpga-board/vivado-project/resources/axi-iic-port.png" width="30%" />
 </p>
 
 
@@ -207,14 +207,14 @@ In this section, you will add AXI IIC interface to the design. Follow the instru
 After adding `AXI IIC` to your design, you also need to add `AXI Interrupt Controller` and `AXI Timer` IP core to enable precise timing delay to the design. To add the IP core,  you can just follow the steps when you add the `AXI IIC` IP core. For `AXI Timer` configurations, you just need to uncheck `Enable Timer 2` option since you are going to use only one timer in this design.
 
 <p align="center">
-    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\axi-timer.jpg" width="65%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/a30f16839fd1793619d0ba5d4ddf67e8121f1fb3/fpga-board/vivado-project/resources/axi-timer.jpg" width="60%" />
 </p>
 
 
 As for the `AXI Interrupt Controller` configuration, you don't need to change anything. Just use the default configuration given by Vivado. After adding both `AXI Interrupt Controller` and `AXI Timer` IP core, you need to connect those IP blocks by following the block diagram below.
 
 <p align="center">
-    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\interrupt-bd.jpg" width="85%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/a30f16839fd1793619d0ba5d4ddf67e8121f1fb3/fpga-board/vivado-project/resources/interrupt-bd.jpg" width="70%" />
 </p>
 
 
@@ -229,35 +229,38 @@ After finish adding and configuring all of the required IP blocks to the design,
 3. After validating the design, under the `Sources` menu, right-click on the block diagram file (file with .bd extension), and click on `Create HDL Wrapper option`. For the sake of simplicity, let Vivado manage and automatically update the design. The `Create HDL Wrapper` process will create a high-level Verilog file that represents your block diagram.
 
 <p align="center">
-    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\hdl-wrapper.jpg" width="90%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/a30f16839fd1793619d0ba5d4ddf67e8121f1fb3/fpga-board/vivado-project/resources/hdl-wrapper.jpg" width="75%" />
 </p>
 
 4. If there are no errors, you can synthesize the design by clicking `Run Synthesis` option under Synthesis menu in Flow navigator. This process may take a couple of minutes depending on your computer and design complexity. Errors may appear during this process. So, pay attention to it and try to fix the error if there is an error in your design.
 
 <p align="center">
-    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\synthesis.jpg" width="90%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/a30f16839fd1793619d0ba5d4ddf67e8121f1fb3/fpga-board/vivado-project/resources/synthesis.jpg" width="75%" />
 </p>
-5.Before running implementation and bitstream generation process, you need to change the `board pin mapping`, so that the AXI IIC IP core inputs and  	outputs are mapped to correct pins. To change the pin mapping, click `open synthesized design` in the left menu and after synthesized design opens, 	click `window > I/O ports` option from toolbar.
+
+5. Before running implementation and bitstream generation process, you need to change the `board pin mapping`, so that the AXI IIC IP core inputs and  	outputs are mapped to correct pins. To change the pin mapping, click `open synthesized design` in the left menu and after synthesized design opens, 	click `window > I/O ports` option from toolbar.
 
 <p align="center">
-    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\io-ports.jpg" width="90%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/a30f16839fd1793619d0ba5d4ddf67e8121f1fb3/fpga-board/vivado-project/resources/io-ports.jpg" width="75%" />
 </p>
 
-​	In the I/O ports menu, you need to change board pin mapping as follows:
+6. In the I/O ports menu, you need to change board pin mapping as follows:
 
+<div align="center">
 
 | Port Name  | Board Pin Name | Package Pin Name |  I/O Std  |
 | :--------: | :------------: | :--------------: | :-------: |
 | IIC_scl_io |      SCL       |       P16        | LVCMOS33* |
 | IIC_sda_io |      SDA       |       P15        | LVCMOS33* |
 
+</div>
 
-​	After changing the pin mapping, save the constraint, resynthesize the design and start generating design 	bitstream by clicking `Generate Bitstream` 	option under Program and Debug menu in Flow navigator.
+7. After changing the pin mapping, save the constraint, resynthesize the design and start generating design 	bitstream by clicking `Generate Bitstream` 	option under     Program and Debug menu in Flow navigator.
 
-6. When the build is complete, you need to export the bitstream file by choosing `Export Bitstream File` option under the `Export` option under `File` menu. Make sure that your block diagram window is open before exporting the block diagram. Otherwise, the `Export Bitstream File` option will not show up. Make sure to name the `bitstream file (file with .bit extension)` with the block design name (by default it is design_1). Otherwise, an error message will appear when you are trying to load the design into PYNQ board.
+8. When the build is complete, you need to export the bitstream file by choosing `Export Bitstream File` option under the `Export` option under `File` menu. Make sure that your block diagram window is open before exporting the block diagram. Otherwise, the `Export Bitstream File` option will not show up. Make sure to name the `bitstream file (file with .bit extension)` with the block design name (by default it is design_1). Otherwise, an error message will appear when you are trying to load the design into PYNQ board.
 
 
-7. If you encounter any error during exporting process such as `Too many positional options when parsing` (**you can look for the error message in tcl console**), copy the `write_bd_tcl` line in tcl console, add double quotes (") symbol before and after your folder path, and run the command again using tcl console.
+9. If you encounter any error during exporting process such as `Too many positional options when parsing` (**you can look for the error message in tcl console**), copy the `write_bd_tcl` line in tcl console, add double quotes (") symbol before and after your folder path, and run the command again using tcl console.
 
 
 
