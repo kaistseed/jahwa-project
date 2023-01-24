@@ -7,8 +7,7 @@
 
 * [Context](#information_source-context)
 * [Background](#mag-background)
-* [AXI-based I2C and SPI Interface](#-axi-based-i2c-and-spi-interface)
-* [Postprocessing Sensor Data](#question-practice-postprocessing-sensor-data)
+* [AXI-based I2C and Interrupt Controller](#-axi-based-i2c-and-interrupt-controller)
 * [References](#book-references)
 
 
@@ -24,8 +23,9 @@
 
 ### Xilinx Vivado
 <p align="center">
-    <img src="D:\Projects\git-repo\jahwa-project\fpga-board\vivado-project\resources\vivado-logo.jpg" alt="vivado-logo" width="40%" />
+    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\vivado-logo.jpg" alt="vivado-logo" width="40%" />
 </p>
+
 
 Vivado design suite is an integrated design environment (IDE) developed by Xilinx that provides a lot of features such as:
 
@@ -38,8 +38,9 @@ Vivado design suite is an integrated design environment (IDE) developed by Xilin
 ### PYNQ Framework
 
 <p align="center">
-    <img src="D:\Projects\git-repo\jahwa-project\fpga-board\vivado-project\resources\pynq-logo.png" alt="pynq-logo" width="40%" />
+    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\pynq-logo.png" alt="pynq-logo" width="40%" />
 </p>
+
 
 PYNQ is an open-source framework from Xilinx that is designed for system designers, software developers, and hardware designers to easily use Xilinx platforms. With the support of Python language and libraries, designers can get the huge benefits of using programmable logic and microprocessors to build more interesting and powerful embedded systems. For now, the PYNQ framework can be used with Zynq, Zynq UltraScale+, Zynq RFSoC, and Alveo accelerator boards.
 
@@ -59,20 +60,22 @@ There are four possible configurations of I2C which are:
 To begin the transaction, master device sends START signal followed by 7-bit address of the slave device, which then followed by single bit representing whether the master wants to write data (0) or read data (1) from slave. If the slave device exists, it will send back ACK signal bit for that address. After receiving ACK signal from slave, master will continue to read or write data from or to slave. The START signal is usually indicated by high-to-low transition of SDA line with SCL being high. Meanwhile, the STOP signal is indicated by a low-to-high transition of SDA with SCL in high [2].
 
 <p align="center">
-    <img src="D:\Projects\git-repo\jahwa-project\fpga-board\vivado-project\resources\i2c-timing.png" alt="i2c-timing" width="60%" />
+    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\i2c-timing.png" alt="i2c-timing" width="60%" />
 </p>
 
 
 
-## <img style="vertical-align:middle" src="D:\Projects\git-repo\jahwa-project\fpga-board\vivado-project\resources\chip.png" width="32px" title=":chip:"/> AXI-based I2C and Interrupt Controller
+
+## <img style="vertical-align:middle" src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\chip.png" width="32px" title=":chip:"/> AXI-based I2C and Interrupt Controller
 
 ### Installing Vivado
 
 To install Xilinx Vivado on your computer, first, you need to download the installer from the Xilinx website. You can download the software through this link: **https://www.xilinx.com/support/download.html** . On the download page, you can choose either the online installer or offline installer. If you choose an offline installer, then the downloaded software can be used in either Linux or Windows operating systems. 
 
 <p align="center">
-    <img src="D:\Projects\git-repo\jahwa-project\fpga-board\vivado-project\resources\vivado-install.jpg" alt="vivado-install" width="70%" />
+    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\vivado-install.jpg" alt="vivado-install" width="70%" />
 </p>
+
 
 During the installation process, you need to choose the `Vivado HL Webpack edition` since it doesn't require any license to use the software. If you are using an online installer, please make sure that you have around 40 GB of free space left on your computer since the installer will download a couple of files with a total size of around 35 GB.
 
@@ -88,17 +91,20 @@ In order to set up the PYNQ board, you need to prepare the following items:
 * Micro USB cable
 * Micro SD with a minimum of 8 GB capacity
 
-After preparing those items, the first thing to do is to download the correct PYNQ image file for the board from the following link                                                        **http://www.pynq.io/board.html**. For this tutorial, you will use the PYNQ Z1 board from Digilent. So, download the PYNQ image for the PYNQ Z1 board.
+After preparing those items, the first thing to do is to download the correct PYNQ image file for the board from the following link
+**http://www.pynq.io/board.html**. For this tutorial, you will use the PYNQ Z1 board from Digilent. So, download the PYNQ image for the PYNQ Z1 board.
 
 <p align="center">
-    <img src="D:\Projects\git-repo\jahwa-project\fpga-board\vivado-project\resources/pynq-download.jpg" width="70%" />
+    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\pynq-download.jpg" width="70%" />
 </p>
+
 
 After downloading the PYNQ Image, flash the image into the SD card using an OS flasher tool such as `Balena Etcher`. You can download Balena Etcher software from **https://www.balena.io/etcher/**. After flashing the PYNQ image to an SD card, now you can try to connect the board to your computer by following the steps below:
 
 <p align="center">
-    <img src="D:\Projects\git-repo\jahwa-project\fpga-board\vivado-project\resources/pynq-setup.jpg" width="50%" />
+    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\pynq-setup.jpg" width="50%" />
 </p>
+
 
 1.	Set the JP4 jumper to SD position by placing the jumper over the top two pins as in the figure above.
 2.	If you use a micro USB cable to supply power to the board, place the JP5 jumper in a USB position. You can also power the board with a 12 V external power supply by configuring the JP5 jumper to REG position.
@@ -110,7 +116,8 @@ After downloading the PYNQ Image, flash the image into the SD card using an OS f
 8.	After setting the IP address, open the browser and enter `192.168.2.99` in the address bar.
 9.	If the board is configured correctly, you will see a login screen with a password field in it. The username for the board is `xilinx` and the password is also `xilinx`.
 
-For more detailed information about how the board and how to set up it, you can access the documentation at this link:                                                                 **https://pynq.readthedocs.io/en/latest/getting_started/pynq_z1_setup.html**.
+For more detailed information about how the board and how to set up it, you can access the documentation at this link:
+**https://pynq.readthedocs.io/en/latest/getting_started/pynq_z1_setup.html**
 
 
 
@@ -122,31 +129,52 @@ First, open up Vivado application and create a new project.
 3.	Select RTL project and click next.
 4.	If you already have Verilog source, you can add it in the add source window. Otherwise, just skip the process and click next.
 5.	Add board constraint file by choosing pynq_z1.xdc file and make sure to check copy constrains files into project option.
-6.	In the board selection section, choose PYNQ-Z1 board if it is available. Otherwise, you should download the PYNQ-Z1 board file and copy the board files folder to `<Xilinx installation directory>\Vivado\<version>\data\xhub\boards\XilinxBoardStore\boards\Xilinx\`                                         (**Note:** for older Vivado version, you can copy the board files to `<Xilinx installation directory>\Vivado\<version>\data\boards`).                                                                     You can find PYNQ-Z1 board files on **https://pynq.readthedocs.io/en/latest/overlay_design_methodology/board_settings.html**. You need to restart Vivado after copying the board file.
+6.	In the board selection section, choose PYNQ-Z1 board if it is available. Otherwise, you should download the PYNQ-Z1 board file and copy the board files folder to `<Xilinx installation directory>\Vivado\<version>\data\xhub\boards\XilinxBoardStore\boards\Xilinx\`                                         (**Note:** for older Vivado version, you can copy the board files to `<Xilinx installation directory>\Vivado\<version>\data\boards`).
+   You can find PYNQ-Z1 board files on **https://pynq.readthedocs.io/en/latest/overlay_design_methodology/board_settings.html**. You need to restart Vivado after copying the board file.
 
 <p align="center">
-    <img src="D:\Projects\git-repo\jahwa-project\fpga-board\vivado-project\resources\pynq-board.png" width="70%" />
+    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\pynq-board.png" width="70%" />
 </p>
+
 
 
 ### Create System Block Diagram
 
-To start this section, make a new Xilinx project for PYNQ Z1 board. Make sure to choose the correct board file during the project creation process. After that, create a new block diagram as in the previous project and also add a `ZYNQ Processing System`. Don't forget to run `Connection Automation` after adding `ZYNQ IP Core`.
-
-In this section, you will create a memory-mapped interface that can be accessed from the Python environment. There are many ways to create a memory-mapped interface. But, for this section, you will use one of the General Purpose AXI Interfaces, specifically `Processing System (PS) AXI Master Ports`.
-
-By default, the `Processing System (PS) AXI Master Ports` is enabled when you are adding `ZYNQ Processing System Core` to the design, but if it’s disabled, you can configure it by double-clicking the `ZYNQ Processing System Core` and under the `AXI Non-Secure Enablement` section in the `PS-PL Configuration`, enable a `General Purpose AXI Master Interface`.
+In this guide, you will configure the FPGA fabric to perform I2C communication with the external sensor with precise time delay. To do so, you will need to create the system block diagram which define the connection between the AXI IIC IP core and AXI Interrupt Timer with ARM core. The system block diagram is shown below. 
 
 <p align="center">
-    <img src="https://github.com/kaistseed/intro-to-xilinx-fpga/blob/91db9570a2c6f66e5b13f714534b07b04eb42133/03-digital-sensor/resources/axi-master-config.png" width="60%" />
+    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\interrupt-final-bd.jpg" width="70%" />
 </p>
 
-After enabling the `AXI Master port` the `ZYNQ Processing System` block diagram should look like the figure below.
+In order to recreate the block diagram above in your Vivado project, you can follow the steps below:
+
+1. Under the IP Integrator section on Flow Navigator, click on `Create Block Diagram`. You can change the name of the block diagram, but make sure to keep the directory location to `local to the project`.
+
+2. A blank diagram window will appear on the right pane. In this blank diagram pane, you can add any kind of IP core provided by Xilinx or add your custom IP core.
+
+3. To add IP core into the design, you can click `Add IP` button or by using (Ctrl + I) keyboard shortcut.
+
+4. Add `ZYNQ Processing System IP` by entering zynq keyword on the search bar. 
+
+5. After you add the ZYNQ IP core, you will see a green option window with `Run Block Automation` text in it. This block automation option will help you to connect the IP core in the design. But sometimes, the connection created by this automation process is not correct. So, make sure to recheck the connection after performing a block automation operation.
 
 <p align="center">
-    <img src="https://github.com/kaistseed/intro-to-xilinx-fpga/blob/5ceb245d80d7923ccb2bec1f2a86b3dcb2e3e36b/02-axi-mmio/resources/zynq-axi-master.png" width="40%" />
+    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\block-automation.png" width="90%" />
 </p>
 
+6. After running block automation, some new wires and `external interfaces` such as `DDR` and `FIXED_IO` will appear in the design which corresponds to the board output pins.
+
+7. The next step is to customize the `ZYNQ Processing System` core to meet the design requirement. For this design, you need to enable the `interrupt` port on the ZYNQ core so that the interrupt signal from the `AXI Interrupt Controller` trigger the interrupt event on the ARM core. You can enable the `interrupt` port by double-clicking the ZYNQ IP core and click `Interrupts` section. In the `Interrupts` section check the box next to `Fabric Interrupts` and `IRQ_F2P` under `PL-PS Interrupt Ports` section.
+
+<p align="center">
+    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\interrupt-port.jpg" width="70%" />
+</p>
+
+8. After finish configuring the ZYNQ IP core parameter, click `OK` and Vivado will update the ZYNQ IP core block diagram and the ZYNQ block should look like the figure below.
+
+<p align="center">
+    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\irq-bd.jpg" width="60%" />
+</p>
 
 
 ### Adding AXI IIC Interface
@@ -161,277 +189,75 @@ In this section, you will add AXI IIC interface to the design. Follow the instru
 
 4. In the IIC parameters, you need to change `SCL clock frequency` to match the SCL clock frequency of the sensor or IIC device. In this module, you will use MPU6050 sensor as IIC slave. So, set the SCL clock frequency to `400 KHz`. For other sensors, you can read the sensor datasheet to determine proper SCL clock frequency value.
 
-5. Next step is to adjust the `address mode` and `SDA active state` configuration. For MPU6050 sensor, you need to set `address mode` to `7-bit` since MPU6050 address is 7-bit long and `active state of SDA` to `0`. These configurations depend on the sensor setting. So, make sure to check the sensor datasheet before changing the `AXI IIC IP configuration`.
+5. Next step is to adjust the `address mode` and `SDA active state` configuration. For Meissner sensor, you need to set `address mode` to `7-bit` since Meissner address is 7-bit long and `active state of SDA` to `0`. These configurations depend on the sensor setting. So, make sure to check the sensor datasheet before changing the `AXI IIC IP configuration`.
 
    <p align="center">
-       <img src="https://github.com/kaistseed/intro-to-xilinx-fpga/blob/91db9570a2c6f66e5b13f714534b07b04eb42133/03-digital-sensor/resources/axi-iic-ip.png" width="55%" />
+       <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\axi-iic-ip.png" width="65%" />
    </p>
 
 6. After that, you need to add IIC interface port in order to map the `AXI IIC` core output to the board pins. To add interface port, right click at the block diagram window and click `Create Interface Port` or use `Ctrl+L` keyboard shortcut. In the interface port window, set `interface name`, select `IIC interface`, and set the mode to `Master`. Finally, connect the `newly created interface port` with `IIC port`of AXI IIC IP core.
 
 <p align="center">
-    <img src="https://github.com/kaistseed/intro-to-xilinx-fpga/blob/91db9570a2c6f66e5b13f714534b07b04eb42133/03-digital-sensor/resources/axi-iic-port.png" width="30%" />
+    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\axi-iic-port.png" width="40%" />
 </p>
-
 
 
 ### Adding AXI Interrupt Controller
 
-After adding AXI IIC to your design, you also need to add AXI Interrupt Controller and AXI Timer IP core to enable precise timing delay to the design. 
-
-After adding AXI IIC to your design, you also need to add an SPI interface in order to communicate with SPI-based sensor. In this case, you need to add `AXI Quad SPI` IP core. To add the IP core, you can just follow the steps when you add the `AXI IIC` IP core. For AXI Quad SPI core configurations, you just need to `disable STARTUP Primitive` option.
+After adding `AXI IIC` to your design, you also need to add `AXI Interrupt Controller` and `AXI Timer` IP core to enable precise timing delay to the design. To add the IP core,  you can just follow the steps when you add the `AXI IIC` IP core. For `AXI Timer` configurations, you just need to uncheck `Enable Timer 2` option since you are going to use only one timer in this design.
 
 <p align="center">
-    <img src="https://github.com/kaistseed/intro-to-xilinx-fpga/blob/91db9570a2c6f66e5b13f714534b07b04eb42133/03-digital-sensor/resources/axi-qspi.png" width="55%" />
+    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\axi-timer.jpg" width="65%" />
 </p>
-After adding the core, you also need to add the interface port to map AXI Quad SPI core output to the board pins. To add SPI interface port, go to `board` section next to diagram window and find `SPI connector J6`, right click after selecting SPI connector J6, and choose `Auto Connect` option. This step allows Vivado to map existing IP core in the block diagram, in this case `AXI Quad SPI block` with available port in the PYNQ-Z1 board.
+
+
+As for the `AXI Interrupt Controller` configuration, you don't need to change anything. Just use the default configuration given by Vivado. After adding both `AXI Interrupt Controller` and `AXI Timer` IP core, you need to connect those IP blocks by following the block diagram below.
 
 <p align="center">
-    <img src="https://github.com/kaistseed/intro-to-xilinx-fpga/blob/91db9570a2c6f66e5b13f714534b07b04eb42133/03-digital-sensor/resources/axi-qspi-port.png" width="80%" />
+    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\interrupt-bd.jpg" width="85%" />
 </p>
-
 
 
 ### Synthesize and Port Mapping Process
 
-After adding both `AXI IIC` IP core and `AXI Quad SPI` IP core, run design automation and validate the design. If there are no errors, then you can generate the block design wrapper and start `synthesizing` the design.
+After finish adding and configuring all of the required IP blocks to the design, you can start synthesizing the design by following the steps below:
+
+1. Click on the `Optimize Routing` button at the top of the diagram window (right angle wire with reload symbol). This process will clean up your block diagram layout.
+
+2. Click on the `Validate Design` button at the top of the diagram window (a square with a checkmark symbol). This process will perform a sanity check of your system and flag any potential problems in the design such as unconnected wires, incompatible pins, etc. For this specific project, if you get a warning related to the reset signal, you can ignore it. But, if there are any other warnings after design validation, you need to fix the problem in the design.
+
+3. After validating the design, under the `Sources` menu, right-click on the block diagram file (file with .bd extension), and click on `Create HDL Wrapper option`. For the sake of simplicity, let Vivado manage and automatically update the design. The `Create HDL Wrapper` process will create a high-level Verilog file that represents your block diagram.
 
 <p align="center">
-    <img src="https://github.com/kaistseed/intro-to-xilinx-fpga/blob/91db9570a2c6f66e5b13f714534b07b04eb42133/03-digital-sensor/resources/final-bd.png" width="70%" />
+    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\hdl-wrapper.jpg" width="90%" />
 </p>
 
-Before running implementation and bitstream generation process, you need to change the `board pin mapping`, so that the AXI IIC IP core and AXI Quad SPI core inputs and outputs are mapped to correct pins. To change the pin mapping, click `open synthesized design` in the left menu and after synthesized design opens, click `window > I/O ports` option from toolbar.
+4. If there are no errors, you can synthesize the design by clicking `Run Synthesis` option under Synthesis menu in Flow navigator. This process may take a couple of minutes depending on your computer and design complexity. Errors may appear during this process. So, pay attention to it and try to fix the error if there is an error in your design.
 
 <p align="center">
-    <img src="https://github.com/kaistseed/intro-to-xilinx-fpga/blob/91db9570a2c6f66e5b13f714534b07b04eb42133/03-digital-sensor/resources/io-port-window.png" width="80%" />
+    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\synthesis.jpg" width="90%" />
+</p>
+5.Before running implementation and bitstream generation process, you need to change the `board pin mapping`, so that the AXI IIC IP core inputs and  	outputs are mapped to correct pins. To change the pin mapping, click `open synthesized design` in the left menu and after synthesized design opens, 	click `window > I/O ports` option from toolbar.
+
+<p align="center">
+    <img src="D:\Projects\git_repo\jahwa-project\fpga-board\vivado-project\resources\io-ports.jpg" width="90%" />
 </p>
 
-In the I/O ports menu, you need to change board pin mapping as follows:
+​	In the I/O ports menu, you need to change board pin mapping as follows:
 
-<div align="center">
 
 | Port Name  | Board Pin Name | Package Pin Name |  I/O Std  |
 | :--------: | :------------: | :--------------: | :-------: |
 | IIC_scl_io |      SCL       |       P16        | LVCMOS33* |
 | IIC_sda_io |      SDA       |       P15        | LVCMOS33* |
-| SPI_io0_io |   spi_mosi_i   |       R17        | LVCMOS33* |
-| SPI_io1_io |   spi_miso_i   |       P18        | LVCMOS33* |
-| SPI_sck_io |   spi_sclk_i   |       N17        | LVCMOS33* |
-| SPI_ss_io  |    spi_ss_i    |       T16        | LVCMOS33* |
-
-</div>
-
-After changing the pin mapping, save the constraint, resynthesize the design and start generating design bitstream.
 
 
+​	After changing the pin mapping, save the constraint, resynthesize the design and start generating design 	bitstream by clicking `Generate Bitstream` 	option under Program and Debug menu in Flow navigator.
 
-### Run Design on PYNQ Board
-
-After generating bitstream, you need to connect the sensor to PYNQ board before you can run and test the design. For this module, you will connect MPU6050 sensor to the board via IIC interface. Meanwhile, SPI interface is used to connect BME280 sensor with PYNQ board. If you connect those sensors directly without Arduino shield, you can follow the schematic below.
-
-<p align="center">
-    <img src="https://github.com/kaistseed/intro-to-xilinx-fpga/blob/91db9570a2c6f66e5b13f714534b07b04eb42133/03-digital-sensor/resources/sensor-no-shield.png" width="40%" />
-</p>
-
-Otherwise, just plug the Arduino shield with sensors to the PYNQ Arduino pin header.
-
-<p align="center">
-    <img src="https://github.com/kaistseed/intro-to-xilinx-fpga/blob/91db9570a2c6f66e5b13f714534b07b04eb42133/03-digital-sensor/resources/sensor-shield.png" width="40%" />
-</p>
-
-Once you connect the sensors, export the bitstream file and block diagram file and upload them to the PYNQ board, you need to create a new notebook and write Python code to control the behavior of your custom AXI memory-mapped interface. 
-
-The first thing you need to do is to import the required `PYNQ library`, [pybme280](https://github.com/kaistseed/intro-to-xilinx-fpga/blob/b92d1f3470d12a6fab190918205a11a8bdf126c2/03-digital-sensor/pybme280.py) and [pympu6050](https://github.com/kaistseed/intro-to-xilinx-fpga/blob/b92d1f3470d12a6fab190918205a11a8bdf126c2/03-digital-sensor/pympu6050.py) library, and load the `overlay`. You can also check which IP core is connected to your system by using printing `ip_dict` variable from your overlay class. 
-
-```python
-# Import library
-import cffi
-import math
-import time
-import numpy as np
-import datetime as dt
-from pynq import Overlay
-from pynq.lib.iic import AxiIIC
-
-# Import library for MPU6050 and BME280 sensor
-from pybme280 import *
-from pympu6050 import *
-
-# Import overlay
-ol = Overlay("./multi_sensor_swapped.bit") # Filename might be different
-# Print IP core list
-print(ol.ip_dict)
-```
-
-When you check the IP core list by printing `ip_dict` variable, you will get a result similar to the result below.
-
-```python
-{'axi_iic_0': {'phys_addr': 1096810496, 'addr_range': 65536, 'type': 'xilinx.com:ip:axi_iic:2.0', 'state': None, 'interrupts': {}, 'gpio': {}, 'fullpath': 'axi_iic_0', 'mem_id': 'SEG_axi_iic_0_Reg', 'device': <pynq.pl_server.device.XlnkDevice object at 0xb02b0650>, 'driver': <class 'pynq.lib.iic.AxiIIC'>}, 'axi_quad_spi_0': {'phys_addr': 1105199104, 'addr_range': 65536, 'type': 'xilinx.com:ip:axi_quad_spi:3.2', 'state': None, 'interrupts': {}, 'gpio': {}, 'fullpath': 'axi_quad_spi_0', 'mem_id': 'SEG_axi_quad_spi_0_Reg', 'device': <pynq.pl_server.device.XlnkDevice object at 0xb02b0650>, 'driver': <class 'pynq.overlay.DefaultIP'>}}
-```
-
-Next step is to assign controller to each IP core by using the code below
-
-```python
-# Instantiate i2c controller
-spi_control = ol.axi_quad_spi_0
-i2c_control = ol.ip_dict['axi_iic_0']
-```
-
-After that, basically you can access both of the sensor using SPI and I2C protocol by writing command to the AXI quad SPI and AXI IIC IP core. For this module, you will be given libraries which contain function to write and read data to sensor using SPI and I2C protocol. So, you don’t need to write the function for SPI and I2C transactions.
-
-To test the I2C protocol, first you want to check whether the MPU6050 can receive the data from PYNQ board by using code below. The code below initialize communication with MPU6050 sensor and set initial sensor parameter.
-
-```python
-# Declare AXI I2C Instance
-AXII2C = AxiIIC(i2c_control)
-MPUI2C = MPU6050(AXII2C, MPU6050_SCALE_2000DPS, MPU6050_RANGE_2G)
-```
-
-Then, you can do MPU6050 sensor calibration using the code below
-
-```python
-# Calibrate sensor
-MPUI2C.calibrateGyro(100)
-
-# Set threshold
-MPUI2C.setThreshold(3)
-
-# Check sensor settings
-# Check sleep mode
-print("Sleep mode: {}".format("Enabled" if (MPUI2C.getSleepMode()) else "Disabled"))
-
-# Check clock source
-clk_source = MPUI2C.getSensorClock()
-if (clk_source == MPU6050_CLOCK_KEEP_RESET):
-    print("Clock source: Reset mode")
-elif (clk_source == MPU6050_CLOCK_EXTERNAL_19MHZ):
-    print("Clock source: External 19.2 MHz clock")
-elif (clk_source == MPU6050_CLOCK_EXTERNAL_32KHZ):
-    print("Clock source: External 32.768 MHz clock")
-elif (clk_source == MPU6050_CLOCK_PLL_XGYRO):
-    print("Clock source: X-axis gyroscope reference")
-elif (clk_source == MPU6050_CLOCK_PLL_YGYRO):
-    print("Clock source: Y-axis gyroscope reference")
-elif (clk_source == MPU6050_CLOCK_PLL_ZGYRO):
-    print("Clock source: Z-axis gyroscope reference")
-elif (clk_source == MPU6050_CLOCK_INTERNAL_8MHZ):
-    print("Clock source: Internal 8 MHz oscillator")
-else:
-    print("Invalid clock source")
-    
-# Check gyroscope scale
-gyro_scale = MPUI2C.getSensorScale()
-if (gyro_scale == MPU6050_SCALE_250DPS):
-    print("Gyroscope scale: 250 dps")
-elif (gyro_scale == MPU6050_SCALE_500DPS):
-    print("Gyroscope scale: 500 dps")
-elif (gyro_scale == MPU6050_SCALE_1000DPS):
-    print("Gyroscope scale: 1000 dps")
-elif (gyro_scale == MPU6050_SCALE_2000DPS):
-    print("Gyroscope scale: 2000 dps")
-else:
-    print("Invalid gyroscope scale setting")
-    
-# Check gyroscope offset
-gyro_x_offset = MPUI2C.getGyroOffsetX()
-gyro_y_offset = MPUI2C.getGyroOffsetY()
-gyro_z_offset = MPUI2C.getGyroOffsetZ()
-print("Gyroscope offset X: {} - Y: {} - Z: {}".format(gyro_x_offset, gyro_y_offset, gyro_z_offset))
-```
-
-After calibration, you can try to read some data from sensor. For example, you can read raw gyroscope data using code below
-
-```python
-while(1):
-    # Get normalized gyroscope readings
-    MPUI2C.getRawGyro()
-    # Print result
-    print("X-axis: {}, Y-axis: {}, Z-axis: {}".format(MPUI2C.raw_gyro["x_axis"], MPUI2C.raw_gyro["y_axis"], MPUI2C.raw_gyro["z_axis"]))
-    # Delay
-    time.sleep(0.25)
-```
-
-For the BME280 sensor with SPI interface, you can test the sensor using code below
-
-```python
-# Declare BME280 controller
-BMESPI = BME280(spi_control, 0, 0)
-
-# Check power mode
-bme_mode = BMESPI.getSensorMode()
-print("Sensor mode: {0:b}".format(bme_mode))
-
-# Get sensor configuration
-BMESPI.getSensorConfig()
-# Print sensor configuration
-print("Sensor Humidity Oversampling: {}".format(BMESPI.settings["humid_osr"]))
-print("Sensor Pressure Oversampling: {}".format(BMESPI.settings["pres_osr"]))
-print("Sensor Temperature Oversampling: {}".format(BMESPI.settings["temp_osr"]))
-print("Sensor Filter Coefficient: {}".format(BMESPI.settings["filter_coef"]))
-print("Sensor Standby Time: {}\n".format(BMESPI.settings["stby_time"]))
-
-# Set sensor configuration
-BMESPI.settings["pres_osr"] = BME280_OVERSAMPLING_1X
-BMESPI.settings["temp_osr"] = BME280_OVERSAMPLING_16X
-BMESPI.settings["humid_osr"] = BME280_OVERSAMPLING_2X
-BMESPI.settings["filter_coef"] = BME280_FILTER_COEFF_16
-BMESPI.settings["stby_time"] = BME280_STANDBY_TIME_62_5_MS
-
-# Print sensor configuration
-print("User Humidity Oversampling: {}".format(BMESPI.settings["humid_osr"]))
-print("User Pressure Oversampling: {}".format(BMESPI.settings["pres_osr"]))
-print("User Temperature Oversampling: {}".format(BMESPI.settings["temp_osr"]))
-print("User Filter Coefficient: {}".format(BMESPI.settings["filter_coef"]))
-print("User Standby Time: {}\n".format(BMESPI.settings["stby_time"]))
-
-# Set sensor configuration settings selector
-settings_sel = BME280_OSR_PRESS_SEL
-settings_sel |= BME280_OSR_TEMP_SEL
-settings_sel |= BME280_OSR_HUM_SEL
-settings_sel |= BME280_STANDBY_SEL
-settings_sel |= BME280_FILTER_SEL
-
-# Write sensor configuration to slave device
-BMESPI.setSensorConfig(settings_sel)
-# Set sensor power mode
-BMESPI.setSensorMode(BME280_NORMAL_MODE)
-
-# Check power mode
-bme_mode = BMESPI.getSensorMode()
-print("Sensor mode: {0:b}".format(bme_mode))
-
-# Get sensor configuration
-BMESPI.getSensorConfig()
-# Print sensor configuration
-print("Final Humidity Oversampling: {}".format(BMESPI.settings["humid_osr"]))
-print("Final Pressure Oversampling: {}".format(BMESPI.settings["pres_osr"]))
-print("Final Temperature Oversampling: {}".format(BMESPI.settings["temp_osr"]))
-print("Final Filter Coefficient: {}".format(BMESPI.settings["filter_coef"]))
-print("Final Standby Time: {}\n".format(BMESPI.settings["stby_time"]))
-
-# Get sensor calibration data
-BMESPI.getCalibData()
-
-# Get data from sensor
-while(True):
-    time.sleep(0.5)
-    BMESPI.getSensorData(BME280_ALL)
-    print("Temperature: {:.2f}°C - Pressure: {:.2f} Pa - Humidity: {:.2f}%\n".format(BMESPI.sensor_data["temperature"], BMESPI.sensor_data["pressure"], BMESPI.sensor_data["humidity"]))
-```
+6. When the build is complete, you need to export the bitstream file by choosing `Export Bitstream File` option under the `Export` option under `File` menu. Make sure that your block diagram window is open before exporting the block diagram. Otherwise, the `Export Bitstream File` option will not show up. Make sure to name the `bitstream file (file with .bit extension)` with the block design name (by default it is design_1). Otherwise, an error message will appear when you are trying to load the design into PYNQ board.
 
 
-
-## :question: [Practice] Postprocessing Sensor Data 
-
-For practice, you can write a program to do following things:
-
-- Read accelerometer data from MPU6050 sensor and plot the result.
-- Get Pitch, Yaw, and Roll data from MPU6050 sensor and plot the result.
-- Change BME280 sensor configuration such as oversampling ratio and compare the data with initial configuration. It is better if you can plot both data in one chart.
-
-For plotting data, you can use any kind of libraries such as matplotlib or seaborn. You can also take a look at sensor datasheet `BME280`: **https://cdn.sparkfun.com/assets/e/7/3/b/1/BME280_Datasheet.pdf** and `MPU6050`: **https://invensense.tdk.com/wp-content/uploads/2015/02/MPU-6000-Register-Map1.pdf**. 
-
-For other example program, you can find at this GitHub link `MPU6050`: **https://github.com/jarzebski/Arduino-MPU6050** and `BME280`: **https://github.com/adafruit/Adafruit_BME280_Library**. In the GitHub link, all of the example code and libraries are written in C. So, you need to write equivalent program in Python. But, you don’t need to write all of the function because you will be given a source code containing both MPU6050 and BME280 function written in Python language. 
+7. If you encounter any error during exporting process such as `Too many positional options when parsing` (**you can look for the error message in tcl console**), copy the `write_bd_tcl` line in tcl console, add double quotes (") symbol before and after your folder path, and run the command again using tcl console.
 
 
 
@@ -440,7 +266,3 @@ For other example program, you can find at this GitHub link `MPU6050`: **https:/
 
 - *PYNQ main website*, February 2021. Available: [**http://www.pynq.io/**](http://www.pynq.io/)
 - *PYNQ-Z1 documentation*, February 2021. Available: [**https://pynq.readthedocs.io/en/v2.6.1/getting_started/pynq_z1_setup.html**](https://pynq.readthedocs.io/en/v2.6.1/getting_started/pynq_z1_setup.html) 
-- *MPU6050 – Accelerometer and Gyroscope Module,* April 2021. Available:  [**https://components101.com/sensors/mpu6050-module**](https://components101.com/sensors/mpu6050-module)
-- *Interface BME280 Sensor with Arduino,* April 2021. Available: [**https://lastminuteengineers.com/bme280-arduino-tutorial/**](https://lastminuteengineers.com/bme280-arduino-tutorial/)
-- *Adafruit BME280 Library*, April 2021. Available: [**https://github.com/adafruit/Adafruit_BME280_Library**](https://github.com/adafruit/Adafruit_BME280_Library)
-- *Arduino-MPU6050*, April 2021. Available: [**https://github.com/jarzebski/Arduino-MPU6050**](https://github.com/jarzebski/Arduino-MPU6050)
