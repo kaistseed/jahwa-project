@@ -173,7 +173,7 @@ In order to recreate the block diagram above in your Vivado project, you can fol
 8. After finish configuring the ZYNQ IP core parameter, click `OK` and Vivado will update the ZYNQ IP core block diagram and the ZYNQ block should look like the figure below.
 
 <p align="center">
-    <img src="https://github.com/kaistseed/jahwa-project/blob/a30f16839fd1793619d0ba5d4ddf67e8121f1fb3/fpga-board/vivado-project/resources/irq-bd.jpg" width="60%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/cd43c356f6dac23e7d3e6e0be15f2bd5117d339d/fpga-board/vivado-project/resources/irq-bd.jpg" width="40%" />
 </p>
 
 
