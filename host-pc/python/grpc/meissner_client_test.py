@@ -40,7 +40,7 @@ class MeissnerClient(object):
         # Define host IP address and port
         self.host = '192.168.2.99'
         self.port = 50051
-
+        
         # Instantiate a gRPC channel
         self.channel = grpc.insecure_channel(
             '{}:{}'.format(self.host, self.port))
@@ -48,14 +48,64 @@ class MeissnerClient(object):
         # Bind the client and the server
         self.stub = meissner_pb2_grpc.MeissnerStub(self.channel)
 
+    # Read I2C method
+    def read_i2c(self, address, length):
+        # Create request
+        request = meissner_pb2.ReadI2CPacket(
+            address=address, 
+            length=length
+        )
+        # Wait for response
+        response = self.stub.ReadI2C(request)
+        # Return response
+        return response
+
+    # Write I2C method
+    def write_i2c(self, address, length, data):
+        # Create request
+        request = meissner_pb2.WriteI2CPacket(
+            address=address,
+            length=length,
+            data=data
+        )
+        # Wait for response
+        response = self.stub.WriteI2C(request)
+        # Return response
+        return response
+
     # Reset sensor method
     def reset_sensor(self):
         # Create request
         request = meissner_pb2.ResetSensorPacket()
-        
         # Wait for response
         response = self.stub.ResetSensor(request)
-        
+        # Return response
+        return response
+    
+    # Read sensor id method
+    def read_sensor_id(self):
+        # Create request
+        request = meissner_pb2.ReadSensorIDPacket()
+        # Wait for response
+        response = self.stub.ReadSensorID(request)
+        # Return response
+        return response
+    
+    # Read sensor version method
+    def read_sensor_version(self):
+        # Create request
+        request = meissner_pb2.ReadSensorVersionPacket()
+        # Wait for response
+        response = self.stub.ReadSensorVersion(request)
+        # Return response
+        return response
+    
+    # Read sensor unique id method
+    def read_sensor_unique_id(self):
+        # Create request
+        request = meissner_pb2.ReadSensorUniqueIDPacket()
+        # Wait for response
+        response = self.stub.ReadSensorUniqueID(request)
         # Return response
         return response
     
@@ -63,10 +113,44 @@ class MeissnerClient(object):
     def test_i2c_connection(self):
         # Create request
         request = meissner_pb2.TestI2CConnectionPacket()
-        
         # Wait for response
         response = self.stub.TestI2CConnection(request)
-        
+        # Return response
+        return response
+    
+    # Test sensor temperature method
+    def test_sensor_temperature(self):
+        # Create request
+        request = meissner_pb2.TestSensorTemperaturePacket()
+        # Wait for response
+        response = self.stub.TestSensorTemperature(request)
+        # Return response
+        return response
+    
+    # Test sensor supply voltage method
+    def test_sensor_supply_voltage(self):
+        # Create request
+        request = meissner_pb2.TestSensorSupplyVoltagePacket()
+        # Wait for response
+        response = self.stub.TestSensorSupplyVoltage(request)
+        # Return response
+        return response
+    
+    # Test sensor output voltage method
+    def test_sensor_output_voltage(self):
+        # Create request
+        request = meissner_pb2.TestSensorOutputVoltagePacket()
+        # Wait for response
+        response = self.stub.TestSensorOutputVoltage(request)
+        # Return response
+        return response
+    
+    # Test AFE sensor connectivity method
+    def test_afe_sensor_connectivity(self):
+        # Create request
+        request = meissner_pb2.TestAFESensorConnectivityPacket()
+        # Wait for response
+        response = self.stub.TestAFESensorConnectivity(request)
         # Return response
         return response
     
@@ -88,10 +172,8 @@ class GPIOClient(object):
     def turn_off_pynq_sdn1_io(self):
         # Create request
         request = gpio_pb2.TurnOffPYNQSDN1IOPacket()
-        
         # Wait for response
         response = self.stub.TurnOffPYNQSDN1IO(request)
-        
         # Return response
         return response
     
@@ -99,10 +181,8 @@ class GPIOClient(object):
     def turn_on_pynq_sdn1_io(self):
         # Create request
         request = gpio_pb2.TurnOnPYNQSDN1IOPacket()
-        
         # Wait for response
         response = self.stub.TurnOnPYNQSDN1IO(request)
-        
         # Return response
         return response
     
@@ -110,10 +190,8 @@ class GPIOClient(object):
     def turn_off_pynq_sdn2_io(self):
         # Create request
         request = gpio_pb2.TurnOffPYNQSDN2IOPacket()
-        
         # Wait for response
         response = self.stub.TurnOffPYNQSDN2IO(request)
-        
         # Return response
         return response
     
@@ -121,10 +199,8 @@ class GPIOClient(object):
     def turn_on_pynq_sdn2_io(self):
         # Create request
         request = gpio_pb2.TurnOnPYNQSDN2IOPacket()
-        
         # Wait for response
         response = self.stub.TurnOnPYNQSDN2IO(request)
-        
         # Return response
         return response
     
@@ -132,10 +208,8 @@ class GPIOClient(object):
     def turn_off_pynq_sdn3_io(self):
         # Create request
         request = gpio_pb2.TurnOffPYNQSDN3IOPacket()
-        
         # Wait for response
         response = self.stub.TurnOffPYNQSDN3IO(request)
-        
         # Return response
         return response
     
@@ -143,10 +217,8 @@ class GPIOClient(object):
     def turn_on_pynq_sdn3_io(self):
         # Create request
         request = gpio_pb2.TurnOnPYNQSDN3IOPacket()
-        
         # Wait for response
         response = self.stub.TurnOnPYNQSDN3IO(request)
-        
         # Return response
         return response
     
@@ -168,10 +240,8 @@ class SPIClient(object):
     def config_dac_channel_0(self):
         # Create request
         request = spi_pb2.ConfigureDACChannel0Packet()
-        
         # Wait for response
         response = self.stub.ConfigureDACChannel0(request)
-        
         # Return response
         return response
     
@@ -179,10 +249,8 @@ class SPIClient(object):
     def config_dac_channel_1(self):
         # Create request
         request = spi_pb2.ConfigureDACChannel1Packet()
-        
         # Wait for response
         response = self.stub.ConfigureDACChannel1(request)
-        
         # Return response
         return response
     
@@ -190,10 +258,8 @@ class SPIClient(object):
     def config_dac_channel_2(self):
         # Create request
         request = spi_pb2.ConfigureDACChannel2Packet()
-        
         # Wait for response
         response = self.stub.ConfigureDACChannel2(request)
-        
         # Return response
         return response
 
@@ -202,8 +268,10 @@ class SPIClient(object):
 ###################################################
 # Define function that return all user-defined methods of a class
 def list_all_methods(cls):
+    # Get class name
+    cls_name = cls.__name__
     # Get all methods of the class
-    method_list = [method for method in dir(cls) if callable(getattr(cls, method)) and not method.startswith("__")]
+    method_list = [[cls_name, method] for method in dir(cls) if callable(getattr(cls, method)) and not method.startswith("__")]
     return method_list
 
 # Define function that print all user-defined methods of a class
@@ -216,14 +284,14 @@ def print_all_methods(*args):
         method_list.extend(list_all_methods(cls))
     
     # Enumerate all methods
-    for i, method in enumerate(method_list):
-        method_list[i] = [i+1, method]
+    for i, value in enumerate(method_list):
+        method_list[i] = [i+1, value[0], value[1]]
     
     # Print all methods
     print("============================================================")
     print("=              List of Available Functions                 =")
     print("============================================================")
-    print(tabulate(method_list, headers=["Function Number", "Function Name"], tablefmt="fancy_grid"))
+    print(tabulate(method_list, headers=["Function Number", "Class Name" ,"Function Name"], tablefmt="fancy_grid", numalign="left"))
     print()
 
 # Define function to call gRPC method
@@ -260,10 +328,49 @@ def call_grpc_method(func_number, *args):
         response = gpio_client.turn_on_pynq_sdn3_io()
         return response
     elif func_number == 10:
-        response = meissner_client.reset_sensor()
+        address = int(input("Enter I2C address: "), 16)
+        length = int(input("Enter length of data to read: "))
+        response = meissner_client.read_i2c(
+            address=address, 
+            length=length
+        )
         return response
     elif func_number == 11:
+        response = meissner_client.read_sensor_id()
+        return response
+    elif func_number == 12:
+        response = meissner_client.read_sensor_unique_id()
+        return response
+    elif func_number == 13:
+        response = meissner_client.read_sensor_version()
+        return response
+    elif func_number == 14:
+        response = meissner_client.reset_sensor()
+        return response
+    elif func_number == 15:
+        response = meissner_client.test_afe_sensor_connectivity()
+        return response
+    elif func_number == 16:
         response = meissner_client.test_i2c_connection()
+        return response
+    elif func_number == 17:
+        response = meissner_client.test_sensor_output_voltage()
+        return response
+    elif func_number == 18:
+        response = meissner_client.test_sensor_supply_voltage()
+        return response
+    elif func_number == 19:
+        response = meissner_client.test_sensor_temperature()
+        return response
+    elif func_number == 20:
+        address = int(input("Enter I2C address: "))
+        length = int(input("Enter length: "))
+        data = int(input("Enter data: "))
+        response = meissner_client.write_i2c(
+            address=address, 
+            length=length, 
+            data=data
+        )
         return response
     else:
         print("Invalid function number!")
