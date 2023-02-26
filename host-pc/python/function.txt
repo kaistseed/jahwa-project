@@ -1,2 +1,0 @@
-operation,address,data
-run_function,-,test_i2c_comm
