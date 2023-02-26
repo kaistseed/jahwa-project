@@ -20,6 +20,7 @@
 # Python library
 import time
 import grpc
+from tabulate import tabulate
 from concurrent import futures
 
 # GRPC library
@@ -199,183 +200,102 @@ class SPIClient(object):
 ###################################################
 ##             Define Helper Function            ##         
 ###################################################
-#  
+# Define function that return all user-defined methods of a class
+def list_all_methods(cls):
+    # Get all methods of the class
+    method_list = [method for method in dir(cls) if callable(getattr(cls, method)) and not method.startswith("__")]
+    return method_list
+
+# Define function that print all user-defined methods of a class
+def print_all_methods(*args):
+    # Declare local variable
+    method_list = []
+    
+    # Get all methods of the class
+    for cls in args:
+        method_list.extend(list_all_methods(cls))
+    
+    # Enumerate all methods
+    for i, method in enumerate(method_list):
+        method_list[i] = [i+1, method]
+    
+    # Print all methods
+    print("============================================================")
+    print("=              List of Available Functions                 =")
+    print("============================================================")
+    print(tabulate(method_list, headers=["Function Number", "Function Name"], tablefmt="fancy_grid"))
+    print()
+
+# Define function to call gRPC method
+def call_grpc_method(func_number, *args):
+    # Call gRPC method based on function number
+    if func_number == 0:
+        print_all_methods(*args)
+        return None
+    elif func_number == 1:
+        response = spi_client.config_dac_channel_0()
+        return response
+    elif func_number == 2:
+        response = spi_client.config_dac_channel_1()
+        return response
+    elif func_number == 3:
+        response = spi_client.config_dac_channel_2()
+        return response
+    elif func_number == 4:
+        response = gpio_client.turn_off_pynq_sdn1_io()
+        return response
+    elif func_number == 5:
+        response = gpio_client.turn_off_pynq_sdn2_io()
+        return response
+    elif func_number == 6:
+        response = gpio_client.turn_off_pynq_sdn3_io()
+        return response
+    elif func_number == 7:
+        response = gpio_client.turn_on_pynq_sdn1_io()
+        return response
+    elif func_number == 8:
+        response = gpio_client.turn_on_pynq_sdn2_io()
+        return response
+    elif func_number == 9:
+        response = gpio_client.turn_on_pynq_sdn3_io()
+        return response
+    elif func_number == 10:
+        response = meissner_client.reset_sensor()
+        return response
+    elif func_number == 11:
+        response = meissner_client.test_i2c_connection()
+        return response
+    else:
+        print("Invalid function number!")
+        return None
+
 ###################################################
 ##                  Main Program                 ##         
 ###################################################
 if __name__ == '__main__':
+    print("=====================================================")
+    print("=              Starting gRPC Client                 =")
+    print("=====================================================")
+    print()
+
     # Instantiate client
     spi_client = SPIClient()
     gpio_client = GPIOClient()
     meissner_client = MeissnerClient()
-    
-    # print("=====================================================")
-    # print("=                 Start GPIO Test                   =")
-    # print("=====================================================")
-    # # Test PYNQ SDN 1 I/O (off)
-    # response = gpio_client.turn_off_pynq_sdn1_io()
-    # # Print response
-    # print("Operation name: {}".format(response.operation_name))
-    # print("Start time: {} ns".format(response.start_time))
-    # print("End time: {} ns".format(response.end_time))
-    # print("Success: {}".format(response.success))
-    # print()
 
-    # # Test PYNQ SDN 2 I/O (off)
-    # response = gpio_client.turn_off_pynq_sdn2_io()
-    # # Print response
-    # print("Operation name: {}".format(response.operation_name))
-    # print("Start time: {} ns".format(response.start_time))
-    # print("End time: {} ns".format(response.end_time))
-    # print("Success: {}".format(response.success))
-    # print()
+    # Print all methods
+    print_all_methods(SPIClient, GPIOClient, MeissnerClient)
 
-    # # Test PYNQ SDN 3 I/O (off)
-    # response = gpio_client.turn_off_pynq_sdn3_io()
-    # # Print response
-    # print("Operation name: {}".format(response.operation_name))
-    # print("Start time: {} ns".format(response.start_time))
-    # print("End time: {} ns".format(response.end_time))
-    # print("Success: {}".format(response.success))
-    # print()
+    # Run gRPC client based on user input
+    while True:
+        # Get function number from user
+        func_number = int(input("Enter function number (0) to list all functions, (-1) to exit: "))
+        print()
 
-    # # Test PYNQ SDN 1 I/O (on)
-    # response = gpio_client.turn_on_pynq_sdn1_io()
-    # # Print response
-    # print("Operation name: {}".format(response.operation_name))
-    # print("Start time: {} ns".format(response.start_time))
-    # print("End time: {} ns".format(response.end_time))
-    # print("Success: {}".format(response.success))
-    # print()
-
-    # # Test PYNQ SDN 2 I/O (on)
-    # response = gpio_client.turn_on_pynq_sdn2_io()
-    # # Print response
-    # print("Operation name: {}".format(response.operation_name))
-    # print("Start time: {} ns".format(response.start_time))
-    # print("End time: {} ns".format(response.end_time))
-    # print("Success: {}".format(response.success))
-    # print()
-
-    # # Test PYNQ SDN 3 I/O (on)
-    # response = gpio_client.turn_on_pynq_sdn3_io()
-    # # Print response
-    # print("Operation name: {}".format(response.operation_name))
-    # print("Start time: {} ns".format(response.start_time))
-    # print("End time: {} ns".format(response.end_time))
-    # print("Success: {}".format(response.success))
-    # print()
-
-    print("=====================================================")
-    print("=               Start Test Sequence                 =")
-    print("=====================================================")
-    # Test PYNQ SDN 1 I/O (off)
-    response = gpio_client.turn_off_pynq_sdn1_io()
-    # Print response
-    print("Operation name: {}".format(response.operation_name))
-    print("Start time: {} ns".format(response.start_time))
-    print("End time: {} ns".format(response.end_time))
-    print("Success: {}".format(response.success))
-    print()
-
-    # Test PYNQ SDN 2 I/O (off)
-    response = gpio_client.turn_off_pynq_sdn2_io()
-    # Print response
-    print("Operation name: {}".format(response.operation_name))
-    print("Start time: {} ns".format(response.start_time))
-    print("End time: {} ns".format(response.end_time))
-    print("Success: {}".format(response.success))
-    print()
-
-    # Test PYNQ SDN 3 I/O (off)
-    response = gpio_client.turn_off_pynq_sdn3_io()
-    # Print response
-    print("Operation name: {}".format(response.operation_name))
-    print("Start time: {} ns".format(response.start_time))
-    print("End time: {} ns".format(response.end_time))
-    print("Success: {}".format(response.success))
-    print()
-
-    # Test Configure DAC channel 0
-    response = spi_client.config_dac_channel_0()
-    # Print response
-    print("Operation name: {}".format(response.operation_name))
-    print("Start time: {} ns".format(response.start_time))
-    print("End time: {} ns".format(response.end_time))
-    print("Success: {}".format(response.success))
-    print()
-
-    # Test Configure DAC channel 1
-    response = spi_client.config_dac_channel_1()
-    # Print response
-    print("Operation name: {}".format(response.operation_name))
-    print("Start time: {} ns".format(response.start_time))
-    print("End time: {} ns".format(response.end_time))
-    print("Success: {}".format(response.success))
-    print()
-
-    # Test Configure DAC channel 2
-    response = spi_client.config_dac_channel_2()
-    # Print response
-    print("Operation name: {}".format(response.operation_name))
-    print("Start time: {} ns".format(response.start_time))
-    print("End time: {} ns".format(response.end_time))
-    print("Success: {}".format(response.success))
-    print()
-
-    # Test PYNQ SDN 1 I/O (on)
-    response = gpio_client.turn_on_pynq_sdn1_io()
-    # Print response
-    print("Operation name: {}".format(response.operation_name))
-    print("Start time: {} ns".format(response.start_time))
-    print("End time: {} ns".format(response.end_time))
-    print("Success: {}".format(response.success))
-    print()
-
-    # Test PYNQ SDN 2 I/O (on)
-    response = gpio_client.turn_on_pynq_sdn2_io()
-    # Print response
-    print("Operation name: {}".format(response.operation_name))
-    print("Start time: {} ns".format(response.start_time))
-    print("End time: {} ns".format(response.end_time))
-    print("Success: {}".format(response.success))
-    print()
-
-    # Test PYNQ SDN 3 I/O (on)
-    response = gpio_client.turn_on_pynq_sdn3_io()
-    # Print response
-    print("Operation name: {}".format(response.operation_name))
-    print("Start time: {} ns".format(response.start_time))
-    print("End time: {} ns".format(response.end_time))
-    print("Success: {}".format(response.success))
-    print()
-
-    # Test Reset Meissner
-    response = meissner_client.test_i2c_connection()
-    # Print response
-    print("Operation name: {}".format(response.operation_name))
-    print("Start time: {} ns".format(response.start_time))
-    print("End time: {} ns".format(response.end_time))
-    print("Success: {}".format(response.success))
-    print()
-
-    # # Test I2C connection
-    # response = meissner_client.test_i2c_connection()
-    # # Print response
-    # print("Operation name: {}".format(response.operation_name))
-    # print("Start time: {} ns".format(response.start_time))
-    # print("End time: {} ns".format(response.end_time))
-    # print("Sensor ID: {}".format(response.sensor_id))
-    # print("Success: {}".format(response.success))
-    # print()
-
-    # # Test I2C connection
-    # response = meissner_client.test_i2c_connection()
-    # # Print response
-    # print("Operation name: {}".format(response.operation_name))
-    # print("Start time: {} ns".format(response.start_time))
-    # print("End time: {} ns".format(response.end_time))
-    # print("Sensor ID: {}".format(response.sensor_id))
-    # print("Success: {}".format(response.success))
-    # print()
-
+        # Call gRPC method
+        if func_number == -1:
+            break
+        else:
+            response = call_grpc_method(func_number, SPIClient, GPIOClient, MeissnerClient)
+            if response is not None:
+                print(response)
