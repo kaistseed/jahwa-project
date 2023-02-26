@@ -38,8 +38,8 @@ import protolib.meissner.meissner_pb2_grpc as meissner_pb2_grpc
 class MeissnerClient(object):
     def __init__(self, *args, **kwargs):
         # Define host IP address and port
-        self.host = '192.168.2.99'
-        self.port = 50051
+        self.host = kwargs.get('ip_addr') if kwargs.get('ip_addr') is not None else '192.168.2.99'
+        self.port = kwargs.get('port') if kwargs.get('port') is not None else 50051
         
         # Instantiate a gRPC channel
         self.channel = grpc.insecure_channel(
@@ -158,8 +158,8 @@ class MeissnerClient(object):
 class GPIOClient(object):
     def __init__(self, *args, **kwargs):
         # Define host IP address and port
-        self.host = '192.168.2.99'
-        self.port = 50051
+        self.host = kwargs.get('ip_addr') if kwargs.get('ip_addr') is not None else '192.168.2.99'
+        self.port = kwargs.get('port') if kwargs.get('port') is not None else 50051
 
         # Instantiate a gRPC channel
         self.channel = grpc.insecure_channel(
@@ -226,8 +226,8 @@ class GPIOClient(object):
 class SPIClient(object):
     def __init__(self, *args, **kwargs):
         # Define host IP address and port
-        self.host = '192.168.2.99'
-        self.port = 50051
+        self.host = kwargs.get('ip_addr') if kwargs.get('ip_addr') is not None else '192.168.2.99'
+        self.port = kwargs.get('port') if kwargs.get('port') is not None else 50051
 
         # Instantiate a gRPC channel
         self.channel = grpc.insecure_channel(
@@ -288,6 +288,7 @@ def print_all_methods(*args):
         method_list[i] = [i+1, value[0], value[1]]
     
     # Print all methods
+    print()
     print("============================================================")
     print("=              List of Available Functions                 =")
     print("============================================================")
@@ -383,12 +384,19 @@ if __name__ == '__main__':
     print("=====================================================")
     print("=              Starting gRPC Client                 =")
     print("=====================================================")
-    print()
+    ip_addr = input("Enter IP address of gRPC server: ")
+    port_num = input("Enter port number of gRPC server: ")
 
-    # Instantiate client
-    spi_client = SPIClient()
-    gpio_client = GPIOClient()
-    meissner_client = MeissnerClient()
+    # Instantiate gRPC client
+    try:
+        spi_client = SPIClient(ip_addr, port_num)
+        gpio_client = GPIOClient(ip_addr, port_num)
+        meissner_client = MeissnerClient(ip_addr, port_num)
+        print("Successfully connected to gRPC server at {}:{}".format(meissner_client.host, meissner_client.port))
+    except Exception as e:
+        print(e)
+        print("Failed to connect to gRPC server at {}:{}".format(meissner_client.host, meissner_client.port))
+        exit(1)
 
     # Print all methods
     print_all_methods(SPIClient, GPIOClient, MeissnerClient)
@@ -397,7 +405,6 @@ if __name__ == '__main__':
     while True:
         # Get function number from user
         func_number = int(input("Enter function number (0) to list all functions, (-1) to exit: "))
-        print()
 
         # Call gRPC method
         if func_number == -1:
