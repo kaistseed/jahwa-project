@@ -587,12 +587,10 @@ if __name__ == '__main__':
     pynq_sdn_1_ip = ol.ip_dict['axi_gpio_1']
     pynq_sdn_2_ip = ol.ip_dict['axi_gpio_2']
     pynq_sdn_3_ip = ol.ip_dict['axi_gpio_3']
-
     # Map GPIO IP to AXI GPIO Class
     pynq_sdn_1 = AxiGPIO(pynq_sdn_1_ip).channel1
     pynq_sdn_2 = AxiGPIO(pynq_sdn_2_ip).channel1
     pynq_sdn_3 = AxiGPIO(pynq_sdn_3_ip).channel1
-
     # Print status
     print("Successfully configured AXI GPIO IP")
     print()
@@ -602,26 +600,10 @@ if __name__ == '__main__':
     print("=====================================================")
     # Get AXI SPI IP
     spi_control = ol.axi_quad_spi_0
-
     # Map AXI SPI IP to SPI class
     PYNQSPI = SPI(spi_control, 0, 0) # (spi_control, cpol, cpha)
-    
     # Print status
     print("Successfully configured AXI QSPI IP")
-    print()
-
-    print("=====================================================")
-    print("=             Configuring AXI I2C IP                =")
-    print("=====================================================")
-    # get AXI IIC IP
-    i2c_control = ol.ip_dict['axi_iic_0']
-
-    # Map AXI IIC IP to Meissner Class
-    AXII2C = AxiIIC(i2c_control)
-    MEISSNERI2C = MeissnerI2C(AXII2C, 0x74, 0x77)
-
-    # Print status
-    print("Successfully configured AXI I2C IP")
     print()
 
     print("=====================================================")
@@ -629,27 +611,24 @@ if __name__ == '__main__':
     print("=====================================================")
     # Get AXI Interrupt Timer IP
     intr_timer_ip = ol.axi_timer_0
-
     # Map AXI Interrupt Timer IP to Timer Class
     intr_timer = intr_timer_ip.interrupt
-
-    # Define interrupt handler
-    async def intr_handler(timer):
-        intr_timer.register_map.TLR0 = timer
-        intr_timer.register_map.TCSR0.LOAD0 = 1
-        intr_timer.register_map.TCSR0.LOAD0 = 0
-        intr_timer.register_map.TCSR0.ENIT0 = 1
-        intr_timer.register_map.TCSR0.UDT0 = 1
-        intr_timer.register_map.TCSR0.ENT0 = 1
-        intr_timer_start = time.time()
-        await intr_timer.wait()
-        intr_timer_stop = time.time()
-        print("Interrupt time: {} ns".format(intr_timer_stop-intr_timer_start))
-        intr_timer.register_map.TCSR0.T0INT = 1
-
     # Print status
     print("Successfully configured AXI interrupt timer")
     print()
+
+    print("=====================================================")
+    print("=             Configuring AXI I2C IP                =")
+    print("=====================================================")
+    # get AXI IIC IP
+    i2c_control = ol.ip_dict['axi_iic_0']
+    # Map AXI IIC IP to Meissner Class
+    AXII2C = AxiIIC(i2c_control)
+    MEISSNERI2C = MeissnerI2C(AXII2C, 0x74, 0x77, intr_timer)
+    # Print status
+    print("Successfully configured AXI I2C IP")
+    print()
+    
     
     print("=====================================================")
     print("=              Starting gRPC Server                 =")
