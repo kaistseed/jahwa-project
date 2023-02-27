@@ -30,6 +30,7 @@ import protolib.gpio.gpio_pb2 as gpio_pb2
 import protolib.gpio.gpio_pb2_grpc as gpio_pb2_grpc
 import protolib.meissner.meissner_pb2 as meissner_pb2
 import protolib.meissner.meissner_pb2_grpc as meissner_pb2_grpc
+from google.protobuf.json_format import MessageToDict
 
 ###################################################
 ##              Define Client Class              ##         
@@ -38,8 +39,8 @@ import protolib.meissner.meissner_pb2_grpc as meissner_pb2_grpc
 class MeissnerClient(object):
     def __init__(self, *args, **kwargs):
         # Define host IP address and port
-        self.host = kwargs.get('ip_addr') if kwargs.get('ip_addr') != '' else '192.168.2.99'
-        self.port = kwargs.get('port_num') if kwargs.get('port_num') != '' else 50051
+        self.host = kwargs.get('ip_addr') if kwargs.get('ip_addr') is not None else '192.168.2.99'
+        self.port = kwargs.get('port_num') if kwargs.get('port_num') is not None else 50051
         
         # Instantiate a gRPC channel
         self.channel = grpc.insecure_channel(
@@ -158,8 +159,8 @@ class MeissnerClient(object):
 class GPIOClient(object):
     def __init__(self, *args, **kwargs):
         # Define host IP address and port
-        self.host = kwargs.get('ip_addr') if kwargs.get('ip_addr') != '' else '192.168.2.99'
-        self.port = kwargs.get('port_num') if kwargs.get('port_num') != '' else 50051
+        self.host = kwargs.get('ip_addr') if kwargs.get('ip_addr') is not None else '192.168.2.99'
+        self.port = kwargs.get('port_num') if kwargs.get('port_num') is not None else 50051
 
         # Instantiate a gRPC channel
         self.channel = grpc.insecure_channel(
@@ -226,8 +227,8 @@ class GPIOClient(object):
 class SPIClient(object):
     def __init__(self, *args, **kwargs):
         # Define host IP address and port
-        self.host = kwargs.get('ip_addr') if kwargs.get('ip_addr') != '' else '192.168.2.99'
-        self.port = kwargs.get('port_num') if kwargs.get('port_num') != '' else 50051
+        self.host = kwargs.get('ip_addr') if kwargs.get('ip_addr') is not None else '192.168.2.99'
+        self.port = kwargs.get('port_num') if kwargs.get('port_num') is not None else 50051
 
         # Instantiate a gRPC channel
         self.channel = grpc.insecure_channel(
@@ -408,8 +409,17 @@ if __name__ == '__main__':
 
         # Call gRPC method
         if func_number == -1:
+            print("Exiting gRPC client...")
             break
         else:
-            response = call_grpc_method(func_number, SPIClient, GPIOClient, MeissnerClient)
+            # Convert gRPC message to dictionary
+            response = MessageToDict(
+                call_grpc_method(func_number, SPIClient, GPIOClient, MeissnerClient), 
+                including_default_value_fields=True,
+                preserving_proto_field_name=True
+            )
+            # Print response
             if response is not None:
-                print(response)
+                for key, value in response.items():
+                    print("{}: {}".format(key, value))
+                print()
