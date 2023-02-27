@@ -413,13 +413,14 @@ if __name__ == '__main__':
             break
         else:
             # Convert gRPC message to dictionary
-            response = MessageToDict(
-                call_grpc_method(func_number, SPIClient, GPIOClient, MeissnerClient), 
-                including_default_value_fields=True,
-                preserving_proto_field_name=True
-            )
+            response = call_grpc_method(func_number, SPIClient, GPIOClient, MeissnerClient)
             # Print response
             if response is not None:
+                response = MessageToDict(
+                    response, 
+                    including_default_value_fields=True,
+                    preserving_proto_field_name=True
+                )
                 for key, value in response.items():
                     print("{}: {}".format(key, value))
                 print()
