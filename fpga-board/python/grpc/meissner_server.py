@@ -468,7 +468,7 @@ class MeissnerService(meissner_pb2_grpc.MeissnerServicer):
         start_time = str(time.time())
         # Test sensor supply voltage
         try:
-            sensor_supply_voltage = MEISSNERI2C.test_supply_voltage()
+            sensor_supply_voltage = MEISSNERI2C.test_supply_sensor_voltage()
             success = sensor_supply_voltage[-1]
             if not(success):
                 print("Standby to active mode failed! Please try again.")
