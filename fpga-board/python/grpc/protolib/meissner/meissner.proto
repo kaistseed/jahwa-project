@@ -1,0 +1,209 @@
+///////////////////////////////////////////////////
+//         Define Protobuf Syntax Version        //         
+///////////////////////////////////////////////////
+syntax = "proto3";
+
+///////////////////////////////////////////////////
+//              Define Package Name              //         
+///////////////////////////////////////////////////
+package meissner;
+
+///////////////////////////////////////////////////
+//               Define RPC Service              //         
+///////////////////////////////////////////////////
+service Meissner {
+    // Read I2C
+    rpc ReadI2C(ReadI2CPacket) returns (ReadI2CResponse) {}
+    // Write I2C
+    rpc WriteI2C(WriteI2CPacket) returns (WriteI2CResponse) {}
+    // Reset Sensor
+    rpc ResetSensor(ResetSensorPacket) returns (ResetSensorResponse) {}
+    // Read Sensor ID
+    rpc ReadSensorID(ReadSensorIDPacket) returns (ReadSensorIDResponse) {}
+    // Read Sensor Version
+    rpc ReadSensorVersion(ReadSensorVersionPacket) returns (ReadSensorVersionResponse) {}
+    // Read Sensor Unique ID
+    rpc ReadSensorUniqueID(ReadSensorUniqueIDPacket) returns (ReadSensorUniqueIDResponse) {}
+    // Test I2C Connection
+    rpc TestI2CConnection(TestI2CConnectionPacket) returns (TestI2CConnectionResponse) {}
+    // Test Sensor Temperature
+    rpc TestSensorTemperature(TestSensorTemperaturePacket) returns (TestSensorTemperatureResponse) {}
+    // Test Sensor Supply Voltage
+    rpc TestSensorSupplyVoltage(TestSensorSupplyVoltagePacket) returns (TestSensorSupplyVoltageResponse) {}
+    // Test Sensor Output Voltage
+    rpc TestSensorOutputVoltage(TestSensorOutputVoltagePacket) returns (TestSensorOutputVoltageResponse) {}
+    // Test AFE Sensor Connectivity
+    rpc TestAFESensorConnectivity(TestAFESensorConnectivityPacket) returns (TestAFESensorConnectivityResponse) {}
+}
+
+///////////////////////////////////////////////////
+//              Define Message Type              //         
+///////////////////////////////////////////////////
+// Read I2C Message
+message ReadI2CPacket {
+    // Define the fields
+    uint32 address = 1;
+    uint32 length = 2;
+}
+
+// Read I2C Response
+message ReadI2CResponse {
+    // Define the fields
+    string operation_name = 1;
+    uint32 address = 2;
+    uint32 length = 3;
+    repeated bytes data = 4;
+    string start_time = 5;
+    string end_time = 6;
+    bool success = 7;
+}
+
+// Write I2C Message
+message WriteI2CPacket {
+    // Define the fields
+    uint32 address = 1;
+    uint32 length = 2;
+    bytes data = 3;
+}
+
+// Write I2C Response
+message WriteI2CResponse {
+    // Define the fields
+    string operation_name = 1;
+    uint32 address = 2;
+    uint32 length = 3;
+    string start_time = 4;
+    string end_time = 5;
+    bool success = 6;
+}
+
+// Reset Sensor Message
+message ResetSensorPacket {}
+
+// Reset Sensor Response
+message ResetSensorResponse {
+    // Define the fields
+    string operation_name = 1;
+    string start_time = 2;
+    string end_time = 3;
+    bool success = 4;
+}
+
+// Read Sensor ID Message
+message ReadSensorIDPacket {}
+
+// Read Sensor ID Response
+message ReadSensorIDResponse {
+    // Define the fields
+    string operation_name = 1;
+    string sensor_id = 2;
+    string start_time = 3;
+    string end_time = 4;
+    bool success = 5;
+}
+
+// Read Sensor Version Message
+message ReadSensorVersionPacket {}
+
+// Read Sensor Version Response
+message ReadSensorVersionResponse {
+    // Define the fields
+    string operation_name = 1;
+    string sensor_version = 2;
+    string start_time = 3;
+    string end_time = 4;
+    bool success = 5;
+}
+
+// Read Sensor Unique ID Message
+message ReadSensorUniqueIDPacket {}
+
+// Read Sensor Unique ID Response
+message ReadSensorUniqueIDResponse {
+    // Define the fields
+    string operation_name = 1;
+    string sensor_unique_id = 2;
+    string start_time = 3;
+    string end_time = 4;
+    bool success = 5;
+}
+
+// Test I2C Connection Message
+message TestI2CConnectionPacket {}
+
+// Test I2C Connection Response
+message TestI2CConnectionResponse {
+    // Define the fields
+    string operation_name = 1;
+    string start_time = 2;
+    string end_time = 3;
+    string sensor_id = 4;
+    bool success = 5;
+}
+
+// Test Sensor Temperature Message
+message TestSensorTemperaturePacket {}
+
+// Test Sensor Temperature Response
+message TestSensorTemperatureResponse {
+    // Define the fields
+    string operation_name = 1;
+    string start_time = 2;
+    string end_time = 3;
+    float int_temp = 4;
+    float ext_voltage = 5;
+    float ext_current = 6;
+    float ext_resistance = 7;
+    bool success = 8;
+}
+
+// Test Sensor Supply Voltage Message
+message TestSensorSupplyVoltagePacket {}
+
+// Test Sensor Supply Voltage Response
+message TestSensorSupplyVoltageResponse {
+    // Define the fields
+    string operation_name = 1;
+    string start_time = 2;
+    string end_time = 3;
+    float vdda = 4;
+    float vddp_af = 5;
+    float vddp_ois = 6;
+    bool success = 7;
+}
+
+// Test Sensor Output Voltage Message
+message TestSensorOutputVoltagePacket {}
+
+// Test Sensor Output Voltage Response
+message TestSensorOutputVoltageResponse {
+    // Define the fields
+    string operation_name = 1;
+    string start_time = 2;
+    string end_time = 3;
+    float vout_ois_b1 = 4;
+    float vout_ois_b2 = 5;
+    float vout_af_b3 = 6;
+    float res_ois_b1 = 7;
+    float res_ois_b2 = 8;
+    float res_af_b3 = 9;
+    bool success = 10;
+}
+
+// Test AFE Sensor Connectivity Message
+message TestAFESensorConnectivityPacket {}
+
+// Test AFE Sensor Connectivity Response
+message TestAFESensorConnectivityResponse {
+    // Define the fields
+    string operation_name = 1;
+    string start_time = 2;
+    string end_time = 3;
+    float sense_open_s1_p = 4;
+    float sense_open_s1_n = 5;
+    float sense_open_s2_p = 6;
+    float sense_open_s2_n = 7;
+    float sense_open_z1_p = 8;
+    float sense_open_z1_n = 9;
+    bool success = 10;
+}
