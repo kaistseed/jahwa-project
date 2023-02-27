@@ -645,7 +645,7 @@ if __name__ == '__main__':
     i2c_control = ol.ip_dict['axi_iic_0']
     # Map AXI IIC IP to Meissner Class
     AXII2C = AxiIIC(i2c_control)
-    MEISSNERI2C = MeissnerI2C(AXII2C, 0x74, 0x77, intr_timer)
+    MEISSNERI2C = MeissnerI2C(AXII2C, 0x74, 0x77, intr_timer_ip, intr_timer)
     # Print status
     print("Successfully configured AXI I2C IP")
     print()
