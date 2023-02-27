@@ -38,8 +38,8 @@ import protolib.meissner.meissner_pb2_grpc as meissner_pb2_grpc
 class MeissnerClient(object):
     def __init__(self, *args, **kwargs):
         # Define host IP address and port
-        self.host = kwargs.get('ip_addr') if kwargs.get('ip_addr') is not None else '192.168.2.99'
-        self.port = kwargs.get('port') if kwargs.get('port') is not None else 50051
+        self.host = kwargs.get('ip_addr') if kwargs.get('ip_addr') != '' else '192.168.2.99'
+        self.port = kwargs.get('port_num') if kwargs.get('port_num') != '' else 50051
         
         # Instantiate a gRPC channel
         self.channel = grpc.insecure_channel(
@@ -158,8 +158,8 @@ class MeissnerClient(object):
 class GPIOClient(object):
     def __init__(self, *args, **kwargs):
         # Define host IP address and port
-        self.host = kwargs.get('ip_addr') if kwargs.get('ip_addr') is not None else '192.168.2.99'
-        self.port = kwargs.get('port') if kwargs.get('port') is not None else 50051
+        self.host = kwargs.get('ip_addr') if kwargs.get('ip_addr') != '' else '192.168.2.99'
+        self.port = kwargs.get('port_num') if kwargs.get('port_num') != '' else 50051
 
         # Instantiate a gRPC channel
         self.channel = grpc.insecure_channel(
@@ -226,8 +226,8 @@ class GPIOClient(object):
 class SPIClient(object):
     def __init__(self, *args, **kwargs):
         # Define host IP address and port
-        self.host = kwargs.get('ip_addr') if kwargs.get('ip_addr') is not None else '192.168.2.99'
-        self.port = kwargs.get('port') if kwargs.get('port') is not None else 50051
+        self.host = kwargs.get('ip_addr') if kwargs.get('ip_addr') != '' else '192.168.2.99'
+        self.port = kwargs.get('port_num') if kwargs.get('port_num') != '' else 50051
 
         # Instantiate a gRPC channel
         self.channel = grpc.insecure_channel(

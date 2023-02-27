@@ -569,13 +569,13 @@ def serve(*args, **kwargs):
     spi_pb2_grpc.add_SPIServicer_to_server(SPIService(), server)
     meissner_pb2_grpc.add_MeissnerServicer_to_server(MeissnerService(), server)
     # Listen on port
-    if args[0] is not None:
+    if args[0] != '':
         server.add_insecure_port('[::]:' + str(args[0]))
     else:
         server.add_insecure_port('[::]:50051')
     # Start server
     server.start()
-    if args[0] is not None:
+    if args[0] != '':
         print('Successfully started gRPC server on port ' + str(args[0]))
     else:
         print('Successfully started gRPC server on port 50051')
