@@ -355,7 +355,9 @@ class MeissnerService(meissner_pb2_grpc.MeissnerServicer):
         try:
             sensor_version = MEISSNERI2C.read_chip_ver()
             sensor_version = sensor_version[0] + sensor_version[1]
-            success = True
+            success = sensor_version[2]
+            if not(success):
+                print("Assertion failed! Please check the sensor version.")
         except:
             print("Read sensor version failed! Please try again.")
             sensor_version = ''
@@ -408,7 +410,9 @@ class MeissnerService(meissner_pb2_grpc.MeissnerServicer):
         # Test I2C connection
         try:
             sensor_id = MEISSNERI2C.test_i2c_comm()
-            success = True
+            success = sensor_id[-1]
+            if not(success):
+                print("Standby to active mode failed! Please try again.")
         except:
             print("Test I2C connection failed! Please try again.")
             sensor_id = ''
@@ -421,7 +425,7 @@ class MeissnerService(meissner_pb2_grpc.MeissnerServicer):
             'operation_name': 'Test I2C connection', 
             'start_time': start_time, 
             'end_time': end_time, 
-            'sensor_id': sensor_id, 
+            'sensor_id': sensor_id[0], 
             'success': success
         }
         
@@ -434,7 +438,9 @@ class MeissnerService(meissner_pb2_grpc.MeissnerServicer):
         # Test sensor temperature
         try:
             sensor_temperature = MEISSNERI2C.test_temp_read()
-            success = True
+            success = sensor_temperature[-1]
+            if not(success):
+                print("Standby to active mode failed! Please try again.")
         except:
             print("Test sensor temperature failed! Please try again.")
             sensor_temperature = [0.0, 0.0, 0.0, 0.0]
@@ -463,7 +469,9 @@ class MeissnerService(meissner_pb2_grpc.MeissnerServicer):
         # Test sensor supply voltage
         try:
             sensor_supply_voltage = MEISSNERI2C.test_supply_voltage()
-            success = True
+            success = sensor_supply_voltage[-1]
+            if not(success):
+                print("Standby to active mode failed! Please try again.")
         except:
             print("Test sensor supply voltage failed! Please try again.")
             sensor_supply_voltage = [0.0, 0.0, 0.0]
@@ -491,7 +499,9 @@ class MeissnerService(meissner_pb2_grpc.MeissnerServicer):
         # Test sensor output voltage
         try:
             sensor_output_voltage = MEISSNERI2C.test_output_voltage()
-            success = True
+            success = sensor_output_voltage[-1]
+            if not(success):
+                print("Standby to active mode failed! Please try again.")
         except:
             print("Test sensor output voltage failed! Please try again.")
             sensor_output_voltage = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0,]
@@ -522,7 +532,9 @@ class MeissnerService(meissner_pb2_grpc.MeissnerServicer):
         # Test AFE sensor connectivity
         try:
             sensor_connectivity = MEISSNERI2C.test_afe_connectivity()
-            success = True
+            success = sensor_connectivity[-1]
+            if not(success):
+                print("Standby to active mode failed! Please try again.")
         except:
             print("Test AFE sensor connectivity failed! Please try again.")
             sensor_connectivity = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0,]
