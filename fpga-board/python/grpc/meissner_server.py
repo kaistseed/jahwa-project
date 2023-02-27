@@ -576,8 +576,11 @@ def serve(*args, **kwargs):
     # Start server
     server.start()
     print('Successfully started gRPC server on port ' + str(args[0]))
-    # Keep alive
-    server.wait_for_termination()
+    # Keep server alive until keyboard interrupt
+    try:
+        server.wait_for_termination()
+    except KeyboardInterrupt:
+        server.stop(0)
 
 ###################################################
 ##                  Main Program                 ##         
