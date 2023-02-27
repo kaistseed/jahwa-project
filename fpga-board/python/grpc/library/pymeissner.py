@@ -353,11 +353,14 @@ class MeissnerI2C(IIC):
         # Concat string and compare
         rd_data_1 = format(''.join(rd_data_1)).zfill(4)
         rd_data_2 = format(''.join(rd_data_2)).zfill(4)
-        assert rd_data_1 == "A620", f"Data read from register 0x0001 is not 0xA620, got: {rd_data_1}"
-        assert rd_data_2[2:] == "A0", f"Data read from register 0x0002[7:0] is not 0xA0, got: {rd_data_2[2:]}"
+        # Check chip version validity
+        status = (rd_data_1 == "A620") and (rd_data_2[2:] == "A0")
+
+        # assert rd_data_1 == "A620", f"Data read from register 0x0001 is not 0xA620, got: {rd_data_1}" // REVIEW: Do we need this assertion?
+        # assert rd_data_2[2:] == "A0", f"Data read from register 0x0002[7:0] is not 0xA0, got: {rd_data_2[2:]}" // REVIEW: Do we need this assertion?
 
         # Return version
-        return (rd_data_1, rd_data_2)
+        return (rd_data_1, rd_data_2, status)
 
     # Read sensor unique ID
     def read_unique_id(self):
@@ -669,8 +672,11 @@ class MeissnerI2C(IIC):
         # Concat string and compare
         rd_data_1 = format(''.join(rd_data_1)).zfill(4)
         rd_data_2 = format(''.join(rd_data_2)).zfill(4)
-        assert rd_data_1 == "0000", f"Data read from register 0x000C is not 0x0000, got: {rd_data_1}"
-        assert rd_data_2 == "0000", f"Data read from register 0x000D is not 0x0000, got: {rd_data_2}"
+        # Check if data read from register 0x000C and 0x000D is 0x0000
+        status = rd_data_1 == "0000" and rd_data_2 == "0000"
+
+        # assert rd_data_1 == "0000", f"Data read from register 0x000C is not 0x0000, got: {rd_data_1}" // REVIEW: Do we need this assertion?
+        # assert rd_data_2 == "0000", f"Data read from register 0x000D is not 0x0000, got: {rd_data_2}" // REVIEW: Do we need this assertion?
 
         # Define write address and data
         wr_addr_1 = 0x0006
@@ -693,12 +699,22 @@ class MeissnerI2C(IIC):
         rd_data_3_bin = []
         for i in range(len(rd_data_3)):
             rd_data_3_bin.append(bin(rd_data_3[i])[2:].zfill(8)) # Remove the '0b' string and append with 0
-        # Check the data (assertion is done by comparing data in binary form "11" means 0b11)
-        assert rd_data_3_bin[1][0] == "1", f"Data read from the register 0x0009[7] is not 0x1, got: {hex(int(rd_data_3_bin[1][0], 2))}, {rd_data_3_bin[1][0]}"
-        assert rd_data_3_bin[1][2] == "1", f"Data read from the register 0x0009[5] is not 0x1, got: {hex(int(rd_data_3_bin[1][2], 2))}, {rd_data_3_bin[1][2]}"
-        assert rd_data_3_bin[1][4] == "1", f"Data read from the register 0x0009[3] is not 0x1, got: {hex(int(rd_data_3_bin[1][4], 2))}, {rd_data_3_bin[1][4]}"
-        assert rd_data_3_bin[1][5] == "1", f"Data read from the register 0x0009[2] is not 0x1, got: {hex(int(rd_data_3_bin[1][5], 2))}, {rd_data_3_bin[1][5]}"
-        assert rd_data_3_bin[1][6:] == "11", f"Data read from the register 0x0009[1:0] is not 0x3, got: {hex(int(rd_data_3_bin[1][6:], 2))}, {rd_data_3_bin[1][6:]}"
+        # Check the data validity by comparing data in binary form "11" means 0b11
+        status = (
+            status and
+            rd_data_3_bin[1][0] == "1" and
+            rd_data_3_bin[1][2] == "1" and
+            rd_data_3_bin[1][4] == "1" and
+            rd_data_3_bin[1][5] == "1" and
+            rd_data_3_bin[1][6:] == "11"
+        )
+
+        # assert rd_data_3_bin[1][0] == "1", f"Data read from the register 0x0009[7] is not 0x1, got: {hex(int(rd_data_3_bin[1][0], 2))}, {rd_data_3_bin[1][0]}" // REVIEW: Do we need this assertion? 
+        # assert rd_data_3_bin[1][2] == "1", f"Data read from the register 0x0009[5] is not 0x1, got: {hex(int(rd_data_3_bin[1][2], 2))}, {rd_data_3_bin[1][2]}" // REVIEW: Do we need this assertion?
+        # assert rd_data_3_bin[1][4] == "1", f"Data read from the register 0x0009[3] is not 0x1, got: {hex(int(rd_data_3_bin[1][4], 2))}, {rd_data_3_bin[1][4]}" // REVIEW: Do we need this assertion?
+        # assert rd_data_3_bin[1][5] == "1", f"Data read from the register 0x0009[2] is not 0x1, got: {hex(int(rd_data_3_bin[1][5], 2))}, {rd_data_3_bin[1][5]}" // REVIEW: Do we need this assertion?
+        # assert rd_data_3_bin[1][6:] == "11", f"Data read from the register 0x0009[1:0] is not 0x3, got: {hex(int(rd_data_3_bin[1][6:], 2))}, {rd_data_3_bin[1][6:]}" // REVIEW: Do we need this assertion?
+        
         # Convert int to hex string
         for i in range(len(rd_data_3)):
             rd_data_3[i] = format(rd_data_3[i], '02x')
@@ -739,8 +755,11 @@ class MeissnerI2C(IIC):
         # Concat string and compare
         rd_data_5 = format(''.join(rd_data_5)).zfill(4)
         rd_data_6 = format(''.join(rd_data_6)).zfill(4)
-        assert rd_data_5 == "0000", f"Data read from register 0x000C is not 0x0000, got: {rd_data_5}"
-        assert rd_data_6 == "0000", f"Data read from register 0x000D is not 0x0000, got: {rd_data_6}"
+        # Check data validity
+        status = status and rd_data_5 == "0000" and rd_data_6 == "0000"
+
+        # assert rd_data_5 == "0000", f"Data read from register 0x000C is not 0x0000, got: {rd_data_5}" // REVIEW: Do we need this assertion?
+        # assert rd_data_6 == "0000", f"Data read from register 0x000D is not 0x0000, got: {rd_data_6}" // REVIEW: Do we need this assertion?
 
         # Write group 2 and 3 configuration sequence
         self._config_group_2_3()
@@ -756,6 +775,9 @@ class MeissnerI2C(IIC):
         # Write data to register
         self.write_16bit(wr_addr_4, wr_data_4)
         self.write_16bit(wr_addr_5, wr_data_5)
+        
+        # Return status
+        return status
 
     #+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++#
     #                Method for Testing Sensor Functionality                #
@@ -765,7 +787,7 @@ class MeissnerI2C(IIC):
         # Run init config sequence
         self.init_config(test_conn=True)
         # Run standby to active sequence
-        self.stby_to_active(test_conn=True)
+        stby_status = self.stby_to_active(test_conn=True)
         # Wait for 50ms
         sleep_task = self.intr_event.create_task(self.intr_handler(5e6))
         self.intr_event.run_until_complete(sleep_task)
@@ -775,14 +797,14 @@ class MeissnerI2C(IIC):
         # Print status
         print("[I2C operation] Testing I2C communication on chip with ID: {}".format(driver_chipID))
         # Return chip ID
-        return driver_chipID
+        return (driver_chipID, stby_status)
 
     # Sensor temperature read
     def test_temp_read(self):
         # Run init config sequence
         self.init_config()
         # Run standby to active sequence
-        self.stby_to_active()
+        stby_status = self.stby_to_active()
         # Wait for 50ms
         sleep_task = self.intr_event.create_task(self.intr_handler(5e6))
         self.intr_event.run_until_complete(sleep_task)
@@ -814,7 +836,7 @@ class MeissnerI2C(IIC):
             driver_intTemp, driver_extTempVolt, driver_extTempAmp, driver_extTempRes)
         )
         # Return output
-        return (driver_intTemp, driver_extTempVolt, driver_extTempAmp, driver_extTempRes)
+        return (driver_intTemp, driver_extTempVolt, driver_extTempAmp, driver_extTempRes, stby_status)
 
     # Output voltage and coil resistance test
     def test_output_voltage(self):
@@ -826,7 +848,7 @@ class MeissnerI2C(IIC):
         # Write data to register
         self.write_16bit(wr_addr_1, wr_data_1)
         # Run standby to active sequence
-        self.stby_to_active()
+        stby_status = self.stby_to_active()
         # Wait for 50ms
         sleep_task = self.intr_event.create_task(self.intr_handler(5e6))
         self.intr_event.run_until_complete(sleep_task)
@@ -898,14 +920,14 @@ class MeissnerI2C(IIC):
             driver_vout_OIS_B1, driver_vout_OIS_B2, driver_vout_AF_B3, driver_res_OIS_B1, driver_res_OIS_B2, driver_res_AF_B3)
         )
         # Return output
-        return (driver_vout_OIS_B1, driver_vout_OIS_B2, driver_vout_AF_B3, driver_res_OIS_B1, driver_res_OIS_B2, driver_res_AF_B3)
+        return (driver_vout_OIS_B1, driver_vout_OIS_B2, driver_vout_AF_B3, driver_res_OIS_B1, driver_res_OIS_B2, driver_res_AF_B3, stby_status)
 
     # Power supply voltage at sensor pins
     def test_supply_sensor_voltage(self):
         # Run init config sequence
         self.init_config()
         # Run standby to active sequence
-        self.stby_to_active()
+        stby_status = self.stby_to_active()
 
         # Define write address and data
         wr_addr_1 = 0x0032 # OIS_B1
@@ -943,7 +965,7 @@ class MeissnerI2C(IIC):
             driver_vin_VDDA, driver_vin_VDDP_AF, driver_vin_VDDP_OIS)
         )
         # Return output
-        return (driver_vin_VDDA, driver_vin_VDDP_AF, driver_vin_VDDP_OIS)
+        return (driver_vin_VDDA, driver_vin_VDDP_AF, driver_vin_VDDP_OIS, stby_status)
     
     # AFE sensor connectivity test
     def test_afe_sensor_conn(self):
@@ -955,7 +977,7 @@ class MeissnerI2C(IIC):
         # Write data to register
         self.write_16bit(wr_addr_1, wr_data_1)
         # Run standby to active sequence
-        self.stby_to_active()
+        stby_status = self.stby_to_active()
         # Wait for 50ms
         sleep_task = self.intr_event.create_task(self.intr_handler(5e6))
         self.intr_event.run_until_complete(sleep_task)
@@ -1129,7 +1151,7 @@ class MeissnerI2C(IIC):
             sense_open_s1_p, sense_open_s2_p, sense_open_z1_p, sense_open_s1_n, sense_open_s2_n, sense_open_z1_n)
         )
         # Return output
-        return (sense_open_s1_p, sense_open_s1_n, sense_open_s2_p, sense_open_s2_n, sense_open_z1_p, sense_open_z1_n)
+        return (sense_open_s1_p, sense_open_s1_n, sense_open_s2_p, sense_open_s2_n, sense_open_z1_p, sense_open_z1_n, stby_status)
 
     # Low VDDP I2C test
     def test_low_vddp_i2c(self):
