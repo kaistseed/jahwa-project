@@ -27,6 +27,7 @@ import grpc
 import os.path 
 import argparse
 from pathlib import Path
+from tabulate import tabulate
 from concurrent import futures
 
 # GRPC library
@@ -559,7 +560,7 @@ def serve():
     server.add_insecure_port('[::]:50051')
     # Start server
     server.start()
-    print("gRPC server started!")
+    print("Successfully started gRPC server on port 50051")
     # Keep alive
     server.wait_for_termination()
 
@@ -572,10 +573,12 @@ if __name__ == '__main__':
     print("=====================================================")
     # Load overlay
     ol = Overlay('bitstream/spi_iic_interrupt.bit')
-    # Check overlay
-    for key, value in ol.ip_dict.items():
-        print("IP block: ", key)
-    print("\n")
+    # Print overlay information
+    ip_block_list = []
+    for i, items in enumerate(ol.ip_dict.items()):
+        ip_block_list.append([i+1, items[0]])
+    print(tabulate(ip_block_list, headers=["IP Block Number", "IP Block Name"], tablefmt="fancy_grid", numalign="left"))
+    print()
 
     print("=====================================================")
     print("=             Configuring AXI GPIO IP               =")
@@ -589,7 +592,10 @@ if __name__ == '__main__':
     pynq_sdn_1 = AxiGPIO(pynq_sdn_1_ip).channel1
     pynq_sdn_2 = AxiGPIO(pynq_sdn_2_ip).channel1
     pynq_sdn_3 = AxiGPIO(pynq_sdn_3_ip).channel1
-    print("\n")
+
+    # Print status
+    print("Successfully configured AXI GPIO IP")
+    print()
 
     print("=====================================================")
     print("=             Configuring AXI QSPI IP               =")
@@ -599,7 +605,10 @@ if __name__ == '__main__':
 
     # Map AXI SPI IP to SPI class
     PYNQSPI = SPI(spi_control, 0, 0) # (spi_control, cpol, cpha)
-    print("\n")
+    
+    # Print status
+    print("Successfully configured AXI QSPI IP")
+    print()
 
     print("=====================================================")
     print("=             Configuring AXI I2C IP                =")
@@ -610,7 +619,10 @@ if __name__ == '__main__':
     # Map AXI IIC IP to Meissner Class
     AXII2C = AxiIIC(i2c_control)
     MEISSNERI2C = MeissnerI2C(AXII2C, 0x74, 0x77)
-    print("\n")
+    
+    # Print status
+    print("Successfully configured AXI I2C IP")
+    print()
 
     print("=====================================================")
     print("=              Starting gRPC Server                 =")
