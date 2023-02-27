@@ -575,7 +575,10 @@ def serve(*args, **kwargs):
         server.add_insecure_port('[::]:50051')
     # Start server
     server.start()
-    print('Successfully started gRPC server on port ' + str(args[0]))
+    if args[0] is not None:
+        print('Successfully started gRPC server on port ' + str(args[0]))
+    else:
+        print('Successfully started gRPC server on port 50051')
     # Keep server alive until keyboard interrupt
     try:
         server.wait_for_termination()
