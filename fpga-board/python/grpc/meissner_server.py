@@ -415,7 +415,7 @@ class MeissnerService(meissner_pb2_grpc.MeissnerServicer):
                 print("Standby to active mode failed! Please try again.")
         except:
             print("Test I2C connection failed! Please try again.")
-            sensor_id = ''
+            sensor_id = ['']
             success = False
         # End time
         end_time = str(time.time())
