@@ -21,14 +21,12 @@
 import sys
 import time
 import cffi
-import math
 import ctypes
-import asyncio
+import math
 import numpy as np
-from pyiic import IIC
-from enum import Enum
-from typing import List
 from dataclasses import dataclass
+from typing import List
+from enum import Enum
 
 ####################################################################
 #              Define Constant and Struct Data Type                #
@@ -235,10 +233,115 @@ def twos_to_dec(input, bits):
     return value - (1 << bits) if value & (1 << (bits - 1)) else value
 
 #############################################################################
+#                             Define I2C Class                              #
+#############################################################################
+# Initiate C Foreign Function Interface
+ffi = cffi.FFI()
+
+# I2C driver class
+class I2C:
+    # Initialize class
+    def __init__(self, master, prim_addr, sec_addr=None):
+        self.master = master
+        self.prim_addr = prim_addr
+        self.sec_addr = sec_addr
+
+    # I2C read method (16-bit address and data)
+    def read_16bit(self, reg_addr):
+        # Declare variables
+        in_buffer = ffi.new("unsigned char[2]")
+        out_buffer = ffi.new("unsigned char[2]")
+
+        # Parse data into byte-chunks
+        in_buffer[0] = (reg_addr >> 8) & 0xFF
+        in_buffer[1] = reg_addr & 0xFF
+
+        # Start I2C read sequence
+        self.master.send(self.prim_addr, in_buffer, 2, 1)
+        time.sleep(0.001)
+        self.master.receive(self.prim_addr, out_buffer, 2)
+        self.master.wait()
+        
+        # Clear interrupt register
+        self.master.write(0x20, self.master.read(0x20))
+
+        # Return value
+        return out_buffer
+
+    # I2C write method (16-bit address and data)
+    def write_16bit(self, reg_addr, data):
+        # Declare variables
+        in_buffer = ffi.new("unsigned char[4]")
+
+        # Parse address and data into byte chunks
+        in_buffer[0] = (reg_addr >> 8) & 0xFF
+        in_buffer[1] = reg_addr & 0xFF
+        in_buffer[2] = (data >> 8) & 0xFF
+        in_buffer[3] = data & 0xFF
+
+        # Start I2C write sequence
+        self.master.send(self.prim_addr, in_buffer, 4)
+
+        # Clear interrupt register
+        self.master.write(0x20, self.master.read(0x20))
+
+    # I2C read method (32-bit address and data)
+    def read_32bit(self, reg_addr):
+        # Declare variables
+        in_buffer = ffi.new("unsigned char[4]")
+        out_buffer = ffi.new("unsigned char[4]")
+
+         # Parse address into byte-chunks
+        in_buffer[0] = (reg_addr >> 24) & 0xFF
+        in_buffer[1] = (reg_addr >> 16) & 0xFF
+        in_buffer[2] = (reg_addr >> 8) & 0xFF
+        in_buffer[3] = reg_addr & 0xFF
+
+        # Start I2C erad sequence
+        # Write register address to secondary slave address
+        if (self.sec_addr is not None):
+            self.master.send(self.sec_addr, in_buffer, 4, 1)
+            self.master.receive(self.sec_addr, out_buffer, 4)
+        # Write register address to primary slave address if secondary slave address is not provided
+        else:
+            self.master.send(self.prim_addr, in_buffer, 4, 1)
+            self.master.receive(self.prim_addr, out_buffer, 4)
+        
+#         self.master.receive(self.prim_addr, out_buffer, 4)
+        self.master.wait()
+
+        # Clear interrupt register
+        self.master.write(0x20, self.master.read(0x20))
+
+        # Return value
+        return out_buffer
+
+    # I2C write method (32-bit address and data)
+    def write_32bit(self, reg_addr, data):
+        # Declare variables
+        in_buffer = ffi.new("unsigned char[8")
+
+        # Parse address and data into byte chunks
+        in_buffer[0] = (reg_addr >> 24) & 0xFF
+        in_buffer[1] = (reg_addr >> 16) & 0xFF
+        in_buffer[2] = (reg_addr >> 8) & 0xFF
+        in_buffer[3] = reg_addr & 0xFF
+        in_buffer[4] = (data >> 24) & 0xFF
+        in_buffer[5] = (data >> 16) & 0xFF
+        in_buffer[6] = (data >> 8) & 0xFF
+        in_buffer[7] = data & 0xFF
+
+        # Start I2C write sequence
+        self.master.send(self.sec_addr, in_buffer, 8)
+
+        # Clear interrupt register
+        self.master.write(0x20, self.master.read(0x20))
+
+#############################################################################
 #                       Define Meissner Sensor Class                        #
 #############################################################################
-class MeissnerI2C(IIC):
-    def __init__(self, master, prim_addr, sec_addr=None, intr_timer=None) -> None:
+class MeissnerI2C(I2C):
+    def __init__(self, master, prim_addr, sec_addr=None) -> None:
         """
         Class containing methods for accessing Meissner sensor
         -------------------------------------------------------
@@ -262,26 +365,6 @@ class MeissnerI2C(IIC):
         self.driver_res_OIS_B2 = 0
         self.driver_res_AF_B3 = 0
 
-        # Declare variable for interrupt timer
-        self.intr_timer = intr_timer
-
-        # Declare async event for interrupt
-        self.intr_event = asyncio.get_event_loop()
-
-    # Define method for configuring interrupt timer
-    async def intr_handler(self, timer):
-        self.intr_timer.register_map.TLR0 = timer
-        self.intr_timer.register_map.TCSR0.LOAD0 = 1
-        self.intr_timer.register_map.TCSR0.LOAD0 = 0
-        self.intr_timer.register_map.TCSR0.ENIT0 = 1
-        self.intr_timer.register_map.TCSR0.UDT0 = 1
-        self.intr_timer.register_map.TCSR0.ENT0 = 1
-        intr_timer_start = time.time()
-        await self.intr_timer.wait()
-        intr_timer_stop = time.time()
-        print("Interrupt time: {} ns".format(intr_timer_stop-intr_timer_start))
-        self.intr_timer.register_map.TCSR0.T0INT = 1
-
     # Reset sensor without exception
     def reset_sensor_single(self):
         # Define address and data
@@ -292,8 +375,7 @@ class MeissnerI2C(IIC):
         # Write to register 0x000E
         self.write_16bit(write_addr, data)
         # Sleep for 500us
-        sleep_task = self.intr_event.create_task(self.intr_handler(5e4))
-        self.intr_event.run_until_complete(sleep_task)
+        time.sleep(5e-4) # REVIEW: Should this be changed into interrupt timer?
         # Read from register 0x0000
         try:
             chip_id = self.read_16bit(read_addr)
@@ -310,8 +392,7 @@ class MeissnerI2C(IIC):
         # Write to register 0x000E
         self.write_16bit(write_addr, data)
         # Sleep for 500us
-        sleep_task = self.intr_event.create_task(self.intr_handler(5e4))
-        self.intr_event.run_until_complete(sleep_task)
+        time.sleep(5e-4) # REVIEW: Should this be changed into interrupt timer?
         # Read from register 0x0000
         try:
             chip_id = self.read_16bit(read_addr)
@@ -682,8 +763,7 @@ class MeissnerI2C(IIC):
         self.write_16bit(wr_addr_2, wr_data_2)
 
         # Wait for 10ms
-        sleep_task = self.intr_event.create_task(self.intr_handler(1e6))
-        self.intr_event.run_until_complete(sleep_task)
+        time.sleep(0.01) # REVIEW: Should this be changed into interrupt timer?
 
         # Read data from register 0x0009
         rd_data_3 = self.read_16bit(0x0009)
@@ -767,8 +847,7 @@ class MeissnerI2C(IIC):
         # Run standby to active sequence
         self.stby_to_active(test_conn=True)
         # Wait for 50ms
-        sleep_task = self.intr_event.create_task(self.intr_handler(5e6))
-        self.intr_event.run_until_complete(sleep_task)
+        time.sleep(0.05) # REVIEW: Should this be changed into interrupt based timer?
         # Read chip ID
         driver_chipID = self.read_chip_id()
         
@@ -784,8 +863,7 @@ class MeissnerI2C(IIC):
         # Run standby to active sequence
         self.stby_to_active()
         # Wait for 50ms
-        sleep_task = self.intr_event.create_task(self.intr_handler(5e6))
-        self.intr_event.run_until_complete(sleep_task)
+        time.sleep(0.05) # REVIEW: Should this be changed into interrupt based timer?
         
         # Read data from sensor
         # Temperature (°C)
@@ -828,8 +906,7 @@ class MeissnerI2C(IIC):
         # Run standby to active sequence
         self.stby_to_active()
         # Wait for 50ms
-        sleep_task = self.intr_event.create_task(self.intr_handler(5e6))
-        self.intr_event.run_until_complete(sleep_task)
+        time.sleep(0.05) # REVIEW: Should this be changed into interrupt based timer?
 
         # Define write address and data
         wr_addr_2 = 0x0032 # OIS_B1
@@ -843,8 +920,7 @@ class MeissnerI2C(IIC):
         self.write_16bit(wr_addr_3, wr_data_3)
         self.write_16bit(wr_addr_4, wr_data_4)
         # Wait for 10ms
-        sleep_task = self.intr_event.create_task(self.intr_handler(1e6))
-        self.intr_event.run_until_complete(sleep_task)
+        time.sleep(0.01) # REVIEW: Should this be changed into interrupt based timer?
 
         # Read data from sensor
         # Sample 5 data and average
@@ -919,8 +995,7 @@ class MeissnerI2C(IIC):
         self.write_16bit(wr_addr_2, wr_data_2)
         self.write_16bit(wr_addr_3, wr_data_3)
         # Wait for 50ms
-        sleep_task = self.intr_event.create_task(self.intr_handler(5e6))
-        self.intr_event.run_until_complete(sleep_task)
+        time.sleep(0.05) # REVIEW: Should this be changed into interrupt based timer?
 
         # OIS_B1 voltage (V)
         rd_data_1 = self.read_16bit(0x022E)
@@ -957,8 +1032,7 @@ class MeissnerI2C(IIC):
         # Run standby to active sequence
         self.stby_to_active()
         # Wait for 50ms
-        sleep_task = self.intr_event.create_task(self.intr_handler(5e6))
-        self.intr_event.run_until_complete(sleep_task)
+        time.sleep(0.05) # REVIEW: Should this be changed into interrupt based timer?
 
         ############################# Part 1 #############################
         # Capture voltage at top of sensor bridge
@@ -1134,8 +1208,7 @@ class MeissnerI2C(IIC):
     # Low VDDP I2C test
     def test_low_vddp_i2c(self):
         # Wait for 10ms
-        sleep_task = self.intr_event.create_task(self.intr_handler(1e6))
-        self.intr_event.run_until_complete(sleep_task)
+        time.sleep(0.01) # REVIEW: Should this be changed into interrupt based timer?
 
         # Define address
         rd_addr_1 = 0x0000
