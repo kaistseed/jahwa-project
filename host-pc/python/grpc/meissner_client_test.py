@@ -384,8 +384,8 @@ if __name__ == '__main__':
     print("=====================================================")
     print("=              Starting gRPC Client                 =")
     print("=====================================================")
-    ip_addr = input("Enter IP address of gRPC server: ")
-    port_num = input("Enter port number of gRPC server: ")
+    ip_addr = input("Enter IP address of gRPC server, default = 192.168.2.99: ")
+    port_num = input("Enter port number of gRPC server, default = 50051: ")
 
     # Instantiate gRPC client
     try:
