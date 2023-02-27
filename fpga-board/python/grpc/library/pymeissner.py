@@ -237,8 +237,11 @@ def twos_to_dec(input, bits):
 #############################################################################
 #                       Define Meissner Sensor Class                        #
 #############################################################################
+# Initiate C Foreign Function Interface
+ffi = cffi.FFI()
+
 class MeissnerI2C(IIC):
-    def __init__(self, master, prim_addr, sec_addr=None, intr_timer=None) -> None:
+    def __init__(self, master, prim_addr, sec_addr=None, *args) -> None:
         """
         Class containing methods for accessing Meissner sensor
         -------------------------------------------------------
@@ -263,24 +266,25 @@ class MeissnerI2C(IIC):
         self.driver_res_AF_B3 = 0
 
         # Declare variable for interrupt timer
-        self.intr_timer = intr_timer
+        self.intr_timer_ip = args[0]
+        self.intr_timer = args[1]
 
         # Declare async event for interrupt
         self.intr_event = asyncio.get_event_loop()
 
     # Define method for configuring interrupt timer
     async def intr_handler(self, timer):
-        self.intr_timer.register_map.TLR0 = timer
-        self.intr_timer.register_map.TCSR0.LOAD0 = 1
-        self.intr_timer.register_map.TCSR0.LOAD0 = 0
-        self.intr_timer.register_map.TCSR0.ENIT0 = 1
-        self.intr_timer.register_map.TCSR0.UDT0 = 1
-        self.intr_timer.register_map.TCSR0.ENT0 = 1
-        intr_timer_start = time.time()
+        self.intr_timer_ip.register_map.TLR0 = timer
+        self.intr_timer_ip.register_map.TCSR0.LOAD0 = 1
+        self.intr_timer_ip.register_map.TCSR0.LOAD0 = 0
+        self.intr_timer_ip.register_map.TCSR0.ENIT0 = 1
+        self.intr_timer_ip.register_map.TCSR0.UDT0 = 1
+        self.intr_timer_ip.register_map.TCSR0.ENT0 = 1
+        intr_timer_start = time.perf_counter()
         await self.intr_timer.wait()
-        intr_timer_stop = time.time()
-        print("Interrupt time: {} ns".format(intr_timer_stop-intr_timer_start))
-        self.intr_timer.register_map.TCSR0.T0INT = 1
+        intr_timer_stop = time.perf_counter()
+        print("Interrupt time: {} us".format((intr_timer_stop-intr_timer_start)*1e6))
+        self.intr_timer_ip.register_map.TCSR0.T0INT = 1
 
     # Reset sensor without exception
     def reset_sensor_single(self):
@@ -292,7 +296,8 @@ class MeissnerI2C(IIC):
         # Write to register 0x000E
         self.write_16bit(write_addr, data)
         # Sleep for 500us
-        sleep_task = self.intr_event.create_task(self.intr_handler(5e4))
+        print("Reset sensor interrupt (500 us)")
+        sleep_task = self.intr_event.create_task(self.intr_handler(2e4))
         self.intr_event.run_until_complete(sleep_task)
         # Read from register 0x0000
         try:
@@ -310,7 +315,8 @@ class MeissnerI2C(IIC):
         # Write to register 0x000E
         self.write_16bit(write_addr, data)
         # Sleep for 500us
-        sleep_task = self.intr_event.create_task(self.intr_handler(5e4))
+        print("Reset sensor interrupt (500 us)")
+        sleep_task = self.intr_event.create_task(self.intr_handler(2e4))
         self.intr_event.run_until_complete(sleep_task)
         # Read from register 0x0000
         try:
@@ -688,6 +694,7 @@ class MeissnerI2C(IIC):
         self.write_16bit(wr_addr_2, wr_data_2)
 
         # Wait for 10ms
+        print("Standby to active interrupt (10000 us)")
         sleep_task = self.intr_event.create_task(self.intr_handler(1e6))
         self.intr_event.run_until_complete(sleep_task)
 
@@ -789,6 +796,7 @@ class MeissnerI2C(IIC):
         # Run standby to active sequence
         stby_status = self.stby_to_active(test_conn=True)
         # Wait for 50ms
+        print("Test I2C communication interrupt (50000 us)")
         sleep_task = self.intr_event.create_task(self.intr_handler(5e6))
         self.intr_event.run_until_complete(sleep_task)
         # Read chip ID
@@ -806,6 +814,7 @@ class MeissnerI2C(IIC):
         # Run standby to active sequence
         stby_status = self.stby_to_active()
         # Wait for 50ms
+        print("Test temperature read interrupt (50000 us)")
         sleep_task = self.intr_event.create_task(self.intr_handler(5e6))
         self.intr_event.run_until_complete(sleep_task)
         
@@ -850,6 +859,7 @@ class MeissnerI2C(IIC):
         # Run standby to active sequence
         stby_status = self.stby_to_active()
         # Wait for 50ms
+        print("Test output voltage interrupt (50000 us)")
         sleep_task = self.intr_event.create_task(self.intr_handler(5e6))
         self.intr_event.run_until_complete(sleep_task)
 
@@ -865,6 +875,7 @@ class MeissnerI2C(IIC):
         self.write_16bit(wr_addr_3, wr_data_3)
         self.write_16bit(wr_addr_4, wr_data_4)
         # Wait for 10ms
+        print("Test output voltage interrupt (10000 us)")
         sleep_task = self.intr_event.create_task(self.intr_handler(1e6))
         self.intr_event.run_until_complete(sleep_task)
 
@@ -941,6 +952,7 @@ class MeissnerI2C(IIC):
         self.write_16bit(wr_addr_2, wr_data_2)
         self.write_16bit(wr_addr_3, wr_data_3)
         # Wait for 50ms
+        print("Test supply sensor voltage interrupt (50000 us)")
         sleep_task = self.intr_event.create_task(self.intr_handler(5e6))
         self.intr_event.run_until_complete(sleep_task)
 
@@ -979,6 +991,7 @@ class MeissnerI2C(IIC):
         # Run standby to active sequence
         stby_status = self.stby_to_active()
         # Wait for 50ms
+        print("Test AFE sensor connection interrupt (50000 us)")
         sleep_task = self.intr_event.create_task(self.intr_handler(5e6))
         self.intr_event.run_until_complete(sleep_task)
 
