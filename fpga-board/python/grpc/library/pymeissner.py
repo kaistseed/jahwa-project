@@ -25,8 +25,8 @@ import math
 import ctypes
 import asyncio
 import numpy as np
-from pyiic import IIC
 from enum import Enum
+from .pyiic import IIC
 from typing import List
 from dataclasses import dataclass
 
