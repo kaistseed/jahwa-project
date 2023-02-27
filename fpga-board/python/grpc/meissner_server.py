@@ -619,13 +619,6 @@ if __name__ == '__main__':
     # Map AXI IIC IP to Meissner Class
     AXII2C = AxiIIC(i2c_control)
     MEISSNERI2C = MeissnerI2C(AXII2C, 0x74, 0x77)
-<<<<<<< HEAD
-=======
-    
-    # Print status
-    print("Successfully configured AXI I2C IP")
-    print()
->>>>>>> 17b6e079100df829a69c89ab8c3b1c30c42aeeef
 
     # Print status
     print("Successfully configured AXI I2C IP")
