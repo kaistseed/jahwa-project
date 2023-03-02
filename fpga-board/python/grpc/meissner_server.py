@@ -215,7 +215,7 @@ class SPIService(spi_pb2_grpc.SPIServicer):
             ch0_code = hex(int(request.channel_code, 16))
             MSB = (0x01 << 4) | ((ch0_code >> 8) & 0x0F)
             LSB = ch0_code & 0xFF
-            PYNQSPI.spi_write(MSB, LSB)
+            PYNQSPI.spi_write(MSB, LSB, 0)
             success = True
         except:
             print("Configure DAC channel 0 failed! Please try again.")
@@ -244,7 +244,7 @@ class SPIService(spi_pb2_grpc.SPIServicer):
             ch1_code = hex(int(request.channel_code, 16))
             MSB = (0x05 << 4) | ((ch1_code >> 8) & 0x0F)
             LSB = ch1_code & 0xFF
-            PYNQSPI.spi_write(MSB, LSB)
+            PYNQSPI.spi_write(MSB, LSB, 0)
             success = True
         except:
             print("Configure DAC channel 1 failed! Please try again.")
@@ -273,7 +273,7 @@ class SPIService(spi_pb2_grpc.SPIServicer):
             ch2_code = hex(int(request.channel_code, 16))
             MSB = (0x09 << 4) | ((ch2_code >> 8) & 0x0F)
             LSB = ch2_code & 0xFF
-            PYNQSPI.spi_write(MSB, LSB)
+            PYNQSPI.spi_write(MSB, LSB, 0)
             success = True
         except:
             print("Configure DAC channel 2 failed! Please try again.")
@@ -300,7 +300,7 @@ class SPIService(spi_pb2_grpc.SPIServicer):
         # Read ADC
         try:
             adc_channel = int(request.adc_channel)
-            adc_value = PYNQSPI.spi_read(adc_channel) #FIXME - replace with actual SPI read
+            adc_value = PYNQSPI.spi_read(adc_channel, 1) #FIXME - replace with actual SPI read
             adc_value = hex(adc_value)
             success = True
         except:
