@@ -676,7 +676,7 @@ if __name__ == '__main__':
     print("=               Loading FPGA Overlay                =")
     print("=====================================================")
     # Load overlay
-    ol = Overlay('bitstream/spi_iic_interrupt.bit')
+    ol = Overlay('bitstream/spi_iic_interrupt_v3.bit')
     # Print overlay information
     ip_block_list = []
     for i, items in enumerate(ol.ip_dict.items()):
