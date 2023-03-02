@@ -212,7 +212,7 @@ class SPIService(spi_pb2_grpc.SPIServicer):
 
         # Configure DAC channel 0
         try:
-            ch0_code = 0x1F # 0.512V
+            ch0_code = hex(int(request.channel_code, 16))
             MSB = (0x01 << 4) | ((ch0_code >> 8) & 0x0F)
             LSB = ch0_code & 0xFF
             PYNQSPI.spi_write(MSB, LSB)
@@ -241,7 +241,7 @@ class SPIService(spi_pb2_grpc.SPIServicer):
 
         # Configure DAC channel 1
         try:
-            ch1_code = 0x600 # 2.048V
+            ch1_code = hex(int(request.channel_code, 16))
             MSB = (0x05 << 4) | ((ch1_code >> 8) & 0x0F)
             LSB = ch1_code & 0xFF
             PYNQSPI.spi_write(MSB, LSB)
@@ -270,7 +270,7 @@ class SPIService(spi_pb2_grpc.SPIServicer):
 
         # Configure DAC channel 2
         try:
-            ch2_code = 0x4BF # 2.5V
+            ch2_code = hex(int(request.channel_code, 16))
             MSB = (0x09 << 4) | ((ch2_code >> 8) & 0x0F)
             LSB = ch2_code & 0xFF
             PYNQSPI.spi_write(MSB, LSB)
@@ -291,6 +291,36 @@ class SPIService(spi_pb2_grpc.SPIServicer):
         }
 
         return spi_pb2.ConfigureDACChannel2Response(**response)
+    
+    # Read ADC method
+    def ReadADC(self, request, context):
+        # Start time
+        start_time = str(time.time())
+
+        # Read ADC
+        try:
+            adc_channel = int(request.adc_channel)
+            adc_value = PYNQSPI.spi_read(adc_channel) #FIXME - replace with actual SPI read
+            adc_value = hex(adc_value)
+            success = True
+        except:
+            print("Read ADC failed! Please try again.")
+            adc_value = ''
+            success = False
+
+        # End time
+        end_time = str(time.time())
+
+        # Return response
+        response = {
+            'operation_name': 'Read ADC', 
+            'start_time': start_time, 
+            'end_time': end_time, 
+            'success': success, 
+            'adc_value': adc_value
+        }
+
+        return spi_pb2.ReadADCResponse(**response)
 
 # Meissner service class
 class MeissnerService(meissner_pb2_grpc.MeissnerServicer):
