@@ -48,7 +48,7 @@ class SPI:
             self.master.write(0x60,0b00_00011110) 
 
     # SPI read method
-    def spi_read(self, reg_addr, read_len):
+    def spi_read(self, reg_addr, read_len, slave_num):
         """
             Method for reading from SPI slave
             -------------------------------------
@@ -62,7 +62,8 @@ class SPI:
         slave_reg_addr = reg_addr
         
         # Set chip select to low (enable slave)
-        self.master.write(0x70,0b1111_1110)
+        slave_mask = ~(1 << slave_num)
+        self.master.write(0x70,slave_mask)
             
         # Send command to slave
         while (count < read_len):
@@ -95,7 +96,7 @@ class SPI:
         return out_buffer
     
     # SPI write method
-    def spi_write(self, reg_addr, data):
+    def spi_write(self, reg_addr, data, slave_num):
         """
             Method for writing to SPI slave
             -------------------------------------
@@ -104,7 +105,8 @@ class SPI:
             data: Data to be written to SPI slave
         """
         # Set chip select to low (enable slave)
-        self.master.write(0x70,0b1111_1110)
+        slave_mask = ~(1 << slave_num)
+        self.master.write(0x70,slave_mask)
         
         # Reset AXI quad SPI RX FIFO
         if (self.spi_mode == 0):
@@ -115,7 +117,7 @@ class SPI:
             self.master.write(0x60,0b00_00011110)
         
         # Write data to master TX FIFO
-        tx_data  = ((reg_addr & ~0x80) << 8) | data
+        tx_data  = (reg_addr << 8) | data
         self.master.write(0x68,tx_data)
         
         # Set chip select to high (disable slave)
