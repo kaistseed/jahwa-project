@@ -47,6 +47,16 @@ class GPIOStub(object):
                 request_serializer=gpio__pb2.TurnOffPYNQSDN3IOPacket.SerializeToString,
                 response_deserializer=gpio__pb2.TurnOffPYNQSDN3IOResponse.FromString,
                 )
+        self.ResetADCStart = channel.unary_unary(
+                '/gpio.GPIO/ResetADCStart',
+                request_serializer=gpio__pb2.ResetADCStartPacket.SerializeToString,
+                response_deserializer=gpio__pb2.ResetADCStartResponse.FromString,
+                )
+        self.StartADC = channel.unary_unary(
+                '/gpio.GPIO/StartADC',
+                request_serializer=gpio__pb2.StartADCPacket.SerializeToString,
+                response_deserializer=gpio__pb2.StartADCResponse.FromString,
+                )
 
 
 class GPIOServicer(object):
@@ -97,6 +107,20 @@ class GPIOServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def ResetADCStart(self, request, context):
+        """Reset ADC Start
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def StartADC(self, request, context):
+        """Start ADC
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_GPIOServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -129,6 +153,16 @@ def add_GPIOServicer_to_server(servicer, server):
                     servicer.TurnOffPYNQSDN3IO,
                     request_deserializer=gpio__pb2.TurnOffPYNQSDN3IOPacket.FromString,
                     response_serializer=gpio__pb2.TurnOffPYNQSDN3IOResponse.SerializeToString,
+            ),
+            'ResetADCStart': grpc.unary_unary_rpc_method_handler(
+                    servicer.ResetADCStart,
+                    request_deserializer=gpio__pb2.ResetADCStartPacket.FromString,
+                    response_serializer=gpio__pb2.ResetADCStartResponse.SerializeToString,
+            ),
+            'StartADC': grpc.unary_unary_rpc_method_handler(
+                    servicer.StartADC,
+                    request_deserializer=gpio__pb2.StartADCPacket.FromString,
+                    response_serializer=gpio__pb2.StartADCResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -242,5 +276,39 @@ class GPIO(object):
         return grpc.experimental.unary_unary(request, target, '/gpio.GPIO/TurnOffPYNQSDN3IO',
             gpio__pb2.TurnOffPYNQSDN3IOPacket.SerializeToString,
             gpio__pb2.TurnOffPYNQSDN3IOResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def ResetADCStart(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/gpio.GPIO/ResetADCStart',
+            gpio__pb2.ResetADCStartPacket.SerializeToString,
+            gpio__pb2.ResetADCStartResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def StartADC(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/gpio.GPIO/StartADC',
+            gpio__pb2.StartADCPacket.SerializeToString,
+            gpio__pb2.StartADCResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
