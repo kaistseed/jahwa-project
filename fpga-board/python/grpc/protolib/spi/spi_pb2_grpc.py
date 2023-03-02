@@ -32,6 +32,11 @@ class SPIStub(object):
                 request_serializer=spi__pb2.ConfigureDACChannel2Packet.SerializeToString,
                 response_deserializer=spi__pb2.ConfigureDACChannel2Response.FromString,
                 )
+        self.ReadADC = channel.unary_unary(
+                '/spi.SPI/ReadADC',
+                request_serializer=spi__pb2.ReadADCPacket.SerializeToString,
+                response_deserializer=spi__pb2.ReadADCResponse.FromString,
+                )
 
 
 class SPIServicer(object):
@@ -61,6 +66,13 @@ class SPIServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def ReadADC(self, request, context):
+        """Read ADC
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_SPIServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -78,6 +90,11 @@ def add_SPIServicer_to_server(servicer, server):
                     servicer.ConfigureDACChannel2,
                     request_deserializer=spi__pb2.ConfigureDACChannel2Packet.FromString,
                     response_serializer=spi__pb2.ConfigureDACChannel2Response.SerializeToString,
+            ),
+            'ReadADC': grpc.unary_unary_rpc_method_handler(
+                    servicer.ReadADC,
+                    request_deserializer=spi__pb2.ReadADCPacket.FromString,
+                    response_serializer=spi__pb2.ReadADCResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -140,5 +157,22 @@ class SPI(object):
         return grpc.experimental.unary_unary(request, target, '/spi.SPI/ConfigureDACChannel2',
             spi__pb2.ConfigureDACChannel2Packet.SerializeToString,
             spi__pb2.ConfigureDACChannel2Response.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def ReadADC(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/spi.SPI/ReadADC',
+            spi__pb2.ReadADCPacket.SerializeToString,
+            spi__pb2.ReadADCResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
