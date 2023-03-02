@@ -200,6 +200,59 @@ class GPIOService(gpio_pb2_grpc.GPIOServicer):
         
         return gpio_pb2.TurnOnPYNQSDN3IOResponse(**response)
     
+    # Reset ADC Start method
+    def ResetADCStart(self, request, context):
+        # Start time
+        start_time = str(time.time())
+        # Reset ADC Start
+        try:
+            pynq_adc_start.write(0x0, 0x1)
+            success = True
+        except:
+            print("Reset ADC Start failed! Please try again.")
+            success = False
+        # End time
+        end_time = str(time.time())
+
+        # Return response
+        response = {
+            'operation_name': 'Reset ADC Start', 
+            'start_time': start_time, 
+            'end_time': end_time, 
+            'success': success
+        }
+        
+        return gpio_pb2.ResetADCStartResponse(**response)
+    
+    # Start ADC method
+    def StartADC(self, request, context):
+        # Start time
+        start_time = str(time.time())
+        # Start ADC
+        try:
+            time_delay_1 = float(request.time_delay_1)
+            time_delay_2 = float(request.time_delay_2)
+            pynq_adc_start.write(0x1, 0x1)
+            time.sleep(time_delay_1)
+            pynq_adc_start.write(0x0, 0x1)
+            time.sleep(time_delay_2)
+            success = True
+        except:
+            print("Start ADC failed! Please try again.")
+            success = False
+        # End time
+        end_time = str(time.time())
+
+        # Return response
+        response = {
+            'operation_name': 'Start ADC', 
+            'start_time': start_time, 
+            'end_time': end_time, 
+            'success': success
+        }
+        
+        return gpio_pb2.StartADCResponse(**response)
+    
 # SPI service class
 class SPIService(spi_pb2_grpc.SPIServicer):
     def __init__(self, *args, **kwargs):
@@ -635,10 +688,12 @@ if __name__ == '__main__':
     print("=             Configuring AXI GPIO IP               =")
     print("=====================================================")
     # Get AXI GPIO IP
+    pynq_adc_start_ip = ol.ip_dict['axi_gpio_0'] 
     pynq_sdn_1_ip = ol.ip_dict['axi_gpio_1']
     pynq_sdn_2_ip = ol.ip_dict['axi_gpio_2']
     pynq_sdn_3_ip = ol.ip_dict['axi_gpio_3']
     # Map GPIO IP to AXI GPIO Class
+    pynq_adc_start = AxiGPIO(pynq_adc_start_ip).channel1
     pynq_sdn_1 = AxiGPIO(pynq_sdn_1_ip).channel1
     pynq_sdn_2 = AxiGPIO(pynq_sdn_2_ip).channel1
     pynq_sdn_3 = AxiGPIO(pynq_sdn_3_ip).channel1

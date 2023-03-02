@@ -223,6 +223,27 @@ class GPIOClient(object):
         # Return response
         return response
     
+    # Reset ADC Start method
+    def reset_adc_start(self):
+        # Create request
+        request = gpio_pb2.ResetADCStartPacket()
+        # Wait for response
+        response = self.stub.ResetADCStart(request)
+        # Return response
+        return response
+    
+    # Start ADC conversion method
+    def start_adc(self, time_delay_1, time_delay_2):
+        # Create request
+        request = gpio_pb2.StartADCPacket(
+            time_delay_1=time_delay_1,
+            time_delay_2=time_delay_2
+        )
+        # Wait for response
+        response = self.stub.StartADC(request)
+        # Return response
+        return response
+    
 # Define SPI client class
 class SPIClient(object):
     def __init__(self, *args, **kwargs):
@@ -344,24 +365,35 @@ def call_grpc_method(func_number, *args):
         )
         return response
     elif func_number == 5:
-        response = gpio_client.turn_off_pynq_sdn1_io()
+        response = gpio_client.reset_adc_start()
         return response
     elif func_number == 6:
-        response = gpio_client.turn_off_pynq_sdn2_io()
+        time_delay_1 = float(input("Enter time delay 1: "))
+        time_delay_2 = float(input("Enter time delay 2: "))
+        response = gpio_client.start_adc(
+            time_delay_1=time_delay_1,
+            time_delay_2=time_delay_2
+        )
         return response
     elif func_number == 7:
-        response = gpio_client.turn_off_pynq_sdn3_io()
+        response = gpio_client.turn_off_pynq_sdn1_io()
         return response
     elif func_number == 8:
-        response = gpio_client.turn_on_pynq_sdn1_io()
+        response = gpio_client.turn_off_pynq_sdn2_io()
         return response
     elif func_number == 9:
-        response = gpio_client.turn_on_pynq_sdn2_io()
+        response = gpio_client.turn_off_pynq_sdn3_io()
         return response
     elif func_number == 10:
-        response = gpio_client.turn_on_pynq_sdn3_io()
+        response = gpio_client.turn_on_pynq_sdn1_io()
         return response
     elif func_number == 11:
+        response = gpio_client.turn_on_pynq_sdn2_io()
+        return response
+    elif func_number == 12:
+        response = gpio_client.turn_on_pynq_sdn3_io()
+        return response
+    elif func_number == 13:
         address = int(input("Enter I2C address: "), 16)
         length = int(input("Enter length of data to read: "))
         response = meissner_client.read_i2c(
@@ -369,34 +401,34 @@ def call_grpc_method(func_number, *args):
             length=length
         )
         return response
-    elif func_number == 12:
+    elif func_number == 14:
         response = meissner_client.read_sensor_id()
         return response
-    elif func_number == 13:
+    elif func_number == 15:
         response = meissner_client.read_sensor_unique_id()
         return response
-    elif func_number == 14:
+    elif func_number == 16:
         response = meissner_client.read_sensor_version()
         return response
-    elif func_number == 15:
+    elif func_number == 17:
         response = meissner_client.reset_sensor()
         return response
-    elif func_number == 16:
+    elif func_number == 18:
         response = meissner_client.test_afe_sensor_connectivity()
         return response
-    elif func_number == 17:
+    elif func_number == 19:
         response = meissner_client.test_i2c_connection()
         return response
-    elif func_number == 18:
+    elif func_number == 20:
         response = meissner_client.test_sensor_output_voltage()
         return response
-    elif func_number == 19:
+    elif func_number == 21:
         response = meissner_client.test_sensor_supply_voltage()
         return response
-    elif func_number == 20:
+    elif func_number == 22:
         response = meissner_client.test_sensor_temperature()
         return response
-    elif func_number == 21:
+    elif func_number == 23:
         address = int(input("Enter I2C address: "))
         length = int(input("Enter length: "))
         data = int(input("Enter data: "))
