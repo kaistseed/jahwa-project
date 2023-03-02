@@ -69,11 +69,11 @@ class SPI:
         while (count < read_len):
             # Reset AXI quad SPI RX FIFO
             if (self.spi_mode == 0):
-                self.master.write(0x60,0b00_01100110)
-                self.master.write(0x60,0b00_00000110)
+                self.master.write(0x60,0b00_11100110)
+                self.master.write(0x60,0b00_10000110)
             else:
-                self.master.write(0x60,0b00_01111110)
-                self.master.write(0x60,0b00_00011110)
+                self.master.write(0x60,0b00_11111110)
+                self.master.write(0x60,0b00_10011110)
 
             # Write data to master TX FIFO
             tx_data  = (slave_reg_addr | 0x80) << 8
@@ -110,11 +110,11 @@ class SPI:
         
         # Reset AXI quad SPI RX FIFO
         if (self.spi_mode == 0):
-            self.master.write(0x60,0b00_01100110)
-            self.master.write(0x60,0b00_00000110)
+            self.master.write(0x60,0b00_11100110)
+            self.master.write(0x60,0b00_10000110)
         else:
-            self.master.write(0x60,0b00_01111110)
-            self.master.write(0x60,0b00_00011110)
+            self.master.write(0x60,0b00_11111110)
+            self.master.write(0x60,0b00_10011110)
         
         # Write data to master TX FIFO
         tx_data  = (reg_addr << 8) | data
