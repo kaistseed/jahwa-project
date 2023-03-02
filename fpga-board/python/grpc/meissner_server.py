@@ -212,7 +212,7 @@ class SPIService(spi_pb2_grpc.SPIServicer):
 
         # Configure DAC channel 0
         try:
-            ch0_code = hex(int(request.channel_code, 16))
+            ch0_code = int(request.channel_code, 16)
             MSB = (0x01 << 4) | ((ch0_code >> 8) & 0x0F)
             LSB = ch0_code & 0xFF
             PYNQSPI.spi_write(MSB, LSB, 0)
@@ -241,7 +241,7 @@ class SPIService(spi_pb2_grpc.SPIServicer):
 
         # Configure DAC channel 1
         try:
-            ch1_code = hex(int(request.channel_code, 16))
+            ch1_code = int(request.channel_code, 16)
             MSB = (0x05 << 4) | ((ch1_code >> 8) & 0x0F)
             LSB = ch1_code & 0xFF
             PYNQSPI.spi_write(MSB, LSB, 0)
@@ -270,7 +270,7 @@ class SPIService(spi_pb2_grpc.SPIServicer):
 
         # Configure DAC channel 2
         try:
-            ch2_code = hex(int(request.channel_code, 16))
+            ch2_code = int(request.channel_code, 16)
             MSB = (0x09 << 4) | ((ch2_code >> 8) & 0x0F)
             LSB = ch2_code & 0xFF
             PYNQSPI.spi_write(MSB, LSB, 0)
