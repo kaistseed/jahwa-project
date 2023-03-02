@@ -238,29 +238,46 @@ class SPIClient(object):
         self.stub = spi_pb2_grpc.SPIStub(self.channel)
 
     # Configure DAC channel 0
-    def config_dac_channel_0(self):
+    def config_dac_channel_0(self, channel_code):
         # Create request
-        request = spi_pb2.ConfigureDACChannel0Packet()
+        request = spi_pb2.ConfigureDACChannel0Packet(
+            channel_code=channel_code
+        )
         # Wait for response
         response = self.stub.ConfigureDACChannel0(request)
         # Return response
         return response
     
     # Configure DAC channel 1
-    def config_dac_channel_1(self):
+    def config_dac_channel_1(self, channel_code):
         # Create request
-        request = spi_pb2.ConfigureDACChannel1Packet()
+        request = spi_pb2.ConfigureDACChannel1Packet(
+            channel_code=channel_code
+        )
         # Wait for response
         response = self.stub.ConfigureDACChannel1(request)
         # Return response
         return response
     
     # Configure DAC channel 2
-    def config_dac_channel_2(self):
+    def config_dac_channel_2(self, channel_code):
         # Create request
-        request = spi_pb2.ConfigureDACChannel2Packet()
+        request = spi_pb2.ConfigureDACChannel2Packet(
+            channel_code=channel_code
+        )
         # Wait for response
         response = self.stub.ConfigureDACChannel2(request)
+        # Return response
+        return response
+    
+    # Read ADC
+    def read_adc(self, adc_channel):
+        # Create request
+        request = spi_pb2.ReadADCPacket(
+            adc_channel=adc_channel
+        )
+        # Wait for response
+        response = self.stub.ReadADC(request)
         # Return response
         return response
 
@@ -303,33 +320,48 @@ def call_grpc_method(func_number, *args):
         print_all_methods(*args)
         return None
     elif func_number == 1:
-        response = spi_client.config_dac_channel_0()
+        channel_code = str(input("Enter DAC channel 0 code: "))
+        response = spi_client.config_dac_channel_0(
+            channel_code=channel_code
+        )
         return response
     elif func_number == 2:
-        response = spi_client.config_dac_channel_1()
+        channel_code = str(input("Enter DAC channel 1 code: "))
+        response = spi_client.config_dac_channel_1(
+            channel_code=channel_code
+        )
         return response
     elif func_number == 3:
-        response = spi_client.config_dac_channel_2()
+        channel_code = str(input("Enter DAC channel 2 code: "))
+        response = spi_client.config_dac_channel_2(
+            channel_code=channel_code
+        )
         return response
     elif func_number == 4:
-        response = gpio_client.turn_off_pynq_sdn1_io()
+        adc_channel = int(input("Enter ADC channel number: "))
+        response = spi_client.read_adc(
+            adc_channel=adc_channel
+        )
         return response
     elif func_number == 5:
-        response = gpio_client.turn_off_pynq_sdn2_io()
+        response = gpio_client.turn_off_pynq_sdn1_io()
         return response
     elif func_number == 6:
-        response = gpio_client.turn_off_pynq_sdn3_io()
+        response = gpio_client.turn_off_pynq_sdn2_io()
         return response
     elif func_number == 7:
-        response = gpio_client.turn_on_pynq_sdn1_io()
+        response = gpio_client.turn_off_pynq_sdn3_io()
         return response
     elif func_number == 8:
-        response = gpio_client.turn_on_pynq_sdn2_io()
+        response = gpio_client.turn_on_pynq_sdn1_io()
         return response
     elif func_number == 9:
-        response = gpio_client.turn_on_pynq_sdn3_io()
+        response = gpio_client.turn_on_pynq_sdn2_io()
         return response
     elif func_number == 10:
+        response = gpio_client.turn_on_pynq_sdn3_io()
+        return response
+    elif func_number == 11:
         address = int(input("Enter I2C address: "), 16)
         length = int(input("Enter length of data to read: "))
         response = meissner_client.read_i2c(
@@ -337,34 +369,34 @@ def call_grpc_method(func_number, *args):
             length=length
         )
         return response
-    elif func_number == 11:
+    elif func_number == 12:
         response = meissner_client.read_sensor_id()
         return response
-    elif func_number == 12:
+    elif func_number == 13:
         response = meissner_client.read_sensor_unique_id()
         return response
-    elif func_number == 13:
+    elif func_number == 14:
         response = meissner_client.read_sensor_version()
         return response
-    elif func_number == 14:
+    elif func_number == 15:
         response = meissner_client.reset_sensor()
         return response
-    elif func_number == 15:
+    elif func_number == 16:
         response = meissner_client.test_afe_sensor_connectivity()
         return response
-    elif func_number == 16:
+    elif func_number == 17:
         response = meissner_client.test_i2c_connection()
         return response
-    elif func_number == 17:
+    elif func_number == 18:
         response = meissner_client.test_sensor_output_voltage()
         return response
-    elif func_number == 18:
+    elif func_number == 19:
         response = meissner_client.test_sensor_supply_voltage()
         return response
-    elif func_number == 19:
+    elif func_number == 20:
         response = meissner_client.test_sensor_temperature()
         return response
-    elif func_number == 20:
+    elif func_number == 21:
         address = int(input("Enter I2C address: "))
         length = int(input("Enter length: "))
         data = int(input("Enter data: "))
