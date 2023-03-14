@@ -72,6 +72,26 @@ class MeissnerStub(object):
                 request_serializer=meissner__pb2.TestAFESensorConnectivityPacket.SerializeToString,
                 response_deserializer=meissner__pb2.TestAFESensorConnectivityResponse.FromString,
                 )
+        self.PatternLoading = channel.stream_unary(
+                '/meissner.Meissner/PatternLoading',
+                request_serializer=meissner__pb2.PatternLoadingPacket.SerializeToString,
+                response_deserializer=meissner__pb2.PatternLoadingResponse.FromString,
+                )
+        self.PatternRun = channel.unary_unary(
+                '/meissner.Meissner/PatternRun',
+                request_serializer=meissner__pb2.PatternRunPacket.SerializeToString,
+                response_deserializer=meissner__pb2.PatternRunResponse.FromString,
+                )
+        self.PatternCheckStatus = channel.unary_unary(
+                '/meissner.Meissner/PatternCheckStatus',
+                request_serializer=meissner__pb2.PatternCheckStatusPacket.SerializeToString,
+                response_deserializer=meissner__pb2.PatternCheckStatusResponse.FromString,
+                )
+        self.PatternGetData = channel.unary_stream(
+                '/meissner.Meissner/PatternGetData',
+                request_serializer=meissner__pb2.PatternGetDataPacket.SerializeToString,
+                response_deserializer=meissner__pb2.PatternGetDataResponse.FromString,
+                )
 
 
 class MeissnerServicer(object):
@@ -157,6 +177,34 @@ class MeissnerServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def PatternLoading(self, request_iterator, context):
+        """Pattern Loading
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def PatternRun(self, request, context):
+        """Pattern Run
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def PatternCheckStatus(self, request, context):
+        """Pattern Check Status
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
+    def PatternGetData(self, request, context):
+        """Pattern Get Data
+        """
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_MeissnerServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -214,6 +262,26 @@ def add_MeissnerServicer_to_server(servicer, server):
                     servicer.TestAFESensorConnectivity,
                     request_deserializer=meissner__pb2.TestAFESensorConnectivityPacket.FromString,
                     response_serializer=meissner__pb2.TestAFESensorConnectivityResponse.SerializeToString,
+            ),
+            'PatternLoading': grpc.stream_unary_rpc_method_handler(
+                    servicer.PatternLoading,
+                    request_deserializer=meissner__pb2.PatternLoadingPacket.FromString,
+                    response_serializer=meissner__pb2.PatternLoadingResponse.SerializeToString,
+            ),
+            'PatternRun': grpc.unary_unary_rpc_method_handler(
+                    servicer.PatternRun,
+                    request_deserializer=meissner__pb2.PatternRunPacket.FromString,
+                    response_serializer=meissner__pb2.PatternRunResponse.SerializeToString,
+            ),
+            'PatternCheckStatus': grpc.unary_unary_rpc_method_handler(
+                    servicer.PatternCheckStatus,
+                    request_deserializer=meissner__pb2.PatternCheckStatusPacket.FromString,
+                    response_serializer=meissner__pb2.PatternCheckStatusResponse.SerializeToString,
+            ),
+            'PatternGetData': grpc.unary_stream_rpc_method_handler(
+                    servicer.PatternGetData,
+                    request_deserializer=meissner__pb2.PatternGetDataPacket.FromString,
+                    response_serializer=meissner__pb2.PatternGetDataResponse.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -412,5 +480,73 @@ class Meissner(object):
         return grpc.experimental.unary_unary(request, target, '/meissner.Meissner/TestAFESensorConnectivity',
             meissner__pb2.TestAFESensorConnectivityPacket.SerializeToString,
             meissner__pb2.TestAFESensorConnectivityResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def PatternLoading(request_iterator,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.stream_unary(request_iterator, target, '/meissner.Meissner/PatternLoading',
+            meissner__pb2.PatternLoadingPacket.SerializeToString,
+            meissner__pb2.PatternLoadingResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def PatternRun(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/meissner.Meissner/PatternRun',
+            meissner__pb2.PatternRunPacket.SerializeToString,
+            meissner__pb2.PatternRunResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def PatternCheckStatus(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/meissner.Meissner/PatternCheckStatus',
+            meissner__pb2.PatternCheckStatusPacket.SerializeToString,
+            meissner__pb2.PatternCheckStatusResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def PatternGetData(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_stream(request, target, '/meissner.Meissner/PatternGetData',
+            meissner__pb2.PatternGetDataPacket.SerializeToString,
+            meissner__pb2.PatternGetDataResponse.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)

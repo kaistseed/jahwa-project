@@ -13,7 +13,7 @@ _sym_db = _symbol_database.Default()
 
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\tspi.proto\x12\x03spi\"2\n\x1a\x43onfigureDACChannel0Packet\x12\x14\n\x0c\x63hannel_code\x18\x01 \x01(\t\"m\n\x1c\x43onfigureDACChannel0Response\x12\x16\n\x0eoperation_name\x18\x01 \x01(\t\x12\x12\n\nstart_time\x18\x02 \x01(\t\x12\x10\n\x08\x65nd_time\x18\x03 \x01(\t\x12\x0f\n\x07success\x18\x04 \x01(\x08\"2\n\x1a\x43onfigureDACChannel1Packet\x12\x14\n\x0c\x63hannel_code\x18\x01 \x01(\t\"m\n\x1c\x43onfigureDACChannel1Response\x12\x16\n\x0eoperation_name\x18\x01 \x01(\t\x12\x12\n\nstart_time\x18\x02 \x01(\t\x12\x10\n\x08\x65nd_time\x18\x03 \x01(\t\x12\x0f\n\x07success\x18\x04 \x01(\x08\"2\n\x1a\x43onfigureDACChannel2Packet\x12\x14\n\x0c\x63hannel_code\x18\x01 \x01(\t\"m\n\x1c\x43onfigureDACChannel2Response\x12\x16\n\x0eoperation_name\x18\x01 \x01(\t\x12\x12\n\nstart_time\x18\x02 \x01(\t\x12\x10\n\x08\x65nd_time\x18\x03 \x01(\t\x12\x0f\n\x07success\x18\x04 \x01(\x08\"$\n\rReadADCPacket\x12\x13\n\x0b\x61\x64\x63_channel\x18\x01 \x01(\r\"s\n\x0fReadADCResponse\x12\x16\n\x0eoperation_name\x18\x01 \x01(\t\x12\x11\n\tadc_value\x18\x02 \x01(\t\x12\x12\n\nstart_time\x18\x03 \x01(\t\x12\x10\n\x08\x65nd_time\x18\x04 \x01(\t\x12\x0f\n\x07success\x18\x05 \x01(\x08\x32\xd6\x02\n\x03SPI\x12\\\n\x14\x43onfigureDACChannel0\x12\x1f.spi.ConfigureDACChannel0Packet\x1a!.spi.ConfigureDACChannel0Response\"\x00\x12\\\n\x14\x43onfigureDACChannel1\x12\x1f.spi.ConfigureDACChannel1Packet\x1a!.spi.ConfigureDACChannel1Response\"\x00\x12\\\n\x14\x43onfigureDACChannel2\x12\x1f.spi.ConfigureDACChannel2Packet\x1a!.spi.ConfigureDACChannel2Response\"\x00\x12\x35\n\x07ReadADC\x12\x12.spi.ReadADCPacket\x1a\x14.spi.ReadADCResponse\"\x00\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\tspi.proto\x12\x03spi\"2\n\x1a\x43onfigureDACChannel0Packet\x12\x14\n\x0c\x63hannel_code\x18\x01 \x01(\t\"m\n\x1c\x43onfigureDACChannel0Response\x12\x16\n\x0eoperation_name\x18\x01 \x01(\t\x12\x12\n\nstart_time\x18\x02 \x01(\t\x12\x10\n\x08\x65nd_time\x18\x03 \x01(\t\x12\x0f\n\x07success\x18\x04 \x01(\x08\"2\n\x1a\x43onfigureDACChannel1Packet\x12\x14\n\x0c\x63hannel_code\x18\x01 \x01(\t\"m\n\x1c\x43onfigureDACChannel1Response\x12\x16\n\x0eoperation_name\x18\x01 \x01(\t\x12\x12\n\nstart_time\x18\x02 \x01(\t\x12\x10\n\x08\x65nd_time\x18\x03 \x01(\t\x12\x0f\n\x07success\x18\x04 \x01(\x08\"2\n\x1a\x43onfigureDACChannel2Packet\x12\x14\n\x0c\x63hannel_code\x18\x01 \x01(\t\"m\n\x1c\x43onfigureDACChannel2Response\x12\x16\n\x0eoperation_name\x18\x01 \x01(\t\x12\x12\n\nstart_time\x18\x02 \x01(\t\x12\x10\n\x08\x65nd_time\x18\x03 \x01(\t\x12\x0f\n\x07success\x18\x04 \x01(\x08\"\x0f\n\rReadADCPacket\"\xaf\x01\n\x0fReadADCResponse\x12\x16\n\x0eoperation_name\x18\x01 \x01(\t\x12\x12\n\nadc_values\x18\x02 \x03(\x05\x12\x0e\n\x06\x61\x64\x63_id\x18\x03 \x03(\x05\x12\x14\n\x0c\x61\x64\x63_softspan\x18\x04 \x03(\x05\x12\x13\n\x0b\x61\x64\x63_voltage\x18\x05 \x03(\x02\x12\x12\n\nstart_time\x18\x06 \x01(\t\x12\x10\n\x08\x65nd_time\x18\x07 \x01(\t\x12\x0f\n\x07success\x18\x08 \x01(\x08\x32\xd6\x02\n\x03SPI\x12\\\n\x14\x43onfigureDACChannel0\x12\x1f.spi.ConfigureDACChannel0Packet\x1a!.spi.ConfigureDACChannel0Response\"\x00\x12\\\n\x14\x43onfigureDACChannel1\x12\x1f.spi.ConfigureDACChannel1Packet\x1a!.spi.ConfigureDACChannel1Response\"\x00\x12\\\n\x14\x43onfigureDACChannel2\x12\x1f.spi.ConfigureDACChannel2Packet\x1a!.spi.ConfigureDACChannel2Response\"\x00\x12\x35\n\x07ReadADC\x12\x12.spi.ReadADCPacket\x1a\x14.spi.ReadADCResponse\"\x00\x62\x06proto3')
 
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, globals())
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'spi_pb2', globals())
@@ -33,9 +33,9 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _CONFIGUREDACCHANNEL2RESPONSE._serialized_start=396
   _CONFIGUREDACCHANNEL2RESPONSE._serialized_end=505
   _READADCPACKET._serialized_start=507
-  _READADCPACKET._serialized_end=543
-  _READADCRESPONSE._serialized_start=545
-  _READADCRESPONSE._serialized_end=660
-  _SPI._serialized_start=663
-  _SPI._serialized_end=1005
+  _READADCPACKET._serialized_end=522
+  _READADCRESPONSE._serialized_start=525
+  _READADCRESPONSE._serialized_end=700
+  _SPI._serialized_start=703
+  _SPI._serialized_end=1045
 # @@protoc_insertion_point(module_scope)
