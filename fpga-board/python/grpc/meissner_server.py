@@ -347,33 +347,59 @@ class SPIService(spi_pb2_grpc.SPIServicer):
     
     # Read ADC method
     def ReadADC(self, request, context):
+        # Declare local variables
+        cnt = 0
+        num_of_trx = 12
+        adc_channel = 8
+        raw_data = [0 for i in range(num_of_trx)]
+        adc_value = [0 for i in range(adc_channel)]
+        adc_id = [0 for i in range(adc_channel)]
+        adc_voltage = [0 for i in range(adc_channel)]
+        adc_softspan = [0 for i in range(adc_channel)]
+
         # Start time
         start_time = str(time.time())
 
         # Read ADC
         try:
-            adc_channel = int(request.adc_channel)
-            adc_value = PYNQSPI.spi_read(adc_channel, 1) #FIXME - replace with actual SPI read
-            adc_value = hex(adc_value)
+            # Read from ADC
+            num_of_trx = 12
+            buffer = PYNQSPI.spi_read(0xDBB6, num_of_trx, 1)
+            # Parse RAW data
+            for i in range(num_of_trx):
+                halfword = buffer[i]
+                raw_data[cnt] = halfword >> 8
+                cnt += 1
+                raw_data[cnt] = halfword & 0xFF
+                cnt += 1
+            # Convert RAW data to ADC value
+            for i in range(adc_channel):
+                adc_value[i] = (raw_data[(i*3)] << 8) | (raw_data[(i*3)+1] & 0xFF)
+                adc_id[i] = raw_data[(i*3)+2] >> 3
+                adc_softspan[i] = raw_data[(i*3)+2] & 0x07
+                adc_voltage[i] = ((adc_value[i])/65536.0) * 4.096
+            # Status
             success = True
         except:
             print("Read ADC failed! Please try again.")
-            adc_value = ''
             success = False
 
         # End time
         end_time = str(time.time())
 
-        # Return response
-        response = {
-            'operation_name': 'Read ADC', 
-            'start_time': start_time, 
-            'end_time': end_time, 
-            'success': success, 
-            'adc_value': adc_value
-        }
+        # Set response
+        response = spi_pb2.ReadADCResponse()
+        response.operation_name = 'Read ADC'
+        response.start_time = start_time
+        response.end_time = end_time
+        response.success = success
+        for i in range(adc_channel):
+            response.adc_value.extend([adc_value[i]])
+            response.adc_id.extend([adc_id[i]])
+            response.adc_softspan.extend([adc_softspan[i]])
+            response.adc_voltage.extend([adc_voltage[i]])
 
-        return spi_pb2.ReadADCResponse(**response)
+        return response
 
 # Meissner service class
 class MeissnerService(meissner_pb2_grpc.MeissnerServicer):

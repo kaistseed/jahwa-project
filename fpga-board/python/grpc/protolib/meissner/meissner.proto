@@ -34,16 +34,38 @@ service Meissner {
     rpc TestSensorOutputVoltage(TestSensorOutputVoltagePacket) returns (TestSensorOutputVoltageResponse) {}
     // Test AFE Sensor Connectivity
     rpc TestAFESensorConnectivity(TestAFESensorConnectivityPacket) returns (TestAFESensorConnectivityResponse) {}
+    // Pattern Loading
+    rpc PatternLoading(stream PatternLoadingPacket) returns (PatternLoadingResponse) {}
+    // Pattern Run
+    rpc PatternRun(PatternRunPacket) returns (PatternRunResponse) {}
+    // Pattern Check Status
+    rpc PatternCheckStatus(PatternCheckStatusPacket) returns (PatternCheckStatusResponse) {}
+    // Pattern Get Data
+    rpc PatternGetData(PatternGetDataPacket) returns (stream PatternGetDataResponse) {}
 }
 
 ///////////////////////////////////////////////////
 //              Define Message Type              //         
 ///////////////////////////////////////////////////
-// Read I2C Message
-message ReadI2CPacket {
+// Define I2C Write Message
+message I2CWrite {
     // Define the fields
     uint32 address = 1;
     uint32 length = 2;
+    repeated bytes data = 3;
+}
+
+// Define I2C Read Message
+message I2CRead {
+    // Define the fields
+    uint32 address = 1;
+    uint32 length = 2;
+}
+
+// Read I2C Message
+message ReadI2CPacket {
+    // Define the fields
+    I2CRead packet = 1;
 }
 
 // Read I2C Response
@@ -61,9 +83,7 @@ message ReadI2CResponse {
 // Write I2C Message
 message WriteI2CPacket {
     // Define the fields
-    uint32 address = 1;
-    uint32 length = 2;
-    bytes data = 3;
+    I2CWrite packet = 1;
 }
 
 // Write I2C Response
@@ -205,5 +225,72 @@ message TestAFESensorConnectivityResponse {
     float sense_open_s2_n = 7;
     float sense_open_z1_p = 8;
     float sense_open_z1_n = 9;
+    bool success = 10;
+}
+
+// Pattern Loading Message
+message PatternLoadingPacket {
+    // Define the fields
+    string pattern_name = 1;
+    string pattern_type = 2;
+    oneof data {
+        I2CRead i2c_read = 3;
+        I2CWrite i2c_write = 4;
+        float time = 5;
+    }
+    string comments = 6;
+}
+
+// Pattern Loading Response
+message PatternLoadingResponse {
+    // Define the fields
+    string operation_name = 1;
+    string pattern_name = 2;
+    string pattern_type = 3;
+    string start_time = 4;
+    string end_time = 5;
+    bool success = 6;
+}
+
+// Pattern Start Message
+message PatternRunPacket {}
+
+// Pattern Start Response
+message PatternRunResponse {
+    // Define the fields
+    string operation_name = 1;
+    string start_time = 2;
+    string end_time = 3;
+    bool success = 4;
+}
+
+// Pattern Check Status Message
+message PatternCheckStatusPacket {}
+
+// Pattern Check Status Response
+message PatternCheckStatusResponse {
+    // Define the fields
+    string operation_name = 1;
+    string start_time = 2;
+    string end_time = 3;
+    bool pattern_finished = 4;
+    bool success = 5;
+}
+
+// Pattern Get Data Message
+message PatternGetDataPacket {}
+
+// Pattern Get Data Response
+message PatternGetDataResponse {
+    // Define the fields
+    string operation_name = 1;
+    string pattern_name = 2;
+    string pattern_type = 3;
+    uint32 address = 4;
+    uint32 length = 5;
+    repeated bytes data = 6;
+    string comments = 7;
+    string start_time = 8;
+    string end_time = 9;
     bool success = 10;
 }

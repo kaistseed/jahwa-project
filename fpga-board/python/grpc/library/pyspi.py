@@ -63,7 +63,7 @@ class SPI:
         
         # Set chip select to low (enable slave)
         slave_mask = ~(1 << slave_num)
-        self.master.write(0x70,slave_mask)
+        self.master.write(0x70, slave_mask)
             
         # Send command to slave
         while (count < read_len):
@@ -76,7 +76,8 @@ class SPI:
                 self.master.write(0x60,0b00_10011110)
 
             # Write data to master TX FIFO
-            tx_data  = (slave_reg_addr | 0x80) << 8
+            tx_data  = (reg_addr)
+            #print(tx_data)
             self.master.write(0x68,tx_data)
 
             # Read data from master RX FIFO
@@ -87,7 +88,7 @@ class SPI:
             
             # Increment counter and address
             count += 1
-            slave_reg_addr += 1
+            #slave_reg_addr += 1
         
         # Set chip select to high (disable slave)
         self.master.write(0x70,0b1111_1111)
@@ -106,7 +107,7 @@ class SPI:
         """
         # Set chip select to low (enable slave)
         slave_mask = ~(1 << slave_num)
-        self.master.write(0x70,slave_mask)
+        self.master.write(0x70, slave_mask)
         
         # Reset AXI quad SPI RX FIFO
         if (self.spi_mode == 0):
@@ -117,9 +118,42 @@ class SPI:
             self.master.write(0x60,0b00_10011110)
         
         # Write data to master TX FIFO
-        tx_data  = (reg_addr << 8) | data
+        tx_data  = ((reg_addr) << 8) | data
         self.master.write(0x68,tx_data)
         
+        # Set chip select to high (disable slave)
+        self.master.write(0x70,0b1111_1111)
+        
+    def spi_send_bytes(self, data, read_len, slave_num):
+        """
+            Method for writing to SPI slave
+            -------------------------------------
+            Parameters
+            reg_addr: SPI slave register address
+            data: Data to be written to SPI slave
+        """
+        count = 0
+        byte_num = 0
+        # Set chip select to low (enable slave)
+        slave_mask = ~(1 << slave_num)
+        self.master.write(0x70, slave_mask)
+        
+        # Send command to slave
+        while (count < read_len):
+            # Reset AXI quad SPI RX FIFO
+            if (self.spi_mode == 0):
+                self.master.write(0x60,0b00_11100110)
+                self.master.write(0x60,0b00_10000110)
+            else:
+                self.master.write(0x60,0b00_11111110)
+                self.master.write(0x60,0b00_10011110)
+
+            # Write data to master TX FIFO
+            tx_data  = (data[byte_num + 1]<<8)|(data[byte_num] & 0xFF)
+            self.master.write(0x68,tx_data)
+
+            byte_num += 2
+            count += 1
         # Set chip select to high (disable slave)
         self.master.write(0x70,0b1111_1111)
 

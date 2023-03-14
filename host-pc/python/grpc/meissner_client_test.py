@@ -18,6 +18,7 @@
 ##                Import Libraries               ##         
 ###################################################
 # Python library
+import csv
 import time
 import grpc
 from tabulate import tabulate
@@ -154,6 +155,33 @@ class MeissnerClient(object):
         response = self.stub.TestAFESensorConnectivity(request)
         # Return response
         return response
+    
+    # Pattern loading method
+    def pattern_loading(self, pattern):
+        raise NotImplementedError
+
+    # Pattern run method
+    def pattern_run(self):
+        # Create request
+        request = meissner_pb2.PatternRunPacket()
+        # Wait for response
+        response = self.stub.PatternRun(request)
+        # Return response
+        return response
+    
+    # Pattern check status method
+    def pattern_check_status(self):
+        # Create request
+        request = meissner_pb2.PatternCheckStatusPacket()
+        # Wait for response
+        response = self.stub.PatternCheckStatus(request)
+        # Return response
+        return response
+    
+    # Pattern get data method
+    def pattern_get_data(self):
+        raise NotImplementedError
+
     
 # Define GPIO client class
 class GPIOClient(object):
@@ -359,10 +387,7 @@ def call_grpc_method(func_number, *args):
         )
         return response
     elif func_number == 4:
-        adc_channel = int(input("Enter ADC channel number: "))
-        response = spi_client.read_adc(
-            adc_channel=adc_channel
-        )
+        response = spi_client.read_adc()
         return response
     elif func_number == 5:
         response = gpio_client.reset_adc_start()
@@ -394,6 +419,15 @@ def call_grpc_method(func_number, *args):
         response = gpio_client.turn_on_pynq_sdn3_io()
         return response
     elif func_number == 13:
+        response = meissner_client.pattern_check_status()
+        return response
+    elif func_number == 14:
+        raise NotImplementedError
+    elif func_number == 15:
+        raise NotImplementedError
+    elif func_number == 16:
+        raise NotImplementedError
+    elif func_number == 17:
         address = int(input("Enter I2C address: "), 16)
         length = int(input("Enter length of data to read: "))
         response = meissner_client.read_i2c(
@@ -401,34 +435,34 @@ def call_grpc_method(func_number, *args):
             length=length
         )
         return response
-    elif func_number == 14:
+    elif func_number == 18:
         response = meissner_client.read_sensor_id()
         return response
-    elif func_number == 15:
+    elif func_number == 19:
         response = meissner_client.read_sensor_unique_id()
         return response
-    elif func_number == 16:
+    elif func_number == 20:
         response = meissner_client.read_sensor_version()
         return response
-    elif func_number == 17:
+    elif func_number == 21:
         response = meissner_client.reset_sensor()
         return response
-    elif func_number == 18:
+    elif func_number == 22:
         response = meissner_client.test_afe_sensor_connectivity()
         return response
-    elif func_number == 19:
+    elif func_number == 23:
         response = meissner_client.test_i2c_connection()
         return response
-    elif func_number == 20:
+    elif func_number == 24:
         response = meissner_client.test_sensor_output_voltage()
         return response
-    elif func_number == 21:
+    elif func_number == 25:
         response = meissner_client.test_sensor_supply_voltage()
         return response
-    elif func_number == 22:
+    elif func_number == 26:
         response = meissner_client.test_sensor_temperature()
         return response
-    elif func_number == 23:
+    elif func_number == 27:
         address = int(input("Enter I2C address: "))
         length = int(input("Enter length: "))
         data = int(input("Enter data: "))
