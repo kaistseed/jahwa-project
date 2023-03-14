@@ -1,0 +1,53 @@
+///////////////////////////////////////////////////
+//         Define Protobuf Syntax Version        //         
+///////////////////////////////////////////////////
+syntax = "proto3";
+
+///////////////////////////////////////////////////
+//              Define Package Name              //         
+///////////////////////////////////////////////////
+package calculator;
+
+///////////////////////////////////////////////////
+//               Define RPC Service              //         
+///////////////////////////////////////////////////
+service CalculatorService {
+    rpc Multiply(MultiplyRequest) returns (MultiplyResponse) {}
+    rpc Add(AddRequest) returns (AddResponse) {}
+}
+
+///////////////////////////////////////////////////
+//              Define Message Type              //         
+///////////////////////////////////////////////////
+message MultiplyRequest {
+    string operation_name = 1;
+    int32 first_number = 2;
+    int32 second_number = 3;
+    timestamp request_time = 4;
+}
+
+message MultiplyResponse {
+    string operation_name = 1;
+    int32 result = 2;
+    timestamp request_time = 3;
+    timestamp response_time = 4;
+}
+
+message AddRequest {
+    string operation_name = 1;
+    int32 first_number = 2;
+    int32 second_number = 3;
+    timestamp request_time = 4;
+}
+
+message AddResponse {
+    string operation_name = 1;
+    int32 result = 2;
+    timestamp request_time = 3;
+    timestamp response_time = 4;
+}
+
+message timestamp {
+    int64 seconds = 1;
+    int32 nanos = 2;
+}
