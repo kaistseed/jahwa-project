@@ -351,7 +351,7 @@ class SPIService(spi_pb2_grpc.SPIServicer):
         cnt = 0
         num_of_trx = 12
         adc_channel = 8
-        raw_data = [0 for i in range(num_of_trx)]
+        raw_data = [0 for i in range(num_of_trx*2)]
         adc_value = [0 for i in range(adc_channel)]
         adc_id = [0 for i in range(adc_channel)]
         adc_voltage = [0 for i in range(adc_channel)]
@@ -364,6 +364,12 @@ class SPIService(spi_pb2_grpc.SPIServicer):
         try:
             # Read from ADC
             num_of_trx = 12
+            softspan_config = [0xDB, 0xB6, 0xDB, 0x6D]
+            PYNQSPI.spi_send_bytes(softspan_config, 2, 1)
+            pynq_adc_start.write(0x1, 0x1)
+            time.sleep(0.01)
+            pynq_adc_start.write(0x0, 0x1)
+            time.sleep(0.001)
             buffer = PYNQSPI.spi_read(0xDBB6, num_of_trx, 1)
             # Parse RAW data
             for i in range(num_of_trx):
