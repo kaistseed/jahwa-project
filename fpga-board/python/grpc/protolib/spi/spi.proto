@@ -77,7 +77,7 @@ message ReadADCPacket {}
 message ReadADCResponse {
     // Define the fields
     string operation_name = 1;
-    repeated int32 adc_values = 2;
+    repeated int32 adc_value = 2;
     repeated int32 adc_id = 3;
     repeated int32 adc_softspan = 4;
     repeated float adc_voltage = 5;
