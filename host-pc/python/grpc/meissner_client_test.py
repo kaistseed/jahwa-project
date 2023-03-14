@@ -320,11 +320,9 @@ class SPIClient(object):
         return response
     
     # Read ADC
-    def read_adc(self, adc_channel):
+    def read_adc(self):
         # Create request
-        request = spi_pb2.ReadADCPacket(
-            adc_channel=adc_channel
-        )
+        request = spi_pb2.ReadADCPacket()
         # Wait for response
         response = self.stub.ReadADC(request)
         # Return response
