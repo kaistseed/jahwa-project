@@ -73,7 +73,7 @@ def serve(*args, **kwargs):
     meissner_pb2_grpc.add_MeissnerServicer_to_server(meissner_service, server)
 
     # Start the server
-    server.add_insecure_port('{}:{}'.format(host, port))
+    server.add_insecure_port('[::]:{}'.format(port))
     server.start()
 
     # Keep the server running
