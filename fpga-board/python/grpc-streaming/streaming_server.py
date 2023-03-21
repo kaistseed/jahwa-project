@@ -180,6 +180,7 @@ if __name__ == '__main__':
     # Get IP address and port number from user
     ip_addr = input("Enter IP address, default is localhost: ")
     port_num = input("Enter port number, default is 50051: ")
+    print()
 
     # Start gRPC server
     serve(
