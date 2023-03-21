@@ -73,6 +73,9 @@ def serve(*args, **kwargs):
     meissner_pb2_grpc.add_MeissnerServicer_to_server(meissner_service, server)
 
     # Start the server
+    print("=====================================================")
+    print("=               Starting gRPC Server                =")
+    print("=====================================================")
     server.add_insecure_port('[::]:{}'.format(port))
     server.start()
 
@@ -176,7 +179,7 @@ if __name__ == '__main__':
 
     # Get IP address and port number from user
     ip_addr = input("Enter IP address, default is localhost: ")
-    port_num = int(input("Enter port number, default is 50051: "))
+    port_num = input("Enter port number, default is 50051: ")
 
     # Start gRPC server
     serve(
