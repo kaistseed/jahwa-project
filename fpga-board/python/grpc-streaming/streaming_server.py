@@ -50,7 +50,6 @@ from library.pynq.pymeissner import *
 ###################################################
 def serve(*args, **kwargs):
     # Define host IP address and port
-    host = kwargs.get('ip_addr') if kwargs.get('ip_addr') is not None else 'localhost'
     port = kwargs.get('port_num') if kwargs.get('port_num') is not None else 50051
 
     # Instantiate a gRPC server
@@ -93,7 +92,7 @@ if __name__ == '__main__':
     print("=               Loading FPGA Overlay                =")
     print("=====================================================")
     # Load overlay
-    ol = Overlay('bitstream/spi_iic_interrupt_v3.bit')
+    ol = Overlay('/home/xilinx/project/jahwa_electronics/git_repo/jahwa-project/fpga-board/python/grpc-streaming/bitstream/spi_iic_interrupt_v3.bit')
     # Print overlay information
     ip_block_list = []
     for i, items in enumerate(ol.ip_dict.items()):
@@ -177,14 +176,16 @@ if __name__ == '__main__':
         pynq_meissner=pynq_meissner
     )
 
-    # Get IP address and port number from user
-    ip_addr = input("Enter IP address, default is localhost: ")
+    # Get port number from user
     port_num = input("Enter port number, default is 50051: ")
     print()
 
+    # Check if port number is empty
+    if port_num == '':
+        port_num = None
+
     # Start gRPC server
     serve(
-        ip_addr='ip_addr', 
         port_num=port_num, 
         spi_service=spi_service, 
         gpio_service=gpio_service, 
