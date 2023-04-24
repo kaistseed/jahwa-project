@@ -95,6 +95,10 @@ async def run_async_server(server_context, identity):
 if __name__ == "__main__":
     # Set logger info
     _logger.info("### Start main function")
+
+    print("=====================================================")
+    print("=              Starting ModBus Server               =")
+    print("=====================================================")
     
     # Define the data length
     data_length = 10
