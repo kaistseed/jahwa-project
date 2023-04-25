@@ -23,6 +23,7 @@ from pymodbus.datastore import (
 ###################################################
 # Start the logger
 _logger = logging.getLogger()
+logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
 
 # Define function to setup the server
 def setup_server(data_length: int, address_length: int):
