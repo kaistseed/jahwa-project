@@ -17,9 +17,6 @@ from pymodbus.payload import (
 #####################################################################
 ##                     Define Modbus IIC Class                     ##         
 #####################################################################
-# Define endianness dictionary
-ENDIANNESS = {"<": "LITTLE", ">": "BIG"}
-
 # Define Modbus IIC class
 class ModbusIIC:
     def __init__(self, client):
@@ -36,10 +33,6 @@ class ModbusIIC:
         # Get endianness
         word_endian = kwargs.get("word_endian", Endian.Big)
         byte_endian = kwargs.get("byte_endian", Endian.Big)
-
-        # Get payload and payload name
-        payload = kwargs.get("payload", None)
-        payload_name = kwargs.get("payload_name", None)
         
         # Initialize decoder
         decoder = BinaryPayloadDecoder(
@@ -54,7 +47,7 @@ class ModbusIIC:
         # Decode payload based on payload name
         # Read IIC Status
         if payload_name == "read_iic_status":
-            decoded_payload["status"] = decoder.decode_16bit_uint()
+            decoded_payload["status"] = decoder.decode_32bit_uint()
         # Read IIC Data
         elif payload_name == "read_iic_data":
             for i in range(4):
@@ -69,7 +62,7 @@ class ModbusIIC:
     ##################################################################
     ##                      Define Data Builder                     ##         
     ##################################################################
-    def _BuildData(self, *args, **kwargs):
+    def _BuildData(self, **kwargs):
         # Get endianness
         word_endian = kwargs.get("word_endian", Endian.Big)
         byte_endian = kwargs.get("byte_endian", Endian.Big)
@@ -86,19 +79,15 @@ class ModbusIIC:
 
         # Add data to builder
         # Add the slave address
-        slave_address = kwargs.get("slave_address", 0x01)
-        builder.add_16bit_uint(slave_address)
-
+        slave_address = kwargs.get("slave_address", 0)
+        builder.add_32bit_uint(slave_address)
         # Add the address length
-        builder.add_16bit_uint(address_length)
-
+        builder.add_32bit_uint(address_length)
         # Add the data length
-        builder.add_16bit_uint(data_length)
-
+        builder.add_32bit_uint(data_length)
         # Add the address buffer
         for i in range(4): #NOTE: Check whether 4 is array length or element length
             builder.add_8bit_uint(0)
-
         # Add the data buffer
         for i in range(4): #NOTE: Check whether 4 is array length or element length
             builder.add_8bit_uint(0)
@@ -109,15 +98,15 @@ class ModbusIIC:
     ##################################################################
     ##                  Define Write Method for IIC                 ##         
     ##################################################################
-    async def Write(self, *args, **kwargs):
+    async def Write(self, **kwargs):
         # Define local variables
         write_addr = 0
         slave = 87 #NOTE: 87 is ASCII code for 'W'
 
         # Build data
-        builder = self._BuildData(*args, **kwargs)
+        builder = self._BuildData(**kwargs)
 
-        # Build data to registers
+        # Convert data to registers
         registers = builder.to_registers()
 
         # Write payload to server
@@ -131,7 +120,7 @@ class ModbusIIC:
     async def Read(self, *args, **kwargs):
         # Define local variables
         status_addr = 0
-        send_addr = 1
+        write_addr = 1
         read_addr = 2
         slave = 82 #NOTE: 82 is ASCII code for 'R'
         
@@ -142,8 +131,8 @@ class ModbusIIC:
         send_regs = builder.to_registers()
 
         # Write payload to server
-        self._logger.info(f"Write Read IIC payload to address {send_addr} of slave {slave}")
-        rr = await self.client.write_registers(send_addr, send_regs, slave=slave)
+        self._logger.info(f"Write Read IIC payload to address {write_addr} of slave {slave}")
+        rr = await self.client.write_registers(write_addr, send_regs, slave=slave)
         assert not rr.isError()
 
         # Read payload from server
@@ -153,7 +142,7 @@ class ModbusIIC:
         # Read iic status until it is not 0
         while read_iic_status == 0:
             # Read iic status
-            self._logger.info(f"Read IIC status from address {status_addr} of slave {slave}")
+            self._logger.info(f"Read IIC (status) from address {status_addr} of slave {slave}")
             rr = await self.client.read_holding_registers(address=status_addr, slave=slave)
             assert not rr.isError()
 
