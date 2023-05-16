@@ -180,7 +180,7 @@ def encode_packet(type, *args, **kwargs):
 ##############################################################################
 #                                Decode Packet                               #
 ##############################################################################
-def decode_packet(packet):
+def decode_packet(packet, **kwargs):
     ##########################################################################
     #                            Get Packet Header                           #
     ##########################################################################
@@ -239,11 +239,17 @@ def decode_packet(packet):
     #                             Pattern Loading                            #
     ##########################################################################
     elif unit_id == unit_id_dict['pattern_loading']:
+        # Get write buffer size
+        write_buffer_size = kwargs.get('write_buffer_size') if kwargs.get('write_buffer_size') is not None else 0
+
+        # Assert write buffer size
+        assert write_buffer_size > 0, 'Write buffer size must be greater than 0'
+
         # Unpack packet
         transaction_id, protocol_id, length, unit_id, cmd_id, write_slave_addr, read_slave_addr, \
         write_packet_size, read_packet_size, block_count, measure_count, write_interval_us, \
         measure_interval_us, delay_from_write_to_measure_us, write_buffer = struct.unpack(
-            '2s 2s 2s c I I I I I I I I I I ' + str(write_packet_size * block_count * measure_count) + 's', # FIXME: How to get write buffer size?
+            '2s 2s 2s c I I I I I I I I I I ' + str(write_buffer_size) + 's',
             packet
         )
 
@@ -334,6 +340,7 @@ def decode_packet(packet):
     ##########################################################################
     elif (unit_id == unit_id_dict['power_control']) or (unit_id == unit_id_dict['burst_mode']) or \
          (unit_id == unit_id_dict['burst_write_delay']) or (unit_id == unit_id_dict['burst_read_delay']):
+
         # Unpack packet
         transaction_id, protocol_id, length, unit_id, command, data = struct.unpack(
             '2s 2s 2s c I I',

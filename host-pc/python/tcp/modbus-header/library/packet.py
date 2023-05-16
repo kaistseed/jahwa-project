@@ -58,9 +58,9 @@ def encode_packet(type, *args, **kwargs):
     ##########################################################################
     if type == 'write_i2c':
         # Define modbus header
-        transaction_id = kwargs.get('transaction_id') if kwargs.get('transaction_id') is not None else b'01'
-        protocol_id = kwargs.get('protocol_id') if kwargs.get('protocol_id') is not None else b'00'
-        length = kwargs.get('length') if kwargs.get('length') is not None else b'21'
+        transaction_id = kwargs.get('transaction_id') if kwargs.get('transaction_id') is not None else b'23'
+        protocol_id = kwargs.get('protocol_id') if kwargs.get('protocol_id') is not None else b'45'
+        length = kwargs.get('length') if kwargs.get('length') is not None else b'67'
         unit_id = b'W'
 
         # Get I2C command and data
@@ -136,7 +136,7 @@ def encode_packet(type, *args, **kwargs):
         # Define modbus header
         transaction_id = kwargs.get('transaction_id') if kwargs.get('transaction_id') is not None else b'01'
         protocol_id = kwargs.get('protocol_id') if kwargs.get('protocol_id') is not None else b'00'
-        length = kwargs.get('length') if kwargs.get('length') is not None else b'0'
+        length = kwargs.get('length') if kwargs.get('length') is not None else b'21'
         unit_id = b'L'
 
         # Get I2C data
@@ -157,24 +157,22 @@ def encode_packet(type, *args, **kwargs):
 
         # Create packet
         packet = struct.pack(
-            # '2s 2s 2s c I I I I I I I I I I ' + str(write_packet_size * block_count * measure_count) + 's',
-            # '2s 2s 2s c I I I I I I I I I I ',
-            '2s 2s 2s c ',
+            '2s 2s 2s c I I I I I I I I I I ' + str(write_packet_size * block_count * measure_count) + 's',
             transaction_id,
             protocol_id,
             length,
             unit_id,
-            # cmd_id,
-            # write_slave_addr,
-            # read_slave_addr,
-            # write_packet_size,
-            # read_packet_size,
-            # block_count,
-            # measure_count,
-            # write_interval_us,
-            # measure_interval_us,
-            # delay_from_write_to_measure_us,
-            # write_buffer
+            cmd_id,
+            write_slave_addr,
+            read_slave_addr,
+            write_packet_size,
+            read_packet_size,
+            block_count,
+            measure_count,
+            write_interval_us,
+            measure_interval_us,
+            delay_from_write_to_measure_us,
+            write_buffer
         )
 
         # Return packet
@@ -185,9 +183,9 @@ def encode_packet(type, *args, **kwargs):
     ##########################################################################
     elif type == 'pattern_run':
         # Define modbus header
-        transaction_id = kwargs.get('transaction_id') if kwargs.get('transaction_id') is not None else b'01'
-        protocol_id = kwargs.get('protocol_id') if kwargs.get('protocol_id') is not None else b'00'
-        length = kwargs.get('length') if kwargs.get('length') is not None else b'0'
+        transaction_id = kwargs.get('transaction_id') if kwargs.get('transaction_id') is not None else b'23'
+        protocol_id = kwargs.get('protocol_id') if kwargs.get('protocol_id') is not None else b'45'
+        length = kwargs.get('length') if kwargs.get('length') is not None else b'67'
         unit_id = b'U'
 
         # Get I2C data
@@ -213,7 +211,7 @@ def encode_packet(type, *args, **kwargs):
         # Define modbus header
         transaction_id = kwargs.get('transaction_id') if kwargs.get('transaction_id') is not None else b'01'
         protocol_id = kwargs.get('protocol_id') if kwargs.get('protocol_id') is not None else b'00'
-        length = kwargs.get('length') if kwargs.get('length') is not None else b'0'
+        length = kwargs.get('length') if kwargs.get('length') is not None else b'21'
         unit_id = b'D'
 
         # Get I2C data
@@ -331,7 +329,7 @@ def encode_packet(type, *args, **kwargs):
         # Define modbus header
         transaction_id = kwargs.get('transaction_id') if kwargs.get('transaction_id') is not None else b'01'
         protocol_id = kwargs.get('protocol_id') if kwargs.get('protocol_id') is not None else b'00'
-        length = kwargs.get('length') if kwargs.get('length') is not None else b'0'
+        length = kwargs.get('length') if kwargs.get('length') is not None else b'09'
         unit_id = b'C'
 
         # Get I2C data
@@ -359,7 +357,7 @@ def encode_packet(type, *args, **kwargs):
         # Define modbus header
         transaction_id = kwargs.get('transaction_id') if kwargs.get('transaction_id') is not None else b'01'
         protocol_id = kwargs.get('protocol_id') if kwargs.get('protocol_id') is not None else b'00'
-        length = kwargs.get('length') if kwargs.get('length') is not None else b'0'
+        length = kwargs.get('length') if kwargs.get('length') is not None else b'9'
         unit_id = b'C'
 
         # Get I2C data
@@ -368,14 +366,14 @@ def encode_packet(type, *args, **kwargs):
 
         # Create packet
         packet = struct.pack(
-            # '2s 2s 2s c I I',
-            '2s 2s 2s c I',
+            '2s 2s 2s c I I',
+            # '2s 2s 2s c I',
             transaction_id,
             protocol_id,
             length,
             unit_id,
             command,
-            # data
+            data,
         )
 
         # Return packet
@@ -388,7 +386,7 @@ def encode_packet(type, *args, **kwargs):
         # Define modbus header
         transaction_id = kwargs.get('transaction_id') if kwargs.get('transaction_id') is not None else b'01'
         protocol_id = kwargs.get('protocol_id') if kwargs.get('protocol_id') is not None else b'00'
-        length = kwargs.get('length') if kwargs.get('length') is not None else b'0'
+        length = kwargs.get('length') if kwargs.get('length') is not None else b'9'
         unit_id = b'C'
 
         # Get I2C data
@@ -397,14 +395,13 @@ def encode_packet(type, *args, **kwargs):
 
         # Create packet
         packet = struct.pack(
-            # '2s 2s 2s c I I',
-            '2s 2s 2s c I',
+            '2s 2s 2s c I I',
             transaction_id,
             protocol_id,
             length,
             unit_id,
             command,
-            # data
+            data,
         )
 
         # Return packet

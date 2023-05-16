@@ -55,7 +55,7 @@ async def run_client(server_addr, server_port):
     data = await reader.read(1024)
     if not data:
         raise Exception("Socket closed")
-    print(f"Received: {data.decode()!r}\n")
+    print(f"Received: {data}\n")
 
     ##########################################################################
     #                                Read I2C                                #
@@ -79,7 +79,7 @@ async def run_client(server_addr, server_port):
     data = await reader.read(1024)
     if not data:
         raise Exception("Socket closed")
-    print(f"Received: {data.decode()!r}\n")
+    print(f"Received: {data}\n")
 
     ##########################################################################
     #                             Pattern Loading                            #
@@ -97,7 +97,7 @@ async def run_client(server_addr, server_port):
         write_interval_us=310000,
         measure_interval_us=0,
         delay_from_write_to_measure_us=300000,
-        write_buffer=[str(i+1) for i in range(10)],
+        write_buffer=[str(i) for i in range(10)],
     )
     print(f"Send: {packet}")
 
@@ -109,7 +109,7 @@ async def run_client(server_addr, server_port):
     data = await reader.read(1024)
     if not data:
         raise Exception("Socket closed")
-    print(f"Received: {data.decode()!r}\n")
+    print(f"Received: {data}\n")
 
     ##########################################################################
     #                               Pattern Run                              #
@@ -117,7 +117,7 @@ async def run_client(server_addr, server_port):
     # Encode packet
     packet = encode_packet(
         'pattern_run',
-        cmd_id=1,
+        cmd_id=77,
     )
     print(f"Send: {packet}")
 
@@ -129,7 +129,7 @@ async def run_client(server_addr, server_port):
     data = await reader.read(1024)
     if not data:
         raise Exception("Socket closed")
-    print(f"Received: {data.decode()!r}\n")
+    print(f"Received: {data}\n")
 
     ##########################################################################
     #                            Pattern Get Data                            #
@@ -153,7 +153,7 @@ async def run_client(server_addr, server_port):
     data = await reader.read(1024)
     if not data:
         raise Exception("Socket closed")
-    print(f"Received: {data.decode()!r}\n")
+    print(f"Received: {data}\n")
 
     ##########################################################################
     #                             LDO Voltage Set                            #
@@ -174,7 +174,7 @@ async def run_client(server_addr, server_port):
     data = await reader.read(1024)
     if not data:
         raise Exception("Socket closed")
-    print(f"Received: {data.decode()!r}\n")
+    print(f"Received: {data}\n")
 
     ##########################################################################
     #                              Power Control                             #
@@ -195,7 +195,7 @@ async def run_client(server_addr, server_port):
     data = await reader.read(1024)
     if not data:
         raise Exception("Socket closed")
-    print(f"Received: {data.decode()!r}\n")
+    print(f"Received: {data}\n")
 
     ##########################################################################
     #                             Burst Get Data                             #
@@ -216,7 +216,7 @@ async def run_client(server_addr, server_port):
     data = await reader.read(1024)
     if not data:
         raise Exception("Socket closed")
-    print(f"Received: {data.decode()!r}\n")
+    print(f"Received: {data}\n")
 
     ##########################################################################
     #                               Burst Mode                               #
@@ -237,7 +237,7 @@ async def run_client(server_addr, server_port):
     data = await reader.read(1024)
     if not data:
         raise Exception("Socket closed")
-    print(f"Received: {data.decode()!r}\n")
+    print(f"Received: {data}\n")
 
     ##########################################################################
     #                            Burst Write Delay                           #
@@ -246,7 +246,7 @@ async def run_client(server_addr, server_port):
     packet = encode_packet(
         'burst_write_delay',
         command=12,
-        data=160,
+        data=12,
     )
     print(f"Send: {packet}")
 
@@ -258,7 +258,7 @@ async def run_client(server_addr, server_port):
     data = await reader.read(1024)
     if not data:
         raise Exception("Socket closed")
-    print(f"Received: {data.decode()!r}\n")
+    print(f"Received: {data}\n")
 
     ##########################################################################
     #                            Burst Read Delay                            #
@@ -267,7 +267,7 @@ async def run_client(server_addr, server_port):
     packet = encode_packet(
         'burst_read_delay',
         command=13,
-        data=160,
+        data=200,
     )
     print(f"Send: {packet}")
 
@@ -279,7 +279,7 @@ async def run_client(server_addr, server_port):
     data = await reader.read(1024)
     if not data:
         raise Exception("Socket closed")
-    print(f"Received: {data.decode()!r}\n")
+    print(f"Received: {data}\n")
 
     ##########################################################################
     #                                  Quit                                  #
@@ -296,7 +296,7 @@ async def run_client(server_addr, server_port):
     data = await reader.read(1024)
     if not data:
         raise Exception("Socket closed")
-    print(f"Received: {data.decode()!r}\n")
+    print(f"Received: {data}\n")
     
     # Close connection
     writer.close()
