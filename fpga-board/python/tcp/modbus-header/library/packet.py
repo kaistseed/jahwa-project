@@ -94,25 +94,35 @@ def encode_packet(type, *args, **kwargs):
 
         # Get I2C data
         read_buffer_size = kwargs.get('read_buffer_size') if kwargs.get('read_buffer_size') is not None else 0
+        num_of_ldo_ch0_current = kwargs.get('num_of_ldo_ch0_current') if kwargs.get('num_of_ldo_ch0_current') is not None else 0
+        num_of_ldo_ch0_voltage = kwargs.get('num_of_ldo_ch0_voltage') if kwargs.get('num_of_ldo_ch0_voltage') is not None else 0
+        num_of_ldo_ch1_current = kwargs.get('num_of_ldo_ch1_current') if kwargs.get('num_of_ldo_ch1_current') is not None else 0
+        num_of_ldo_ch1_voltage = kwargs.get('num_of_ldo_ch1_voltage') if kwargs.get('num_of_ldo_ch1_voltage') is not None else 0
         read_buffer = kwargs.get('read_buffer') if kwargs.get('read_buffer') is not None else ['0'] * read_buffer_size
         ldo_ch0_current = kwargs.get('ldo_ch0_current') if kwargs.get('ldo_ch0_current') is not None else [0.0] * read_buffer_size
         ldo_ch0_voltage = kwargs.get('ldo_ch0_voltage') if kwargs.get('ldo_ch0_voltage') is not None else [0.0] * read_buffer_size
         ldo_ch1_current = kwargs.get('ldo_ch1_current') if kwargs.get('ldo_ch1_current') is not None else [0.0] * read_buffer_size
         ldo_ch1_voltage = kwargs.get('ldo_ch1_voltage') if kwargs.get('ldo_ch1_voltage') is not None else [0.0] * read_buffer_size
 
+        # Convert read buffer to byte and combine them
+        read_buffer = ''.join(read_buffer).encode('utf-8')
+        
+        # Struct format
+        struct_format = '2s 2s 2s c ' + str(read_buffer_size) + 's ' + str(num_of_ldo_ch0_current) + 'd ' + \
+            str(num_of_ldo_ch0_voltage) + 'd ' + str(num_of_ldo_ch1_current) + 'd ' + str(num_of_ldo_ch1_voltage) + 'd'
+
         # Create packet
         packet = struct.pack(
-            '2s 2s 2s c ' + str(read_buffer_size) + 's ' + str(read_buffer_size) + 'd ' + \
-                str(read_buffer_size) + 'd ' + str(read_buffer_size) + 'd ' + str(read_buffer_size) + 'd',
+            struct_format,
             transaction_id,
             protocol_id,
             length,
             unit_id,
             read_buffer,
-            ldo_ch0_current,
-            ldo_ch0_voltage,
-            ldo_ch1_current,
-            ldo_ch1_voltage
+            *ldo_ch0_current,
+            *ldo_ch0_voltage,
+            *ldo_ch1_current,
+            *ldo_ch1_voltage
         )
 
         # Return packet
@@ -131,6 +141,9 @@ def encode_packet(type, *args, **kwargs):
         # Get I2C data
         read_buffer_size = kwargs.get('read_buffer_size') if kwargs.get('read_buffer_size') is not None else 0
         read_buffer = kwargs.get('read_buffer') if kwargs.get('read_buffer') is not None else ['0'] * read_buffer_size
+
+        # Convert read buffer to byte and combine them
+        read_buffer = ''.join(read_buffer).encode('utf-8')
 
         # Create packet
         packet = struct.pack(
@@ -194,7 +207,7 @@ def decode_packet(packet, **kwargs):
     ##########################################################################
     if unit_id == unit_id_dict['write_i2c']:
         # Unpack packet
-        transaction_id, protocol_id, unit_id, length, slave_addr, addr_len, data_len, addr_buf, data_buf = struct.unpack(
+        transaction_id, protocol_id, length, unit_id, slave_addr, addr_len, data_len, addr_buf, data_buf = struct.unpack(
             '2s 2s 2s c I I I 4s 4s',
             packet
         )
@@ -208,8 +221,8 @@ def decode_packet(packet, **kwargs):
             'slave_addr': slave_addr,
             'addr_len': addr_len,
             'data_len': data_len,
-            'addr_buf': addr_buf,
-            'data_buf': data_buf
+            'addr_buf': [chr(byte) for byte in addr_buf], # Convert byte to list of char
+            'data_buf': [chr(byte) for byte in data_buf] # Convert byte to list of char
         }
     
     ##########################################################################
@@ -217,7 +230,7 @@ def decode_packet(packet, **kwargs):
     ##########################################################################
     elif unit_id == unit_id_dict['read_i2c']:
         # Unpack packet
-        transaction_id, protocol_id, unit_id, length, slave_addr, addr_len, data_len, addr_buf, data_buf = struct.unpack(
+        transaction_id, protocol_id, length, unit_id, slave_addr, addr_len, data_len, addr_buf, data_buf = struct.unpack(
             '2s 2s 2s c I I I 4s 4s',
             packet
         )
@@ -231,8 +244,8 @@ def decode_packet(packet, **kwargs):
             'slave_addr': slave_addr,
             'addr_len': addr_len,
             'data_len': data_len,
-            'addr_buf': addr_buf,
-            'data_buf': data_buf
+            'addr_buf': [chr(byte) for byte in addr_buf], # Convert byte to list of char
+            'data_buf': [chr(byte) for byte in data_buf] # Convert byte to list of char
         }
     
     ##########################################################################
@@ -269,7 +282,7 @@ def decode_packet(packet, **kwargs):
             'write_interval_us': write_interval_us,
             'measure_interval_us': measure_interval_us,
             'delay_from_write_to_measure_us': delay_from_write_to_measure_us,
-            'write_buffer': write_buffer
+            'write_buffer': [chr(byte) for byte in write_buffer] # Convert byte to list of char
         }
     
     ##########################################################################

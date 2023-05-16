@@ -20,6 +20,7 @@
 # Python library
 import re
 import csv
+import random
 import asyncio
 
 # User-defined library
@@ -75,8 +76,18 @@ async def handle_echo(reader: asyncio.StreamReader, writer: asyncio.StreamWriter
                 print(key, ":", value)
             print()
 
+            # Create dummy response for client
+            packet = encode_packet(
+                'read_i2c',
+                transaction_id=packet['transaction_id'],
+                protocol_id=packet['protocol_id'],
+                length=packet['length'],
+                unit_id=packet['unit_id'],
+                data_buf=packet['data_buf']
+            )
+
             # Send back data to the client
-            writer.write(data)
+            writer.write(packet)
             await writer.drain()
 
         ######################################################################
@@ -91,12 +102,6 @@ async def handle_echo(reader: asyncio.StreamReader, writer: asyncio.StreamWriter
             block_count = int.from_bytes(data[28:32], byteorder='little')
             measure_count = int.from_bytes(data[32:36], byteorder='little')
             write_buffer_size = write_packet_size * block_count * measure_count
-
-            # # Print size
-            # print("Write packet size:", write_packet_size)
-            # print("Block count:", block_count)
-            # print("Measure count:", measure_count)
-            # print("Write buffer size:", write_buffer_size)
 
             # Decode packet
             packet = decode_packet(data, write_buffer_size=write_buffer_size)
@@ -144,8 +149,27 @@ async def handle_echo(reader: asyncio.StreamReader, writer: asyncio.StreamWriter
                 print(key, ":", value)
             print()
 
+            # Create dummy response for client
+            packet = encode_packet(
+                'pattern_get_data',
+                transaction_id=packet['transaction_id'],
+                protocol_id=packet['protocol_id'],
+                length=packet['length'],
+                unit_id=packet['unit_id'],
+                read_buffer_size=packet['read_buffer_size'],
+                num_of_ldo_ch0_current=packet['num_of_ldo_ch0_current'],
+                num_of_ldo_ch0_voltage=packet['num_of_ldo_ch0_voltage'],
+                num_of_ldo_ch1_current=packet['num_of_ldo_ch1_current'],
+                num_of_ldo_ch1_voltage=packet['num_of_ldo_ch1_voltage'],
+                read_buffer=[str(i) for i in range(packet['read_buffer_size'])],
+                ldo_ch0_current=[random.random() for i in range(packet['num_of_ldo_ch0_current'])],
+                ldo_ch0_voltage=[random.random() for i in range(packet['num_of_ldo_ch0_voltage'])],
+                ldo_ch1_current=[random.random() for i in range(packet['num_of_ldo_ch1_current'])],
+                ldo_ch1_voltage=[random.random() for i in range(packet['num_of_ldo_ch1_voltage'])],
+            )
+
             # Send back data to the client
-            writer.write(data)
+            writer.write(packet)
             await writer.drain()
 
         ######################################################################
@@ -214,8 +238,22 @@ async def handle_echo(reader: asyncio.StreamReader, writer: asyncio.StreamWriter
                 print(key, ":", value)
             print()
 
+            # Calculate read buffer size
+            read_buffer_size = packet['read_packet_size']*packet['read_count']
+
+            # Create dummy response for client
+            packet = encode_packet(
+                'burst_get_data',
+                transaction_id=packet['transaction_id'],
+                protocol_id=packet['protocol_id'],
+                length=packet['length'],
+                unit_id=packet['unit_id'],
+                read_buffer_size=read_buffer_size,
+                read_buffer=[str(i) for i in range(read_buffer_size)],
+            )
+
             # Send back data to the client
-            writer.write(data)
+            writer.write(packet)
             await writer.drain()
 
         ######################################################################
