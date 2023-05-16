@@ -49,8 +49,8 @@ async def handle_echo(reader: asyncio.StreamReader, writer: asyncio.StreamWriter
             # Print status
             print("Received write I2C packet from client")
 
-            # Decode packet
-            packet = decode_packet(data)
+            # # Decode packet
+            # packet = decode_packet(data)
 
             # Send back data to the client
             writer.write(data)
@@ -63,11 +63,137 @@ async def handle_echo(reader: asyncio.StreamReader, writer: asyncio.StreamWriter
             # Print status
             print("Received read I2C packet from client")
 
-            # Decode packet
-            packet = decode_packet(data)
+            # # Decode packet
+            # packet = decode_packet(data)
 
             # Send back data to the client
             writer.write(data)
+            await writer.drain()
+
+        ######################################################################
+        #                           Pattern Loading                          #
+        ######################################################################
+        elif unit_id == unit_id_dict['pattern_loading']:
+            # Print status
+            print("Received pattern loading packet from client")
+
+            # # Decode packet
+            # packet = decode_packet(data)
+
+            # Send back data to the client
+            writer.write(data)
+            await writer.drain()
+
+        ######################################################################
+        #                             Pattern Run                            #
+        ######################################################################
+        elif unit_id == unit_id_dict['pattern_run']:
+            # Print status
+            print("Received pattern run packet from client")
+
+            # # Decode packet
+            # packet = decode_packet(data)
+
+            # Send back data to the client
+            writer.write(data)
+            await writer.drain()
+
+        ######################################################################
+        #                          Pattern Get Data                          #
+        ######################################################################
+        elif unit_id == unit_id_dict['pattern_get_data']:
+            # Print status
+            print("Received pattern get data packet from client")
+
+            # # Decode packet
+            # packet = decode_packet(data)
+
+            # Send back data to the client
+            writer.write(data)
+            await writer.drain()
+
+        ######################################################################
+        #                           LDO Voltage Set                          #
+        ######################################################################
+        elif unit_id == unit_id_dict['ldo_voltage_set']:
+            # Print status
+            print("Received LDO voltage set packet from client")
+
+            # # Decode packet
+            # packet = decode_packet(data)
+
+            # Send back data to the client
+            writer.write(data)
+            await writer.drain()
+
+        ######################################################################
+        #                            Power Control                           #
+        ######################################################################
+        elif unit_id == unit_id_dict['power_control']:
+            # Print status
+            print("Received power control packet from client")
+
+            # # Decode packet
+            # packet = decode_packet(data)
+
+            # Send back data to the client
+            writer.write(data)
+            await writer.drain()
+
+        ######################################################################
+        #                           Burst Get Data                           #
+        ######################################################################
+        elif unit_id == unit_id_dict['burst_get_data']:
+            # Print status
+            print("Received burst get data packet from client")
+
+            # # Decode packet
+            # packet = decode_packet(data)
+
+            # Send back data to the client
+            writer.write(data)
+            await writer.drain()
+
+        ######################################################################
+        #                             Burst Mode                             #
+        ######################################################################
+        elif unit_id == unit_id_dict['burst_mode']:
+            # Print status
+            print("Received burst mode packet from client")
+
+            # # Decode packet
+            # packet = decode_packet(data)
+
+            # Send back data to the client
+            writer.write(data)
+            await writer.drain()
+
+        ######################################################################
+        #                          Burst Write Delay                         #
+        ######################################################################
+        elif unit_id == unit_id_dict['burst_write_delay']:
+            # Print status
+            print("Received burst write delay packet from client")
+
+            # # Decode packet
+            # packet = decode_packet(data)
+
+            # Send back data to the client
+            writer.write(data)
+            await writer.drain()
+
+        ######################################################################
+        #                          Burst Read Delay                          #
+        ######################################################################
+        elif unit_id == unit_id_dict['burst_read_delay']:
+            # Print status
+            print("Received burst read delay packet from client")
+
+            # # Decode packet
+            # packet = decode_packet(data)
+
+            # Send back data to the client
+            writer.write(data) 
             await writer.drain()
 
         ######################################################################
@@ -77,8 +203,8 @@ async def handle_echo(reader: asyncio.StreamReader, writer: asyncio.StreamWriter
             # Print status
             print("Received quit packet from client")
 
-            # Decode packet
-            packet = decode_packet(data)
+            # # Decode packet
+            # packet = decode_packet(data)
 
             # Send back data to the client
             writer.write(data)

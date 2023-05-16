@@ -157,22 +157,24 @@ def encode_packet(type, *args, **kwargs):
 
         # Create packet
         packet = struct.pack(
-            '2s 2s 2s c I I I I I I I I I I ' + str(write_packet_size * block_count * measure_count) + 's',
+            # '2s 2s 2s c I I I I I I I I I I ' + str(write_packet_size * block_count * measure_count) + 's',
+            # '2s 2s 2s c I I I I I I I I I I ',
+            '2s 2s 2s c ',
             transaction_id,
             protocol_id,
             length,
             unit_id,
-            cmd_id,
-            write_slave_addr,
-            read_slave_addr,
-            write_packet_size,
-            read_packet_size,
-            block_count,
-            measure_count,
-            write_interval_us,
-            measure_interval_us,
-            delay_from_write_to_measure_us,
-            write_buffer
+            # cmd_id,
+            # write_slave_addr,
+            # read_slave_addr,
+            # write_packet_size,
+            # read_packet_size,
+            # block_count,
+            # measure_count,
+            # write_interval_us,
+            # measure_interval_us,
+            # delay_from_write_to_measure_us,
+            # write_buffer
         )
 
         # Return packet
@@ -366,13 +368,14 @@ def encode_packet(type, *args, **kwargs):
 
         # Create packet
         packet = struct.pack(
-            '2s 2s 2s c I I',
+            # '2s 2s 2s c I I',
+            '2s 2s 2s c I',
             transaction_id,
             protocol_id,
             length,
             unit_id,
             command,
-            data
+            # data
         )
 
         # Return packet
@@ -394,13 +397,14 @@ def encode_packet(type, *args, **kwargs):
 
         # Create packet
         packet = struct.pack(
-            '2s 2s 2s c I I',
+            # '2s 2s 2s c I I',
+            '2s 2s 2s c I',
             transaction_id,
             protocol_id,
             length,
             unit_id,
             command,
-            data
+            # data
         )
 
         # Return packet
