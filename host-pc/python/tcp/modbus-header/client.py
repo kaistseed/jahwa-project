@@ -36,6 +36,9 @@ async def run_client(server_addr, server_port):
     ##########################################################################
     #                                Write I2C                               #
     ##########################################################################
+    # Print status
+    print("Send write I2C packet to server")
+
     # Encode packet
     packet = encode_packet(
         'write_i2c',
@@ -60,6 +63,9 @@ async def run_client(server_addr, server_port):
     ##########################################################################
     #                                Read I2C                                #
     ##########################################################################
+    # Print status
+    print("Send read I2C packet to server")
+
     # Encode packet
     packet = encode_packet(
         'read_i2c',
@@ -84,6 +90,9 @@ async def run_client(server_addr, server_port):
     ##########################################################################
     #                             Pattern Loading                            #
     ##########################################################################
+    # Print status
+    print("Send pattern loading packet to server")
+
     # Encode packet
     packet = encode_packet(
         'pattern_loading',
@@ -114,6 +123,9 @@ async def run_client(server_addr, server_port):
     ##########################################################################
     #                               Pattern Run                              #
     ##########################################################################
+    # Print status
+    print("Send pattern run packet to server")
+
     # Encode packet
     packet = encode_packet(
         'pattern_run',
@@ -134,6 +146,9 @@ async def run_client(server_addr, server_port):
     ##########################################################################
     #                            Pattern Get Data                            #
     ##########################################################################
+    # Print status
+    print("Send pattern get data packet to server")
+
     # Encode packet
     packet = encode_packet(
         'pattern_get_data',
@@ -158,6 +173,9 @@ async def run_client(server_addr, server_port):
     ##########################################################################
     #                             LDO Voltage Set                            #
     ##########################################################################
+    # Print status
+    print("Send LDO voltage set packet to server")
+
     # Encode packet
     packet = encode_packet(
         'ldo_voltage_set',
@@ -179,6 +197,9 @@ async def run_client(server_addr, server_port):
     ##########################################################################
     #                              Power Control                             #
     ##########################################################################
+    # Print status
+    print("Send power control packet to server")
+
     # Encode packet
     packet = encode_packet(
         'power_control',
@@ -200,6 +221,9 @@ async def run_client(server_addr, server_port):
     ##########################################################################
     #                             Burst Get Data                             #
     ##########################################################################
+    # Print status
+    print("Send burst get data packet to server")
+
     # Encode packet
     packet = encode_packet(
         'burst_get_data',
@@ -221,6 +245,9 @@ async def run_client(server_addr, server_port):
     ##########################################################################
     #                               Burst Mode                               #
     ##########################################################################
+    # Print status
+    print("Send burst mode packet to server")
+
     # Encode packet
     packet = encode_packet(
         'burst_mode',
@@ -242,6 +269,9 @@ async def run_client(server_addr, server_port):
     ##########################################################################
     #                            Burst Write Delay                           #
     ##########################################################################
+    # Print status
+    print("Send burst write delay packet to server")
+
     # Encode packet
     packet = encode_packet(
         'burst_write_delay',
@@ -263,6 +293,9 @@ async def run_client(server_addr, server_port):
     ##########################################################################
     #                            Burst Read Delay                            #
     ##########################################################################
+    # Print status
+    print("Send burst read delay packet to server")
+
     # Encode packet
     packet = encode_packet(
         'burst_read_delay',
@@ -284,6 +317,9 @@ async def run_client(server_addr, server_port):
     ##########################################################################
     #                                  Quit                                  #
     ##########################################################################
+    # Print status
+    print("Send quit packet to server")
+    
     # Encode packet
     packet = encode_packet('quit')
     print(f"Send: {packet}")
