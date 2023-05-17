@@ -115,6 +115,54 @@ async def tcp_client(server_addr, server_port):
     print()
 
     ##########################################################################
+    #                          Reset Sensor Sequence                         #
+    ##########################################################################
+    # Print message
+    print("Sending reset sensor sequence packet to PYNQ server")
+
+    # Create packet
+    packet = encode_packet(
+        'test_sequence',
+        sequence='reset_sensor'
+    )
+
+    # Send packet to PYNQ server
+    print(f"Sending packet: {packet}")
+    writer.write(packet)
+
+    # Receive response from PYNQ server
+    response = await reader.read(100)
+    if not response:
+        print("No response from PYNQ server")
+        raise Exception("Closing connection")
+    print(f"Received response: {response}")
+    print()
+
+    ##########################################################################
+    #                          Read Chip ID Sequence                         #
+    ##########################################################################
+    # Print message
+    print("Sending read chip ID sequence packet to PYNQ server")
+
+    # Create packet
+    packet = encode_packet(
+        'test_sequence',
+        sequence='read_chip_id'
+    )
+
+    # Send packet to PYNQ server
+    print(f"Sending packet: {packet}")
+    writer.write(packet)
+
+    # Receive response from PYNQ server
+    response = await reader.read(100)
+    if not response:
+        print("No response from PYNQ server")
+        raise Exception("Closing connection")
+    print(f"Received response: {response}")
+    print()
+
+    ##########################################################################
     #                                  Quit                                  #
     ##########################################################################
     # Print message

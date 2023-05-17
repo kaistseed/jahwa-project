@@ -37,8 +37,9 @@ TEST_LED = 0x3
 WRITE_PMODB = 0x4
 READ_PMODB = 0x5
 TEST_PMODB = 0x6
-TEST_I2C = 0x7
-READ_ERROR = 0x8
+RESET_SENSOR = 0x7
+READ_CHIP_ID = 0x8
+READ_ERROR = 0x9
 
 ##############################################################################
 #                           Define MicroBlaze class                          #
@@ -88,3 +89,17 @@ class MicroBlaze(PynqMicroblaze):
         self.write_mailbox(0, self._led_state)
         # Write command to mailbox
         self.write_blocking_command(WRITE_LED)
+
+    # Reset sensor sequence
+    def reset_sensor(self):
+        # Send reset command
+        self.write_blocking_command(RESET_SENSOR)
+
+    # Read chip ID sequence
+    def read_chip_id(self):
+        # Send read chip ID command
+        self.write_blocking_command(READ_CHIP_ID)
+        # Read chip ID
+        chip_id = self.read_mailbox(0)
+        # Return chip ID
+        return chip_id

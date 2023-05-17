@@ -53,6 +53,8 @@ test_sequence_dict = {
     'toggle_led': 1,
     'test_led': 2,
     'configure_dac': 3,
+    'reset_sensor': 4,
+    'read_chip_id': 5,
 }
 
 ##############################################################################

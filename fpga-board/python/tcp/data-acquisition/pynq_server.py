@@ -304,6 +304,22 @@ async def handle_client(reader, writer, spi, gpio, microblaze):
                 gpio.turn_on_sdn_1_io()
                 gpio.turn_on_sdn_2_io()
                 gpio.turn_on_sdn_3_io()
+
+            # Reset Sensor
+            elif packet['sequence'] == 4:
+                # Print status
+                print("Received reset sensor sequence packet from client")
+                # Run reset sensor sequence
+                microblaze.reset_sensor()
+
+            # Read Chip ID
+            elif packet['sequence'] == 5:
+                # Print status
+                print("Received read chip ID sequence packet from client")
+                # Run read chip ID sequence
+                chip_id = microblaze.read_chip_id()
+                # Print chip ID
+                print("Chip ID: {}".format(chip_id))
             
             else:
                 print("Unknown test sequence")
