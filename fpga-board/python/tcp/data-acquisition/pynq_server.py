@@ -297,9 +297,9 @@ async def handle_client(reader, writer, spi, gpio, microblaze):
                 gpio.turn_off_sdn_2_io()
                 gpio.turn_off_sdn_3_io()
                 # Configure all DAC channel
-                spi.config_dac_ch_0(0x1F)
-                spi.config_dac_ch_1(0x500)
-                spi.config_dac_ch_2(0x500)
+                spi.config_dac_ch_0('0x600')
+                spi.config_dac_ch_1('0x500')
+                spi.config_dac_ch_2('0x500')
                 # Turn on all SDN I/O
                 gpio.turn_on_sdn_1_io()
                 gpio.turn_on_sdn_2_io()

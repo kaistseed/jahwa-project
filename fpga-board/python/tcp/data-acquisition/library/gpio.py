@@ -77,21 +77,21 @@ class GPIO:
         # Print message
         print("Turning on PYNQ SDN 1 I/O...")
         # Write to PYNQ SDN 1 I/O
-        self.pynq_sdn_1_io.write(0x0, 0x0)
+        self.pynq_sdn_1_io.write(0x1, 0x1)
 
     # Turn on PYNQ SDN 2 I/O method
     def turn_on_sdn_2_io(self):
         # Print message
         print("Turning on PYNQ SDN 2 I/O...")
         # Write to PYNQ SDN 2 I/O
-        self.pynq_sdn_2_io.write(0x0, 0x0)
+        self.pynq_sdn_2_io.write(0x1, 0x1)
 
     # Turn on PYNQ SDN 3 I/O method
     def turn_on_sdn_3_io(self):
         # Print message
         print("Turning on PYNQ SDN 3 I/O...")
         # Write to PYNQ SDN 3 I/O
-        self.pynq_sdn_3_io.write(0x0, 0x0)
+        self.pynq_sdn_3_io.write(0x1, 0x1)
 
     ##########################################################################
     #                           ADC-Related Methods                          #
