@@ -271,14 +271,16 @@ async def handle_client(reader, writer, microblaze):
 
             # Run test sequence based on sequence number
             if packet['sequence'] == 1:
+                print("Received toggle LED sequence packet from client")
+                # Run toggle LED sequence
+                microblaze.toggle_led()
+    
+            elif packet['sequence'] == 2:
                 # Print status
                 print("Received test LED sequence packet from client")
                 # Run test LED sequence
                 microblaze.test_led()
-            elif packet['sequence'] == 2:
-                print("Received toggle LED sequence packet from client")
-                # Run toggle LED sequence
-                microblaze.toggle_led()
+            
             else:
                 print("Unknown test sequence")
 
