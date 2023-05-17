@@ -18,6 +18,7 @@
 #                              Import Libraries                              #
 ##############################################################################
 # Python library
+import time
 import struct
 import asyncio
 
@@ -61,77 +62,32 @@ async def tcp_client(server_addr, server_port):
     ##########################################################################
     #                           Toggle LED Sequence                          #
     ##########################################################################
-    # Print message
-    print("Sending toggle LED sequence packet to PYNQ server")
+    # Iterate 6 times
+    for i in range(6):
+        # Print message
+        print("Sending toggle LED sequence packet to PYNQ server")
 
-    # Create packet
-    packet = encode_packet(
-        'test_sequence',
-        sequence='toggle_led'
-    )
+        # Create packet
+        packet = encode_packet(
+            'test_sequence',
+            sequence='toggle_led'
+        )
 
-    # Send packet to PYNQ server
-    print(f"Sending packet: {packet}")
-    writer.write(packet)
-    await writer.drain()
+        # Send packet to PYNQ server
+        print(f"Sending packet: {packet}")
+        writer.write(packet)
+        await writer.drain()
 
-    # Receive response from PYNQ server
-    response = await reader.read(100)
-    if not response:
-        print("No response from PYNQ server")
-        raise Exception("Closing connection")
-    print(f"Received response: {response}")
-    print()
+        # Receive response from PYNQ server
+        response = await reader.read(100)
+        if not response:
+            print("No response from PYNQ server")
+            raise Exception("Closing connection")
+        print(f"Received response: {response}")
+        print()
 
-    ##########################################################################
-    #                               Test PMODB                               #
-    ##########################################################################
-    # Print message
-    print("Sending test PMODB packet to PYNQ server")
-
-    # Create packet
-    packet = encode_packet(
-        'test_sequence',
-        sequence='test_pmodb'
-    )
-
-    # Send packet to PYNQ server
-    print(f"Sending packet: {packet}")
-    writer.write(packet)
-    await writer.drain()
-
-    # Receive response from PYNQ server
-    response = await reader.read(100)
-    if not response:
-        print("No response from PYNQ server")
-        raise Exception("Closing connection")
-    print(f"Received response: {response}")
-    print()
-
-    ##########################################################################
-    #                              Toggle PMODB                              #
-    ##########################################################################
-    # Print message
-    print("Sending toggle PMODB packet to PYNQ server")
-
-    # Create packet
-    packet = encode_packet(
-        'test_sequence',
-        sequence='toggle_pmodb'
-    )
-
-    # Send packet to PYNQ server
-    print(f"Sending packet: {packet}")
-    writer.write(packet)
-    await writer.drain()
-
-    # Receive response from PYNQ server
-    response = await reader.read(100)
-    if not response:
-        print("No response from PYNQ server")
-        raise Exception("Closing connection")
-    print(f"Received response: {response}")
-    print()
+        # Sleep for 1 second
+        time.sleep(1)
 
     ##########################################################################
     #                                  Quit                                  #
@@ -166,8 +122,8 @@ async def tcp_client(server_addr, server_port):
 ##############################################################################
 if __name__ == "__main__":
     # Define server address and port
-    # server_addr = '192.168.2.99'
-    server_addr = 'localhost'
+    server_addr = '192.168.2.99'
+    # server_addr = 'localhost'
     server_port = 5555
 
     # Run TCP client
