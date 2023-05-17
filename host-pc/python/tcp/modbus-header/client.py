@@ -392,7 +392,7 @@ async def run_client(server_addr, server_port):
 ##############################################################################
 if __name__ == "__main__":
     # Define server address and port
-    server_addr = "localhost"
+    server_addr = "192.168.2.99"
     server_port = 5555
 
     # Run TCP client

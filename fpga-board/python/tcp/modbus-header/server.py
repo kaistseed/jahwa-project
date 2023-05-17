@@ -278,6 +278,9 @@ async def handle_echo(reader: asyncio.StreamReader, writer: asyncio.StreamWriter
             writer.write(data)
             await writer.drain()
 
+            # Close connection
+            break
+
     # Close connection
     print("Close the connection to the client")
     writer.close()

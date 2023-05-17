@@ -48,6 +48,14 @@ burst_cmd_dict = {
     'burst_read_delay': 13,
 }
 
+# Define test sequence dictionary
+test_sequence_dict = {
+    'toggle_led': 1,
+    'test_led': 2,
+    'toggle_pmodb': 3,
+    'test_pmodb': 4,
+}
+
 ##############################################################################
 #                           Define Helper Function                           #
 ##############################################################################
@@ -418,7 +426,11 @@ def encode_packet(type, *args, **kwargs):
         unit_id = b'T'
 
         # Get I2C data
-        sequence = kwargs.get('sequence') if kwargs.get('sequence') is not None else 0
+        sequence = kwargs.get('sequence') if kwargs.get('sequence') is not None else ''
+
+        # Check whether sequence is valid or not
+        if sequence not in test_sequence_dict.keys():
+            raise ValueError('Invalid test sequence')
 
         # Create packet
         packet = struct.pack(
@@ -427,7 +439,7 @@ def encode_packet(type, *args, **kwargs):
             protocol_id,
             length,
             unit_id,    
-            sequence
+            test_sequence_dict[sequence]
         )
 
         # Return packet
