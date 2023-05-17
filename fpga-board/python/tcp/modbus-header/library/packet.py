@@ -104,12 +104,14 @@ def encode_packet(type, *args, **kwargs):
         ldo_ch1_current = kwargs.get('ldo_ch1_current') if kwargs.get('ldo_ch1_current') is not None else [0.0] * read_buffer_size
         ldo_ch1_voltage = kwargs.get('ldo_ch1_voltage') if kwargs.get('ldo_ch1_voltage') is not None else [0.0] * read_buffer_size
 
+        ldo_ch0_current = [1.0, 2.0]
+
         # Convert read buffer to byte and combine them
         read_buffer = ''.join(read_buffer).encode('utf-8')
         
         # Struct format
-        struct_format = '2s 2s 2s c ' + str(read_buffer_size) + 's ' + str(num_of_ldo_ch0_current) + 'd ' + \
-            str(num_of_ldo_ch0_voltage) + 'd ' + str(num_of_ldo_ch1_current) + 'd ' + str(num_of_ldo_ch1_voltage) + 'd'
+        struct_format = '2s 2s 2s c ' + str(read_buffer_size) + 's ' + ('d ' * num_of_ldo_ch0_current) + \
+            ('d ' * num_of_ldo_ch0_voltage) + ('d ' * num_of_ldo_ch1_current) + ('d ' * num_of_ldo_ch1_voltage)
 
         # Create packet
         packet = struct.pack(

@@ -461,7 +461,7 @@ def encode_packet(type, *args, **kwargs):
 ##############################################################################
 #                                Decode Packet                               #
 ##############################################################################
-def decode_packet(packet):
+def decode_packet(packet, **kwargs):
     ##########################################################################
     #                            Get Packet Header                           #
     ##########################################################################
@@ -486,40 +486,59 @@ def decode_packet(packet):
             'protocol_id': protocol_id,
             'length': length,
             'unit_id': unit_id,
-            'data_buf': data_buf
+            'data_buf': [chr(byte) for byte in data_buf]
         }
     
     ##########################################################################
     #                            Pattern Get Data                            #
     ##########################################################################
     elif unit_id == unit_id_dict['pattern_get_data']:
+        # Get buffer size
+        read_buffer_size = kwargs.get('read_buffer_size') if kwargs.get('read_buffer_size') is not None else 0
+        num_of_ldo_ch0_current = kwargs.get('num_of_ldo_ch0_current') if kwargs.get('num_of_ldo_ch0_current') is not None else 0
+        num_of_ldo_ch0_voltage = kwargs.get('num_of_ldo_ch0_voltage') if kwargs.get('num_of_ldo_ch0_voltage') is not None else 0
+        num_of_ldo_ch1_current = kwargs.get('num_of_ldo_ch1_current') if kwargs.get('num_of_ldo_ch1_current') is not None else 0
+        num_of_ldo_ch1_voltage = kwargs.get('num_of_ldo_ch1_voltage') if kwargs.get('num_of_ldo_ch1_voltage') is not None else 0
+
+        # Struct format
+        struct_format = '2s 2s 2s c ' + str(read_buffer_size) + 's ' + ('d ' * num_of_ldo_ch0_current) + \
+            ('d ' * num_of_ldo_ch0_voltage) + ('d ' * num_of_ldo_ch1_current) + ('d ' * num_of_ldo_ch1_voltage)
+        
         # Unpack packet
-        transaction_id, protocol_id, length, unit_id, read_buffer, ldo_ch0_current, \
-            ldo_ch0_voltage, ldo_ch1_current, ldo_ch1_voltage = struct.unpack(
-            '2s 2s 2s c 4s d d d d', # FIXME: Change the buffer size to match with pattern loading
+        unpacked_data = struct.unpack(
+            struct_format,
             packet
         )
 
+        # Define start index for parsing unpacked data
+        ldo_ch0_current_start_idx = 5
+        ldo_ch0_voltage_start_idx = ldo_ch0_current_start_idx + num_of_ldo_ch0_current
+        ldo_ch1_current_start_idx = ldo_ch0_voltage_start_idx + num_of_ldo_ch0_voltage
+        ldo_ch1_voltage_start_idx = ldo_ch1_current_start_idx + num_of_ldo_ch1_current
+
         # Return packet
         return {
-            'transaction_id': transaction_id,
-            'protocol_id': protocol_id,
-            'length': length,
-            'unit_id': unit_id,
-            'read_buffer': read_buffer,
-            'ldo_ch0_current': ldo_ch0_current,
-            'ldo_ch0_voltage': ldo_ch0_voltage,
-            'ldo_ch1_current': ldo_ch1_current,
-            'ldo_ch1_voltage': ldo_ch1_voltage
+            'transaction_id': unpacked_data[0],
+            'protocol_id': unpacked_data[1],
+            'length': unpacked_data[2],
+            'unit_id': unpacked_data[3],
+            'read_buffer': [chr(byte) for byte in unpacked_data[4]],
+            'ldo_ch0_current': list(unpacked_data[ldo_ch0_current_start_idx:ldo_ch0_voltage_start_idx]),
+            'ldo_ch0_voltage': list(unpacked_data[ldo_ch0_voltage_start_idx:ldo_ch1_current_start_idx]),
+            'ldo_ch1_current': list(unpacked_data[ldo_ch1_current_start_idx:ldo_ch1_voltage_start_idx]),
+            'ldo_ch1_voltage': list(unpacked_data[ldo_ch1_voltage_start_idx:])
         }
     
     ##########################################################################
     #                             Burst Get Data                             #
     ##########################################################################
     elif unit_id == unit_id_dict['burst_get_data']:
+        # Get buffer size
+        read_buffer_size = kwargs.get('read_buffer_size') if kwargs.get('read_buffer_size') is not None else 0
+
         # Unpack packet
         transaction_id, protocol_id, length, unit_id, read_buffer = struct.unpack(
-            '2s 2s 2s c 4s', # FIXME: Change the buffer size to match with burst get data packet
+            '2s 2s 2s c ' + str(read_buffer_size) + 's',
             packet
         )
 
@@ -529,7 +548,7 @@ def decode_packet(packet):
             'protocol_id': protocol_id,
             'length': length,
             'unit_id': unit_id,
-            'read_buffer': read_buffer
+            'read_buffer': [chr(byte) for byte in read_buffer]
         }
     
     ##########################################################################

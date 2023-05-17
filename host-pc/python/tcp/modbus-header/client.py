@@ -85,7 +85,18 @@ async def run_client(server_addr, server_port):
     data = await reader.read(1024)
     if not data:
         raise Exception("Socket closed")
-    print(f"Received: {data}\n")
+    print(f"Received: {data}")
+
+    # Decode packet
+    packet = decode_packet(
+        packet=data,
+    )
+
+    # Print decoded packet
+    print("Decoded: ")
+    for key, value in packet.items():
+        print(f"{key}: {value}")
+    print()
 
     ##########################################################################
     #                             Pattern Loading                            #
@@ -149,14 +160,21 @@ async def run_client(server_addr, server_port):
     # Print status
     print("Send pattern get data packet to server")
 
+    # Set parameters
+    read_buffer_size = 18 
+    num_of_ldo_ch0_current = 2 
+    num_of_ldo_ch0_voltage = 2 
+    num_of_ldo_ch1_current = 2 
+    num_of_ldo_ch1_voltage = 2 
+
     # Encode packet
     packet = encode_packet(
         'pattern_get_data',
-        read_buffer_size=18,
-        num_of_ldo_ch0_current=2,
-        num_of_ldo_ch0_voltage=2,
-        num_of_ldo_ch1_current=2,
-        num_of_ldo_ch1_voltage=2,
+        read_buffer_size=read_buffer_size,
+        num_of_ldo_ch0_current=num_of_ldo_ch0_current,
+        num_of_ldo_ch0_voltage=num_of_ldo_ch0_voltage,
+        num_of_ldo_ch1_current=num_of_ldo_ch1_current,
+        num_of_ldo_ch1_voltage=num_of_ldo_ch1_voltage,
     )
     print(f"Send: {packet}")
 
@@ -168,7 +186,23 @@ async def run_client(server_addr, server_port):
     data = await reader.read(1024)
     if not data:
         raise Exception("Socket closed")
-    print(f"Received: {data}\n")
+    print(f"Received: {data}")
+
+    # Decode packet
+    packet = decode_packet(
+        packet=data,
+        read_buffer_size=read_buffer_size,
+        num_of_ldo_ch0_current=num_of_ldo_ch0_current,
+        num_of_ldo_ch0_voltage=num_of_ldo_ch0_voltage,
+        num_of_ldo_ch1_current=num_of_ldo_ch1_current,
+        num_of_ldo_ch1_voltage=num_of_ldo_ch1_voltage,
+    )
+
+    # Print decoded packet
+    print("Decoded: ")
+    for key, value in packet.items():
+        print(f"{key}: {value}")
+    print()
 
     ##########################################################################
     #                             LDO Voltage Set                            #
@@ -224,11 +258,15 @@ async def run_client(server_addr, server_port):
     # Print status
     print("Send burst get data packet to server")
 
+    # Set parameters
+    read_packet_size = 2
+    read_count = 5
+
     # Encode packet
     packet = encode_packet(
         'burst_get_data',
-        read_packet_size=2,
-        read_count=5,
+        read_packet_size=read_packet_size,
+        read_count=read_count,
     )
     print(f"Send: {packet}")
 
@@ -240,7 +278,19 @@ async def run_client(server_addr, server_port):
     data = await reader.read(1024)
     if not data:
         raise Exception("Socket closed")
-    print(f"Received: {data}\n")
+    print(f"Received: {data}")
+
+    # Decode packet
+    packet = decode_packet(
+        packet=data,
+        read_buffer_size=read_packet_size*read_count,
+    )
+
+    # Print decoded packet
+    print("Decoded: ")
+    for key, value in packet.items():
+        print(f"{key}: {value}")
+    print()
 
     ##########################################################################
     #                               Burst Mode                               #
@@ -319,7 +369,7 @@ async def run_client(server_addr, server_port):
     ##########################################################################
     # Print status
     print("Send quit packet to server")
-    
+
     # Encode packet
     packet = encode_packet('quit')
     print(f"Send: {packet}")
