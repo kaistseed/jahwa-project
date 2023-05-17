@@ -26,16 +26,20 @@ import asyncio
 
 # PYNQ library
 from pynq import Overlay
+from pynq.lib import AxiGPIO
+from pynq.lib.iic import AxiIIC
 from pynq.lib import PynqMicroblaze
 
 # User-defined library
+from library.spi import *
+from library.gpio import *
 from library.packet import *
 from library.microblaze import *
 
 ##############################################################################
 #                 Define Function to Handle Client Connection                #
 ##############################################################################
-async def handle_client(reader, writer, microblaze):
+async def handle_client(reader, writer, spi, gpio, microblaze):
     # Keep listening to client until client closes connection
     while True:
         # Wait for client to send data
@@ -270,16 +274,36 @@ async def handle_client(reader, writer, microblaze):
             packet = decode_packet(data)
 
             # Run test sequence based on sequence number
+            # Toggle LED sequence
             if packet['sequence'] == 1:
                 print("Received toggle LED sequence packet from client")
                 # Run toggle LED sequence
                 microblaze.toggle_led()
-    
+
+            # Test LED sequence
             elif packet['sequence'] == 2:
                 # Print status
                 print("Received test LED sequence packet from client")
                 # Run test LED sequence
                 microblaze.test_led()
+
+            # Configure DAC
+            elif packet['sequence'] == 3:
+                # Print status
+                print("Received configure DAC sequence packet from client")
+                # Run configure DAC sequence
+                # Turn off all SDN I/O
+                gpio.turn_off_sdn_1_io()
+                gpio.turn_off_sdn_2_io()
+                gpio.turn_off_sdn_3_io()
+                # Configure all DAC channel
+                spi.config_dac_ch_0(0x1F)
+                spi.config_dac_ch_1(0x500)
+                spi.config_dac_ch_2(0x500)
+                # Turn on all SDN I/O
+                gpio.turn_on_sdn_1_io()
+                gpio.turn_on_sdn_2_io()
+                gpio.turn_on_sdn_3_io()
             
             else:
                 print("Unknown test sequence")
@@ -319,9 +343,9 @@ async def handle_client(reader, writer, microblaze):
 ##############################################################################
 #                              Define TCP Server                             #
 ##############################################################################
-async def tcp_server(server_addr, server_port, microblaze) -> None:
+async def tcp_server(server_addr, server_port, spi, gpio, microblaze) -> None:
     server = await asyncio.start_server(
-        lambda reader, writer: handle_client(reader, writer, microblaze),
+        lambda reader, writer: handle_client(reader, writer, spi, gpio, microblaze),
         server_addr, 
         server_port
     )
@@ -339,6 +363,51 @@ if __name__ == "__main__":
     print()
     # Load overlay
     ol = Overlay("./bitstream/pynq_mb_jahwa_v3.bit")
+
+    print('##########################################################################')
+    print('#                            Configuring GPIO                            #')
+    print('##########################################################################')
+    # Get AXI GPIO IP
+    pynq_adc_io_ip = ol.ip_dict['axi_gpio_1'] 
+    pynq_sdn_1_io_ip = ol.ip_dict['axi_gpio_2']
+    pynq_sdn_2_io_ip = ol.ip_dict['axi_gpio_3']
+    pynq_sdn_3_io_ip = ol.ip_dict['axi_gpio_4']
+
+    # Map GPIO IP to AXI GPIO Class
+    pynq_adc_io = AxiGPIO(pynq_adc_io_ip).channel1
+    pynq_sdn_1_io = AxiGPIO(pynq_sdn_1_io_ip).channel1
+    pynq_sdn_2_io = AxiGPIO(pynq_sdn_2_io_ip).channel1
+    pynq_sdn_3_io = AxiGPIO(pynq_sdn_3_io_ip).channel1
+
+    # Instantiate GPIO class
+    pynq_gpio = GPIO(
+        pynq_adc_io=pynq_adc_io, 
+        pynq_sdn_1_io=pynq_sdn_1_io, 
+        pynq_sdn_2_io=pynq_sdn_2_io, 
+        pynq_sdn_3_io=pynq_sdn_3_io
+    )
+
+    # Print status
+    print('GPIO has been configured successfully!')
+    print()
+
+    print('##########################################################################')
+    print('#                             Configuring SPI                            #')
+    print('##########################################################################')
+    # Get AXI SPI IP
+    spi_control = ol.axi_quad_spi_0
+
+    # Map SPI IP to SPI Class
+    pynq_spi = SPI(
+        master=spi_control,
+        cpol=0,
+        cpha=0,
+        adc_io=pynq_adc_io
+    )
+
+    # Print status
+    print('SPI has been configured successfully!')
+    print()
 
     print('##########################################################################')
     print('#                        Configuring Softprocessor                       #')
@@ -372,6 +441,8 @@ if __name__ == "__main__":
     # Run TCP server
     asyncio.run(tcp_server(
         server_addr=server_addr, 
-        server_port=server_port, 
+        server_port=server_port,
+        spi=pynq_spi,
+        gpio=pynq_gpio, 
         microblaze=_microblaze
     ))
