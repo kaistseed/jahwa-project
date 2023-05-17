@@ -321,7 +321,12 @@ async def handle_client(reader, writer, microblaze):
 #                              Define TCP Server                             #
 ##############################################################################
 async def tcp_server(server_addr, server_port, microblaze) -> None:
-    server = await asyncio.start_server(handle_client, server_addr, server_port, microblaze)
+    server = await asyncio.start_server(
+        lambda reader, writer: handle_client(reader, writer, microblaze),
+        server_addr, 
+        server_port
+    )
+    
     async with server:
         await server.serve_forever()
 
@@ -379,7 +384,7 @@ if __name__ == "__main__":
     print('##########################################################################')
     print()
     # Load overlay
-    ol = Overlay("/home/daltamaulana/Projects/Jahwa/jahwa-project/fpga-board/python/tcp/data-acquisition/bitstream/pynq_mb_jahwa_v3.bit")
+    ol = Overlay("./bitstream/pynq_mb_jahwa_v3.bit")
 
     print('##########################################################################')
     print('#                        Configuring Softprocessor                       #')
@@ -411,4 +416,8 @@ if __name__ == "__main__":
         server_port = '5555'
 
     # Run TCP server
-    asyncio.run(tcp_server(server_addr=server_addr, server_port=server_port))
+    asyncio.run(tcp_server(
+        server_addr=server_addr, 
+        server_port=server_port, 
+        microblaze=_microblaze
+    ))
