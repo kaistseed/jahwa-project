@@ -90,6 +90,31 @@ async def tcp_client(server_addr, server_port):
         time.sleep(1)
 
     ##########################################################################
+    #                         Configure DAC Sequence                         #
+    ##########################################################################
+    # Print message
+    print("Sending configure DAC sequence packet to PYNQ server")
+
+    # Create packet
+    packet = encode_packet(
+        'test_sequence',
+        sequence='configure_dac'
+    )
+
+    # Send packet to PYNQ server
+    print(f"Sending packet: {packet}")
+    writer.write(packet)
+    await writer.drain()
+
+    # Receive response from PYNQ server
+    response = await reader.read(100)
+    if not response:
+        print("No response from PYNQ server")
+        raise Exception("Closing connection")
+    print(f"Received response: {response}")
+    print()
+
+    ##########################################################################
     #                                  Quit                                  #
     ##########################################################################
     # Print message

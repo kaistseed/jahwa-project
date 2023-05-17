@@ -52,8 +52,7 @@ burst_cmd_dict = {
 test_sequence_dict = {
     'toggle_led': 1,
     'test_led': 2,
-    'toggle_pmodb': 3,
-    'test_pmodb': 4,
+    'configure_dac': 3,
 }
 
 ##############################################################################
