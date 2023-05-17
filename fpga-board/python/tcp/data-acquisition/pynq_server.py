@@ -30,6 +30,7 @@ from pynq.lib import PynqMicroblaze
 
 # User-defined library
 from library.packet import *
+from library.microblaze import *
 
 ##############################################################################
 #                 Define Function to Handle Client Connection                #
@@ -273,15 +274,11 @@ async def handle_client(reader, writer, microblaze):
                 # Print status
                 print("Received test LED sequence packet from client")
                 # Run test LED sequence
-                microblaze.write_blocking_command(TEST_LED)
+                microblaze.test_led()
             elif packet['sequence'] == 2:
                 print("Received toggle LED sequence packet from client")
-            elif packet['sequence'] == 3:
-                print("Received test PMODB sequence packet from client")
-                # Run test PMODB sequence
-                microblaze.write_blocking_command(TEST_PMODB)
-            elif packet['sequence'] == 4:
-                print("Received toggle PMODB sequence packet from client")
+                # Run toggle LED sequence
+                microblaze.toggle_led()
             else:
                 print("Unknown test sequence")
 
@@ -329,51 +326,6 @@ async def tcp_server(server_addr, server_port, microblaze) -> None:
     
     async with server:
         await server.serve_forever()
-
-##############################################################################
-#                           Define MicroBlaze Class                          #
-##############################################################################
-# Define MicroBlaze mailbox address
-MAILBOX_OFFSET = 0xF000
-MAILBOX_SIZE = 0x1000
-MAILBOX_PY2IOP_CMD_OFFSET = 0xffc
-MAILBOX_PY2IOP_ADDR_OFFSET = 0xff8
-MAILBOX_PY2IOP_DATA_OFFSET = 0xf00
-
-# Define commands
-WRITE_LED = 0x1
-READ_LED = 0x2
-TEST_LED = 0x3
-WRITE_PMODB = 0x4
-READ_PMODB = 0x5
-TEST_PMODB = 0x6
-TEST_I2C = 0x7
-READ_ERROR = 0x8
-
-# Define MicroBlaze class Python API
-class MicroBlaze(PynqMicroblaze):
-    def __init__(self, mb_info, mb_program):
-        super().__init__(mb_info, mb_program)
-
-    def write_mailbox(self, data_offset, data):
-        offset = MAILBOX_OFFSET + data_offset
-        self.write(offset, data)
-
-    def read_mailbox(self, data_offset, num_words=1):
-        offset = MAILBOX_OFFSET + data_offset
-        return self.read(offset, num_words)
-
-    def write_blocking_command(self, command):
-        self.write(MAILBOX_OFFSET + MAILBOX_PY2IOP_CMD_OFFSET, command)
-        while self.read(MAILBOX_OFFSET + MAILBOX_PY2IOP_CMD_OFFSET) != 0:
-            pass
-    def write_blocking_command_addr(self, addr, command):
-        self.write(addr, command)
-        while self.read(addr) != 0:
-            pass        
-
-    def write_non_blocking_command(self, command):
-        self.write(MAILBOX_OFFSET + MAILBOX_PY2IOP_CMD_OFFSET, command)
 
 ##############################################################################
 #                                Main Program                                #
