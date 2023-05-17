@@ -48,6 +48,14 @@ burst_cmd_dict = {
     'burst_read_delay': 13,
 }
 
+# Define test sequence dictionary
+test_sequence_dict = {
+    'toggle_led': 1,
+    'test_led': 2,
+    'toggle_pmodb': 3,
+    'test_pmodb': 4,
+}
+
 ##############################################################################
 #                           Define Helper Function                           #
 ##############################################################################
