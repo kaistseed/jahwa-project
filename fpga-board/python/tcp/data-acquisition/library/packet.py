@@ -50,17 +50,38 @@ burst_cmd_dict = {
 
 # Define test sequence dictionary
 test_sequence_dict = {
-    'toggle_led': 1,
-    'test_led': 2,
+    'gpio_toggle_led': 1,
+    'gpio_test_led': 2,
     'configure_dac': 3,
-    'reset_sensor': 4,
-    'read_chip_id': 5,
+    'i2c_meissner_reset': 4,
+    'i2c_meissner_chip_id': 5,
+    'i2c_meissner_version': 6,
+    'i2c_meissner_unique_id': 7,
+    'timer_get_cnt_val': 8,
+    'timer_test_delay': 9,
 }
 
 ##############################################################################
 #                           Define Helper Function                           #
 ##############################################################################
-# Encode packet using struct
+def int_to_char_array(value):
+    # Convert integer to int array
+    int_array = struct.pack('4B', 
+        (value >> 24) & 0xFF, 
+        (value >> 16) & 0xFF, 
+        (value >> 8) & 0xFF, 
+        (value) & 0xFF
+    )
+
+    # Convert array member to char
+    char_array = [chr(byte) for byte in int_array]
+    
+    # Return array
+    return char_array
+
+##############################################################################
+#                                Encode Packet                               #
+##############################################################################
 def encode_packet(type, *args, **kwargs):
     ##########################################################################
     #                                Read I2C                                #

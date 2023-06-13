@@ -196,7 +196,7 @@ class SPI:
     # Configure DAC channel 0 method
     def config_dac_ch_0(self, channel_code):
         # Print message
-        print("Configuring DAC channel 0...")
+        print("Configuring DAC channel 0...\n")
         # Convert channel code from hex to integer
         ch0_code = int(channel_code, 16)
         # Set MSB and LSB
@@ -208,7 +208,7 @@ class SPI:
     # Configure DAC channel 1 method
     def config_dac_ch_1(self, channel_code):
         # Print message
-        print("Configuring DAC channel 1...")
+        print("Configuring DAC channel 1...\n")
         # Convert channel code from hex to integer
         ch1_code = int(channel_code, 16)
         # Set MSB and LSB
@@ -220,7 +220,7 @@ class SPI:
     # Configure DAC channel 2 method
     def config_dac_ch_2(self, channel_code):
         # Print message
-        print("Configuring DAC channel 2...")
+        print("Configuring DAC channel 2...\n")
         # Convert channel code from hex to integer
         ch2_code = int(channel_code, 16)
         # Set MSB and LSB
@@ -235,7 +235,7 @@ class SPI:
         assert self.adc_io is not None, "ADC IO object is not defined!"
 
         # Print message
-        print("Reading ADC...")
+        print("Reading ADC...\n")
 
         # Declare internal variable
         cnt = 0

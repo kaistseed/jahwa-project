@@ -57,7 +57,7 @@ async def handle_client(reader, writer, spi, gpio, microblaze):
         ######################################################################
         if unit_id == unit_id_dict['write_i2c']:
             # Print status
-            print("Received write I2C packet from client")
+            print("Received write I2C packet from client\n")
 
             # Decode packet
             packet = decode_packet(data)
@@ -76,7 +76,7 @@ async def handle_client(reader, writer, spi, gpio, microblaze):
         ######################################################################
         elif unit_id == unit_id_dict['read_i2c']:
             # Print status
-            print("Received read I2C packet from client")
+            print("Received read I2C packet from client\n")
 
             # Decode packet
             packet = decode_packet(data)
@@ -86,6 +86,23 @@ async def handle_client(reader, writer, spi, gpio, microblaze):
                 print(key, ":", value)
             print()
 
+            # Get start time
+            start_time = microblaze.timer_get_sec()
+
+            # Call microblaze I2C read function
+            read_data = microblaze.i2c_meissner_read(
+                slave_addr=packet['slave_addr'], 
+                addr_len=packet['addr_len'], 
+                data_len=packet['data_len'], 
+                reg_addr=int(''.join(packet['addr_buf'])),
+            )
+
+            # Get end time
+            end_time = microblaze.timer_get_sec()
+
+            # Convert read data to char array
+            data_buf = int_to_char_array(read_data)
+
             # Create dummy response for client
             packet = encode_packet(
                 'read_i2c',
@@ -93,8 +110,14 @@ async def handle_client(reader, writer, spi, gpio, microblaze):
                 protocol_id=packet['protocol_id'],
                 length=packet['length'],
                 unit_id=packet['unit_id'],
-                data_buf=packet['data_buf']
+                data_buf=data_buf
             )
+
+            # Print read data
+            print("Read data: {}".format(hex(read_data)))
+            print("Data buffer: {}".format(data_buf))
+            print("Packet: {}".format(packet))
+            print("Elapsed time: {} s\n".format(end_time-start_time))
 
             # Send back data to the client
             writer.write(packet)
@@ -105,7 +128,7 @@ async def handle_client(reader, writer, spi, gpio, microblaze):
         ######################################################################
         elif unit_id == unit_id_dict['pattern_loading']:
             # Print status
-            print("Received pattern loading packet from client")
+            print("Received pattern loading packet from client\n")
 
             # Decode data tp get write buffer size
             write_packet_size = int.from_bytes(data[20:24], byteorder='little')
@@ -130,7 +153,7 @@ async def handle_client(reader, writer, spi, gpio, microblaze):
         ######################################################################
         elif unit_id == unit_id_dict['pattern_run']:
             # Print status
-            print("Received pattern run packet from client")
+            print("Received pattern run packet from client\n")
 
             # Decode packet
             packet = decode_packet(data)
@@ -149,7 +172,7 @@ async def handle_client(reader, writer, spi, gpio, microblaze):
         ######################################################################
         elif unit_id == unit_id_dict['pattern_get_data']:
             # Print status
-            print("Received pattern get data packet from client")
+            print("Received pattern get data packet from client\n")
 
             # Decode packet
             packet = decode_packet(data)
@@ -187,7 +210,7 @@ async def handle_client(reader, writer, spi, gpio, microblaze):
         ######################################################################
         elif unit_id == unit_id_dict['ldo_voltage_set']:
             # Print status
-            print("Received LDO voltage set packet from client")
+            print("Received LDO voltage set packet from client\n")
 
             # Decode packet
             packet = decode_packet(data)
@@ -211,13 +234,13 @@ async def handle_client(reader, writer, spi, gpio, microblaze):
             
             # Print status based on command
             if command == 1:
-                print("Received power control packet from client")
+                print("Received power control packet from client\n")
             elif command == 11:
-                print("Received burst mode packet from client")
+                print("Received burst mode packet from client\n")
             elif command == 12:
-                print("Received burst write delay packet from client")
+                print("Received burst write delay packet from client\n")
             elif command == 13:
-                print("Received burst read delay packet from client")
+                print("Received burst read delay packet from client\n")
             else:
                 print("Unknown command")
 
@@ -238,7 +261,7 @@ async def handle_client(reader, writer, spi, gpio, microblaze):
         ######################################################################
         elif unit_id == unit_id_dict['burst_get_data']:
             # Print status
-            print("Received burst get data packet from client")
+            print("Received burst get data packet from client\n")
 
             # Decode packet
             packet = decode_packet(data)
@@ -276,21 +299,21 @@ async def handle_client(reader, writer, spi, gpio, microblaze):
             # Run test sequence based on sequence number
             # Toggle LED sequence
             if packet['sequence'] == 1:
-                print("Received toggle LED sequence packet from client")
+                print("Received toggle LED sequence packet from client\n")
                 # Run toggle LED sequence
-                microblaze.toggle_led()
+                microblaze.gpio_toggle_led()
 
             # Test LED sequence
             elif packet['sequence'] == 2:
                 # Print status
-                print("Received test LED sequence packet from client")
+                print("Received test LED sequence packet from client\n")
                 # Run test LED sequence
-                microblaze.test_led()
+                microblaze.gpio_test_led()
 
             # Configure DAC
             elif packet['sequence'] == 3:
                 # Print status
-                print("Received configure DAC sequence packet from client")
+                print("Received configure DAC sequence packet from client\n")
                 # Run configure DAC sequence
                 # Turn off all SDN I/O
                 gpio.turn_off_sdn_1_io()
@@ -308,18 +331,64 @@ async def handle_client(reader, writer, spi, gpio, microblaze):
             # Reset Sensor
             elif packet['sequence'] == 4:
                 # Print status
-                print("Received reset sensor sequence packet from client")
+                print("Received reset sensor sequence packet from client\n")
                 # Run reset sensor sequence
-                microblaze.reset_sensor()
+                microblaze.i2c_meissner_reset()
 
             # Read Chip ID
             elif packet['sequence'] == 5:
                 # Print status
                 print("Received read chip ID sequence packet from client")
                 # Run read chip ID sequence
-                chip_id = microblaze.read_chip_id()
+                chip_id = microblaze.i2c_meissner_chip_id()
                 # Print chip ID
-                print("Chip ID: {}".format(chip_id))
+                print("Chip ID: {}\n".format(hex(chip_id)))
+
+            # Read Chip Version
+            elif packet['sequence'] == 6:
+                # Print status
+                print("Received read chip version packet from client")
+                # Run read chip ID sequence
+                chip_ver_1, chip_ver_2 = microblaze.i2c_meissner_version()
+                # Print chip ID
+                print("Chip version: {}{}\n".format(hex(chip_ver_1), hex(chip_ver_2)[2:]))
+
+            # Read Chip Unique ID
+            elif packet['sequence'] == 7:
+                # Print status
+                print("Received read chip unique ID sequence packet from client")
+                # Run read chip ID sequence
+                unique_id = microblaze.i2c_meissner_unique_id()
+                # Print chip ID
+                print("Unique ID: {}\n".format(hex(unique_id)))
+
+            # Read global timer counter
+            elif packet['sequence'] == 8:
+                # Print status
+                print("Received get timer count value packet from client")
+                # Run get timer count value for global counter
+                lsb_count = microblaze.timer_get_cnt_val(2, 0)
+                msb_count = microblaze.timer_get_cnt_val(2, 1)
+                total_count = (msb_count << 32) ^ lsb_count
+                time_sec = (0xFFFFFFFFFFFFFFFF-total_count)/1e8
+                # Print count value
+                print("MSB count: {}\nLSB count: {}".format(msb_count, lsb_count)) 
+                print("Time in second: {}\n".format(time_sec))
+
+            # Test timer delay
+            elif packet['sequence'] == 9:
+                # Print status
+                print("Received test timer delay packet from client")
+                # Get timer delay from microblaze
+                delay_10us, delay_100us, delay_1ms, \
+                delay_10ms, delay_100ms, delay_1s = microblaze.timer_test_delay()
+                # Print delay value
+                print("Intended delay: 10us, actual delay: {}us".format(delay_10us))
+                print("Intended delay: 100us, actual delay: {}us".format(delay_100us))
+                print("Intended delay: 1ms, actual delay: {}ms".format(delay_1ms))
+                print("Intended delay: 10ms, actual delay: {}ms".format(delay_10ms))
+                print("Intended delay: 100ms, actual delay: {}ms".format(delay_100ms))
+                print("Intended delay: 1s, actual delay: {}s\n".format(delay_1s))
             
             else:
                 print("Unknown test sequence")
@@ -378,7 +447,8 @@ if __name__ == "__main__":
     print('##########################################################################')
     print()
     # Load overlay
-    ol = Overlay("./bitstream/pynq_mb_jahwa_v3.bit")
+    # ol = Overlay("./bitstream/pynq_mb_jahwa_v3.bit")
+    ol = Overlay("./bitstream/pynq_mb_jahwa_v5.bit")
 
     print('##########################################################################')
     print('#                            Configuring GPIO                            #')
@@ -437,7 +507,8 @@ if __name__ == "__main__":
     } 
 
     # Instantiate microblaze class
-    _microblaze = MicroBlaze(SoftProcessor, "./bitstream/pynq_tcp_test.bin")
+    # _microblaze = MicroBlaze(SoftProcessor, "./bitstream/pynq_tcp_test.bin")
+    _microblaze = MicroBlaze(SoftProcessor, "./bitstream/pynq_jahwa_daq_v2.bin")
 
     # Check microblaze state
     print("Microblaze state: {}".format(_microblaze.state))
@@ -449,6 +520,7 @@ if __name__ == "__main__":
     # Define server address and port
     server_addr = '192.168.2.99'
     server_port = input("Enter port number, default is 5555: ")
+    print()
 
     # Check if port number is empty
     if server_port == '':
