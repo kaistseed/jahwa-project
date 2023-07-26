@@ -23,13 +23,13 @@ import csv
 import time
 import struct
 import asyncio
-# import numpy as np
+import numpy as np
 from datetime import datetime
-# import matplotlib.pyplot as plt
-# from slack_sdk import WebClient
-# from slack_sdk.errors import SlackApiError
-# from sklearn.linear_model import LinearRegression
-
+import matplotlib.pyplot as plt
+from slack_sdk import WebClient
+from slack_sdk.errors import SlackApiError
+from sklearn.linear_model import LinearRegression
+import pyvisa
 # User-defined library
 from library.packet import *
 
@@ -331,7 +331,7 @@ async def tcp_client(server_addr, server_port):
     if not response:
         print("No response from PYNQ server (read sensor ID)")
         raise Exception("Closing connection")
-    
+
     ##############################################################################################
     ##############################################################################################
     # Configure DAC I/O
@@ -454,7 +454,7 @@ async def tcp_client(server_addr, server_port):
             data = abs(float("{:.8f}".format(float(meter.query(":MEAS:CURR?")))))
             V_meas.append(data)
             # Voltage
-            time.sleep(Sample_delay)
+            time.sleep(Meter_delay)
             aux_data = float("{:.6f}".format(float(aux_meter.query(":MEAS:VOLT?"))))
             V_aux.append(aux_data)
 
@@ -478,11 +478,13 @@ async def tcp_client(server_addr, server_port):
                 # Decode packet
                 decoded_packet = decode_packet(response)
                 # Get ADC data
-                ADC_id.extend(decoded_packet['adc_id'])
-                ADC_softspan.extend(decoded_packet['adc_softspan'])
-                ADC_value.extend(decoded_packet['adc_value'])
-                ADC_voltage.extend(decoded_packet['adc_voltage'])
-                Active_meas.extend(decoded_packet['adc_voltage'])
+                ADC_id.append(decoded_packet['adc_id'][Active_ADC_ch])
+                ADC_softspan.append(decoded_packet['adc_softspan'][Active_ADC_ch])
+                ADC_value.append(decoded_packet['adc_value'][Active_ADC_ch])
+                ADC_voltage.append(decoded_packet['adc_voltage'][Active_ADC_ch])
+                Active_meas.append(decoded_packet['adc_voltage'][Active_ADC_ch])
+                print(decoded_packet['adc_id'][Active_ADC_ch])
+                print(decoded_packet['adc_voltage'][Active_ADC_ch])
 
             ######################################################################################
             #                                    Print Status                                    #
@@ -539,7 +541,7 @@ async def tcp_client(server_addr, server_port):
             ######################################################################################
             meter.write(":SOURce:CURRent:LEVel:IMMediate:AMPLitude {}".format(I_Load))
             print("Load current: {}".format(I_Load))
-            I_Load -= Active_step
+            I_Load -= Static_step
 
             ######################################################################################
             #                                  Read Source Meter                                 #
@@ -548,7 +550,7 @@ async def tcp_client(server_addr, server_port):
             data = abs(float("{:.8f}".format(float(meter.query(":MEAS:CURR?")))))
             V_meas.append(data)
             # Voltage
-            time.sleep(Sample_delay)
+            time.sleep(Meter_delay)
             aux_data = float("{:.6f}".format(float(aux_meter.query(":MEAS:VOLT?"))))
             V_aux.append(aux_data)
 
@@ -572,11 +574,12 @@ async def tcp_client(server_addr, server_port):
                 # Decode packet
                 decoded_packet = decode_packet(response)
                 # Get ADC data
-                ADC_id.extend(decoded_packet['adc_id'])
-                ADC_softspan.extend(decoded_packet['adc_softspan'])
-                ADC_value.extend(decoded_packet['adc_value'])
-                ADC_voltage.extend(decoded_packet['adc_voltage'])
-                Static_meas.extend(decoded_packet['adc_voltage'])
+                ADC_id.append(decoded_packet['adc_id'][Static_ADC_ch])
+                ADC_softspan.append(decoded_packet['adc_softspan'][Static_ADC_ch])
+                ADC_value.append(decoded_packet['adc_value'][Static_ADC_ch])
+                ADC_voltage.append(decoded_packet['adc_voltage'][Static_ADC_ch])
+                Static_meas.append(decoded_packet['adc_voltage'][Static_ADC_ch])
+
 
             ######################################################################################
             #                                    Print Status                                    #
@@ -660,10 +663,10 @@ async def tcp_client(server_addr, server_port):
             #                                  Read Source Meter                                 #
             ######################################################################################
             # Current
-            data = abs(float("{:.8f}".format(float(meter.query(":MEAS:CURR?")))))
+            data = abs(float("{:.8f}".format(float(meter.query(":MEAS:VOLT?")))))
             V_meas.append(data)
             # Voltage
-            time.sleep(Sample_delay)
+            time.sleep(Meter_delay)
             aux_data = float("{:.6f}".format(float(aux_meter.query(":MEAS:VOLT?"))))
             V_aux.append(aux_data)
 
@@ -687,11 +690,12 @@ async def tcp_client(server_addr, server_port):
                 # Decode packet
                 decoded_packet = decode_packet(response)
                 # Get ADC data
-                ADC_id.extend(decoded_packet['adc_id'])
-                ADC_softspan.extend(decoded_packet['adc_softspan'])
-                ADC_value.extend(decoded_packet['adc_value'])
-                ADC_voltage.extend(decoded_packet['adc_voltage'])
-                Static_meas.extend(decoded_packet['adc_voltage'])
+                ADC_id.append(decoded_packet['adc_id'][Voltage_ADC_ch])
+                ADC_softspan.append(decoded_packet['adc_softspan'][Voltage_ADC_ch])
+                ADC_value.append(decoded_packet['adc_value'][Voltage_ADC_ch])
+                ADC_voltage.append(decoded_packet['adc_voltage'][Voltage_ADC_ch])
+                Voltage_meas.append(decoded_packet['adc_voltage'][Voltage_ADC_ch])
+
             
             ######################################################################################
             #                                    Print Status                                    #
@@ -880,15 +884,15 @@ if __name__ == "__main__":
         # Set source meter and measurement configurations
         # Number of samples
         Active_samples = 1001 #1000
-        Static_samples = 10001 #10000
+        Static_samples = 7001 #10000
         Voltage_samples = 4096 #4096
         # Sample step
         Active_step = 1E-3
         Static_step = 1E-6
         Voltage_step = 1 #1 DAC code
         # Averaging parameters
-        Voltage_averaging_samples = 8
-        Active_averaging_samples = 8
+        Voltage_averaging_samples = 16
+        Active_averaging_samples = 16
         Static_averaging_samples = 16
         Sample_accumulator = 0
         # Array for storing data
@@ -905,7 +909,8 @@ if __name__ == "__main__":
         Voltage_meas = []
 
         # Configure the device
-        Sample_delay = 0.03 #Seconds
+        Sample_delay = 50 #ms
+        Meter_delay = 0.03
         I_Load = -1E-03
         V_Limit = 10
         I_Max = 1.1 #13.3
@@ -956,7 +961,7 @@ if __name__ == "__main__":
             Static_ADC_ch = 6
             Active_ADC_ch = 6
             Voltage_ADC_ch = 7
-            Active_samples = 501
+            Active_samples = 301
         # Print ADC channel configuration
         print("Active ADC Channel: {} - Static ADC Channel: {} - Voltage ADC Channel: {}".\
             format(Active_ADC_ch, Static_ADC_ch, Voltage_ADC_ch))

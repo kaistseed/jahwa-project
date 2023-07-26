@@ -147,6 +147,10 @@ def process_data(output_dir, channel_num, measure_mode):
         voltage_slope = (voltage_meas[voltage_sample_num - 300] - voltage_meas[100]) / (voltage_adc[voltage_sample_num - 300] - voltage_adc[100])
         voltage_zero = ((voltage_adc[100] * voltage_slope) - (voltage_meas[100]))
 
+        # Add slope and intercept to list
+        voltage_curve_param.append(voltage_slope)
+        voltage_curve_param.append(voltage_zero)
+
         # Print slope and intercept
         print("Voltage slope: {}".format(voltage_slope))
         print("Voltage zero: {}".format(voltage_zero))
