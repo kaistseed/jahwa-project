@@ -1,0 +1,4 @@
+fpga-board/python/grpc/
+fpga-board/python/modbus/
+host-pc/python/grpc/
+host-pc/python/modbus/
