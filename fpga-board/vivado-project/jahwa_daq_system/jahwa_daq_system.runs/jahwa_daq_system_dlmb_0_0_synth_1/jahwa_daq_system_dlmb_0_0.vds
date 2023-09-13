@@ -1,0 +1,18 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Mon Sep 11 11:41:39 2023
+# Process ID: 6972
+# Current directory: D:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.runs/jahwa_daq_system_dlmb_0_0_synth_1
+# Command line: vivado.exe -log jahwa_daq_system_dlmb_0_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source jahwa_daq_system_dlmb_0_0.tcl
+# Log file: D:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.runs/jahwa_daq_system_dlmb_0_0_synth_1/jahwa_daq_system_dlmb_0_0.vds
+# Journal file: D:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.runs/jahwa_daq_system_dlmb_0_0_synth_1\vivado.jou
+#-----------------------------------------------------------
+source jahwa_daq_system_dlmb_0_0.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'd:/Projects/2023/PYNQ/boards/ip'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'd:/Jahwa/windows/vivado/project/pynq_jahwa_daq/pynq_jahwa_daq.ip_repo'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2020.2/data/ip'.
+INFO: [IP_Flow 19-4838] Using cached IP synthesis design for IP jahwa_daq_system_dlmb_0_0, cache-ID = 10a7ffdce65344f1.
+INFO: [Common 17-206] Exiting Vivado at Mon Sep 11 11:41:47 2023...
