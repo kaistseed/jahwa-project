@@ -1,7 +1,7 @@
 <table width="100%" align="center" style="border:0px solid white;>
  <tr width="100%">
     <td align="center">
-     <img src="https://upload.wikimedia.org/wikipedia/commons/c/cb/Xilinx_logo.svg" width="100%"/><h1>Jahwa Project - Data Acquisition System</h1>
+     <img src="https://github.com/kaistseed/jahwa-project/blob/58c5aba0af4744f45f7f5dcbe4be48ae3b835f62/documentation/resources/jahwa.png" width="50%"/><h1>Jahwa Project - Data Acquisition System</h1>
     </td>
  </tr>
 </table>
