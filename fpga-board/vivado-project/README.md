@@ -24,7 +24,7 @@
 
 ### Xilinx Vivado
 <p align="center">
-    <img src="D:\Jahwa\documentation\resources\vivado-logo.png" alt="vivado-logo" width="40%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/vivado-logo.png" alt="vivado-logo" width="40%" />
 </p>
 
 
@@ -39,7 +39,7 @@ Vivado design suite is an integrated design environment (IDE) developed by Xilin
 ### Xilinx Vitis
 
 <p align="center">
-    <img src="D:\Jahwa\documentation\resources\vitis-logo.png" alt="vitis-logo" width="60%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/vitis-logo.png" alt="vitis-logo" width="60%" />
 </p>
 
 Xilinx Vitis is an integrated design environment (IDE) for writing FPGA software. Vitis consists of multiple tools including Xilinx SDK, Vitis High-Level Synthesis (HLS), and SDSoC. The difference between each tool can be explained as follows:
@@ -53,7 +53,7 @@ Xilinx Vitis is an integrated design environment (IDE) for writing FPGA software
 ### PYNQ Framework
 
 <p align="center">
-    <img src="D:\Jahwa\documentation\resources\pynq-logo.png" alt="pynq-logo" width="55%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/pynq-logo.png" alt="pynq-logo" width="55%" />
 </p>
 
 PYNQ is an open-source Xilinx framework designed for system designers, software developers, and hardware designers to use Xilinx platforms easily. With the support of Python language and libraries, designers can benefit from using programmable logic and microprocessors to build more exciting and robust embedded systems. The PYNQ framework can now be used with Zynq, Zynq UltraScale+, Zynq RFSoC, and Alveo accelerator boards.
@@ -66,7 +66,7 @@ PYNQ is an open-source Xilinx framework designed for system designers, software 
 To install Xilinx IDE, including Vivado and Vitis on your computer, first, you need to download the installer from the Xilinx website. You can download the software through the following link: [**Xilinx Download Page**](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools.html). You can choose either the online or offline installer on the download page. If you select an offline installer, the downloaded software can be used in either Linux or Windows operating systems. 
 
 <p align="center">
-    <img src="D:\Jahwa\documentation\resources\xilinx-download.png" alt="xilinx-download" width="75%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/xilinx-download.png" alt="xilinx-download" width="50%" />
 </p>
 During installation, you need to choose the **Vivado HL Webpack edition** since it doesn't require any license to use the software. If you are using an online installer, please make sure that you have around 40 GB of free space left on your computer since the installer will download a couple of files with a total size of around 35 GB.
 
@@ -87,14 +87,14 @@ To set up the PYNQ board, you need to prepare the following items:
 After preparing those items, the first thing to do is to download the correct PYNQ image file for the board from the following link [**PYNQ Board File Download Page**](http://www.pynq.io/board.html). For this tutorial, you will use the PYNQ Z1 board from Digilent. So, download the PYNQ image for the PYNQ Z1 board.
 
 <p align="center">
-    <img src="D:\Jahwa\documentation\resources\pynq-board-file.png" alt="pynq-board-file" width="85%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/pynq-board-file.png" alt="pynq-board-file" width="50%" />
 </p>
 
 
 After downloading the PYNQ Image, flash the image into the SD card using an OS flasher tool such as **Balena Etcher**. You can download Balena Etcher software from the following link: [**Etcher Download Page**](https://www.balena.io/etcher/). After flashing the PYNQ image to an SD card, you can now try to connect the board to your computer by following the steps below:
 
 <p align="center">
-    <img src="D:\Jahwa\documentation\resources\pynq-setup.jpg" alt="pynq-setup" width="75%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/pynq-setup.jpg" alt="pynq-setup" width="50%" />
 </p>
 
 
@@ -134,7 +134,7 @@ First, open up the Vivado application and create a new project.
 6.	In the board selection section, choose PYNQ-Z1 board if it is available. Otherwise, you should download the PYNQ-Z1 board file and copy the board files folder to `<Xilinx installation directory>\Vivado\<version>\data\xhub\boards\XilinxBoardStore\boards\Xilinx\`. (Note: for older Vivado versions, you need to copy the board files to `<Xilinx installation directory>\Vivado\<version>\data\boards`). You can download the board file from the following link: [**PYNQ-Z1 Board Files**](https://github.com/cathalmccabe/pynq-z1_board_files/raw/master/pynq-z1.zip).
 
 <p align="center">
-    <img src="D:\Jahwa\documentation\resources\pynq-board.png" alt="pynq-setup" width="75%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/pynq-board.png" alt="pynq-board" width="65%" />
 </p>
 
 
@@ -142,7 +142,7 @@ First, open up the Vivado application and create a new project.
 First, download the custom IP blocks from the [**PYNQ GitHub repository**](https://github.com/Xilinx/PYNQ). You can do this by cloning the repository to your PC or downloading the repository as a zip file. After that, open the IP catalog and add the IP blocks from the PYNQ GitHub repository. The PYNQ IP blocks can be found in **boards/ip** directory inside the PYNQ folder that have been downloaded in the previous step. Note that you should add the entire IP folder instead of individual IP blocks inside the IP folder.
 
 <p align="center">
-    <img src="D:\Jahwa\documentation\resources\ip-repo.png" alt="ip-repo" width="100%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/ip-repo.png" alt="ip-repo" width="100%" />
 </p>
 
 
@@ -153,12 +153,12 @@ Typically, when crafting FPGA designs, designers usually have to write code usin
 For creating the block design for this project, you can use the provided [**tcl script**](#vivado-tcl-script) in the appendix section to automate the block design creation process or do it manually. If you want to use the tcl script, copy the entire code to the tcl console in Vivado, as shown in the figure below.
 
 <p align="center">
-    <img src="D:\Jahwa\documentation\resources\tcl-console.png" alt="tcl-console" width="75%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/tcl-console.png" alt="tcl-console" width="75%" />
 </p>
 If you prefer to create the block design manually, you need to create a new one by selecting the **Create Block Design** option in the flow navigator. After that, you must create a design, as shown in the figure below.
 
 <p align="center">
-    <img src="D:\Jahwa\documentation\resources\block-design.png" alt="block-design" width="100%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/block-design.png" alt="block-design" width="100%" />
 </p>
 
 A detailed explanation of each IP block can be found in the following section.
@@ -174,19 +174,19 @@ A detailed explanation of each IP block can be found in the following section.
   3. After you add the ZYNQ IP core, you will see a green option window with the **Run Block Automation** text. This block automation option will help you connect the design's IP core. But sometimes, the connection created by this automation process is not correct. So, recheck the connection after performing a block automation operation.
 
      <p align="center">
-         <img src="D:\Jahwa\documentation\resources\block-automation.png" alt="block-automation" width="100%" />
+         <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/block-automation.png" alt="block-automation" width="80%" />
      </p>
 
   4. After running block automation, new wires and external interfaces, such as **DDR** and **FIXED_IO,** will appear in the design corresponding to the board output pins.
 
      <p align="center">
-         <img src="D:\Jahwa\documentation\resources\zynq-bd.png" alt="zynq-bd" width="80%" />
+         <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/zynq-bd.png" alt="zynq-bd" width="75%" />
      </p>
 
   5. The next step is customizing the `ZYNQ Processing System` core to meet the design requirement. For this project, you need to enable **external memory I/O (EMIO)** port. This port will send reset signals to the MicroBlaze soft processor. In addition, **interrupt** ports also need to be enabled so that the ARM processor can receive interrupt signals from the MicroBlaze soft processor. The configuration details can be seen in the figure below.
 
      <p align="center">
-         <img src="D:\Jahwa\documentation\resources\zynq-config.png" alt="zynq-bd" width="100%" />
+         <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/zynq-config.png" alt="zynq-bd" width="100%" />
      </p>
 
   
@@ -207,13 +207,13 @@ A detailed explanation of each IP block can be found in the following section.
   To configure the IP, double click the IP and choose the IP configuration tab. In the IP configuration section, you must check the **All Outputs** option and set the GPIO width accordingly.
   
   <p align="center">
-      <img src="D:\Jahwa\documentation\resources\axi-gpio-config.png" alt="axi-gpio-config" width="75%" />
+      <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/axi-gpio-config.png" alt="axi-gpio-config" width="60%" />
   </p>
   
   After configuring every AXI GPIO IP, you need to connect the output of the IP with a port. You can create a port by **right click** on the block diagram window and selecting **create interface port**. A new window will appear, and you can search for GPIO.
   
   <p align="center">
-      <img src="D:\Jahwa\documentation\resources\gpio-port.png" alt="gpio-port" width="50%" />
+      <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/gpio-port.png" alt="gpio-port" width="35%" />
   </p>
   
   
@@ -222,7 +222,7 @@ A detailed explanation of each IP block can be found in the following section.
   The AXI Quad SPI IP block connects the AXI Interface to external SPI devices. This IP block support standard, dual, or quad SPI protocol instruction set. For this project, the AXI Quad SPI block is used to configure the output voltage of the LDO, configure the external ADC, and get the output value of the external ADC. The configuration details for the SPI IP block can be seen in the figure below. 
   
   <p align="center">
-      <img src="D:\Jahwa\documentation\resources\spi-config.png" alt="spi-config" width="90%" />
+      <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/spi-config.png" alt="spi-config" width="75%" />
   </p>
 In the figure above, the transaction width is set to a 16-bit packet since both ADC and LDO communicate to the SPI master by sending data in 16-bit chunks. As for the SPI transaction speed, it is set to 25 MHz by configuring the frequency ratio to 4 since the main system clock is set to 100 MHz. After adding the SPI IP block, connect the SPI block output to the interface port in the block diagram.
 
@@ -233,7 +233,7 @@ In the figure above, the transaction width is set to a 16-bit packet since both 
   The AXI IIC IP block connects the AXI interface and external devices using a low-speed, two-wire IIC interface. In this project, an IIC interface is needed so that the FPGA can communicate with the Meissner sensor. The configuration detail of the AXI IIC can be seen in the figure below.
 
   <p align="center">
-      <img src="D:\Jahwa\documentation\resources\iic-config.png" alt="iic-config" width="90%" />
+      <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/iic-config.png" alt="iic-config" width="75%" />
   </p>
   In the configuration above, the IIC clock speed is set to the maximum clock speed at 1 MHz. In addition, the Meissner sensor uses a low state as an active data signal. So, the active state of the SDA is set to 0. After adding the IIC IP block, connect the IIC block output to the interface port in the block diagram.
 
@@ -252,7 +252,7 @@ In the figure above, the transaction width is set to a 16-bit packet since both 
   4. In the next window, it will show a default module that has a single AXI4-LITE Slave Interface. You can add another AXI interface to the IP core. But, for this specific project, a **single AXI4-LITE Slave Interface** with a **data width of 32 bits** and **8 registers** is enough.
   
      <p align="center">
-         <img src="D:\Jahwa\documentation\resources\axi-clkdiv-port.png" alt="axi-clkdiv-port" width="90%" />
+         <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/axi-clkdiv-port.png" alt="axi-clkdiv-port" width="60%" />
      </p>
   
   5. At the next window, you will edit the IP core immediately. So, select **Edit IP** option and it will take you to the IP editor window.
@@ -260,13 +260,13 @@ In the figure above, the transaction width is set to a 16-bit packet since both 
   6. At the editor window, navigate to the source menu and double-click on the inner file (the one with `S00_AXI_inst`). This Verilog file contains all of the AXI-LITE timing and state machine template. So, you only need to add your logic to interact with this AXI interface.
   
      <p align="center">
-         <img src="D:\Jahwa\documentation\resources\axi-clkdiv-window.png" alt="axi-clkdiv-window" width="100%" />
+         <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/axi-clkdiv-window.png" alt="axi-clkdiv-window" width="100%" />
      </p>
   
   7. This custom IP block will take the **input clock signal** and generate the **output trigger signal** based on the **division ratio** and the **number of trigger signal** parameters that are written to the AXI slave register by the user. The frequency of the **output trigger signal** is obtained by dividing the **input clock signal** frequency by the **division ratio**. Please note that this IP block only supports a division ratio that is an even number. The **number of trigger signal** parameter determines how many pulses that are generated by the clock divider. The overall clock divider block scheme is described in the simulation waveform below.
   
      <p align="center">
-         <img src="D:\Jahwa\documentation\resources\axi-clkdiv-sim.png" alt="axi-clkdiv-sim" width="100%" />
+         <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/axi-clkdiv-sim.png" alt="axi-clkdiv-sim" width="100%" />
      </p>	
   
      In the waveform above, four pulses of output trigger signal are generated when the **division ratio** is set to 2 and the **number of trigger signal** parameter is set to **4**. Meanwhile, when the user sets the **division ratio** to **4**, and the number of trigger signal parameter is set to **10**, 10 pulses of 25 MHz signal are produced.
@@ -487,19 +487,19 @@ In the figure above, the transaction width is set to a 16-bit packet since both 
   13. The next step is to package the newly created custom AXI IP core that you have made. This can be done by looking at the **Packaging Steps** tab in the IP Editor window. In the **Packaging Steps,** you need to ensure that all of the tabs have green checkmarks. Otherwise, you need to resolve those issues by clicking on the unchecked tab and clicking on the text with blue color and yellow background. For example, in the **Customization Parameters** tab, you need to click **Merge Changes from Customization Parameters Wizard** text to resolve the issue. After that, you can repackage the IP by clicking on **Review and Package** tab and click the **Re-Package IP** button.
   
       <p align="center">
-          <img src="D:\Jahwa\documentation\resources\ip-repackaging.png" alt="ip-repackaging" width="100%" />
+          <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/ip-repackaging.png" alt="ip-repackaging" width="100%" />
       </p>	
   
   14. If there are no errors in the design, you will be asked if you want to return to your main project. You need to click **OK** to exit IP editor. Upon exit, you need to upgrade the IP block by first clicking the **report IP status** on the block diagram editor. After that, click the **Upgrade Selected** button on the IP status window. Make sure that the clock divider IP checkbox is checked before upgrading the IP.
   
       <p align="center">
-          <img src="D:\Jahwa\documentation\resources\ip-upgrade.png" alt="ip-upgrade" width="100%" />
+          <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/ip-upgrade.png" alt="ip-upgrade" width="90%" />
       </p>	
   
      15. The last step is to add the IP to the block diagram and connect the output of the clock divider IP to the external port. Since the output port is not a standard interface port. Instead of choosing **create interface port** option in the right-click menu, you need to choose **create port** option. In the create port window, you only need to give the port name and set the direction to **output**.
   
          <p align="center">
-             <img src="D:\Jahwa\documentation\resources\clkdiv-port.png" alt="clkdiv-port" width="50%" />
+             <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/clkdiv-port.png" alt="clkdiv-port" width="40%" />
          </p>
          
          
@@ -523,7 +523,7 @@ In the figure above, the transaction width is set to a 16-bit packet since both 
   The design of the MicroBlaze soft processor subsystem can be seen in the figure below. Since the design is complicated, you can automatically create the MicroBlaze subsystem by pasting the [**tcl script**](#microblaze-soft-processor-tcl-script) to the Vivado tcl console.
 
   <p align="center">
-      <img src="D:\Jahwa\documentation\resources\mb-softprocessor.png" alt="mb-softprocessor" width="100%" />
+      <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/mb-softprocessor.png" alt="mb-softprocessor" width="100%" />
   </p>
 
   One important thing in the MicroBlaze subsystem design above is that there are three AXI Timer instances with the function of each timer are explained below:
@@ -562,7 +562,7 @@ After creating the top block design, you need to edit the memory address mapping
 The detail of the address spaces that are used by ARM and MicroBlaze Processor can be found in the figure below.
 
 <p align="center">
-    <img src="D:\Jahwa\documentation\resources\address-editor.png" alt="address-editor" width="100%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/address-editor.png" alt="address-editor" width="100%" />
 </p>
 
 
@@ -573,13 +573,13 @@ After you have created the top design and edited the memory address mapping, the
 1. Validate the block design by clicking the **validate design** button at the top of the diagram window (a square with a checkmark symbol). This process will perform a sanity check of your system and flag any potential problems in the design, such as unconnected wires, incompatible pins, etc. For this project, if you get a warning related to the clock and reset signal, you can ignore it. But, if there are any other warnings or errors after design validation, you need to fix the problem in the design.
 
    <p align="center">
-       <img src="D:\Jahwa\documentation\resources\validate-design.png" alt="validate-design" width="100%" />
+       <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/validate-design.png" alt="validate-design" width="100%" />
    </p>
 
 2. After validating the design, under the `Sources` menu, right-click on the block diagram file (file with .bd extension), and click  **Create HDL Wrapper** option. For the sake of simplicity, let Vivado manage and automatically update the design. The **Create HDL Wrapper** process will create a high-level Verilog file representing your block diagram.
 
    <p align="center">
-       <img src="D:\Jahwa\documentation\resources\hdl-wrapper.png" alt="hdl-wrapper" width="100%" />
+       <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/hdl-wrapper.png" alt="hdl-wrapper" width="100%" />
    </p>
 
 3. If there are no errors, you can start synthesizing the design by clicking the **run synthesis** option under the synthesis menu in the flow navigator. After clicking the **run synthesis** button, a new window will appear in which you can choose how many jobs (CPU cores) you would use for the synthesis process. The synthesis process may take a couple of minutes, depending on the number of jobs you use and the design complexity. Errors may appear during this process. So, pay attention and fix it by checking the error message in the tcl console or log windows at the bottom of Vivado.
@@ -587,7 +587,7 @@ After you have created the top design and edited the memory address mapping, the
 4. After the synthesis process is complete, you need to change the board pin mapping. This step is necessary so that the interface port such as SPI and IIC ports are mapped to the correct pin in the PYNQ board. The pin mapping can be changed by clicking **open synthesis design** in the flow navigator and after the design opens, click **window** and then **I/O ports** option from the toolbar.
 
    <p align="center">
-       <img src="D:\Jahwa\documentation\resources\pin-mapping.png" alt="pin-mapping" width="100%" />
+       <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/pin-mapping.png" alt="pin-mapping" width="100%" />
    </p>
 
    In the I/O ports menu, you need to change board pin mapping as follows:
@@ -628,5 +628,5 @@ After finish configuring the pin mapping, you can start generating bitstream for
 3. The next step is to generate a hardware design file for Vitis. This hardware design file will be used to create firmware for the Microblaze softprocessor. To export the hardware design file, you can click **Export Hardware**, and after that, a new window will appear. In this window, you need to choose **include bitstream** option. Otherwise, the Vitis won't generate the firmware for the Microblaze properly.
 
    <p align="center">
-       <img src="D:\Jahwa\documentation\resources\generate-bitstream.png" alt="generate-bitstream" width="100%" />
+       <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/generate-bitstream.png" alt="generate-bitstream" width="100%" />
    </p>
