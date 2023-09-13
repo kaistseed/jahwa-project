@@ -149,7 +149,7 @@ First, download the custom IP blocks from the [**PYNQ GitHub repository**](https
 
 Typically, when crafting FPGA designs, designers usually have to write code using hardware description languages (Verilog/VHDL), a complex and time-consuming task. However, Vivado offers a simpler method through a block diagram approach. This method allows designers to seamlessly combine various IP blocks by visually linking them. Vivado will then automatically create HDL wrapper codes for synthesis, resulting in a bitstream file configuring the FPGA fabric on the selected FPGA board.
 
-For creating the block design for this project, you can use the provided [**tcl script**](#vivado-tcl-script) in the appendix section to automate the block design creation process or do it manually. If you want to use the tcl script, copy the entire code to the tcl console in Vivado, as shown in the figure below.
+For creating the block design for this project, you can use the provided [**tcl script**](https://github.com/kaistseed/jahwa-project/blob/main/fpga-board/vivado-project/jahwa_daq_system/jahwa_daq_system.script/bd_script.tcl) in the repository to automate the block design creation process or do it manually. If you want to use the tcl script, copy the entire code to the tcl console in Vivado, as shown in the figure below.
 
 <p align="center">
     <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/tcl-console.png" alt="tcl-console" width="75%" />
@@ -519,7 +519,7 @@ In the figure above, the transaction width is set to a 16-bit packet since both 
   - Reset Vector (from PYNQ repository)
   - AXI Interconnect (for connecting MicroBlaze and peripheral IP block)
 
-  The design of the MicroBlaze soft processor subsystem can be seen in the figure below. Since the design is complicated, you can automatically create the MicroBlaze subsystem by pasting the [**tcl script**](#microblaze-soft-processor-tcl-script) to the Vivado tcl console.
+  The design of the MicroBlaze soft processor subsystem can be seen in the figure below. Since the design is complicated, you can automatically create the MicroBlaze subsystem by pasting the [**tcl script**](https://github.com/kaistseed/jahwa-project/blob/main/fpga-board/vivado-project/jahwa_daq_system/jahwa_daq_system.script/microblaze.tcl) to the Vivado tcl console.
 
   <p align="center">
       <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/mb-softprocessor.png" alt="mb-softprocessor" width="100%" />
