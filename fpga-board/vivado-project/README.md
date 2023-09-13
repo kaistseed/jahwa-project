@@ -7,9 +7,8 @@
 
 * [Context](#information_source-context)
 * [Background](#mag-background)
-* [Tools Installation and Configuration](#tools-installation-and-configuration)
-* [Creating FPGA Design using Xilinx Vivado](#creating-fpga-design-using-xilinx-vivado)
-* [References](#book-references)
+* [Tools Installation and Configuration](#gear-tools-installation-and-configuration)
+* [Creating FPGA Design using Xilinx Vivado](#computer-creating-fpga-design-using-xilinx-vivado)
 
 ---------------------------
 
