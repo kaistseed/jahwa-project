@@ -26,7 +26,7 @@
  <td align="center">Contains tutorial and necessary files to create firmware for controlling the MicroBlaze processor and other IP blocks</td>
  </tr>
  <tr>
- <td align="center"><a href="https://github.com/kaistseed/intro-to-xilinx-fpga/tree/main/03-digital-sensor">Board Calibration Guide</a></td>
+ <td align="center"><a href="">Board Calibration Guide</a></td>
  <td align="center">Host PC and FPGA Board</td>
  <td align="center">Contains files that are required to perform board calibration</td>
  </tr>
