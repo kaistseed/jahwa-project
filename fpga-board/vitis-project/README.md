@@ -92,7 +92,7 @@ The following section will guide you on how to write firmware for controlling Mi
 5. After configuring all the application settings, you will be given the option to select a template project file. For this project, the firmware will be written using C language, so just choose **Empty Application** template.
 
    <p align="center">
-       <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/vitis-template.png" alt="vitis-template" width="75%" />
+       <img src="https://github.com/kaistseed/jahwa-project/blob/a9197fd801e5fbacc2df49b14cec5f30555d249c/documentation/resources/vitis-template.png" alt="vitis-template" width="75%" />
    </p>
 
 
@@ -127,7 +127,7 @@ Before writing C code for the MicroBlaze firmware, you need to do an initial bui
 3. Open Vitis shell by clicking the white command prompt symbol in the toolbar
 
    <p align="center">
-       <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/vitis-shell.png" alt="vitis-shell" width="100%" />
+       <img src="https://github.com/kaistseed/jahwa-project/blob/a9197fd801e5fbacc2df49b14cec5f30555d249c/documentation/resources/vitis-shell.png" alt="vitis-shell" width="100%" />
    </p>
 
 3. After entering the shell, move to 
