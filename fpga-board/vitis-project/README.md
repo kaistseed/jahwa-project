@@ -7,7 +7,7 @@
 
 * [Context](#information_source-context)
 * [Background](#mag-background)
-* [Creating FPGA Design using Xilinx Vivado](#computer-creating-fpga-design-using-xilinx-vivado)
+* [Creating FPGA Design using Xilinx Vivado](#computer-writing-fpga-firmware-using-xilinx-vitis)
 
 ---------------------------
 
@@ -60,42 +60,90 @@ PYNQ is an open-source Xilinx framework designed for system designers, software 
 
 ## :computer: Writing FPGA Firmware using Xilinx Vitis
 
-1. Create workspace
+The following section will guide you on how to write firmware for controlling MicroBlaze softprocessor and all of the IP blocks that are connected to the MicroBlaze such as SPI, IIC, Timer, and GPIO IP block.
+
+### Create New Vitis Project
+
+
+1. First, open up the Vitis application and create a new **application project**. After that, a new window will appear, and you need to set the location of the Vitis workspace. You can set the workspace to any location you want. 
 
    <p align="center">
-       <img src="D:\Jahwa\documentation\resources\vitis-workspace.png" alt="vitis-workspace" width="60%" />
+       <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/vitis-workspace.png" alt="vitis-workspace" width="50%" />
    </p>
 
-2. Import hardware platform
+2. Next, you need to import the **hardware file** (.xsa file) generated when you make the FPGA overlay using Vivado. If you cannot find the hardware file, please refer to the Vivado project guide on how to create hardware file for your FPGA overlay.
 
    <p align="center">
-       <img src="D:\Jahwa\documentation\resources\import-hardware.png" alt="import-hardware" width="100%" />
+       <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/import-hardware.png" alt="import-hardware" width="100%" />
    </p>
 
-3. Choose target processor
+3. After that, you need to set the application project details, such as the application project name, system project details, and target processor. You must choose the MicroBlaze processor for the target processor since you want to write the firmware for the MicroBlaze, not for the ARM processor.
 
    <p align="center">
-       <img src="D:\Jahwa\documentation\resources\target-processor.png" alt="target-processor" width="100%" />
+       <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/target-processor.png" alt="target-processor" width="75%" />
    </p>
 
-4. Choose operating system
+4. The next step is to choose the type of operating system for the target processor. In this project, you will write a baremetal application or firmware for MicroBlaze without any operating system since the ARM processor will use the MicroBlaze processor to control all IP blocks.
 
    <p align="center">
-       <img src="D:\Jahwa\documentation\resources\operating-system.png" alt="operating-system" width="100%" />
+       <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/operating-system.png" alt="operating-system" width="75%" />
    </p>
 
-5. Choose template application
-
-   
-
-6. Change custom IP makefile
+5. After configuring all the application settings, you will be given the option to select a template project file. For this project, the firmware will be written using C language, so just choose **Empty Application** template.
 
    <p align="center">
-       <img src="D:\Jahwa\documentation\resources\makefile.png" alt="makefile" width="100%" />
+       <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/vitis-template.png" alt="vitis-template" width="75%" />
    </p>
 
-7. Debug build
+
+
+### Updating Makefile for Custom IP Blocks and Initial Project Build
+
+Before writing C code for the MicroBlaze firmware, you need to do an initial build to the project to check whether the hardware files imported from Vivado are correctly built. If you try building the project for the first time, most likely, you will encounter an error. This is due to a bug in the makefile when you have a custom-built IP block inside the design. In this project, the AXI clock divider for generating a trigger signal for the laser is a custom-built IP block. To fix the error, you should follow the following steps:
+
+
+1. Open the makefile for building the AXI clock divider and replace it with this makefile. You can find the AXI clock divider makefile inside the libsrc directory of the MicroBlaze softprocessor. 
 
    <p align="center">
-       <img src="D:\Jahwa\documentation\resources\debug-build.png" alt="debug-build" width="100%" />
+       <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/makefile.png" alt="makefile" width="100%" />
    </p>
+
+2. After replacing the makefile, you can start building the project by clicking the hammer symbol on the toolbar
+
+3. Check whether there are errors after the build process is finished. If the build is completed successfully, you can start writing the C code for controlling the MicroBlaze processor.
+
+   <p align="center">
+       <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/debug-build.png" alt="debug-build" width="100%" />
+   </p>
+
+
+
+### Copying Source Code and Generate BIN File
+
+1. Copy all libraries (C code) from the repository to the project src directory. In the repository, there are multiple C codes that contain basic functions for controlling each IP block. List of the functions that can be used is as follows:
+
+2. Write the main C code which controls the overall operation of the MicroBlaze processor.
+
+3. Open Vitis shell by clicking the white command prompt symbol in the toolbar
+
+   <p align="center">
+       <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/vitis-shell.png" alt="vitis-shell" width="100%" />
+   </p>
+
+3. After entering the shell, move to 
+4. 
+
+----------------------------------
+
+## :movie_camera: Tutorial Video
+### Creating New Vitis Application Project
+
+
+https://github.com/kaistseed/jahwa-project/assets/29477096/7735d3dc-b8d3-4cf3-87f4-235babb9f782
+
+
+### Updating Makefile for Custom IP Blocks and Initial Project Build
+
+### Copying Source Code and Generate BIN File
+
+
