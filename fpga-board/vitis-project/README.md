@@ -1,5 +1,5 @@
 # Jahwa Electronics - Data Acquisition System Project Documentation
-> <div align="justify"> This document covers all the information about the Jahwa Electronics data acquisition system project. It provides step-by-step instructions for creating FPGA designs using Xilinx Vivado, writing FPGA firmware with Xilinx Vitis, and writing application code for the ARM processor using Python.</div>
+> <div align="justify"> This document covers all the information about the Jahwa Electronics data acquisition system project. It provides step-by-step instructions for writing FPGA firmware with Xilinx Vitis.</div>
 
 --------------------------
 
@@ -7,16 +7,14 @@
 
 * [Context](#information_source-context)
 * [Background](#mag-background)
-* [Tools Installation and Configuration](#tools-installation-and-configuration)
-* [Writing FPGA Firmware using Xilinx Vitis](#writing-fpga-firmware-using-xilinx-vitis)
-* [References](#book-references)
+* [Creating FPGA Design using Xilinx Vivado](#computer-creating-fpga-design-using-xilinx-vivado)
 
 ---------------------------
 
 ## :information_source: Context
 
 *Created by*: **Dalta Imam Maulana**
-*Document Version*: **September 13th, 2023**
+*Document Version*: **September 14th, 2023**
 
 ------------------
 
@@ -24,7 +22,7 @@
 
 ### Xilinx Vivado
 <p align="center">
-    <img src="D:\Jahwa\documentation\resources\vivado-logo.png" alt="vivado-logo" width="40%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/vivado-logo.png" alt="vivado-logo" width="40%" />
 </p>
 
 
@@ -39,7 +37,7 @@ Vivado design suite is an integrated design environment (IDE) developed by Xilin
 ### Xilinx Vitis
 
 <p align="center">
-    <img src="D:\Jahwa\documentation\resources\vitis-logo.png" alt="vitis-logo" width="60%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/vitis-logo.png" alt="vitis-logo" width="60%" />
 </p>
 
 Xilinx Vitis is an integrated design environment (IDE) for writing FPGA software. Vitis consists of multiple tools including Xilinx SDK, Vitis High-Level Synthesis (HLS), and SDSoC. The difference between each tool can be explained as follows:
@@ -53,65 +51,12 @@ Xilinx Vitis is an integrated design environment (IDE) for writing FPGA software
 ### PYNQ Framework
 
 <p align="center">
-    <img src="D:\Jahwa\documentation\resources\pynq-logo.png" alt="pynq-logo" width="55%" />
+    <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/pynq-logo.png" alt="pynq-logo" width="55%" />
 </p>
 
 PYNQ is an open-source Xilinx framework designed for system designers, software developers, and hardware designers to use Xilinx platforms easily. With the support of Python language and libraries, designers can benefit from using programmable logic and microprocessors to build more exciting and robust embedded systems. The PYNQ framework can now be used with Zynq, Zynq UltraScale+, Zynq RFSoC, and Alveo accelerator boards.
 
 -------------
-
-## :gear: Tools Installation and Configuration
-
-### Installing Xilinx IDE
-To install Xilinx IDE, including Vivado and Vitis on your computer, first, you need to download the installer from the Xilinx website. You can download the software through the following link: [**Xilinx Download Page**](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools.html). You can choose either the online or offline installer on the download page. If you select an offline installer, the downloaded software can be used in either Linux or Windows operating systems. 
-
-<p align="center">
-    <img src="D:\Jahwa\documentation\resources\xilinx-download.png" alt="xilinx-download" width="75%" />
-</p>
-During installation, you need to choose the **Vivado HL Webpack edition** since it doesn't require any license to use the software. If you are using an online installer, please make sure that you have around 40 GB of free space left on your computer since the installer will download a couple of files with a total size of around 35 GB.
-
-> **Please note that different Xilinx tools versions may result in different outputs and have unexpected errors. So, for this project, it is recommended to use Xilinx 2020.2 release.**
-
-
-
-### PYNQ Board Setup
-
-To set up the PYNQ board, you need to prepare the following items:
-
-* PYNQ Z1 board
-* Computer with browser
-* Ethernet cable
-* Micro USB cable
-* Micro SD with a minimum of 8 GB capacity
-
-After preparing those items, the first thing to do is to download the correct PYNQ image file for the board from the following link [**PYNQ Board File Download Page**](http://www.pynq.io/board.html). For this tutorial, you will use the PYNQ Z1 board from Digilent. So, download the PYNQ image for the PYNQ Z1 board.
-
-<p align="center">
-    <img src="D:\Jahwa\documentation\resources\pynq-board-file.png" alt="pynq-board-file" width="85%" />
-</p>
-
-
-After downloading the PYNQ Image, flash the image into the SD card using an OS flasher tool such as **Balena Etcher**. You can download Balena Etcher software from the following link: [**Etcher Download Page**](https://www.balena.io/etcher/). After flashing the PYNQ image to an SD card, you can now try to connect the board to your computer by following the steps below:
-
-<p align="center">
-    <img src="D:\Jahwa\documentation\resources\pynq-setup.jpg" alt="pynq-setup" width="75%" />
-</p>
-
-
-1.	Set the JP4 jumper to SD position by placing the jumper over the top two pins as in the figure above.
-2.	If you use a micro USB cable to supply power to the board, place the JP5 jumper in a USB position. You can also power the board with a 12 V external power supply by configuring the JP5 jumper to REG position.
-3.	Insert the microSD card with the PYNQ image into the micro SD card slot at the bottom of the board.
-4.	Connect the micro USB cable to the board and computer.
-5.	Connect the board to the network by using an ethernet cable. The connection can be done directly to the computer or via a network router.
-6.	Turn on the board and check whether the board is operating correctly by looking at the LED indicator on the board. After turning on the board, the RED LD13 LED will turn on immediately, indicating that the board has power. Shortly after, Yellow LD12 LED will also turn on to show that the board works correctly. After a minute, two BLUE LD4 & LD5 LEDs will start flashing to indicate that the system is now booted and ready to use.
-7.	To access the PYNQ board via a direct connection, you must set the IP address of your computer to a static IP address in the range of 192.168.2.00 to 192.168.2.255 (except for 192.168.2.99 since it is used by the board).
-8.	After setting the IP address, open the browser and enter **192.168.2.99** in the address bar.
-9.	If the board is configured correctly, you will see a login screen with a password field. The username for the board is **xilinx**, and the password is also **xilinx**.
-
-For more detailed information about how the board and how to set it up, you can access the documentation at this link: [**PYNQ Z1 Setup Page**](https://pynq.readthedocs.io/en/latest/getting_started/pynq_z1_setup.html).
-
-
---------------------------------
 
 ## :computer: Writing FPGA Firmware using Xilinx Vitis
 
