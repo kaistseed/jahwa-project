@@ -144,6 +144,14 @@ https://github.com/kaistseed/jahwa-project/assets/29477096/7735d3dc-b8d3-4cf3-87
 
 ### Updating Makefile for Custom IP Blocks and Initial Project Build
 
-### Copying Source Code and Generate BIN File
+
+https://github.com/kaistseed/jahwa-project/assets/29477096/06b281fc-9a73-4e16-a735-bd7db0be5ff4
+
+
+### Building Project and Generate BIN File
+
+
+https://github.com/kaistseed/jahwa-project/assets/29477096/f2d7344a-6de2-4293-9caf-e97f4206d796
+
 
 
