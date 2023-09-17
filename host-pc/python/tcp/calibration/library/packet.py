@@ -71,6 +71,8 @@ measurement_sequence_dict = {
     'spi_config_dac': 4,
     'spi_read_adc': 5,
     'i2c_meissner_chip_id': 6,
+    'gpio_write_relay1': 7,
+    'gpio_write_relay2': 8,
 }
 
 ##################################################################################################
@@ -453,7 +455,8 @@ def encode_packet(type, *args, **kwargs):
         # Create packet based on sequence
         # DAC I/O control
         if (sequence == 'gpio_write_sdn1') or (sequence == 'gpio_write_sdn2') or \
-            (sequence == 'gpio_write_sdn3'):
+            (sequence == 'gpio_write_sdn3') or (sequence == 'gpio_write_relay1') or \
+            (sequence == 'gpio_write_relay2'):
             # Get I/O state
             io_state = data_buf[0] if data_buf[0] is not None else 0
             # Define packet

@@ -26,10 +26,10 @@ import asyncio
 import numpy as np
 from datetime import datetime
 import matplotlib.pyplot as plt
-from slack_sdk import WebClient
-from slack_sdk.errors import SlackApiError
+# from slack_sdk import WebClient
+# from slack_sdk.errors import SlackApiError
 from sklearn.linear_model import LinearRegression
-import pyvisa
+# import pyvisa
 # User-defined library
 from library.packet import *
 
@@ -62,21 +62,21 @@ async def tcp_client_test(server_addr, server_port):
         print("No response from PYNQ server (read sensor ID)")
         raise Exception("Closing connection")
 
-    # SDN2 I/O
-    print("Sending GPIO write SDN2 packet")
-    io_state = 0
-    packet = encode_packet(
-        'measurement_sequence',
-        sequence='gpio_write_sdn2',
-        data_buf=[io_state]
-    )
-    writer.write(packet)
-    await writer.drain()
-    # Receive response from PYNQ server
-    response = await reader.read(1024)
-    if not response:
-        print("No response from PYNQ server (read sensor ID)")
-        raise Exception("Closing connection")
+    # # SDN2 I/O
+    # print("Sending GPIO write SDN2 packet")
+    # io_state = 0
+    # packet = encode_packet(
+    #     'measurement_sequence',
+    #     sequence='gpio_write_sdn2',
+    #     data_buf=[io_state]
+    # )
+    # writer.write(packet)
+    # await writer.drain()
+    # # Receive response from PYNQ server
+    # response = await reader.read(1024)
+    # if not response:
+    #     print("No response from PYNQ server (read sensor ID)")
+    #     raise Exception("Closing connection")
 
     # SDN3 I/O
     print("Sending GPIO write SDN3 packet")
@@ -112,22 +112,22 @@ async def tcp_client_test(server_addr, server_port):
         print("No response from PYNQ server (read sensor ID)")
         raise Exception("Closing connection")
 
-    # SDN2 I/O
-    print("Sending SPI config DAC SDN2 packet")
-    channel = 1
-    dac_code = 1380
-    packet = encode_packet(
-        'measurement_sequence',
-        sequence='spi_config_dac',
-        data_buf=[channel, dac_code]
-    )
-    writer.write(packet)
-    await writer.drain()
-    # Receive response from PYNQ server
-    response = await reader.read(1024)
-    if not response:
-        print("No response from PYNQ server (read sensor ID)")
-        raise Exception("Closing connection")
+    # # SDN2 I/O
+    # print("Sending SPI config DAC SDN2 packet")
+    # channel = 1
+    # dac_code = 1380
+    # packet = encode_packet(
+    #     'measurement_sequence',
+    #     sequence='spi_config_dac',
+    #     data_buf=[channel, dac_code]
+    # )
+    # writer.write(packet)
+    # await writer.drain()
+    # # Receive response from PYNQ server
+    # response = await reader.read(1024)
+    # if not response:
+    #     print("No response from PYNQ server (read sensor ID)")
+    #     raise Exception("Closing connection")
 
     # SDN3 I/O
     print("Sending SPI config DAC SDN3 packet")
@@ -163,21 +163,21 @@ async def tcp_client_test(server_addr, server_port):
         print("No response from PYNQ server (read sensor ID)")
         raise Exception("Closing connection")
 
-    # SDN2 I/O
-    print("Sending GPIO write SDN2 packet")
-    io_state = 1
-    packet = encode_packet(
-        'measurement_sequence',
-        sequence='gpio_write_sdn2',
-        data_buf=[io_state]
-    )
-    writer.write(packet)
-    await writer.drain()
-    # Receive response from PYNQ server
-    response = await reader.read(1024)
-    if not response:
-        print("No response from PYNQ server (read sensor ID)")
-        raise Exception("Closing connection")
+    # # SDN2 I/O
+    # print("Sending GPIO write SDN2 packet")
+    # io_state = 1
+    # packet = encode_packet(
+    #     'measurement_sequence',
+    #     sequence='gpio_write_sdn2',
+    #     data_buf=[io_state]
+    # )
+    # writer.write(packet)
+    # await writer.drain()
+    # # Receive response from PYNQ server
+    # response = await reader.read(1024)
+    # if not response:
+    #     print("No response from PYNQ server (read sensor ID)")
+    #     raise Exception("Closing connection")
 
     # SDN3 I/O
     print("Sending GPIO write SDN3 packet")
@@ -250,6 +250,82 @@ async def tcp_client_test(server_addr, server_port):
     print("ADC Softspan: {}".format(adc_softspan))
     print("ADC Value: {}".format(adc_value))
     print("ADC Voltage: {}".format(adc_voltage))
+
+    ##############################################################################################
+    #                                       Configure Relay                                      #
+    ##############################################################################################
+    # Turn on relay 1 I/O
+    print("Sending GPIO write relay 1 packet")
+    io_state = 1
+    packet = encode_packet(
+        'measurement_sequence',
+        sequence='gpio_write_relay1',
+        data_buf=[io_state]
+    )
+    writer.write(packet)
+    await writer.drain()
+    # Receive response from PYNQ server
+    response = await reader.read(1024)
+    if not response:
+        print("No response from PYNQ server (read sensor ID)")
+        raise Exception("Closing connection")
+    
+    # Delay
+    time.sleep(2)
+
+    # Turn on relay 2 I/O
+    print("Sending GPIO write relay 2 packet")
+    io_state = 1
+    packet = encode_packet(
+        'measurement_sequence',
+        sequence='gpio_write_relay2',
+        data_buf=[io_state]
+    )
+    writer.write(packet)
+    await writer.drain()
+    # Receive response from PYNQ server
+    response = await reader.read(1024)
+    if not response:
+        print("No response from PYNQ server (read sensor ID)")
+        raise Exception("Closing connection")
+    
+    # Delay
+    time.sleep(2)
+
+    # Turn off relay 1 I/O
+    print("Sending GPIO write relay 1 packet")
+    io_state = 0
+    packet = encode_packet(
+        'measurement_sequence',
+        sequence='gpio_write_relay1',
+        data_buf=[io_state]
+    )
+    writer.write(packet)
+    await writer.drain()
+    # Receive response from PYNQ server
+    response = await reader.read(1024)
+    if not response:
+        print("No response from PYNQ server (read sensor ID)")
+        raise Exception("Closing connection")
+    
+    # Delay
+    time.sleep(2)
+
+    # Turn off relay 2 I/O
+    print("Sending GPIO write relay 2 packet")
+    io_state = 0
+    packet = encode_packet(
+        'measurement_sequence',
+        sequence='gpio_write_relay2',
+        data_buf=[io_state]
+    )
+    writer.write(packet)
+    await writer.drain()
+    # Receive response from PYNQ server
+    response = await reader.read(1024)
+    if not response:
+        print("No response from PYNQ server (read sensor ID)")
+        raise Exception("Closing connection")
 
     ##############################################################################################
     #                                            Quit                                            #
