@@ -121,29 +121,29 @@ Before writing C code for the MicroBlaze firmware, you need to do an initial bui
 
 ### Copying Source Code and Generate BIN File
 
-1. Copy all libraries (C code) from the repository to the project src directory. In the repository, there are multiple C codes that contain basic functions for controlling each IP block. List of the functions that can be used is as follows:
+1. Copy all libraries (C code) from the repository to the project src directory. In the repository, there are multiple C codes that contain basic functions for controlling each IP block. The list of the functions that can be used is as follows:
 
     | Function Name | IP Block | Description |
     | :--- | :--- | :--- |
     | `write_mailbox(data_offset, data)`       | MicroBlaze | - |
 
 2. Write the main C code which controls the overall operation of the MicroBlaze processor.
-3. After writing the main C code, you need to rebuild the project. This time, you need to build the project using the Vitis shell since you need to generate binary files for the MicroBlaze processor which requires you to modify the makefile. You need to add lines as in the figure below to the makefile. You can also find the sample makefile in the repository.
+3. After writing the main C code, you need to rebuild the project. This time, you need to build the project using the Vitis shell since you need to generate binary files for the MicroBlaze processor, which requires you to modify the makefile. You need to add lines, as in the figure below, to the makefile. You can also find the sample makefile in the repository.
+
+   <p align="center">
+       <img src="https://github.com/kaistseed/jahwa-project/blob/4779b6b419d4c1a326d93df15f45549d143e7d3e/documentation/resources/bin-makefile.png" alt="bin-makefile" width="100%" />
+   </p>
+
+4. Next, open the Vitis shell by clicking the white command prompt symbol in the toolbar
 
    <p align="center">
        <img src="https://github.com/kaistseed/jahwa-project/blob/a9197fd801e5fbacc2df49b14cec5f30555d249c/documentation/resources/vitis-shell.png" alt="vitis-shell" width="100%" />
    </p>
 
-4. Next, open Vitis shell by clicking the white command prompt symbol in the toolbar
-
-   <p align="center">
-       <img src="https://github.com/kaistseed/jahwa-project/blob/a9197fd801e5fbacc2df49b14cec5f30555d249c/documentation/resources/vitis-shell.png" alt="vitis-shell" width="100%" />
-   </p>
-
-5. After entering the shell, move to the debug directory inside application project directory. The application project directory is located inside the workspace directory that you set when creating the application project. If you are not sure which directory is the application project directory, you can check the directory name by seeing the parent directory in which the src directory is located.
+5. After entering the shell, move to the debug directory inside the application project directory. The application project directory is located inside the workspace directory that you set when creating the application project. If you are not sure which directory is the application project directory, you can check the directory name by seeing the parent directory in which the src directory is located.
    
    <p align="center">
-       <img src="https://github.com/kaistseed/jahwa-project/blob/a9197fd801e5fbacc2df49b14cec5f30555d249c/documentation/resources/vitis-shell.png" alt="vitis-shell" width="100%" />
+       <img src="https://github.com/kaistseed/jahwa-project/blob/4779b6b419d4c1a326d93df15f45549d143e7d3e/documentation/resources/vitis-directory.png" alt="vitis-directory" width="80%" />
    </p>
 
 6. To check whether you are in the correct directory, you can type the command `dir` to see the list of files and directories inside the current directory and if you see the makefile, then you are in the correct directory.
@@ -156,19 +156,19 @@ Before writing C code for the MicroBlaze firmware, you need to do an initial bui
 
 -------------
 
-## <img style="vertical-align:middle" src="https://github.com/kaistseed/intro-to-xilinx-fpga/blob/bc75dd4823e71aa3921d17f8110f6a9771cd9d16/01-intro-to-vivado-and-pynq/resources/python.png" width="32px" title=":python:"/> Creating a Python-based Software-Hardware Interface
-The following section will guide you on how to create a Python-based software-hardware interface using the PYNQ framework. The software-hardware interface will be used to control the MicroBlaze processor and all of the IP blocks connected to the MicroBlaze processor. Additionally, the Python program will also be used to receive command from PC client through TCP/IP socket connection and send the data acquired from the FPGA board to the PC client.
+## <img style="vertical-align:middle" src="https://github.com/kaistseed/jahwa-project/blob/4779b6b419d4c1a326d93df15f45549d143e7d3e/documentation/resources/python.png" width="32px" title=":python:"/> Creating a Python-based Software-Hardware Interface
+The following section will guide you on how to create a Python-based software hardware interface using the PYNQ framework. The software hardware interface will be used to control the MicroBlaze processor and all of the IP blocks connected to the MicroBlaze processor. Additionally, the Python program will also be used to receive commands from the PC client through a TCP/IP socket connection and send the data acquired from the FPGA board to the PC client.
 
 ### Uploading Design from PC to PYNQ Board
-To run the design on the PYNQ board, first, you need to upload the fpga design from Vivado (.bit, .tcl, and .hwh files) and MicroBlaze firmware (.bin file) into the PYNQ board. You can upload the files to the board by following the steps below:
+To run the design on the PYNQ board, first, you need to upload the FPGA design from Vivado (.bit, .tcl, and .hwh files) and MicroBlaze firmware (.bin file) into the PYNQ board. You can upload the files to the board by following the steps below:
 
-1. Open PYNQ board Jupyter Notebook by entering **192.168.2.99** in the host computer browser address bar. If you can’t access PYNQ board Jupyter Notebook, please refer to PYNQ Board Setup section in the Vivado guide.
+1. Open the PYNQ board Jupyter Notebook by entering **192.168.2.99** in the host computer browser address bar. If you can’t access the PYNQ board Jupyter Notebook, please refer to the [**PYNQ Board Setup**](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools.html) section in the Vivado guide.
 2. Create a new folder called **project** by clicking **New** button in the Jupyter Notebook interface.
-3. If you want, you can create another folder inside project folder which is designated for each project you create. In this case **jahwa_daq_system** folder.
-4. Upload the **fpga design files** (.bit, .tcl, and .hwh files) and **MicroBlaze firmware** (.bin file) into the project folder.
+3. If you want, you can create another folder inside project folder, which is designated for each project you create. In this case, **jahwa_daq_system** folder.
+4. Upload the **FPGA design files** (.bit, .tcl, and .hwh files) and **MicroBlaze firmware** (.bin file) into the project folder.
 
 ### Creating Python Interface
-To control the programmable logic (PL) operation, you need to create a software-hardware interface based on Python. You can do this by creating a `python3 notebook` inside the **jahwa_daq_system** folder, put the following code into the notebook and run them in sequence.
+To control the programmable logic (PL) operation, you need to create a software hardware interface based on Python. You can do this by creating a `python3 notebook` inside the **jahwa_daq_system** folder, putting the following code into the notebook, and running them in sequence.
 
 First, you need to import all the required libraries. The libraries are divided into three categories, which are Python library, PYNQ library, and user-defined library. The Python library is the standard library that comes with the Python installation. The PYNQ library is the library that comes with the PYNQ framework. The user-defined library is the library that you create to control the MicroBlaze operation. The user-defined library is located inside the **library** folder in the repository.
 
