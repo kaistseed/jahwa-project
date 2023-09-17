@@ -8,6 +8,7 @@
 * [Context](#information_source-context)
 * [Background](#mag-background)
 * [Creating FPGA Design using Xilinx Vivado](#computer-writing-fpga-firmware-using-xilinx-vitis)
+* [Creating a Python-based Software-Hardware Interface](#-creating-a-python-based-software-hardware-interface)
 
 ---------------------------
 
@@ -122,18 +123,143 @@ Before writing C code for the MicroBlaze firmware, you need to do an initial bui
 
 1. Copy all libraries (C code) from the repository to the project src directory. In the repository, there are multiple C codes that contain basic functions for controlling each IP block. List of the functions that can be used is as follows:
 
-2. Write the main C code which controls the overall operation of the MicroBlaze processor.
+    | Function Name | IP Block | Description |
+    | :--- | :--- | :--- |
+    | `write_mailbox(data_offset, data)`       | MicroBlaze | - |
 
-3. Open Vitis shell by clicking the white command prompt symbol in the toolbar
+2. Write the main C code which controls the overall operation of the MicroBlaze processor.
+3. After writing the main C code, you need to rebuild the project. This time, you need to build the project using the Vitis shell since you need to generate binary files for the MicroBlaze processor which requires you to modify the makefile. You need to add lines as in the figure below to the makefile. You can also find the sample makefile in the repository.
 
    <p align="center">
        <img src="https://github.com/kaistseed/jahwa-project/blob/a9197fd801e5fbacc2df49b14cec5f30555d249c/documentation/resources/vitis-shell.png" alt="vitis-shell" width="100%" />
    </p>
 
-3. After entering the shell, move to 
-4. 
+4. Next, open Vitis shell by clicking the white command prompt symbol in the toolbar
 
-----------------------------------
+   <p align="center">
+       <img src="https://github.com/kaistseed/jahwa-project/blob/a9197fd801e5fbacc2df49b14cec5f30555d249c/documentation/resources/vitis-shell.png" alt="vitis-shell" width="100%" />
+   </p>
+
+5. After entering the shell, move to the debug directory inside application project directory. The application project directory is located inside the workspace directory that you set when creating the application project. If you are not sure which directory is the application project directory, you can check the directory name by seeing the parent directory in which the src directory is located.
+   
+   <p align="center">
+       <img src="https://github.com/kaistseed/jahwa-project/blob/a9197fd801e5fbacc2df49b14cec5f30555d249c/documentation/resources/vitis-shell.png" alt="vitis-shell" width="100%" />
+   </p>
+
+6. To check whether you are in the correct directory, you can type the command `dir` to see the list of files and directories inside the current directory and if you see the makefile, then you are in the correct directory.
+7. Next, you can start building the project by typing the following command:
+
+   ```bash
+   make clean && make
+   ```
+   If the build is successful, you will see the newly created bin file inside the debug directory. Otherwise, you need to fix the error before proceeding to the next step.
+
+-------------
+
+## <img style="vertical-align:middle" src="https://github.com/kaistseed/intro-to-xilinx-fpga/blob/bc75dd4823e71aa3921d17f8110f6a9771cd9d16/01-intro-to-vivado-and-pynq/resources/python.png" width="32px" title=":python:"/> Creating a Python-based Software-Hardware Interface
+The following section will guide you on how to create a Python-based software-hardware interface using the PYNQ framework. The software-hardware interface will be used to control the MicroBlaze processor and all of the IP blocks connected to the MicroBlaze processor. Additionally, the Python program will also be used to receive command from PC client through TCP/IP socket connection and send the data acquired from the FPGA board to the PC client.
+
+### Uploading Design from PC to PYNQ Board
+To run the design on the PYNQ board, first, you need to upload the fpga design from Vivado (.bit, .tcl, and .hwh files) and MicroBlaze firmware (.bin file) into the PYNQ board. You can upload the files to the board by following the steps below:
+
+1. Open PYNQ board Jupyter Notebook by entering **192.168.2.99** in the host computer browser address bar. If you can’t access PYNQ board Jupyter Notebook, please refer to PYNQ Board Setup section in the Vivado guide.
+2. Create a new folder called **project** by clicking **New** button in the Jupyter Notebook interface.
+3. If you want, you can create another folder inside project folder which is designated for each project you create. In this case **jahwa_daq_system** folder.
+4. Upload the **fpga design files** (.bit, .tcl, and .hwh files) and **MicroBlaze firmware** (.bin file) into the project folder.
+
+### Creating Python Interface
+To control the programmable logic (PL) operation, you need to create a software-hardware interface based on Python. You can do this by creating a `python3 notebook` inside the **jahwa_daq_system** folder, put the following code into the notebook and run them in sequence.
+
+First, you need to import all the required libraries. The libraries are divided into three categories, which are Python library, PYNQ library, and user-defined library. The Python library is the standard library that comes with the Python installation. The PYNQ library is the library that comes with the PYNQ framework. The user-defined library is the library that you create to control the MicroBlaze operation. The user-defined library is located inside the **library** folder in the repository.
+
+```python
+##################################################################################################
+#                                         Import Library                                         #
+##################################################################################################
+# Python library
+import re
+import csv
+import time
+import random
+import asyncio
+
+# PYNQ library
+from pynq import Overlay
+from pynq.lib import PynqMicroblaze
+
+# User-defined library
+from library.packet import *
+from library.microblaze_revised import *
+```
+
+Next, you need to initialize the FPGA overlay and configure the MicroBlaze processor. To do this, first you need to load the overlay by calling the `Overlay()` function and passing the bitstream file path as the argument. After that, you need to define the MicroBlaze processor block by passing the MicroBlaze block name and reset name as the argument. The MicroBlaze block name and reset name can be found in the Vivado block design. The MicroBlaze block name is the name of the MicroBlaze block in the block design, and the reset name is the name of the reset block that is connected to the MicroBlaze block. After defining the MicroBlaze block, you need to instantiate the MicroBlaze class by passing the MicroBlaze block and binary file from Vitis as the argument. The MicroBlaze class is a class that contains all the functions for controlling the MicroBlaze processor. The MicroBlaze class is located inside the **library** folder in the repository.
+
+
+```python
+##################################################################################################
+#                                          Main Program                                          #
+##################################################################################################
+if __name__ == "__main__":
+    print('##########################################################################')
+    print('#                          Loading FPGA Overlay                          #')
+    print('##########################################################################')
+    # Load overlay
+    ol = Overlay("./bitstream/jahwa_daq_system.bit")
+
+    # Print status
+    print("FPGA Overlay loaded successfully")
+    print()
+
+    print('##########################################################################')
+    print('#                        Configuring Softprocessor                       #')
+    print('##########################################################################')
+    # Define softprocessor block
+    SoftProcessor = {
+        'ip_name': ol.mb_softprocessor_0.description["memories"]["axi_bram_ctrl_0"]["fullpath"],
+        'rst_name': "xlslice_0", #'mb_iop_pmoda_reset',
+        'intr_pin_name': "mb_softprocessor_0/dff_en_reset_vector_0/q",
+        'intr_ack_name': "xlslice_1"#'mb_iop_pmoda_intr_ack'
+    } 
+
+    # Instantiate microblaze class
+    _microblaze = MicroBlaze(SoftProcessor, "./bitstream/pynq_mb_firmware.bin")
+
+    # Check microblaze state
+    print("Microblaze state: {}".format(_microblaze.state))
+    print()
+```
+
+After configuring the MicroBlaze processor, you can now call functions inside the microblaze library to control the IP blocks connected to the MicroBlaze processor. The list of functions inside the microblaze library can be found in the table below.
+
+| Function Name | IP Block | Description |
+| :--- | :--- | :--- |
+| `write_mailbox(data_offset, data)`       | MicroBlaze | - |
+| `read_mailbox(data_offset, num_words)`       | MicroBlaze | - |
+| `write_blocking_command(command)`       | MicroBlaze | - |
+| `write_blocking_command_addr(addr, command)`       | MicroBlaze | - |
+| `write_non_blocking_command(command)`       | MicroBlaze | - |
+| `gpio_write_led(led_state)`       | GPIO | - |
+| `gpio_test_led()`                 | GPIO | - |
+| `gpio_write_adc(adc_state)`       | GPIO | - |
+| `gpio_write_sdn1(sdn1_state)`      | GPIO | - |
+| `gpio_write_sdn2(sdn2_state)`      | GPIO | - |
+| `gpio_write_sdn3(sdn3_state)`      | GPIO | - |
+| `gpio_write_relay1(relay1_state)`    | GPIO | - |
+| `gpio_write_relay2(relay2_state)`    | GPIO | - |
+| `spi_config_dac(channel_num, channel_code)`    | SPI | - |
+| `spi_read_adc(sample_num, interval_ms)`    | SPI | - |
+| `i2c_meissner_reset()`    | I2C | - |
+| `i2c_meissner_read(slave_addr, addr_len, data_len, reg_addr)`    | I2C | - |
+| `i2c_meissner_write(slave_addr, addr_len, data_len, reg_addr, data_buf)`    | I2C | - |
+| `i2c_meissner_chip_id()`    | I2C | - |
+| `i2c_meissner_version()`    | I2C | - |
+| `i2c_meissner_unique_id()`    | I2C | - |
+| `laser_trigger(division_ratio)`    | AXI Clock Divider | - |
+| `timer_test_delay()`    | AXI Timer | - |
+| `timer_get_sec()`    | AXI Timer | - |
+| `timer_get_cnt_val(dev_id, timer_id)`    | AXI Timer | - |
+
+-------------
 
 ## :movie_camera: Tutorial Video
 ### Creating New Vitis Application Project
