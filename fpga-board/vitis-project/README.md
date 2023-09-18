@@ -9,7 +9,7 @@
 * [Background](#mag-background)
 * [Creating FPGA Design using Xilinx Vivado](#computer-writing-fpga-firmware-using-xilinx-vitis)
 * [Creating a Python-based Software-Hardware Interface](#-creating-a-python-based-software-hardware-interface)
-* [Tutorial Video](#movie-camera-tutorial-video)
+* [Tutorial Video](#movie_camera-tutorial-video)
 
 ---------------------------
 
