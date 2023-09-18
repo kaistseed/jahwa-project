@@ -126,15 +126,15 @@ Before writing C code for the MicroBlaze firmware, you need to do an initial bui
 
     | Library Name | IP Block | Description | Reference |
     | :--- | :--- | :--- | :--- |
-    | `circular_buffer`     | MicroBlaze | Contains functions that are used by MicroBlaze to write/read data to/from shared memory space | PYNQ repository |
+    | `circular_buffer`     | MicroBlaze | Contains functions that are used by MicroBlaze to write/read data to/from shared memory space | [PYNQ repository](https://github.com/Xilinx/PYNQ/blob/de6b6fc3a803945d59f8f06523addfe0d9b60a1c/boards/sw_repo/pynqmb/src/circular_buffer.h) |
     | `gpio`                | AXI GPIO | Contains functions that are used by MicroBlaze to control the GPIO operation | - |
-    | `i2c`                 | AXI IIC | Contains basic functions that are used by MicroBlaze to initialize I2C protocol and perform basic I2C transaction | PYNQ repository |
+    | `i2c`                 | AXI IIC | Contains basic functions that are used by MicroBlaze to initialize I2C protocol and perform basic I2C transaction | [PYNQ repository](https://github.com/Xilinx/PYNQ/blob/de6b6fc3a803945d59f8f06523addfe0d9b60a1c/boards/sw_repo/pynqmb/src/i2c.h) |
     | `meissner`            | AXI IIC | Contains high-level I2C functions that are specific to Meissner sensor | - |
-    | `pytypes`             | MicroBlaze | Contains data type definitions to support Python - C interoperability | PYNQ repository |
-    | `spi`                 | AXI Quad SPI | Contains functions that are used by MicroBlaze to perform SPI transaction for controlling ADC and DAC | PYNQ repository |
-    | `timer`               | AXI Clock Divider | Contains functions that are used by MicroBlaze to delay the program accurately | PYNQ repository |
+    | `pytypes`             | MicroBlaze | Contains data type definitions to support Python - C interoperability | [PYNQ repository](https://github.com/Xilinx/PYNQ/blob/de6b6fc3a803945d59f8f06523addfe0d9b60a1c/boards/sw_repo/pynqmb/src/pytypes.h) |
+    | `spi`                 | AXI Quad SPI | Contains functions that are used by MicroBlaze to perform SPI transactions for controlling ADC and DAC | [PYNQ repository](https://github.com/Xilinx/PYNQ/blob/de6b6fc3a803945d59f8f06523addfe0d9b60a1c/boards/sw_repo/pynqmb/src/spi.h) |
+    | `timer`               | AXI Clock Divider | Contains functions that are used by MicroBlaze to delay the program accurately | [PYNQ repository](https://github.com/Xilinx/PYNQ/blob/de6b6fc3a803945d59f8f06523addfe0d9b60a1c/boards/sw_repo/pynqmb/src/timer.h) |
 
-2. Write the main C code which controls the overall operation of the MicroBlaze processor. The basic structure of the main C code consists of defining the operation mode, initializing the IP blocks, and performing the operation based on the operation mode. The operation mode should be clearly defined in the code since the operation mode will be used by the PC client to control the MicroBlaze operation by writing the operation mode to the MicroBlaze shared memory space. The following code is an example of the main C code for controlling the MicroBlaze operation. You can find full main C code in the repository.
+2. Write the main C code which controls the overall operation of the MicroBlaze processor. The basic structure of the main C code consists of defining the operation mode, initializing the IP blocks, and performing the operation based on the operation mode. The operation mode should be clearly defined in the code since the operation mode will be used by the PC client to control the MicroBlaze operation by writing the operation mode to the MicroBlaze shared memory space. The following code is an example of the main C code for controlling the MicroBlaze operation. You can find the full main C code in the repository.
 
    ```c
         /*****************************************************************************/
