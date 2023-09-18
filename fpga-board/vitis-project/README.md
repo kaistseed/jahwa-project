@@ -9,6 +9,7 @@
 * [Background](#mag-background)
 * [Creating FPGA Design using Xilinx Vivado](#computer-writing-fpga-firmware-using-xilinx-vitis)
 * [Creating a Python-based Software-Hardware Interface](#-creating-a-python-based-software-hardware-interface)
+* [Tutorial Video](#movie-camera-tutorial-video)
 
 ---------------------------
 
@@ -121,13 +122,138 @@ Before writing C code for the MicroBlaze firmware, you need to do an initial bui
 
 ### Copying Source Code and Generate BIN File
 
-1. Copy all libraries (C code) from the repository to the project src directory. In the repository, there are multiple C codes that contain basic functions for controlling each IP block. The list of the functions that can be used is as follows:
+1. Copy all libraries (C code) from the repository to the project src directory. In the repository, there are multiple C codes that contain basic functions for controlling each IP block. The list of the libraries that can be used is as follows:
 
-    | Function Name | IP Block | Description |
-    | :--- | :--- | :--- |
-    | `write_mailbox(data_offset, data)`       | MicroBlaze | - |
+    | Library Name | IP Block | Description | Reference |
+    | :--- | :--- | :--- | :--- |
+    | `circular_buffer`     | MicroBlaze | Contains functions that are used by MicroBlaze to write/read data to/from shared memory space | PYNQ repository |
+    | `gpio`                | AXI GPIO | Contains functions that are used by MicroBlaze to control the GPIO operation | - |
+    | `i2c`                 | AXI IIC | Contains basic functions that are used by MicroBlaze to initialize I2C protocol and perform basic I2C transaction | PYNQ repository |
+    | `meissner`            | AXI IIC | Contains high-level I2C functions that are specific to Meissner sensor | - |
+    | `pytypes`             | MicroBlaze | Contains data type definitions to support Python - C interoperability | PYNQ repository |
+    | `spi`                 | AXI Quad SPI | Contains functions that are used by MicroBlaze to perform SPI transaction for controlling ADC and DAC | PYNQ repository |
+    | `timer`               | AXI Clock Divider | Contains functions that are used by MicroBlaze to delay the program accurately | PYNQ repository |
 
-2. Write the main C code which controls the overall operation of the MicroBlaze processor.
+2. Write the main C code which controls the overall operation of the MicroBlaze processor. The basic structure of the main C code consists of defining the operation mode, initializing the IP blocks, and performing the operation based on the operation mode. The operation mode should be clearly defined in the code since the operation mode will be used by the PC client to control the MicroBlaze operation by writing the operation mode to the MicroBlaze shared memory space. The following code is an example of the main C code for controlling the MicroBlaze operation. You can find full main C code in the repository.
+
+   ```c
+        /*****************************************************************************/
+        /*                             Library Imports                               */
+        /*****************************************************************************/
+        // Basic Xilinx Library
+        #include "xgpio.h"
+        #include "xil_printf.h"
+        #include "xparameters.h"
+        #include "xil_exception.h" 
+
+        // User-defined library
+        #include "gpio.h"
+
+        /*
+        * The following constant is used to determine the operation of 
+        * the microblaze system. 
+        */
+        // Define operation mode
+        // GPIO operations
+        #define GPIO_WRITE_LED 0x01
+        #define GPIO_TEST_LED 0x02
+
+        /*****************************************************************************/
+        /*                              Main Function                                */
+        /*****************************************************************************/
+        int main(void) {
+            // Declare local variables
+            int mb_command;
+            int xil_status;
+
+            /*****************************************************************************/
+            /*                               GPIO Setup                                  */
+            /*****************************************************************************/
+            // Initialize LED I/O
+            led_io_init();
+
+            /*****************************************************************************/
+            /*                                Main Loop                                  */
+            /*****************************************************************************/
+            while(1) {
+                // Wait for command from host
+                while(MAILBOX_CMD_ADDR == 0x00);
+                mb_command = MAILBOX_CMD_ADDR;
+
+                // Perform operation based on command
+                switch(mb_command) {
+                    /*********************************************************************/
+                    /*                         GPIO Operations                           */
+                    /*********************************************************************/
+                    case GPIO_WRITE_LED:
+                        // Get data from host
+                        mb_data_host[0] = MAILBOX_DATA(0);
+                        // Control LED operation based on data
+                        if(mb_data_host[0] == 1) {
+                            // Set LED0 to high
+                            led_0_on();
+                        } else if(mb_data_host[0] == 2) {
+                            // Set LED1 to high
+                            led_1_on();
+                        } else if(mb_data_host[0] == 3) {
+                            // Set LED2 to high
+                            led_2_on();
+                        } else if(mb_data_host[0] == 4) {
+                            // Set LED3 to high
+                            led_3_on();
+                        } else if(mb_data_host[0] == 5) {
+                            // Set all LED to high
+                            led_0_on();
+                            led_1_on();
+                            led_2_on();
+                            led_3_on();
+                        } else {
+                            // Set all LED to low
+                            led_0_off();
+                            led_1_off();
+                            led_2_off();
+                            led_3_off();
+                        }
+                        // Clear command
+                        MAILBOX_CMD_ADDR = 0x00;
+                        break;
+
+                    case GPIO_TEST_LED:
+                        // Loop through LED0 and LED1
+                        for(int i=0; i<5; i++) {
+                            // Set LED0 to high
+                            led_0_on();
+                            // Wait 100 ms
+                            delay_ms(100);
+                            // Set LED1 to high
+                            led_1_on();
+                            // Wait 100 ms
+                            delay_ms(100);
+                            // Set LED2 to high
+                            led_2_on();
+                            // Wait 100 ms
+                            delay_ms(100);
+                            // Set LED3 to high
+                            led_3_on();
+                            // Wait 100 ms
+                            delay_ms(100);
+                        }
+                        // Clear command
+                        MAILBOX_CMD_ADDR = 0x00;
+                        break;
+
+                    /*********************************************************************/
+                    /*                        Other Operations                           */
+                    /*********************************************************************/
+                    default:
+                        // Clear command
+                        MAILBOX_CMD_ADDR = 0x00;
+                        break;
+                }
+            }
+        }
+   ```
+
 3. After writing the main C code, you need to rebuild the project. This time, you need to build the project using the Vitis shell since you need to generate binary files for the MicroBlaze processor, which requires you to modify the makefile. You need to add lines, as in the figure below, to the makefile. You can also find the sample makefile in the repository.
 
    <p align="center">
@@ -233,31 +359,30 @@ After configuring the MicroBlaze processor, you can now call functions inside th
 
 | Function Name | IP Block | Description |
 | :--- | :--- | :--- |
-| `write_mailbox(data_offset, data)`       | MicroBlaze | - |
-| `read_mailbox(data_offset, num_words)`       | MicroBlaze | - |
-| `write_blocking_command(command)`       | MicroBlaze | - |
-| `write_blocking_command_addr(addr, command)`       | MicroBlaze | - |
-| `write_non_blocking_command(command)`       | MicroBlaze | - |
-| `gpio_write_led(led_state)`       | GPIO | - |
-| `gpio_test_led()`                 | GPIO | - |
-| `gpio_write_adc(adc_state)`       | GPIO | - |
-| `gpio_write_sdn1(sdn1_state)`      | GPIO | - |
-| `gpio_write_sdn2(sdn2_state)`      | GPIO | - |
-| `gpio_write_sdn3(sdn3_state)`      | GPIO | - |
-| `gpio_write_relay1(relay1_state)`    | GPIO | - |
-| `gpio_write_relay2(relay2_state)`    | GPIO | - |
-| `spi_config_dac(channel_num, channel_code)`    | SPI | - |
-| `spi_read_adc(sample_num, interval_ms)`    | SPI | - |
-| `i2c_meissner_reset()`    | I2C | - |
-| `i2c_meissner_read(slave_addr, addr_len, data_len, reg_addr)`    | I2C | - |
-| `i2c_meissner_write(slave_addr, addr_len, data_len, reg_addr, data_buf)`    | I2C | - |
-| `i2c_meissner_chip_id()`    | I2C | - |
-| `i2c_meissner_version()`    | I2C | - |
-| `i2c_meissner_unique_id()`    | I2C | - |
-| `laser_trigger(division_ratio)`    | AXI Clock Divider | - |
-| `timer_test_delay()`    | AXI Timer | - |
-| `timer_get_sec()`    | AXI Timer | - |
-| `timer_get_cnt_val(dev_id, timer_id)`    | AXI Timer | - |
+| `write_mailbox(data_offset, data)`       | MicroBlaze | Used for writing data to ARM core and MicroBlaze shared memory space |
+| `read_mailbox(data_offset, num_words)`       | MicroBlaze | Used for reading data from ARM core and MicroBlaze shared memory space |
+| `write_blocking_command(command)`       | MicroBlaze | Used for controlling the MicroBlaze to run the command that is define when creating firmware in Vitis. It should be noted that this function is blocking function. So, Python code will halt until the MicroBlaze finish running the command |
+| `write_non_blocking_command(command)`       | MicroBlaze | Used for controlling the MicroBlaze to run the command that is define when creating firmware in Vitis. It should be noted that this function is non-blocking function. So, Python code will keep running while MicroBlaze execute the command |
+| `gpio_write_led(led_state)`       | GPIO | Used for controlling the PYNQ board LED by writing the LED state to 0 (OFF) or 1 (ON) |
+| `gpio_test_led()`                 | GPIO | Used for test MicroBlaze GPIO control by running test pattern on onboard LED |
+| `gpio_write_adc(adc_state)`       | GPIO | Used for controlling the ADC power by writing the ADC state to 0 (OFF) or 1 (ON) |
+| `gpio_write_sdn1(sdn1_state)`      | GPIO | Used for controlling the DAC power **(VDD OIS)** by writing the SDN1 state to 0 (OFF) or 1 (ON) |
+| `gpio_write_sdn2(sdn2_state)`      | GPIO | Used for controlling the DAC power **(VDD AF)** by writing the SDN2 state to 0 (OFF) or 1 (ON) |
+| `gpio_write_sdn3(sdn3_state)`      | GPIO | Used for controlling the DAC power **(VDDM)** by writing the SDN3 state to 0 (OFF) or 1 (ON) |
+| `gpio_write_relay1(relay1_state)`    | GPIO | Used for controlling the relay to switch between static and active measurement by writing relay1 state to 0 (OFF) or 1 (ON) |
+| `gpio_write_relay2(relay2_state)`    | GPIO | Used for controlling the relay to switch between static and active measurement by writing relay2 state to 0 (OFF) or 1 (ON) |
+| `spi_config_dac(channel_num, channel_code)`    | SPI | Used for configuring DAC by writing configuration code through SPI protocol. This function receive channel number (0, 1, 2) and channel code (hex) as arguments |
+| `spi_read_adc(sample_num, interval_ms)`    | SPI | Used for reading ADC output by passing number of ADC for oversampling and interval between sampling in miliseconds as arguments |
+| `i2c_meissner_reset()`    | I2C | Used for resetting the Meissner sensor by writing commands through I2C protocol |
+| `i2c_meissner_read(slave_addr, addr_len, data_len, reg_addr)`    | I2C | Used to read data from Meissner sensor using I2C protocol |
+| `i2c_meissner_write(slave_addr, addr_len, data_len, reg_addr, data_buf)`    | I2C | Used to write data to Meissner sensor using I2C protocol |
+| `i2c_meissner_chip_id()`    | I2C | Used for reading the Meissner sensor chip ID by writing commands through I2C protocol |
+| `i2c_meissner_version()`    | I2C | Used for reading the Meissner sensor version by writing commands through I2C protocol |
+| `i2c_meissner_unique_id()`    | I2C | Used for reading the Meissner sensor unique id by writing commands through I2C protocol |
+| `laser_trigger(division_ratio)`    | AXI Clock Divider | Used for generating series of pulse for triggering the laser. This function receive the division ration arguments to control the pulse period. The pulse period is derived by dividing the division ration with FPGA fabric clock |
+| `timer_test_delay()`    | AXI Timer | Used for testing the internal timer accuracy |
+| `timer_get_sec()`    | AXI Timer | Used for getting internal timer time in second |
+| `timer_get_cnt_val(dev_id, timer_id)`    | AXI Timer | Used for getting the timer counter count. This function receives device id and timer id as arguments. |
 
 -------------
 
