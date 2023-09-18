@@ -73,6 +73,7 @@ measurement_sequence_dict = {
     'i2c_meissner_chip_id': 6,
     'gpio_write_relay1': 7,
     'gpio_write_relay2': 8,
+    'laser_trigger': 9,
 }
 
 ##################################################################################################
@@ -500,6 +501,22 @@ def encode_packet(type, *args, **kwargs):
                 measurement_sequence_dict[sequence],
                 num_of_samples,
                 interval_ms
+            )
+        # Laser trigger
+        elif sequence == 'laser_trigger':
+            # Get division ratio and active count
+            div_ratio = data_buf[0] if data_buf[0] is not None else 1
+            actv_count = data_buf[1] if data_buf[1] is not None else 1
+            # Define packet
+            packet = struct.pack(
+                '2s 2s 2s c I I I',
+                transaction_id,
+                protocol_id,
+                length,
+                unit_id,
+                measurement_sequence_dict[sequence],
+                div_ratio,
+                actv_count
             )
         # I2C Meissner chip ID
         elif sequence == 'i2c_meissner_chip_id':
