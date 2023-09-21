@@ -1,0 +1,6 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "d:/jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.ip_repo/axi_clock_divider_1.0/hdl/clock_divider.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module clock_divider
+INFO: [VRFC 10-2263] Analyzing Verilog file "d:/jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.ip_repo/axi_clock_divider_1.0/hdl/tb_clock_divider.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tb_clock_divider
+INFO: [VRFC 10-2263] Analyzing Verilog file "d:/jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.tmp/axi_clock_divider_v1_0_project/axi_clock_divider_v1_0_project.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module glbl

@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Fri Sep 15 14:49:45 2023
+# Process ID: 35856
+# Current directory: D:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.runs/synth_1
+# Command line: vivado.exe -log jahwa_daq_system_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source jahwa_daq_system_wrapper.tcl
+# Log file: D:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.runs/synth_1/jahwa_daq_system_wrapper.vds
+# Journal file: D:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source jahwa_daq_system_wrapper.tcl -notrace

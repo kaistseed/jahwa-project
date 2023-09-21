@@ -1,0 +1,19 @@
+
+*** Running vivado
+    with args -log jahwa_daq_system_axi_timer_0_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source jahwa_daq_system_axi_timer_0_0.tcl
+
+
+
+****** Vivado v2020.2 (64-bit)
+  **** SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+  **** IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+    ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+
+source jahwa_daq_system_axi_timer_0_0.tcl -notrace
+create_project: Time (s): cpu = 00:00:03 ; elapsed = 00:00:06 . Memory (MB): peak = 1126.566 ; gain = 0.000
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'd:/Projects/2023/PYNQ/boards/ip'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'd:/Jahwa/windows/vivado/project/pynq_jahwa_daq/pynq_jahwa_daq.ip_repo'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2020.2/data/ip'.
+INFO: [IP_Flow 19-4838] Using cached IP synthesis design for IP jahwa_daq_system_axi_timer_0_0, cache-ID = 42a7e1437abf043f.
+INFO: [Common 17-206] Exiting Vivado at Mon Sep 11 11:39:44 2023...

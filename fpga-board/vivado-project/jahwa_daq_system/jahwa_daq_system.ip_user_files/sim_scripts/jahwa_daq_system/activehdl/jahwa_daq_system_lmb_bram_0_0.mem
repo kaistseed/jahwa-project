@@ -1,0 +1,13 @@
+// Mem file initialization records.
+//
+// SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+// Vivado v2020.2 (64-bit)
+// Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+// Created on Thursday September 14, 2023 - 04:54:31 am, from:
+//
+//     Map file     - d:\Jahwa\windows\vivado\pynq_mb\jahwa_daq_system\jahwa_daq_system.gen\sources_1\bd\jahwa_daq_system\jahwa_daq_system.bmm
+//     Data file(s) - d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_microblaze_0_0_1/data/mb_bootloop_le.elf
+//
+// Address space 'jahwa_daq_system_i_processing_system7_0.jahwa_daq_system_i_mb_softprocessor_0_microblaze_local_memory_0_lmb_bram_0_512K_1_ADDR_SPACE', bit lane [31:0].
+//
+// Bus width = 32 bits, number of bus blocks = 1.
