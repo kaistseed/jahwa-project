@@ -104,7 +104,7 @@ The following section will guide you on how to write firmware for controlling Mi
 Before writing C code for the MicroBlaze firmware, you need to do an initial build to the project to check whether the hardware files imported from Vivado are correctly built. If you try building the project for the first time, most likely, you will encounter an error. This is due to a bug in the makefile when you have a custom-built IP block inside the design. In this project, the AXI clock divider for generating a trigger signal for the laser is a custom-built IP block. To fix the error, you should follow the following steps:
 
 
-1. Open the makefile for building the AXI clock divider and replace it with this makefile. You can find the AXI clock divider makefile inside the libsrc directory of the MicroBlaze softprocessor. 
+1. Open the makefile for building the AXI clock divider and replace it with [this makefile](https://github.com/kaistseed/jahwa-project/blob/main/fpga-board/vitis-project/axi_clock_divider_v1_0/src/Makefile). You can find the AXI clock divider makefile inside the libsrc directory of the MicroBlaze softprocessor. 
 
    <p align="center">
        <img src="https://github.com/kaistseed/jahwa-project/blob/c578709a7fe9241e3b1350e436c54a0bcc80bf08/documentation/resources/makefile.png" alt="makefile" width="100%" />
@@ -134,7 +134,7 @@ Before writing C code for the MicroBlaze firmware, you need to do an initial bui
     | `spi`                 | AXI Quad SPI | Contains functions that are used by MicroBlaze to perform SPI transactions for controlling ADC and DAC | [PYNQ repository](https://github.com/Xilinx/PYNQ/blob/de6b6fc3a803945d59f8f06523addfe0d9b60a1c/boards/sw_repo/pynqmb/src/spi.h) |
     | `timer`               | AXI Clock Divider | Contains functions that are used by MicroBlaze to delay the program accurately | [PYNQ repository](https://github.com/Xilinx/PYNQ/blob/de6b6fc3a803945d59f8f06523addfe0d9b60a1c/boards/sw_repo/pynqmb/src/timer.h) |
 
-2. Write the main C code which controls the overall operation of the MicroBlaze processor. The basic structure of the main C code consists of defining the operation mode, initializing the IP blocks, and performing the operation based on the operation mode. The operation mode should be clearly defined in the code since the operation mode will be used by the PC client to control the MicroBlaze operation by writing the operation mode to the MicroBlaze shared memory space. The following code is an example of the main C code for controlling the MicroBlaze operation. You can find the full main C code in the repository.
+2. Write the main C code which controls the overall operation of the MicroBlaze processor. The basic structure of the main C code consists of defining the operation mode, initializing the IP blocks, and performing the operation based on the operation mode. The operation mode should be clearly defined in the code since the operation mode will be used by the PC client to control the MicroBlaze operation by writing the operation mode to the MicroBlaze shared memory space. The following code is an example of the main C code for controlling the MicroBlaze operation. You can find the [full main C code](https://github.com/kaistseed/jahwa-project/blob/main/fpga-board/vitis-project/src/main.c) in the repository.
 
    ```c
         /*****************************************************************************/
@@ -254,7 +254,7 @@ Before writing C code for the MicroBlaze firmware, you need to do an initial bui
         }
    ```
 
-3. After writing the main C code, you need to rebuild the project. This time, you need to build the project using the Vitis shell since you need to generate binary files for the MicroBlaze processor, which requires you to modify the makefile. You need to add lines, as in the figure below, to the makefile. You can also find the sample makefile in the repository.
+3. After writing the main C code, you need to rebuild the project. This time, you need to build the project using the Vitis shell since you need to generate binary files for the MicroBlaze processor, which requires you to modify the makefile. You need to add lines, as in the figure below, to the makefile. You can also find the [sample makefile](https://github.com/kaistseed/jahwa-project/blob/main/fpga-board/vitis-project/Debug/makefile) in the repository.
 
    <p align="center">
        <img src="https://github.com/kaistseed/jahwa-project/blob/4779b6b419d4c1a326d93df15f45549d143e7d3e/documentation/resources/bin-makefile.png" alt="bin-makefile" width="100%" />
