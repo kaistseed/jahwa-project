@@ -1,10 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
--- Date        : Mon Sep 11 11:39:25 2023
+-- Date        : Mon Sep 11 11:39:24 2023
 -- Host        : DLT-SEED-PC running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_auto_pc_1_1/jahwa_daq_system_auto_pc_1_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top jahwa_daq_system_auto_pc_1 -prefix
+--               jahwa_daq_system_auto_pc_1_ jahwa_daq_system_auto_pc_1_sim_netlist.vhdl
 -- Design      : jahwa_daq_system_auto_pc_1
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -143,8 +143,6 @@ entity jahwa_daq_system_auto_pc_1_axi_protocol_converter_v2_1_22_axi_protocol_co
   attribute C_TRANSLATION_MODE of jahwa_daq_system_auto_pc_1_axi_protocol_converter_v2_1_22_axi_protocol_converter : entity is 2;
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of jahwa_daq_system_auto_pc_1_axi_protocol_converter_v2_1_22_axi_protocol_converter : entity is "yes";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of jahwa_daq_system_auto_pc_1_axi_protocol_converter_v2_1_22_axi_protocol_converter : entity is "axi_protocol_converter_v2_1_22_axi_protocol_converter";
   attribute P_AXI3 : integer;
   attribute P_AXI3 of jahwa_daq_system_auto_pc_1_axi_protocol_converter_v2_1_22_axi_protocol_converter : entity is 1;
   attribute P_AXI4 : integer;

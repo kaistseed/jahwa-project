@@ -48,7 +48,7 @@
 
 
 // IP VLNV: xilinx.com:user:axi_clock_divider:1.0
-// IP Revision: 9
+// IP Revision: 8
 
 `timescale 1ns/1ps
 

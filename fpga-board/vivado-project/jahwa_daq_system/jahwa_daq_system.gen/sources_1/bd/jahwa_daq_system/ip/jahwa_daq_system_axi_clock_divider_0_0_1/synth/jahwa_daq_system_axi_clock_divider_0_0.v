@@ -48,11 +48,11 @@
 
 
 // IP VLNV: xilinx.com:user:axi_clock_divider:1.0
-// IP Revision: 9
+// IP Revision: 8
 
 (* X_CORE_INFO = "axi_clock_divider_v1_0,Vivado 2020.2" *)
 (* CHECK_LICENSE_TYPE = "jahwa_daq_system_axi_clock_divider_0_0,axi_clock_divider_v1_0,{}" *)
-(* CORE_GENERATION_INFO = "jahwa_daq_system_axi_clock_divider_0_0,axi_clock_divider_v1_0,{x_ipProduct=Vivado 2020.2,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=axi_clock_divider,x_ipVersion=1.0,x_ipCoreRevision=9,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_S00_AXI_DATA_WIDTH=32,C_S00_AXI_ADDR_WIDTH=5}" *)
+(* CORE_GENERATION_INFO = "jahwa_daq_system_axi_clock_divider_0_0,axi_clock_divider_v1_0,{x_ipProduct=Vivado 2020.2,x_ipVendor=xilinx.com,x_ipLibrary=user,x_ipName=axi_clock_divider,x_ipVersion=1.0,x_ipCoreRevision=8,x_ipLanguage=VERILOG,x_ipSimLanguage=MIXED,C_S00_AXI_DATA_WIDTH=32,C_S00_AXI_ADDR_WIDTH=5}" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
 module jahwa_daq_system_axi_clock_divider_0_0 (
   O_CLK_DIV,

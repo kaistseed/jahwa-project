@@ -2,48 +2,182 @@
 # Vivado v2020.2 (64-bit)
 # SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
 # IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
-# Start of session at: Mon Sep 11 13:34:34 2023
-# Process ID: 36728
+# Start of session at: Fri Sep 15 14:50:40 2023
+# Process ID: 2344
 # Current directory: D:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.runs/impl_1
 # Command line: vivado.exe -log jahwa_daq_system_wrapper.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source jahwa_daq_system_wrapper.tcl -notrace
 # Log file: D:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.runs/impl_1/jahwa_daq_system_wrapper.vdi
 # Journal file: D:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.runs/impl_1\vivado.jou
 #-----------------------------------------------------------
 source jahwa_daq_system_wrapper.tcl -notrace
-Command: open_checkpoint D:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.runs/impl_1/jahwa_daq_system_wrapper.dcp
-
-Starting open_checkpoint Task
-
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.038 . Memory (MB): peak = 1126.266 ; gain = 0.000
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.ip_repo'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'd:/Projects/2023/PYNQ/boards/ip'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2020.2/data/ip'.
+Command: link_design -top jahwa_daq_system_wrapper -part xc7z020clg400-1
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
 INFO: [Device 21-403] Loading part xc7z020clg400-1
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.472 . Memory (MB): peak = 1126.266 ; gain = 0.000
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_clock_divider_0_0_1/jahwa_daq_system_axi_clock_divider_0_0.dcp' for cell 'jahwa_daq_system_i/axi_clock_divider_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_0_0_1/jahwa_daq_system_axi_gpio_0_0.dcp' for cell 'jahwa_daq_system_i/axi_gpio_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_1_0_1/jahwa_daq_system_axi_gpio_1_0.dcp' for cell 'jahwa_daq_system_i/axi_gpio_1'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_2_0_1/jahwa_daq_system_axi_gpio_2_0.dcp' for cell 'jahwa_daq_system_i/axi_gpio_2'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_3_0_1/jahwa_daq_system_axi_gpio_3_0.dcp' for cell 'jahwa_daq_system_i/axi_gpio_3'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_4_0_1/jahwa_daq_system_axi_gpio_4_0.dcp' for cell 'jahwa_daq_system_i/axi_gpio_4'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_5_0/jahwa_daq_system_axi_gpio_5_0.dcp' for cell 'jahwa_daq_system_i/axi_gpio_5'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_iic_0_0_1/jahwa_daq_system_axi_iic_0_0.dcp' for cell 'jahwa_daq_system_i/axi_iic_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_intc_0_0_1/jahwa_daq_system_axi_intc_0_0.dcp' for cell 'jahwa_daq_system_i/axi_intc_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_quad_spi_0_0_1/jahwa_daq_system_axi_quad_spi_0_0.dcp' for cell 'jahwa_daq_system_i/axi_quad_spi_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_processing_system7_0_0_1/jahwa_daq_system_processing_system7_0_0.dcp' for cell 'jahwa_daq_system_i/processing_system7_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_xbar_0_1/jahwa_daq_system_xbar_0.dcp' for cell 'jahwa_daq_system_i/axi_interconnect_0/xbar'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_auto_pc_0_1/jahwa_daq_system_auto_pc_0.dcp' for cell 'jahwa_daq_system_i/axi_interconnect_0/m01_couplers/auto_pc'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_auto_pc_1_1/jahwa_daq_system_auto_pc_1.dcp' for cell 'jahwa_daq_system_i/axi_interconnect_0/s00_couplers/auto_pc'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_bram_ctrl_0_0_1/jahwa_daq_system_axi_bram_ctrl_0_0.dcp' for cell 'jahwa_daq_system_i/mb_softprocessor_0/axi_bram_ctrl_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_0_1_1/jahwa_daq_system_axi_gpio_0_1.dcp' for cell 'jahwa_daq_system_i/mb_softprocessor_0/axi_gpio_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_intc_0_1_1/jahwa_daq_system_axi_intc_0_1.dcp' for cell 'jahwa_daq_system_i/mb_softprocessor_0/axi_intc_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_timer_0_0_1/jahwa_daq_system_axi_timer_0_0.dcp' for cell 'jahwa_daq_system_i/mb_softprocessor_0/axi_timer_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_timer_1_0_1/jahwa_daq_system_axi_timer_1_0.dcp' for cell 'jahwa_daq_system_i/mb_softprocessor_0/axi_timer_1'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_timer_2_0_1/jahwa_daq_system_axi_timer_2_0.dcp' for cell 'jahwa_daq_system_i/mb_softprocessor_0/axi_timer_2'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_dff_en_reset_vector_0_0_1/jahwa_daq_system_dff_en_reset_vector_0_0.dcp' for cell 'jahwa_daq_system_i/mb_softprocessor_0/dff_en_reset_vector_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_mdm_0_0_1/jahwa_daq_system_mdm_0_0.dcp' for cell 'jahwa_daq_system_i/mb_softprocessor_0/mdm_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_microblaze_0_0_1/jahwa_daq_system_microblaze_0_0.dcp' for cell 'jahwa_daq_system_i/mb_softprocessor_0/microblaze_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_rst_ps7_0_100M_0_1/jahwa_daq_system_rst_ps7_0_100M_0.dcp' for cell 'jahwa_daq_system_i/mb_softprocessor_0/rst_ps7_0_100M'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_xbar_1_1/jahwa_daq_system_xbar_1.dcp' for cell 'jahwa_daq_system_i/mb_softprocessor_0/axi_interconnect_0/xbar'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_dlmb_0_0_1/jahwa_daq_system_dlmb_0_0.dcp' for cell 'jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/dlmb_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_ilmb_0_0_1/jahwa_daq_system_ilmb_0_0.dcp' for cell 'jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_ilmb_bram_ctrl_0_0_1/jahwa_daq_system_ilmb_bram_ctrl_0_0.dcp' for cell 'jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0'
+INFO: [Project 1-454] Reading design checkpoint 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_lmb_bram_0_0_1/jahwa_daq_system_lmb_bram_0_0.dcp' for cell 'jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/lmb_bram_0'
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.495 . Memory (MB): peak = 1144.117 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 694 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-479] Netlist was created with Vivado 2020.2
 INFO: [Project 1-570] Preparing netlist for logic optimization
-INFO: [Timing 38-478] Restoring timing data from binary archive.
-INFO: [Timing 38-479] Binary timing data restore complete.
-INFO: [Project 1-856] Restoring constraints from binary archive.
-INFO: [Project 1-853] Binary constraint restore complete.
-Reading XDEF placement.
-Reading placer database...
-Reading XDEF routing.
-Read XDEF File: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.199 . Memory (MB): peak = 1616.273 ; gain = 0.000
-Restored from archive | CPU: 0.000000 secs | Memory: 0.000000 MB |
-Finished XDEF File Restore: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.201 . Memory (MB): peak = 1616.273 ; gain = 0.000
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 1616.273 ; gain = 0.000
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_processing_system7_0_0_1/jahwa_daq_system_processing_system7_0_0.xdc] for cell 'jahwa_daq_system_i/processing_system7_0/inst'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_processing_system7_0_0_1/jahwa_daq_system_processing_system7_0_0.xdc] for cell 'jahwa_daq_system_i/processing_system7_0/inst'
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_intc_0_0_1/jahwa_daq_system_axi_intc_0_0.xdc] for cell 'jahwa_daq_system_i/axi_intc_0/U0'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_intc_0_0_1/jahwa_daq_system_axi_intc_0_0.xdc] for cell 'jahwa_daq_system_i/axi_intc_0/U0'
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_iic_0_0_1/jahwa_daq_system_axi_iic_0_0_board.xdc] for cell 'jahwa_daq_system_i/axi_iic_0/U0'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_iic_0_0_1/jahwa_daq_system_axi_iic_0_0_board.xdc] for cell 'jahwa_daq_system_i/axi_iic_0/U0'
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_quad_spi_0_0_1/jahwa_daq_system_axi_quad_spi_0_0_board.xdc] for cell 'jahwa_daq_system_i/axi_quad_spi_0/U0'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_quad_spi_0_0_1/jahwa_daq_system_axi_quad_spi_0_0_board.xdc] for cell 'jahwa_daq_system_i/axi_quad_spi_0/U0'
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_quad_spi_0_0_1/jahwa_daq_system_axi_quad_spi_0_0.xdc] for cell 'jahwa_daq_system_i/axi_quad_spi_0/U0'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_quad_spi_0_0_1/jahwa_daq_system_axi_quad_spi_0_0.xdc] for cell 'jahwa_daq_system_i/axi_quad_spi_0/U0'
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_0_0_1/jahwa_daq_system_axi_gpio_0_0_board.xdc] for cell 'jahwa_daq_system_i/axi_gpio_0/U0'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_0_0_1/jahwa_daq_system_axi_gpio_0_0_board.xdc] for cell 'jahwa_daq_system_i/axi_gpio_0/U0'
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_0_0_1/jahwa_daq_system_axi_gpio_0_0.xdc] for cell 'jahwa_daq_system_i/axi_gpio_0/U0'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_0_0_1/jahwa_daq_system_axi_gpio_0_0.xdc] for cell 'jahwa_daq_system_i/axi_gpio_0/U0'
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_1_0_1/jahwa_daq_system_axi_gpio_1_0_board.xdc] for cell 'jahwa_daq_system_i/axi_gpio_1/U0'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_1_0_1/jahwa_daq_system_axi_gpio_1_0_board.xdc] for cell 'jahwa_daq_system_i/axi_gpio_1/U0'
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_1_0_1/jahwa_daq_system_axi_gpio_1_0.xdc] for cell 'jahwa_daq_system_i/axi_gpio_1/U0'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_1_0_1/jahwa_daq_system_axi_gpio_1_0.xdc] for cell 'jahwa_daq_system_i/axi_gpio_1/U0'
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_2_0_1/jahwa_daq_system_axi_gpio_2_0_board.xdc] for cell 'jahwa_daq_system_i/axi_gpio_2/U0'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_2_0_1/jahwa_daq_system_axi_gpio_2_0_board.xdc] for cell 'jahwa_daq_system_i/axi_gpio_2/U0'
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_2_0_1/jahwa_daq_system_axi_gpio_2_0.xdc] for cell 'jahwa_daq_system_i/axi_gpio_2/U0'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_2_0_1/jahwa_daq_system_axi_gpio_2_0.xdc] for cell 'jahwa_daq_system_i/axi_gpio_2/U0'
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_3_0_1/jahwa_daq_system_axi_gpio_3_0_board.xdc] for cell 'jahwa_daq_system_i/axi_gpio_3/U0'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_3_0_1/jahwa_daq_system_axi_gpio_3_0_board.xdc] for cell 'jahwa_daq_system_i/axi_gpio_3/U0'
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_3_0_1/jahwa_daq_system_axi_gpio_3_0.xdc] for cell 'jahwa_daq_system_i/axi_gpio_3/U0'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_3_0_1/jahwa_daq_system_axi_gpio_3_0.xdc] for cell 'jahwa_daq_system_i/axi_gpio_3/U0'
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_4_0_1/jahwa_daq_system_axi_gpio_4_0_board.xdc] for cell 'jahwa_daq_system_i/axi_gpio_4/U0'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_4_0_1/jahwa_daq_system_axi_gpio_4_0_board.xdc] for cell 'jahwa_daq_system_i/axi_gpio_4/U0'
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_4_0_1/jahwa_daq_system_axi_gpio_4_0.xdc] for cell 'jahwa_daq_system_i/axi_gpio_4/U0'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_4_0_1/jahwa_daq_system_axi_gpio_4_0.xdc] for cell 'jahwa_daq_system_i/axi_gpio_4/U0'
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_5_0/jahwa_daq_system_axi_gpio_5_0_board.xdc] for cell 'jahwa_daq_system_i/axi_gpio_5/U0'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_5_0/jahwa_daq_system_axi_gpio_5_0_board.xdc] for cell 'jahwa_daq_system_i/axi_gpio_5/U0'
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_5_0/jahwa_daq_system_axi_gpio_5_0.xdc] for cell 'jahwa_daq_system_i/axi_gpio_5/U0'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_5_0/jahwa_daq_system_axi_gpio_5_0.xdc] for cell 'jahwa_daq_system_i/axi_gpio_5/U0'
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_0_1_1/jahwa_daq_system_axi_gpio_0_1_board.xdc] for cell 'jahwa_daq_system_i/mb_softprocessor_0/axi_gpio_0/U0'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_0_1_1/jahwa_daq_system_axi_gpio_0_1_board.xdc] for cell 'jahwa_daq_system_i/mb_softprocessor_0/axi_gpio_0/U0'
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_0_1_1/jahwa_daq_system_axi_gpio_0_1.xdc] for cell 'jahwa_daq_system_i/mb_softprocessor_0/axi_gpio_0/U0'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_gpio_0_1_1/jahwa_daq_system_axi_gpio_0_1.xdc] for cell 'jahwa_daq_system_i/mb_softprocessor_0/axi_gpio_0/U0'
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_timer_0_0_1/jahwa_daq_system_axi_timer_0_0.xdc] for cell 'jahwa_daq_system_i/mb_softprocessor_0/axi_timer_0/U0'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_timer_0_0_1/jahwa_daq_system_axi_timer_0_0.xdc] for cell 'jahwa_daq_system_i/mb_softprocessor_0/axi_timer_0/U0'
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_timer_1_0_1/jahwa_daq_system_axi_timer_1_0.xdc] for cell 'jahwa_daq_system_i/mb_softprocessor_0/axi_timer_1/U0'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_timer_1_0_1/jahwa_daq_system_axi_timer_1_0.xdc] for cell 'jahwa_daq_system_i/mb_softprocessor_0/axi_timer_1/U0'
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_timer_2_0_1/jahwa_daq_system_axi_timer_2_0.xdc] for cell 'jahwa_daq_system_i/mb_softprocessor_0/axi_timer_2/U0'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_timer_2_0_1/jahwa_daq_system_axi_timer_2_0.xdc] for cell 'jahwa_daq_system_i/mb_softprocessor_0/axi_timer_2/U0'
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_intc_0_1_1/jahwa_daq_system_axi_intc_0_1.xdc] for cell 'jahwa_daq_system_i/mb_softprocessor_0/axi_intc_0/U0'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_intc_0_1_1/jahwa_daq_system_axi_intc_0_1.xdc] for cell 'jahwa_daq_system_i/mb_softprocessor_0/axi_intc_0/U0'
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_mdm_0_0_1/jahwa_daq_system_mdm_0_0.xdc] for cell 'jahwa_daq_system_i/mb_softprocessor_0/mdm_0/U0'
+INFO: [Timing 38-35] Done setting XDC timing constraints. [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_mdm_0_0_1/jahwa_daq_system_mdm_0_0.xdc:50]
+get_clocks: Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1801.000 ; gain = 586.422
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_mdm_0_0_1/jahwa_daq_system_mdm_0_0.xdc] for cell 'jahwa_daq_system_i/mb_softprocessor_0/mdm_0/U0'
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_microblaze_0_0_1/jahwa_daq_system_microblaze_0_0.xdc] for cell 'jahwa_daq_system_i/mb_softprocessor_0/microblaze_0/U0'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_microblaze_0_0_1/jahwa_daq_system_microblaze_0_0.xdc] for cell 'jahwa_daq_system_i/mb_softprocessor_0/microblaze_0/U0'
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_rst_ps7_0_100M_0_1/jahwa_daq_system_rst_ps7_0_100M_0_board.xdc] for cell 'jahwa_daq_system_i/mb_softprocessor_0/rst_ps7_0_100M/U0'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_rst_ps7_0_100M_0_1/jahwa_daq_system_rst_ps7_0_100M_0_board.xdc] for cell 'jahwa_daq_system_i/mb_softprocessor_0/rst_ps7_0_100M/U0'
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_rst_ps7_0_100M_0_1/jahwa_daq_system_rst_ps7_0_100M_0.xdc] for cell 'jahwa_daq_system_i/mb_softprocessor_0/rst_ps7_0_100M/U0'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_rst_ps7_0_100M_0_1/jahwa_daq_system_rst_ps7_0_100M_0.xdc] for cell 'jahwa_daq_system_i/mb_softprocessor_0/rst_ps7_0_100M/U0'
+Parsing XDC File [D:/Jahwa/windows/vivado/constraint_file/pynq_z1.xdc]
+Finished Parsing XDC File [D:/Jahwa/windows/vivado/constraint_file/pynq_z1.xdc]
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_intc_0_0_1/jahwa_daq_system_axi_intc_0_0_clocks.xdc] for cell 'jahwa_daq_system_i/axi_intc_0/U0'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_intc_0_0_1/jahwa_daq_system_axi_intc_0_0_clocks.xdc] for cell 'jahwa_daq_system_i/axi_intc_0/U0'
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_quad_spi_0_0_1/jahwa_daq_system_axi_quad_spi_0_0_clocks.xdc] for cell 'jahwa_daq_system_i/axi_quad_spi_0/U0'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_quad_spi_0_0_1/jahwa_daq_system_axi_quad_spi_0_0_clocks.xdc] for cell 'jahwa_daq_system_i/axi_quad_spi_0/U0'
+Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_intc_0_1_1/jahwa_daq_system_axi_intc_0_1_clocks.xdc] for cell 'jahwa_daq_system_i/mb_softprocessor_0/axi_intc_0/U0'
+Finished Parsing XDC File [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_intc_0_1_1/jahwa_daq_system_axi_intc_0_1_clocks.xdc] for cell 'jahwa_daq_system_i/mb_softprocessor_0/axi_intc_0/U0'
+WARNING: [XPM_CDC_GRAY: TCL-1000] The source and destination clocks are the same. 
+     Instance: jahwa_daq_system_i/axi_quad_spi_0/U0/NO_DUAL_QUAD_MODE.QSPI_NORMAL/QSPI_LEGACY_MD_GEN.QSPI_CORE_INTERFACE_I/FIFO_EXISTS.TX_FIFO_II/xpm_fifo_instance.xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst 
+  This will add unnecessary latency to the design. Please check the design for the following: 
+ 1) Manually instantiated XPM_CDC modules: Xilinx recommends that you remove these modules. 
+ 2) Xilinx IP that contains XPM_CDC modules: Verify the connections to the IP to determine whether you can safely ignore this message.
+ [D:/Xilinx/Vivado/2020.2/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl:16]
+WARNING: [XPM_CDC_GRAY: TCL-1000] The source and destination clocks are the same. 
+     Instance: jahwa_daq_system_i/axi_quad_spi_0/U0/NO_DUAL_QUAD_MODE.QSPI_NORMAL/QSPI_LEGACY_MD_GEN.QSPI_CORE_INTERFACE_I/FIFO_EXISTS.RX_FIFO_II/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst 
+  This will add unnecessary latency to the design. Please check the design for the following: 
+ 1) Manually instantiated XPM_CDC modules: Xilinx recommends that you remove these modules. 
+ 2) Xilinx IP that contains XPM_CDC modules: Verify the connections to the IP to determine whether you can safely ignore this message.
+ [D:/Xilinx/Vivado/2020.2/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl:16]
+WARNING: [XPM_CDC_GRAY: TCL-1000] The source and destination clocks are the same. 
+     Instance: jahwa_daq_system_i/axi_quad_spi_0/U0/NO_DUAL_QUAD_MODE.QSPI_NORMAL/QSPI_LEGACY_MD_GEN.QSPI_CORE_INTERFACE_I/FIFO_EXISTS.RX_FIFO_II/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_inst 
+  This will add unnecessary latency to the design. Please check the design for the following: 
+ 1) Manually instantiated XPM_CDC modules: Xilinx recommends that you remove these modules. 
+ 2) Xilinx IP that contains XPM_CDC modules: Verify the connections to the IP to determine whether you can safely ignore this message.
+ [D:/Xilinx/Vivado/2020.2/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl:16]
+WARNING: [XPM_CDC_GRAY: TCL-1000] The source and destination clocks are the same. 
+     Instance: jahwa_daq_system_i/axi_quad_spi_0/U0/NO_DUAL_QUAD_MODE.QSPI_NORMAL/QSPI_LEGACY_MD_GEN.QSPI_CORE_INTERFACE_I/FIFO_EXISTS.TX_FIFO_II/xpm_fifo_instance.xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_inst 
+  This will add unnecessary latency to the design. Please check the design for the following: 
+ 1) Manually instantiated XPM_CDC modules: Xilinx recommends that you remove these modules. 
+ 2) Xilinx IP that contains XPM_CDC modules: Verify the connections to the IP to determine whether you can safely ignore this message.
+ [D:/Xilinx/Vivado/2020.2/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl:16]
+WARNING: [XPM_CDC_GRAY: TCL-1000] The source and destination clocks are the same. 
+     Instance: jahwa_daq_system_i/axi_quad_spi_0/U0/NO_DUAL_QUAD_MODE.QSPI_NORMAL/QSPI_LEGACY_MD_GEN.QSPI_CORE_INTERFACE_I/FIFO_EXISTS.TX_FIFO_II/xpm_fifo_instance.xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_dc_inst 
+  This will add unnecessary latency to the design. Please check the design for the following: 
+ 1) Manually instantiated XPM_CDC modules: Xilinx recommends that you remove these modules. 
+ 2) Xilinx IP that contains XPM_CDC modules: Verify the connections to the IP to determine whether you can safely ignore this message.
+ [D:/Xilinx/Vivado/2020.2/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl:16]
+WARNING: [XPM_CDC_GRAY: TCL-1000] The source and destination clocks are the same. 
+     Instance: jahwa_daq_system_i/axi_quad_spi_0/U0/NO_DUAL_QUAD_MODE.QSPI_NORMAL/QSPI_LEGACY_MD_GEN.QSPI_CORE_INTERFACE_I/FIFO_EXISTS.RX_FIFO_II/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.wr_pntr_cdc_dc_inst 
+  This will add unnecessary latency to the design. Please check the design for the following: 
+ 1) Manually instantiated XPM_CDC modules: Xilinx recommends that you remove these modules. 
+ 2) Xilinx IP that contains XPM_CDC modules: Verify the connections to the IP to determine whether you can safely ignore this message.
+ [D:/Xilinx/Vivado/2020.2/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl:16]
+WARNING: [XPM_CDC_GRAY: TCL-1000] The source and destination clocks are the same. 
+     Instance: jahwa_daq_system_i/axi_quad_spi_0/U0/NO_DUAL_QUAD_MODE.QSPI_NORMAL/QSPI_LEGACY_MD_GEN.QSPI_CORE_INTERFACE_I/FIFO_EXISTS.TX_FIFO_II/xpm_fifo_instance.xpm_fifo_async_inst/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_dc_inst 
+  This will add unnecessary latency to the design. Please check the design for the following: 
+ 1) Manually instantiated XPM_CDC modules: Xilinx recommends that you remove these modules. 
+ 2) Xilinx IP that contains XPM_CDC modules: Verify the connections to the IP to determine whether you can safely ignore this message.
+ [D:/Xilinx/Vivado/2020.2/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl:16]
+WARNING: [XPM_CDC_GRAY: TCL-1000] The source and destination clocks are the same. 
+     Instance: jahwa_daq_system_i/axi_quad_spi_0/U0/NO_DUAL_QUAD_MODE.QSPI_NORMAL/QSPI_LEGACY_MD_GEN.QSPI_CORE_INTERFACE_I/FIFO_EXISTS.RX_FIFO_II/gnuram_async_fifo.xpm_fifo_base_inst/gen_cdc_pntr.rd_pntr_cdc_dc_inst 
+  This will add unnecessary latency to the design. Please check the design for the following: 
+ 1) Manually instantiated XPM_CDC modules: Xilinx recommends that you remove these modules. 
+ 2) Xilinx IP that contains XPM_CDC modules: Verify the connections to the IP to determine whether you can safely ignore this message.
+ [D:/Xilinx/Vivado/2020.2/data/ip/xpm/xpm_cdc/tcl/xpm_cdc_gray.tcl:16]
+INFO: [Project 1-1715] 3 XPM XDC files have been applied to the design.
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Generating merged BMM file for the design top 'jahwa_daq_system_wrapper'...
+INFO: [Memdata 28-144] Successfully populated the BRAM INIT strings from the following elf files: d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_microblaze_0_0_1/data/mb_bootloop_le.elf 
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.012 . Memory (MB): peak = 1801.000 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 109 instances were transformed.
   IOBUF => IOBUF (IBUF, OBUFT): 7 instances
   LUT6_2 => LUT6_2 (LUT5, LUT6): 80 instances
   RAM32M => RAM32M (RAMD32(x6), RAMS32(x2)): 22 instances
 
-INFO: [Project 1-604] Checkpoint was created with Vivado v2020.2 (64-bit) build 3064766
-open_checkpoint: Time (s): cpu = 00:00:20 ; elapsed = 00:00:23 . Memory (MB): peak = 1616.273 ; gain = 490.008
-INFO: [IP_Flow 19-234] Refreshing IP repositories
-INFO: [IP_Flow 19-1700] Loaded user IP repository 'd:/Projects/2023/PYNQ/boards/ip'.
-INFO: [IP_Flow 19-1700] Loaded user IP repository 'd:/Jahwa/windows/vivado/project/pynq_jahwa_daq/pynq_jahwa_daq.ip_repo'.
-INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2020.2/data/ip'.
+43 Infos, 8 Warnings, 0 Critical Warnings and 0 Errors encountered.
+link_design completed successfully
+link_design: Time (s): cpu = 00:00:31 ; elapsed = 00:00:36 . Memory (MB): peak = 1801.000 ; gain = 656.883
 Command: opt_design
 Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
 INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
@@ -54,37 +188,37 @@ INFO: [DRC 23-27] Running DRC with 2 threads
 INFO: [Project 1-461] DRC finished with 0 Errors
 INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
 
-Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 1627.902 ; gain = 11.629
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 1801.000 ; gain = 0.000
 
 Starting Cache Timing Information Task
 INFO: [Timing 38-35] Done setting XDC timing constraints.
-Ending Cache Timing Information Task | Checksum: 1e1af4690
+Ending Cache Timing Information Task | Checksum: 2230f32d8
 
-Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.669 . Memory (MB): peak = 1718.945 ; gain = 91.043
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.646 . Memory (MB): peak = 1801.000 ; gain = 0.000
 
 Starting Logic Optimization Task
 
 Phase 1 Retarget
 INFO: [Opt 31-138] Pushed 2 inverter(s) to 8 load pin(s).
 INFO: [Opt 31-49] Retargeted 0 cell(s).
-Phase 1 Retarget | Checksum: 1584a0edf
+Phase 1 Retarget | Checksum: 155f9a34d
 
-Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 1925.770 ; gain = 0.000
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.953 . Memory (MB): peak = 1976.984 ; gain = 0.660
 INFO: [Opt 31-389] Phase Retarget created 187 cells and removed 343 cells
 INFO: [Opt 31-1021] In phase Retarget, 3 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
 
 Phase 2 Constant propagation
 INFO: [Opt 31-138] Pushed 1 inverter(s) to 5 load pin(s).
-Phase 2 Constant propagation | Checksum: 113eb773c
+Phase 2 Constant propagation | Checksum: 211583b7a
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 1925.770 ; gain = 0.000
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 1976.984 ; gain = 0.660
 INFO: [Opt 31-389] Phase Constant propagation created 89 cells and removed 237 cells
 INFO: [Opt 31-1021] In phase Constant propagation, 2 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
 
 Phase 3 Sweep
-Phase 3 Sweep | Checksum: 16ce0f9f4
+Phase 3 Sweep | Checksum: 16ab171fd
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1925.770 ; gain = 0.000
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1976.984 ; gain = 0.660
 INFO: [Opt 31-389] Phase Sweep created 4 cells and removed 475 cells
 INFO: [Opt 31-1021] In phase Sweep, 2 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
 
@@ -92,22 +226,22 @@ Phase 4 BUFG optimization
 INFO: [Opt 31-194] Inserted BUFG jahwa_daq_system_i/mb_softprocessor_0/mdm_0/U0/Use_E2.BSCAN_I/Dbg_Update_0_BUFG_inst to drive 40 load(s) on clock net jahwa_daq_system_i/mb_softprocessor_0/mdm_0/U0/Use_E2.BSCAN_I/Dbg_Update_0_BUFG
 INFO: [Opt 31-194] Inserted BUFG jahwa_daq_system_i/axi_clock_divider_0/inst/axi_clock_divider_v1_0_S00_AXI_inst/clock_divider_inst/r_clk_div_BUFG_inst to drive 33 load(s) on clock net jahwa_daq_system_i/axi_clock_divider_0/inst/axi_clock_divider_v1_0_S00_AXI_inst/clock_divider_inst/r_clk_div_BUFG
 INFO: [Opt 31-193] Inserted 2 BUFG(s) on clock nets
-Phase 4 BUFG optimization | Checksum: 191ec07d1
+Phase 4 BUFG optimization | Checksum: 13ac15d16
 
-Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 1925.770 ; gain = 0.000
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1976.984 ; gain = 0.660
 INFO: [Opt 31-662] Phase BUFG optimization created 2 cells of which 2 are BUFGs and removed 0 cells.
 
 Phase 5 Shift Register Optimization
 INFO: [Opt 31-1064] SRL Remap converted 0 SRLs to 0 registers and converted 0 registers of register chains to 0 SRLs
-Phase 5 Shift Register Optimization | Checksum: 191ec07d1
+Phase 5 Shift Register Optimization | Checksum: 13ac15d16
 
-Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 1925.770 ; gain = 0.000
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1976.984 ; gain = 0.660
 INFO: [Opt 31-389] Phase Shift Register Optimization created 0 cells and removed 0 cells
 
 Phase 6 Post Processing Netlist
-Phase 6 Post Processing Netlist | Checksum: 13602f4a1
+Phase 6 Post Processing Netlist | Checksum: 1d6e84e46
 
-Time (s): cpu = 00:00:03 ; elapsed = 00:00:02 . Memory (MB): peak = 1925.770 ; gain = 0.000
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1976.984 ; gain = 0.660
 INFO: [Opt 31-389] Phase Post Processing Netlist created 0 cells and removed 0 cells
 INFO: [Opt 31-1021] In phase Post Processing Netlist, 1 netlist objects are constrained preventing optimization. Please run opt_design with -debug_log to get more detail. 
 Opt_design Change Summary
@@ -129,10 +263,10 @@ Opt_design Change Summary
 
 Starting Connectivity Check Task
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.026 . Memory (MB): peak = 1925.770 ; gain = 0.000
-Ending Logic Optimization Task | Checksum: 21258e3df
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.025 . Memory (MB): peak = 1976.984 ; gain = 0.000
+Ending Logic Optimization Task | Checksum: 11bb3e6cf
 
-Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1925.770 ; gain = 0.000
+Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1976.984 ; gain = 0.660
 
 Starting Power Optimization Task
 INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
@@ -150,40 +284,40 @@ INFO: [Pwropt 34-201] Structural ODC has moved 0 WE to EN ports
 Number of BRAM Ports augmented: 64 newly gated: 0 Total Ports: 256
 Number of Flops added for Enable Generation: 6
 
-Ending PowerOpt Patch Enables Task | Checksum: 127624792
+Ending PowerOpt Patch Enables Task | Checksum: 1dec2030c
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.657 . Memory (MB): peak = 2222.773 ; gain = 0.000
-Ending Power Optimization Task | Checksum: 127624792
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.638 . Memory (MB): peak = 2320.867 ; gain = 0.000
+Ending Power Optimization Task | Checksum: 1dec2030c
 
-Time (s): cpu = 00:00:19 ; elapsed = 00:00:16 . Memory (MB): peak = 2222.773 ; gain = 297.004
+Time (s): cpu = 00:00:20 ; elapsed = 00:00:17 . Memory (MB): peak = 2320.867 ; gain = 343.883
 
 Starting Final Cleanup Task
 
 Starting Logic Optimization Task
 INFO: [Timing 38-35] Done setting XDC timing constraints.
-Ending Logic Optimization Task | Checksum: 1e7f1df53
+Ending Logic Optimization Task | Checksum: fa52b947
 
-Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2222.773 ; gain = 0.000
-Ending Final Cleanup Task | Checksum: 1e7f1df53
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 2320.867 ; gain = 0.000
+Ending Final Cleanup Task | Checksum: fa52b947
 
-Time (s): cpu = 00:00:05 ; elapsed = 00:00:04 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:04 . Memory (MB): peak = 2320.867 ; gain = 0.000
 
 Starting Netlist Obfuscation Task
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.010 . Memory (MB): peak = 2222.773 ; gain = 0.000
-Ending Netlist Obfuscation Task | Checksum: 1e7f1df53
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 2320.867 ; gain = 0.000
+Ending Netlist Obfuscation Task | Checksum: fa52b947
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 2320.867 ; gain = 0.000
 INFO: [Common 17-83] Releasing license: Implementation
-45 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+73 Infos, 8 Warnings, 0 Critical Warnings and 0 Errors encountered.
 opt_design completed successfully
-opt_design: Time (s): cpu = 00:00:31 ; elapsed = 00:00:27 . Memory (MB): peak = 2222.773 ; gain = 606.500
+opt_design: Time (s): cpu = 00:00:33 ; elapsed = 00:00:28 . Memory (MB): peak = 2320.867 ; gain = 519.867
 INFO: [Timing 38-35] Done setting XDC timing constraints.
 INFO: [Timing 38-480] Writing timing data to binary archive.
 Writing placer database...
 Writing XDEF routing.
 Writing XDEF routing logical nets.
 Writing XDEF routing special nets.
-Write XDEF Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.075 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Write XDEF Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.080 . Memory (MB): peak = 2320.867 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'D:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.runs/impl_1/jahwa_daq_system_wrapper_opt.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_drc -file jahwa_daq_system_wrapper_drc_opted.rpt -pb jahwa_daq_system_wrapper_drc_opted.pb -rpx jahwa_daq_system_wrapper_drc_opted.rpx
 Command: report_drc -file jahwa_daq_system_wrapper_drc_opted.rpt -pb jahwa_daq_system_wrapper_drc_opted.pb -rpx jahwa_daq_system_wrapper_drc_opted.rpx
@@ -191,7 +325,6 @@ INFO: [IP_Flow 19-1839] IP Catalog is up to date.
 INFO: [DRC 23-27] Running DRC with 2 threads
 INFO: [Coretcl 2-168] The results of DRC are in file D:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.runs/impl_1/jahwa_daq_system_wrapper_drc_opted.rpt.
 report_drc completed successfully
-report_drc: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2222.773 ; gain = 0.000
 Command: place_design
 Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
 INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
@@ -209,91 +342,75 @@ INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 
 Phase 1 Placer Initialization
 
 Phase 1.1 Placer Initialization Netlist Sorting
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 2222.773 ; gain = 0.000
-Phase 1.1 Placer Initialization Netlist Sorting | Checksum: 116f48ecb
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 2320.867 ; gain = 0.000
+Phase 1.1 Placer Initialization Netlist Sorting | Checksum: e4d4ded2
 
-Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.087 . Memory (MB): peak = 2222.773 ; gain = 0.000
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.021 . Memory (MB): peak = 2320.867 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 2320.867 ; gain = 0.000
 
 Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
-Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: ddd16d9f
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: fcefc894
 
-Time (s): cpu = 00:00:01 ; elapsed = 00:00:01 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Time (s): cpu = 00:00:02 ; elapsed = 00:00:01 . Memory (MB): peak = 2320.867 ; gain = 0.000
 
 Phase 1.3 Build Placer Netlist Model
-Phase 1.3 Build Placer Netlist Model | Checksum: 1669f4f3c
+Phase 1.3 Build Placer Netlist Model | Checksum: 1a84f1d59
 
-Time (s): cpu = 00:00:05 ; elapsed = 00:00:04 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:04 . Memory (MB): peak = 2320.867 ; gain = 0.000
 
 Phase 1.4 Constrain Clocks/Macros
-Phase 1.4 Constrain Clocks/Macros | Checksum: 1669f4f3c
+Phase 1.4 Constrain Clocks/Macros | Checksum: 1a84f1d59
 
-Time (s): cpu = 00:00:05 ; elapsed = 00:00:04 . Memory (MB): peak = 2222.773 ; gain = 0.000
-Phase 1 Placer Initialization | Checksum: 1669f4f3c
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:04 . Memory (MB): peak = 2320.867 ; gain = 0.000
+Phase 1 Placer Initialization | Checksum: 1a84f1d59
 
-Time (s): cpu = 00:00:05 ; elapsed = 00:00:04 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Time (s): cpu = 00:00:06 ; elapsed = 00:00:04 . Memory (MB): peak = 2320.867 ; gain = 0.000
 
 Phase 2 Global Placement
 
 Phase 2.1 Floorplanning
-Phase 2.1 Floorplanning | Checksum: 1e9c8c8d3
+Phase 2.1 Floorplanning | Checksum: 1d32d209f
 
-Time (s): cpu = 00:00:06 ; elapsed = 00:00:05 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Time (s): cpu = 00:00:07 ; elapsed = 00:00:05 . Memory (MB): peak = 2320.867 ; gain = 0.000
 
 Phase 2.2 Update Timing before SLR Path Opt
-Phase 2.2 Update Timing before SLR Path Opt | Checksum: 18b2f25d8
+Phase 2.2 Update Timing before SLR Path Opt | Checksum: 12909307b
 
-Time (s): cpu = 00:00:07 ; elapsed = 00:00:05 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Time (s): cpu = 00:00:08 ; elapsed = 00:00:06 . Memory (MB): peak = 2320.867 ; gain = 0.000
 
 Phase 2.3 Global Placement Core
 
 Phase 2.3.1 Physical Synthesis In Placer
-INFO: [Physopt 32-1035] Found 26 LUTNM shape to break, 354 LUT instances to create LUTNM shape
-INFO: [Physopt 32-1044] Break lutnm for timing: one critical 18, two critical 8, total 18, new lutff created 0
-INFO: [Physopt 32-775] End 1 Pass. Optimized 170 nets or cells. Created 18 new cells, deleted 152 existing cells and moved 0 existing cell
+INFO: [Physopt 32-1035] Found 8 LUTNM shape to break, 369 LUT instances to create LUTNM shape
+INFO: [Physopt 32-1044] Break lutnm for timing: one critical 6, two critical 2, total 6, new lutff created 0
+INFO: [Physopt 32-775] End 1 Pass. Optimized 168 nets or cells. Created 6 new cells, deleted 162 existing cells and moved 0 existing cell
 INFO: [Physopt 32-65] No nets found for high-fanout optimization.
 INFO: [Physopt 32-232] Optimized 0 net. Created 0 new instance.
 INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
 INFO: [Physopt 32-64] No nets found for fanout-optimization.
 INFO: [Physopt 32-232] Optimized 0 net. Created 0 new instance.
 INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/lmb_bram_0/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[62].ram.r/prim_noinit.ram/SAFETY_CKT_GEN.ENA_NO_REG.ENA_dly_D_reg_1 could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/lmb_bram_0/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[62].ram.r/prim_noinit.ram/DEVICE_7SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36.ram_T_i_1__6 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/lmb_bram_0/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[62].ram.r/prim_noinit.ram/SAFETY_CKT_GEN.ENA_NO_REG.ENA_dly_D_reg_3 could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/lmb_bram_0/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[62].ram.r/prim_noinit.ram/DEVICE_7SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36.ram_T_i_1__9 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/lmb_bram_0/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[62].ram.r/prim_noinit.ram/SAFETY_CKT_GEN.ENA_NO_REG.ENA_dly_D_reg_0 could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/lmb_bram_0/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[62].ram.r/prim_noinit.ram/DEVICE_7SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36.ram_T_i_1__0 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/lmb_bram_0/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[62].ram.r/prim_noinit.ram/ENA could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/lmb_bram_0/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[62].ram.r/prim_noinit.ram/DEVICE_7SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36.ram_T_i_1__7 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/lmb_bram_0/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[62].ram.r/prim_noinit.ram/SAFETY_CKT_GEN.ENA_NO_REG.ENA_dly_D_reg could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/lmb_bram_0/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[62].ram.r/prim_noinit.ram/DEVICE_7SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36.ram_T_i_1 could not be replicated
 INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/lmb_bram_0/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[62].ram.r/prim_noinit.ram/SAFETY_CKT_GEN.ENA_NO_REG.ENA_dly_D_reg_2 could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/lmb_bram_0/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[62].ram.r/prim_noinit.ram/DEVICE_7SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36.ram_T_i_1__8 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[13] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[13]_INST_0 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[12] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[12]_INST_0 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[27] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[27]_INST_0 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[18] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[18]_INST_0 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[23] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[23]_INST_0 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[28] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[28]_INST_0 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[22] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[22]_INST_0 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[0] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[0]_INST_0 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[2] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[2]_INST_0 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[5] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[5]_INST_0 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[3] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[3]_INST_0 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[24] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[24]_INST_0 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[19] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[19]_INST_0 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[29] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[29]_INST_0 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[15] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[15]_INST_0 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[6] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[6]_INST_0 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[17] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[17]_INST_0 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[21] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[21]_INST_0 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[20] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[20]_INST_0 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[4] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[4]_INST_0 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[8] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[8]_INST_0 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[25] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[25]_INST_0 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[9] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[9]_INST_0 could not be replicated
+INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/lmb_bram_0/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[62].ram.r/prim_noinit.ram/SAFETY_CKT_GEN.ENA_NO_REG.ENA_dly_D_reg_0 could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/lmb_bram_0/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[62].ram.r/prim_noinit.ram/DEVICE_7SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36.ram_T_i_1__0 could not be replicated
+INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/lmb_bram_0/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[62].ram.r/prim_noinit.ram/SAFETY_CKT_GEN.ENA_NO_REG.ENA_dly_D_reg_1 could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/lmb_bram_0/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[62].ram.r/prim_noinit.ram/DEVICE_7SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36.ram_T_i_1__6 could not be replicated
+INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/lmb_bram_0/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[62].ram.r/prim_noinit.ram/ENA could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/lmb_bram_0/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[62].ram.r/prim_noinit.ram/DEVICE_7SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36.ram_T_i_1__7 could not be replicated
+INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/lmb_bram_0/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[62].ram.r/prim_noinit.ram/SAFETY_CKT_GEN.ENA_NO_REG.ENA_dly_D_reg_3 could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/lmb_bram_0/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[62].ram.r/prim_noinit.ram/DEVICE_7SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36.ram_T_i_1__9 could not be replicated
+INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/lmb_bram_0/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[62].ram.r/prim_noinit.ram/SAFETY_CKT_GEN.ENA_NO_REG.ENA_dly_D_reg could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/lmb_bram_0/U0/inst_blk_mem_gen/gnbram.gnative_mem_map_bmg.native_mem_map_blk_mem_gen/valid.cstr/ramloop[62].ram.r/prim_noinit.ram/DEVICE_7SERIES.WITH_BMM_INFO.TRUE_DP.CASCADED_PRIM36.ram_T_i_1 could not be replicated
 INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[14] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[14]_INST_0 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[1] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[1]_INST_0 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[7] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[7]_INST_0 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[16] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[16]_INST_0 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[31] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[31]_INST_0 could not be replicated
-INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[10] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[10]_INST_0 could not be replicated
+INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[13] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[13]_INST_0 could not be replicated
+INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[0] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[0]_INST_0 could not be replicated
+INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[15] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[15]_INST_0 could not be replicated
 INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[26] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[26]_INST_0 could not be replicated
+INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[12] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[12]_INST_0 could not be replicated
 INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[11] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[11]_INST_0 could not be replicated
+INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[5] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[5]_INST_0 could not be replicated
+INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[16] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[16]_INST_0 could not be replicated
+INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[27] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[27]_INST_0 could not be replicated
+INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[31] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[31]_INST_0 could not be replicated
+INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[3] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[3]_INST_0 could not be replicated
+INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[25] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[25]_INST_0 could not be replicated
+INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[10] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[10]_INST_0 could not be replicated
+INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[21] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[21]_INST_0 could not be replicated
 INFO: [Physopt 32-117] Net jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[30] could not be optimized because driver jahwa_daq_system_i/mb_softprocessor_0/microblaze_local_memory_0/ilmb_bram_ctrl_0/U0/lmb_mux_I/BRAM_Dout_A[30]_INST_0 could not be replicated
 INFO: [Physopt 32-68] No nets found for critical-cell optimization.
 INFO: [Physopt 32-232] Optimized 0 net. Created 0 new instance.
@@ -302,15 +419,15 @@ INFO: [Physopt 32-456] No candidate cells for DSP register optimization found in
 INFO: [Physopt 32-775] End 2 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
 INFO: [Physopt 32-1123] No candidate cells found for Shift Register to Pipeline optimization
 INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
-INFO: [Physopt 32-775] End 1 Pass. Optimized 4 nets or cells. Created 50 new cells, deleted 0 existing cell and moved 0 existing cell
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.019 . Memory (MB): peak = 2222.773 ; gain = 0.000
+INFO: [Physopt 32-775] End 1 Pass. Optimized 1 net or cell. Created 5 new cells, deleted 0 existing cell and moved 0 existing cell
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.018 . Memory (MB): peak = 2320.867 ; gain = 0.000
 INFO: [Physopt 32-526] No candidate cells for BRAM register optimization found in the design
 INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
 INFO: [Physopt 32-846] No candidate cells for URAM register optimization found in the design
 INFO: [Physopt 32-775] End 2 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
 INFO: [Physopt 32-949] No candidate nets found for dynamic/static region interface net replication
 INFO: [Physopt 32-775] End 1 Pass. Optimized 0 net or cell. Created 0 new cell, deleted 0 existing cell and moved 0 existing cell
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.016 . Memory (MB): peak = 2320.867 ; gain = 0.000
 
 Summary of Physical Synthesis Optimizations
 ============================================
@@ -319,79 +436,79 @@ Summary of Physical Synthesis Optimizations
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 |  Optimization                                     |  Added Cells  |  Removed Cells  |  Optimized Cells/Nets  |  Dont Touch  |  Iterations  |  Elapsed   |
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
-|  LUT Combining                                    |           18  |            152  |                   170  |           0  |           1  |  00:00:00  |
+|  LUT Combining                                    |            6  |            162  |                   168  |           0  |           1  |  00:00:00  |
 |  Very High Fanout                                 |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
 |  Fanout                                           |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
 |  Critical Cell                                    |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
 |  DSP Register                                     |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
 |  Shift Register to Pipeline                       |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
-|  Shift Register                                   |           50  |              0  |                     4  |           0  |           1  |  00:00:00  |
+|  Shift Register                                   |            5  |              0  |                     1  |           0  |           1  |  00:00:00  |
 |  BRAM Register                                    |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
 |  URAM Register                                    |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
 |  Dynamic/Static Region Interface Net Replication  |            0  |              0  |                     0  |           0  |           1  |  00:00:00  |
-|  Total                                            |           68  |            152  |                   174  |           0  |          10  |  00:00:01  |
+|  Total                                            |           11  |            162  |                   169  |           0  |          10  |  00:00:01  |
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-Phase 2.3.1 Physical Synthesis In Placer | Checksum: 1d576bba1
+Phase 2.3.1 Physical Synthesis In Placer | Checksum: 1029988ef
 
-Time (s): cpu = 00:00:24 ; elapsed = 00:00:17 . Memory (MB): peak = 2222.773 ; gain = 0.000
-Phase 2.3 Global Placement Core | Checksum: 19e850842
+Time (s): cpu = 00:00:26 ; elapsed = 00:00:18 . Memory (MB): peak = 2320.867 ; gain = 0.000
+Phase 2.3 Global Placement Core | Checksum: 24d6be28f
 
-Time (s): cpu = 00:00:25 ; elapsed = 00:00:18 . Memory (MB): peak = 2222.773 ; gain = 0.000
-Phase 2 Global Placement | Checksum: 19e850842
+Time (s): cpu = 00:00:27 ; elapsed = 00:00:18 . Memory (MB): peak = 2320.867 ; gain = 0.000
+Phase 2 Global Placement | Checksum: 24d6be28f
 
-Time (s): cpu = 00:00:25 ; elapsed = 00:00:18 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Time (s): cpu = 00:00:27 ; elapsed = 00:00:18 . Memory (MB): peak = 2320.867 ; gain = 0.000
 
 Phase 3 Detail Placement
 
 Phase 3.1 Commit Multi Column Macros
-Phase 3.1 Commit Multi Column Macros | Checksum: e7c52636
+Phase 3.1 Commit Multi Column Macros | Checksum: 1942bc6ca
 
-Time (s): cpu = 00:00:26 ; elapsed = 00:00:19 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Time (s): cpu = 00:00:29 ; elapsed = 00:00:19 . Memory (MB): peak = 2320.867 ; gain = 0.000
 
 Phase 3.2 Commit Most Macros & LUTRAMs
-Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 105ed22d4
+Phase 3.2 Commit Most Macros & LUTRAMs | Checksum: 1a074b376
 
-Time (s): cpu = 00:00:28 ; elapsed = 00:00:20 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Time (s): cpu = 00:00:31 ; elapsed = 00:00:21 . Memory (MB): peak = 2320.867 ; gain = 0.000
 
 Phase 3.3 Area Swap Optimization
-Phase 3.3 Area Swap Optimization | Checksum: 15ea1764b
+Phase 3.3 Area Swap Optimization | Checksum: 1d406b1ed
 
-Time (s): cpu = 00:00:28 ; elapsed = 00:00:20 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Time (s): cpu = 00:00:31 ; elapsed = 00:00:21 . Memory (MB): peak = 2320.867 ; gain = 0.000
 
 Phase 3.4 Pipeline Register Optimization
-Phase 3.4 Pipeline Register Optimization | Checksum: 1df7c72c6
+Phase 3.4 Pipeline Register Optimization | Checksum: 1ad0bc7d8
 
-Time (s): cpu = 00:00:28 ; elapsed = 00:00:20 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Time (s): cpu = 00:00:31 ; elapsed = 00:00:21 . Memory (MB): peak = 2320.867 ; gain = 0.000
 
 Phase 3.5 Fast Optimization
-Phase 3.5 Fast Optimization | Checksum: 1350ac12b
+Phase 3.5 Fast Optimization | Checksum: 1f5f80596
 
-Time (s): cpu = 00:00:31 ; elapsed = 00:00:23 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Time (s): cpu = 00:00:34 ; elapsed = 00:00:24 . Memory (MB): peak = 2320.867 ; gain = 0.000
 
 Phase 3.6 Small Shape Detail Placement
-Phase 3.6 Small Shape Detail Placement | Checksum: 1f775c6f9
+Phase 3.6 Small Shape Detail Placement | Checksum: 10d8846b6
 
-Time (s): cpu = 00:00:34 ; elapsed = 00:00:26 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Time (s): cpu = 00:00:38 ; elapsed = 00:00:27 . Memory (MB): peak = 2320.867 ; gain = 0.000
 
 Phase 3.7 Re-assign LUT pins
-Phase 3.7 Re-assign LUT pins | Checksum: 129e27014
+Phase 3.7 Re-assign LUT pins | Checksum: a64b1e8e
 
-Time (s): cpu = 00:00:35 ; elapsed = 00:00:27 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Time (s): cpu = 00:00:38 ; elapsed = 00:00:28 . Memory (MB): peak = 2320.867 ; gain = 0.000
 
 Phase 3.8 Pipeline Register Optimization
-Phase 3.8 Pipeline Register Optimization | Checksum: 1835aff98
+Phase 3.8 Pipeline Register Optimization | Checksum: c2c2d1d9
 
-Time (s): cpu = 00:00:35 ; elapsed = 00:00:27 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Time (s): cpu = 00:00:38 ; elapsed = 00:00:28 . Memory (MB): peak = 2320.867 ; gain = 0.000
 
 Phase 3.9 Fast Optimization
-Phase 3.9 Fast Optimization | Checksum: 24e026003
+Phase 3.9 Fast Optimization | Checksum: 245b0ea5d
 
-Time (s): cpu = 00:00:40 ; elapsed = 00:00:31 . Memory (MB): peak = 2222.773 ; gain = 0.000
-Phase 3 Detail Placement | Checksum: 24e026003
+Time (s): cpu = 00:00:43 ; elapsed = 00:00:31 . Memory (MB): peak = 2320.867 ; gain = 0.000
+Phase 3 Detail Placement | Checksum: 245b0ea5d
 
-Time (s): cpu = 00:00:40 ; elapsed = 00:00:31 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Time (s): cpu = 00:00:43 ; elapsed = 00:00:31 . Memory (MB): peak = 2320.867 ; gain = 0.000
 
 Phase 4 Post Placement Optimization and Clean-Up
 
@@ -399,7 +516,7 @@ Phase 4.1 Post Commit Optimization
 INFO: [Timing 38-35] Done setting XDC timing constraints.
 
 Phase 4.1.1 Post Placement Optimization
-Post Placement Optimization Initialization | Checksum: 2b856278c
+Post Placement Optimization Initialization | Checksum: 2cb0b2c0e
 
 Phase 4.1.1.1 BUFG Insertion
 
@@ -407,28 +524,28 @@ Starting Physical Synthesis Task
 
 Phase 1 Physical Synthesis Initialization
 INFO: [Physopt 32-721] Multithreading enabled for phys_opt_design using a maximum of 2 CPUs
-INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-0.442 | TNS=-7.064 |
-Phase 1 Physical Synthesis Initialization | Checksum: 26a0fb2bd
+INFO: [Physopt 32-619] Estimated Timing Summary | WNS=-0.614 | TNS=-3.782 |
+Phase 1 Physical Synthesis Initialization | Checksum: 23fa92396
 
-Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.452 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.597 . Memory (MB): peak = 2320.867 ; gain = 0.000
 INFO: [Place 46-56] BUFG insertion identified 0 candidate nets. Inserted BUFG: 0, Replicated BUFG Driver: 0, Skipped due to Placement/Routing Conflicts: 0, Skipped due to Timing Degradation: 0, Skipped due to Illegal Netlist: 0.
-Ending Physical Synthesis Task | Checksum: 28ed9f21e
+Ending Physical Synthesis Task | Checksum: 23ed6affd
 
-Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.482 . Memory (MB): peak = 2222.773 ; gain = 0.000
-Phase 4.1.1.1 BUFG Insertion | Checksum: 2b856278c
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.631 . Memory (MB): peak = 2320.867 ; gain = 0.000
+Phase 4.1.1.1 BUFG Insertion | Checksum: 2cb0b2c0e
 
-Time (s): cpu = 00:00:45 ; elapsed = 00:00:34 . Memory (MB): peak = 2222.773 ; gain = 0.000
-INFO: [Place 30-746] Post Placement Timing Summary WNS=0.111. For the most accurate timing information please run report_timing.
+Time (s): cpu = 00:00:48 ; elapsed = 00:00:35 . Memory (MB): peak = 2320.867 ; gain = 0.000
+INFO: [Place 30-746] Post Placement Timing Summary WNS=0.525. For the most accurate timing information please run report_timing.
 
-Time (s): cpu = 00:01:05 ; elapsed = 00:00:53 . Memory (MB): peak = 2222.773 ; gain = 0.000
-Phase 4.1 Post Commit Optimization | Checksum: 237876662
+Time (s): cpu = 00:00:55 ; elapsed = 00:00:42 . Memory (MB): peak = 2320.867 ; gain = 0.000
+Phase 4.1 Post Commit Optimization | Checksum: 17ecdcc09
 
-Time (s): cpu = 00:01:05 ; elapsed = 00:00:53 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Time (s): cpu = 00:00:55 ; elapsed = 00:00:42 . Memory (MB): peak = 2320.867 ; gain = 0.000
 
 Phase 4.2 Post Placement Cleanup
-Phase 4.2 Post Placement Cleanup | Checksum: 237876662
+Phase 4.2 Post Placement Cleanup | Checksum: 17ecdcc09
 
-Time (s): cpu = 00:01:05 ; elapsed = 00:00:53 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Time (s): cpu = 00:00:55 ; elapsed = 00:00:42 . Memory (MB): peak = 2320.867 ; gain = 0.000
 
 Phase 4.3 Placer Reporting
 
@@ -438,62 +555,62 @@ INFO: [Place 30-612] Post-Placement Estimated Congestion
 |           | Global Congestion | Short Congestion  |
 | Direction | Region Size       | Region Size       |
 |___________|___________________|___________________|
-|      North|                1x1|                1x1|
+|      North|                1x1|                2x2|
 |___________|___________________|___________________|
-|      South|                1x1|                2x2|
+|      South|                1x1|                1x1|
 |___________|___________________|___________________|
 |       East|                1x1|                1x1|
 |___________|___________________|___________________|
 |       West|                1x1|                1x1|
 |___________|___________________|___________________|
 
-Phase 4.3.1 Print Estimated Congestion | Checksum: 237876662
+Phase 4.3.1 Print Estimated Congestion | Checksum: 17ecdcc09
 
-Time (s): cpu = 00:01:05 ; elapsed = 00:00:54 . Memory (MB): peak = 2222.773 ; gain = 0.000
-Phase 4.3 Placer Reporting | Checksum: 237876662
+Time (s): cpu = 00:00:56 ; elapsed = 00:00:42 . Memory (MB): peak = 2320.867 ; gain = 0.000
+Phase 4.3 Placer Reporting | Checksum: 17ecdcc09
 
-Time (s): cpu = 00:01:05 ; elapsed = 00:00:54 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Time (s): cpu = 00:00:56 ; elapsed = 00:00:42 . Memory (MB): peak = 2320.867 ; gain = 0.000
 
 Phase 4.4 Final Placement Cleanup
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.012 . Memory (MB): peak = 2320.867 ; gain = 0.000
 
-Time (s): cpu = 00:01:05 ; elapsed = 00:00:54 . Memory (MB): peak = 2222.773 ; gain = 0.000
-Phase 4 Post Placement Optimization and Clean-Up | Checksum: 19344614d
+Time (s): cpu = 00:00:56 ; elapsed = 00:00:42 . Memory (MB): peak = 2320.867 ; gain = 0.000
+Phase 4 Post Placement Optimization and Clean-Up | Checksum: 12d52b7af
 
-Time (s): cpu = 00:01:05 ; elapsed = 00:00:54 . Memory (MB): peak = 2222.773 ; gain = 0.000
-Ending Placer Task | Checksum: 9b6f5ff8
+Time (s): cpu = 00:00:56 ; elapsed = 00:00:42 . Memory (MB): peak = 2320.867 ; gain = 0.000
+Ending Placer Task | Checksum: 11fc2f110
 
-Time (s): cpu = 00:01:05 ; elapsed = 00:00:54 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Time (s): cpu = 00:00:56 ; elapsed = 00:00:42 . Memory (MB): peak = 2320.867 ; gain = 0.000
 INFO: [Common 17-83] Releasing license: Implementation
-128 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+140 Infos, 8 Warnings, 0 Critical Warnings and 0 Errors encountered.
 place_design completed successfully
-place_design: Time (s): cpu = 00:01:07 ; elapsed = 00:00:55 . Memory (MB): peak = 2222.773 ; gain = 0.000
+place_design: Time (s): cpu = 00:00:58 ; elapsed = 00:00:44 . Memory (MB): peak = 2320.867 ; gain = 0.000
 INFO: [Timing 38-480] Writing timing data to binary archive.
 Writing placer database...
 Writing XDEF routing.
 Writing XDEF routing logical nets.
 Writing XDEF routing special nets.
-Write XDEF Complete: Time (s): cpu = 00:00:04 ; elapsed = 00:00:01 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Write XDEF Complete: Time (s): cpu = 00:00:03 ; elapsed = 00:00:01 . Memory (MB): peak = 2320.867 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'D:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.runs/impl_1/jahwa_daq_system_wrapper_placed.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_io -file jahwa_daq_system_wrapper_io_placed.rpt
-report_io: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.056 . Memory (MB): peak = 2222.773 ; gain = 0.000
+report_io: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.057 . Memory (MB): peak = 2320.867 ; gain = 0.000
 INFO: [runtcl-4] Executing : report_utilization -file jahwa_daq_system_wrapper_utilization_placed.rpt -pb jahwa_daq_system_wrapper_utilization_placed.pb
 INFO: [runtcl-4] Executing : report_control_sets -verbose -file jahwa_daq_system_wrapper_control_sets_placed.rpt
-report_control_sets: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.045 . Memory (MB): peak = 2222.773 ; gain = 0.000
+report_control_sets: Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.040 . Memory (MB): peak = 2320.867 ; gain = 0.000
 Command: phys_opt_design
 Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
 INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
 INFO: [Vivado_Tcl 4-383] Design worst setup slack (WNS) is greater than or equal to 0.000 ns. Skipping all physical synthesis optimizations.
 INFO: [Vivado_Tcl 4-232] No setup violation found. The netlist was not modified.
 INFO: [Common 17-83] Releasing license: Implementation
-137 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+149 Infos, 8 Warnings, 0 Critical Warnings and 0 Errors encountered.
 phys_opt_design completed successfully
 INFO: [Timing 38-480] Writing timing data to binary archive.
 Writing placer database...
 Writing XDEF routing.
 Writing XDEF routing logical nets.
 Writing XDEF routing special nets.
-Write XDEF Complete: Time (s): cpu = 00:00:04 ; elapsed = 00:00:01 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Write XDEF Complete: Time (s): cpu = 00:00:03 ; elapsed = 00:00:01 . Memory (MB): peak = 2320.867 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'D:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.runs/impl_1/jahwa_daq_system_wrapper_physopt.dcp' has been generated.
 Command: route_design
 Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
@@ -506,153 +623,139 @@ INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more in
 
 Starting Routing Task
 INFO: [Route 35-254] Multithreading enabled for route_design using a maximum of 2 CPUs
-Checksum: PlaceDB: 54bcc8d8 ConstDB: 0 ShapeSum: 46b29720 RouteDB: 0
+Checksum: PlaceDB: 9b6f4f15 ConstDB: 0 ShapeSum: 8453a1fb RouteDB: 0
 
 Phase 1 Build RT Design
-Phase 1 Build RT Design | Checksum: d7fedba7
+Phase 1 Build RT Design | Checksum: 10ff2f08c
 
-Time (s): cpu = 00:00:23 ; elapsed = 00:00:19 . Memory (MB): peak = 2222.773 ; gain = 0.000
-Post Restoration Checksum: NetGraph: 8ba242bb NumContArr: 4c5c98ec Constraints: 0 Timing: 0
+Time (s): cpu = 00:00:25 ; elapsed = 00:00:20 . Memory (MB): peak = 2320.867 ; gain = 0.000
+Post Restoration Checksum: NetGraph: 1efed386 NumContArr: f0f41d06 Constraints: 0 Timing: 0
 
 Phase 2 Router Initialization
 
 Phase 2.1 Create Timer
-Phase 2.1 Create Timer | Checksum: d7fedba7
+Phase 2.1 Create Timer | Checksum: 10ff2f08c
 
-Time (s): cpu = 00:00:23 ; elapsed = 00:00:19 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Time (s): cpu = 00:00:25 ; elapsed = 00:00:21 . Memory (MB): peak = 2320.867 ; gain = 0.000
 
 Phase 2.2 Fix Topology Constraints
-Phase 2.2 Fix Topology Constraints | Checksum: d7fedba7
+Phase 2.2 Fix Topology Constraints | Checksum: 10ff2f08c
 
-Time (s): cpu = 00:00:23 ; elapsed = 00:00:19 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Time (s): cpu = 00:00:25 ; elapsed = 00:00:21 . Memory (MB): peak = 2320.867 ; gain = 0.000
 
 Phase 2.3 Pre Route Cleanup
-Phase 2.3 Pre Route Cleanup | Checksum: d7fedba7
+Phase 2.3 Pre Route Cleanup | Checksum: 10ff2f08c
 
-Time (s): cpu = 00:00:23 ; elapsed = 00:00:19 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Time (s): cpu = 00:00:25 ; elapsed = 00:00:21 . Memory (MB): peak = 2320.867 ; gain = 0.000
  Number of Nodes with overlaps = 0
 
 Phase 2.4 Update Timing
-Phase 2.4 Update Timing | Checksum: 19d93efc0
+Phase 2.4 Update Timing | Checksum: 23968412a
 
-Time (s): cpu = 00:00:29 ; elapsed = 00:00:23 . Memory (MB): peak = 2222.773 ; gain = 0.000
-INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.161  | TNS=0.000  | WHS=-0.258 | THS=-112.033|
+Time (s): cpu = 00:00:32 ; elapsed = 00:00:27 . Memory (MB): peak = 2320.867 ; gain = 0.000
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.563  | TNS=0.000  | WHS=-0.283 | THS=-109.171|
 
-Phase 2 Router Initialization | Checksum: 1bde52c05
+Phase 2 Router Initialization | Checksum: 20c3e9a00
 
-Time (s): cpu = 00:00:31 ; elapsed = 00:00:25 . Memory (MB): peak = 2222.773 ; gain = 0.000
+Time (s): cpu = 00:00:35 ; elapsed = 00:00:28 . Memory (MB): peak = 2320.867 ; gain = 0.000
 
 Router Utilization Summary
-  Global Vertical Routing Utilization    = 0.0025888 %
-  Global Horizontal Routing Utilization  = 0.00447938 %
+  Global Vertical Routing Utilization    = 0.0045045 %
+  Global Horizontal Routing Utilization  = 0.00228195 %
   Routable Net Status*
   *Does not include unroutable nets such as driverless and loadless.
   Run report_route_status for detailed report.
-  Number of Failed Nets               = 9356
+  Number of Failed Nets               = 9298
     (Failed Nets is the sum of unrouted and partially routed nets)
-  Number of Unrouted Nets             = 9356
-  Number of Partially Routed Nets     = 0
+  Number of Unrouted Nets             = 9297
+  Number of Partially Routed Nets     = 1
   Number of Node Overlaps             = 0
 
 
 Phase 3 Initial Routing
 
 Phase 3.1 Global Routing
-Phase 3.1 Global Routing | Checksum: 1bde52c05
+Phase 3.1 Global Routing | Checksum: 20c3e9a00
 
-Time (s): cpu = 00:00:31 ; elapsed = 00:00:25 . Memory (MB): peak = 2222.773 ; gain = 0.000
-Phase 3 Initial Routing | Checksum: 1eb54d3bc
+Time (s): cpu = 00:00:35 ; elapsed = 00:00:29 . Memory (MB): peak = 2320.867 ; gain = 0.000
+Phase 3 Initial Routing | Checksum: 13d58e5aa
 
-Time (s): cpu = 00:01:49 ; elapsed = 00:01:07 . Memory (MB): peak = 2456.105 ; gain = 233.332
-INFO: [Route 35-580] Design has 2 pins with tight setup and hold constraints.
-
-The top 5 pins with tight setup and hold constraints:
-
-+--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
-|       Launch Clock       |      Capture Clock       |                                                 Pin                                                      |
-+--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
-|               clk_fpga_0 |               clk_fpga_0 |jahwa_daq_system_i/mb_softprocessor_0/microblaze_0/U0/MicroBlaze_Core_I/Performance.Core/Decode_I/PreFetch_Buffer_I1/Instruction_Prefetch_Mux[13].Gen_Instr_DFF/Using_FPGA.Native/D|
-|               clk_fpga_0 |               clk_fpga_0 |jahwa_daq_system_i/mb_softprocessor_0/microblaze_0/U0/MicroBlaze_Core_I/Performance.Core/Decode_I/PreFetch_Buffer_I1/Instruction_Prefetch_Mux[36].Gen_Instr_DFF/Using_FPGA.Native/D|
-+--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
-
-File with complete list of pins: tight_setup_hold_pins.txt
-
+Time (s): cpu = 00:01:43 ; elapsed = 00:01:13 . Memory (MB): peak = 2495.773 ; gain = 174.906
 
 Phase 4 Rip-up And Reroute
 
 Phase 4.1 Global Iteration 0
- Number of Nodes with overlaps = 1136
- Number of Nodes with overlaps = 157
- Number of Nodes with overlaps = 53
- Number of Nodes with overlaps = 22
- Number of Nodes with overlaps = 11
- Number of Nodes with overlaps = 8
- Number of Nodes with overlaps = 3
+ Number of Nodes with overlaps = 1169
+ Number of Nodes with overlaps = 154
+ Number of Nodes with overlaps = 45
+ Number of Nodes with overlaps = 14
+ Number of Nodes with overlaps = 4
+ Number of Nodes with overlaps = 2
+ Number of Nodes with overlaps = 1
  Number of Nodes with overlaps = 0
-INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.008  | TNS=0.000  | WHS=N/A    | THS=N/A    |
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.109  | TNS=0.000  | WHS=N/A    | THS=N/A    |
 
-Phase 4.1 Global Iteration 0 | Checksum: 1a5394753
+Phase 4.1 Global Iteration 0 | Checksum: 1915e4877
 
-Time (s): cpu = 00:02:29 ; elapsed = 00:01:40 . Memory (MB): peak = 2456.105 ; gain = 233.332
+Time (s): cpu = 00:02:13 ; elapsed = 00:01:40 . Memory (MB): peak = 2495.773 ; gain = 174.906
 
 Phase 4.2 Global Iteration 1
- Number of Nodes with overlaps = 132
- Number of Nodes with overlaps = 37
- Number of Nodes with overlaps = 6
+ Number of Nodes with overlaps = 2
  Number of Nodes with overlaps = 0
-INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.100  | TNS=0.000  | WHS=N/A    | THS=N/A    |
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.171  | TNS=0.000  | WHS=N/A    | THS=N/A    |
 
-Phase 4.2 Global Iteration 1 | Checksum: 98cf25a4
+Phase 4.2 Global Iteration 1 | Checksum: 16b239849
 
-Time (s): cpu = 00:02:43 ; elapsed = 00:01:54 . Memory (MB): peak = 2456.105 ; gain = 233.332
-Phase 4 Rip-up And Reroute | Checksum: 98cf25a4
+Time (s): cpu = 00:02:14 ; elapsed = 00:01:40 . Memory (MB): peak = 2495.773 ; gain = 174.906
 
-Time (s): cpu = 00:02:43 ; elapsed = 00:01:54 . Memory (MB): peak = 2456.105 ; gain = 233.332
+Phase 4.3 Global Iteration 2
+ Number of Nodes with overlaps = 0
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.171  | TNS=0.000  | WHS=N/A    | THS=N/A    |
+
+Phase 4.3 Global Iteration 2 | Checksum: ce98c31c
+
+Time (s): cpu = 00:02:15 ; elapsed = 00:01:41 . Memory (MB): peak = 2495.773 ; gain = 174.906
+Phase 4 Rip-up And Reroute | Checksum: ce98c31c
+
+Time (s): cpu = 00:02:15 ; elapsed = 00:01:41 . Memory (MB): peak = 2495.773 ; gain = 174.906
 
 Phase 5 Delay and Skew Optimization
 
 Phase 5.1 Delay CleanUp
+Phase 5.1 Delay CleanUp | Checksum: ce98c31c
 
-Phase 5.1.1 Update Timing
-Phase 5.1.1 Update Timing | Checksum: 170028e2a
-
-Time (s): cpu = 00:02:44 ; elapsed = 00:01:54 . Memory (MB): peak = 2456.105 ; gain = 233.332
-INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.100  | TNS=0.000  | WHS=N/A    | THS=N/A    |
-
-Phase 5.1 Delay CleanUp | Checksum: 170028e2a
-
-Time (s): cpu = 00:02:44 ; elapsed = 00:01:54 . Memory (MB): peak = 2456.105 ; gain = 233.332
+Time (s): cpu = 00:02:15 ; elapsed = 00:01:41 . Memory (MB): peak = 2495.773 ; gain = 174.906
 
 Phase 5.2 Clock Skew Optimization
-Phase 5.2 Clock Skew Optimization | Checksum: 170028e2a
+Phase 5.2 Clock Skew Optimization | Checksum: ce98c31c
 
-Time (s): cpu = 00:02:44 ; elapsed = 00:01:54 . Memory (MB): peak = 2456.105 ; gain = 233.332
-Phase 5 Delay and Skew Optimization | Checksum: 170028e2a
+Time (s): cpu = 00:02:15 ; elapsed = 00:01:41 . Memory (MB): peak = 2495.773 ; gain = 174.906
+Phase 5 Delay and Skew Optimization | Checksum: ce98c31c
 
-Time (s): cpu = 00:02:44 ; elapsed = 00:01:55 . Memory (MB): peak = 2456.105 ; gain = 233.332
+Time (s): cpu = 00:02:15 ; elapsed = 00:01:41 . Memory (MB): peak = 2495.773 ; gain = 174.906
 
 Phase 6 Post Hold Fix
 
 Phase 6.1 Hold Fix Iter
 
 Phase 6.1.1 Update Timing
-Phase 6.1.1 Update Timing | Checksum: 7ea59197
+Phase 6.1.1 Update Timing | Checksum: 1075ed2b2
 
-Time (s): cpu = 00:02:45 ; elapsed = 00:01:55 . Memory (MB): peak = 2456.105 ; gain = 233.332
-INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.100  | TNS=0.000  | WHS=0.023  | THS=0.000  |
+Time (s): cpu = 00:02:16 ; elapsed = 00:01:42 . Memory (MB): peak = 2495.773 ; gain = 174.906
+INFO: [Route 35-416] Intermediate Timing Summary | WNS=0.185  | TNS=0.000  | WHS=0.036  | THS=0.000  |
 
-Phase 6.1 Hold Fix Iter | Checksum: e49d9395
+Phase 6.1 Hold Fix Iter | Checksum: 6bffa2f2
 
-Time (s): cpu = 00:02:45 ; elapsed = 00:01:55 . Memory (MB): peak = 2456.105 ; gain = 233.332
-Phase 6 Post Hold Fix | Checksum: e49d9395
+Time (s): cpu = 00:02:16 ; elapsed = 00:01:42 . Memory (MB): peak = 2495.773 ; gain = 174.906
+Phase 6 Post Hold Fix | Checksum: 6bffa2f2
 
-Time (s): cpu = 00:02:45 ; elapsed = 00:01:55 . Memory (MB): peak = 2456.105 ; gain = 233.332
+Time (s): cpu = 00:02:16 ; elapsed = 00:01:42 . Memory (MB): peak = 2495.773 ; gain = 174.906
 
 Phase 7 Route finalize
 
 Router Utilization Summary
-  Global Vertical Routing Utilization    = 5.20037 %
-  Global Horizontal Routing Utilization  = 4.69033 %
+  Global Vertical Routing Utilization    = 4.96091 %
+  Global Horizontal Routing Utilization  = 4.55629 %
   Routable Net Status*
   *Does not include unroutable nets such as driverless and loadless.
   Run report_route_status for detailed report.
@@ -662,44 +765,44 @@ Router Utilization Summary
   Number of Partially Routed Nets     = 0
   Number of Node Overlaps             = 0
 
-Phase 7 Route finalize | Checksum: 13f95e479
+Phase 7 Route finalize | Checksum: 7cabf5d6
 
-Time (s): cpu = 00:02:45 ; elapsed = 00:01:55 . Memory (MB): peak = 2456.105 ; gain = 233.332
+Time (s): cpu = 00:02:16 ; elapsed = 00:01:42 . Memory (MB): peak = 2495.773 ; gain = 174.906
 
 Phase 8 Verifying routed nets
 
  Verification completed successfully
-Phase 8 Verifying routed nets | Checksum: 13f95e479
+Phase 8 Verifying routed nets | Checksum: 7cabf5d6
 
-Time (s): cpu = 00:02:45 ; elapsed = 00:01:55 . Memory (MB): peak = 2456.105 ; gain = 233.332
+Time (s): cpu = 00:02:17 ; elapsed = 00:01:42 . Memory (MB): peak = 2495.773 ; gain = 174.906
 
 Phase 9 Depositing Routes
-Phase 9 Depositing Routes | Checksum: 175896504
+Phase 9 Depositing Routes | Checksum: d9a75523
 
-Time (s): cpu = 00:02:46 ; elapsed = 00:01:56 . Memory (MB): peak = 2456.105 ; gain = 233.332
+Time (s): cpu = 00:02:18 ; elapsed = 00:01:43 . Memory (MB): peak = 2495.773 ; gain = 174.906
 
 Phase 10 Post Router Timing
-INFO: [Route 35-57] Estimated Timing Summary | WNS=0.100  | TNS=0.000  | WHS=0.023  | THS=0.000  |
+INFO: [Route 35-57] Estimated Timing Summary | WNS=0.185  | TNS=0.000  | WHS=0.036  | THS=0.000  |
 
 INFO: [Route 35-327] The final timing numbers are based on the router estimated timing analysis. For a complete and accurate timing signoff, please run report_timing_summary.
-Phase 10 Post Router Timing | Checksum: 175896504
+Phase 10 Post Router Timing | Checksum: d9a75523
 
-Time (s): cpu = 00:02:46 ; elapsed = 00:01:56 . Memory (MB): peak = 2456.105 ; gain = 233.332
+Time (s): cpu = 00:02:18 ; elapsed = 00:01:44 . Memory (MB): peak = 2495.773 ; gain = 174.906
 INFO: [Route 35-16] Router Completed Successfully
 
-Time (s): cpu = 00:02:46 ; elapsed = 00:01:57 . Memory (MB): peak = 2456.105 ; gain = 233.332
+Time (s): cpu = 00:02:18 ; elapsed = 00:01:44 . Memory (MB): peak = 2495.773 ; gain = 174.906
 
 Routing Is Done.
 INFO: [Common 17-83] Releasing license: Implementation
-154 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+165 Infos, 8 Warnings, 0 Critical Warnings and 0 Errors encountered.
 route_design completed successfully
-route_design: Time (s): cpu = 00:02:49 ; elapsed = 00:01:59 . Memory (MB): peak = 2456.105 ; gain = 233.332
+route_design: Time (s): cpu = 00:02:24 ; elapsed = 00:01:47 . Memory (MB): peak = 2495.773 ; gain = 174.906
 INFO: [Timing 38-480] Writing timing data to binary archive.
 Writing placer database...
 Writing XDEF routing.
 Writing XDEF routing logical nets.
 Writing XDEF routing special nets.
-Write XDEF Complete: Time (s): cpu = 00:00:04 ; elapsed = 00:00:01 . Memory (MB): peak = 2456.105 ; gain = 0.000
+Write XDEF Complete: Time (s): cpu = 00:00:05 ; elapsed = 00:00:02 . Memory (MB): peak = 2495.773 ; gain = 0.000
 INFO: [Common 17-1381] The checkpoint 'D:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.runs/impl_1/jahwa_daq_system_wrapper_routed.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_drc -file jahwa_daq_system_wrapper_drc_routed.rpt -pb jahwa_daq_system_wrapper_drc_routed.pb -rpx jahwa_daq_system_wrapper_drc_routed.rpx
 Command: report_drc -file jahwa_daq_system_wrapper_drc_routed.rpt -pb jahwa_daq_system_wrapper_drc_routed.pb -rpx jahwa_daq_system_wrapper_drc_routed.rpx
@@ -707,7 +810,7 @@ INFO: [IP_Flow 19-1839] IP Catalog is up to date.
 INFO: [DRC 23-27] Running DRC with 2 threads
 INFO: [Coretcl 2-168] The results of DRC are in file D:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.runs/impl_1/jahwa_daq_system_wrapper_drc_routed.rpt.
 report_drc completed successfully
-report_drc: Time (s): cpu = 00:00:08 ; elapsed = 00:00:05 . Memory (MB): peak = 2456.105 ; gain = 0.000
+report_drc: Time (s): cpu = 00:00:09 ; elapsed = 00:00:06 . Memory (MB): peak = 2495.773 ; gain = 0.000
 INFO: [runtcl-4] Executing : report_methodology -file jahwa_daq_system_wrapper_methodology_drc_routed.rpt -pb jahwa_daq_system_wrapper_methodology_drc_routed.pb -rpx jahwa_daq_system_wrapper_methodology_drc_routed.rpx
 Command: report_methodology -file jahwa_daq_system_wrapper_methodology_drc_routed.rpt -pb jahwa_daq_system_wrapper_methodology_drc_routed.pb -rpx jahwa_daq_system_wrapper_methodology_drc_routed.rpx
 INFO: [Timing 38-35] Done setting XDC timing constraints.
@@ -722,7 +825,7 @@ Running Vector-less Activity Propagation...
 Finished Running Vector-less Activity Propagation
 WARNING: [Power 33-332] Found switching activity that implies high-fanout reset nets being asserted for excessive periods of time which may result in inaccurate power analysis.
 Resolution: To review and fix problems, please run Power Constraints Advisor in the GUI from Tools > Power Constraints Advisor or run report_power with the -advisory option to generate a text report.
-166 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+177 Infos, 9 Warnings, 0 Critical Warnings and 0 Errors encountered.
 report_power completed successfully
 INFO: [runtcl-4] Executing : report_route_status -file jahwa_daq_system_wrapper_route_status.rpt -pb jahwa_daq_system_wrapper_route_status.pb
 INFO: [runtcl-4] Executing : report_timing_summary -max_paths 10 -file jahwa_daq_system_wrapper_timing_summary_routed.rpt -pb jahwa_daq_system_wrapper_timing_summary_routed.pb -rpx jahwa_daq_system_wrapper_timing_summary_routed.rpx -warn_on_violation 
@@ -760,5 +863,5 @@ INFO: [Project 1-120] WebTalk data collection is mandatory when using a WebPACK 
 INFO: [Common 17-83] Releasing license: Implementation
 14 Infos, 3 Warnings, 0 Critical Warnings and 0 Errors encountered.
 write_bitstream completed successfully
-write_bitstream: Time (s): cpu = 00:00:30 ; elapsed = 00:00:22 . Memory (MB): peak = 2720.516 ; gain = 264.410
-INFO: [Common 17-206] Exiting Vivado at Mon Sep 11 13:39:21 2023...
+write_bitstream: Time (s): cpu = 00:00:33 ; elapsed = 00:00:27 . Memory (MB): peak = 2824.188 ; gain = 328.414
+INFO: [Common 17-206] Exiting Vivado at Fri Sep 15 14:55:33 2023...

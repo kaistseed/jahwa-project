@@ -1,10 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
--- Date        : Mon Sep 11 11:39:34 2023
+-- Date        : Mon Sep 11 11:39:33 2023
 -- Host        : DLT-SEED-PC running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode funcsim
---               d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_auto_pc_0_1/jahwa_daq_system_auto_pc_0_sim_netlist.vhdl
+-- Command     : write_vhdl -force -mode funcsim -rename_top jahwa_daq_system_auto_pc_0 -prefix
+--               jahwa_daq_system_auto_pc_0_ jahwa_daq_system_auto_pc_0_sim_netlist.vhdl
 -- Design      : jahwa_daq_system_auto_pc_0
 -- Purpose     : This VHDL netlist is a functional simulation representation of the design and should not be modified or
 --               synthesized. This netlist cannot be used for SDF annotated simulation.
@@ -33,8 +33,6 @@ entity jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_incr_cmd is
     axaddr_incr : in STD_LOGIC_VECTOR ( 11 downto 0 );
     \axlen_cnt_reg[0]_1\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_incr_cmd : entity is "axi_protocol_converter_v2_1_22_b2s_incr_cmd";
 end jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_incr_cmd;
 
 architecture STRUCTURE of jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_incr_cmd is
@@ -1486,8 +1484,6 @@ entity jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_rd_cmd_fsm 
     \wrap_cnt_r_reg[0]_0\ : in STD_LOGIC;
     aclk : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_rd_cmd_fsm : entity is "axi_protocol_converter_v2_1_22_b2s_rd_cmd_fsm";
 end jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_rd_cmd_fsm;
 
 architecture STRUCTURE of jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_rd_cmd_fsm is
@@ -1901,8 +1897,6 @@ entity jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_simple_fifo
     aclk : in STD_LOGIC;
     shandshake_r : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_simple_fifo : entity is "axi_protocol_converter_v2_1_22_b2s_simple_fifo";
 end jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_simple_fifo;
 
 architecture STRUCTURE of jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_simple_fifo is
@@ -3778,8 +3772,6 @@ entity jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_wr_cmd_fsm 
     aclk : in STD_LOGIC;
     \FSM_sequential_state_reg[0]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_wr_cmd_fsm : entity is "axi_protocol_converter_v2_1_22_b2s_wr_cmd_fsm";
 end jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_wr_cmd_fsm;
 
 architecture STRUCTURE of jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_wr_cmd_fsm is
@@ -4069,8 +4061,6 @@ entity jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_wrap_cmd is
     D : in STD_LOGIC_VECTOR ( 2 downto 0 );
     \wrap_boundary_axaddr_r_reg[6]_0\ : in STD_LOGIC_VECTOR ( 6 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_wrap_cmd : entity is "axi_protocol_converter_v2_1_22_b2s_wrap_cmd";
 end jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_wrap_cmd;
 
 architecture STRUCTURE of jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_wrap_cmd is
@@ -5522,8 +5512,6 @@ entity jahwa_daq_system_auto_pc_0_axi_register_slice_v2_1_22_axic_register_slice
     \m_axi_araddr[11]_2\ : in STD_LOGIC;
     \m_payload_i_reg[0]_0\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of jahwa_daq_system_auto_pc_0_axi_register_slice_v2_1_22_axic_register_slice : entity is "axi_register_slice_v2_1_22_axic_register_slice";
 end jahwa_daq_system_auto_pc_0_axi_register_slice_v2_1_22_axic_register_slice;
 
 architecture STRUCTURE of jahwa_daq_system_auto_pc_0_axi_register_slice_v2_1_22_axic_register_slice is
@@ -12396,8 +12384,6 @@ entity jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_b_channel i
     \in\ : in STD_LOGIC_VECTOR ( 19 downto 0 );
     m_axi_bresp : in STD_LOGIC_VECTOR ( 1 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_b_channel : entity is "axi_protocol_converter_v2_1_22_b2s_b_channel";
 end jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_b_channel;
 
 architecture STRUCTURE of jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_b_channel is
@@ -12744,8 +12730,6 @@ entity jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_cmd_transla
     \axlen_cnt_reg[0]_1\ : in STD_LOGIC_VECTOR ( 0 to 0 );
     \wrap_boundary_axaddr_r_reg[6]\ : in STD_LOGIC_VECTOR ( 6 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_cmd_translator : entity is "axi_protocol_converter_v2_1_22_b2s_cmd_translator";
 end jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_cmd_translator;
 
 architecture STRUCTURE of jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_cmd_translator is
@@ -13029,8 +13013,6 @@ entity jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_r_channel i
     D : in STD_LOGIC_VECTOR ( 11 downto 0 );
     areset_d1 : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_r_channel : entity is "axi_protocol_converter_v2_1_22_b2s_r_channel";
 end jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_r_channel;
 
 architecture STRUCTURE of jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_r_channel is
@@ -13279,8 +13261,6 @@ entity jahwa_daq_system_auto_pc_0_axi_register_slice_v2_1_22_axi_register_slice 
     E : in STD_LOGIC_VECTOR ( 0 to 0 );
     \m_payload_i_reg[0]\ : in STD_LOGIC_VECTOR ( 0 to 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of jahwa_daq_system_auto_pc_0_axi_register_slice_v2_1_22_axi_register_slice : entity is "axi_register_slice_v2_1_22_axi_register_slice";
 end jahwa_daq_system_auto_pc_0_axi_register_slice_v2_1_22_axi_register_slice;
 
 architecture STRUCTURE of jahwa_daq_system_auto_pc_0_axi_register_slice_v2_1_22_axi_register_slice is
@@ -13452,8 +13432,6 @@ entity jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_ar_channel 
     \wrap_cnt_r_reg[3]\ : in STD_LOGIC_VECTOR ( 1 downto 0 );
     \wrap_boundary_axaddr_r_reg[6]\ : in STD_LOGIC_VECTOR ( 6 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_ar_channel : entity is "axi_protocol_converter_v2_1_22_b2s_ar_channel";
 end jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_ar_channel;
 
 architecture STRUCTURE of jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_ar_channel is
@@ -13798,8 +13776,6 @@ entity jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_aw_channel 
     \wrap_second_len_r_reg[3]_0\ : in STD_LOGIC_VECTOR ( 3 downto 0 );
     \wrap_boundary_axaddr_r_reg[6]\ : in STD_LOGIC_VECTOR ( 6 downto 0 )
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_aw_channel : entity is "axi_protocol_converter_v2_1_22_b2s_aw_channel";
 end jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_aw_channel;
 
 architecture STRUCTURE of jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s_aw_channel is
@@ -14120,8 +14096,6 @@ entity jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s is
     m_axi_rvalid : in STD_LOGIC;
     aresetn : in STD_LOGIC
   );
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s : entity is "axi_protocol_converter_v2_1_22_b2s";
 end jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s;
 
 architecture STRUCTURE of jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_b2s is
@@ -14802,8 +14776,6 @@ entity jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_axi_protocol_co
   attribute C_TRANSLATION_MODE of jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_axi_protocol_converter : entity is 2;
   attribute DowngradeIPIdentifiedWarnings : string;
   attribute DowngradeIPIdentifiedWarnings of jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_axi_protocol_converter : entity is "yes";
-  attribute ORIG_REF_NAME : string;
-  attribute ORIG_REF_NAME of jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_axi_protocol_converter : entity is "axi_protocol_converter_v2_1_22_axi_protocol_converter";
   attribute P_AXI3 : integer;
   attribute P_AXI3 of jahwa_daq_system_auto_pc_0_axi_protocol_converter_v2_1_22_axi_protocol_converter : entity is 1;
   attribute P_AXI4 : integer;

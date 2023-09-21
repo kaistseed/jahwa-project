@@ -10,10 +10,9 @@
     ** Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 
 source jahwa_daq_system_axi_quad_spi_0_0.tcl -notrace
-create_project: Time (s): cpu = 00:00:03 ; elapsed = 00:00:05 . Memory (MB): peak = 1125.965 ; gain = 0.000
 INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'd:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.ip_repo'.
 INFO: [IP_Flow 19-1700] Loaded user IP repository 'd:/Projects/2023/PYNQ/boards/ip'.
-INFO: [IP_Flow 19-1700] Loaded user IP repository 'd:/Jahwa/windows/vivado/project/pynq_jahwa_daq/pynq_jahwa_daq.ip_repo'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Xilinx/Vivado/2020.2/data/ip'.
 Command: synth_design -top jahwa_daq_system_axi_quad_spi_0_0 -part xc7z020clg400-1 -mode out_of_context
 Starting synth_design
@@ -22,9 +21,9 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020
 INFO: [Device 21-403] Loading part xc7z020clg400-1
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 13708
+INFO: [Synth 8-7075] Helper process launched with PID 34756
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:11 . Memory (MB): peak = 1180.453 ; gain = 54.488
+Starting RTL Elaboration : Time (s): cpu = 00:00:07 ; elapsed = 00:00:08 . Memory (MB): peak = 1182.223 ; gain = 38.430
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'jahwa_daq_system_axi_quad_spi_0_0' [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_quad_spi_0_0_1/synth/jahwa_daq_system_axi_quad_spi_0_0.vhd:97]
 	Parameter Async_Clk bound to: 0 - type: integer 
@@ -38,7 +37,7 @@ INFO: [Synth 8-638] synthesizing module 'jahwa_daq_system_axi_quad_spi_0_0' [d:/
 	Parameter C_XIP_PERF_MODE bound to: 1 - type: integer 
 	Parameter C_UC_FAMILY bound to: 0 - type: integer 
 	Parameter C_FIFO_DEPTH bound to: 16 - type: integer 
-	Parameter C_SCK_RATIO bound to: 4 - type: integer 
+	Parameter C_SCK_RATIO bound to: 16 - type: integer 
 	Parameter C_DUAL_QUAD_MODE bound to: 0 - type: integer 
 	Parameter C_NUM_SS_BITS bound to: 2 - type: integer 
 	Parameter C_NUM_TRANSFER_BITS bound to: 16 - type: integer 
@@ -69,7 +68,7 @@ INFO: [Synth 8-638] synthesizing module 'axi_quad_spi' [d:/Jahwa/windows/vivado/
 	Parameter C_XIP_PERF_MODE bound to: 1 - type: integer 
 	Parameter C_UC_FAMILY bound to: 0 - type: integer 
 	Parameter C_FIFO_DEPTH bound to: 16 - type: integer 
-	Parameter C_SCK_RATIO bound to: 4 - type: integer 
+	Parameter C_SCK_RATIO bound to: 16 - type: integer 
 	Parameter C_DUAL_QUAD_MODE bound to: 0 - type: integer 
 	Parameter C_NUM_SS_BITS bound to: 2 - type: integer 
 	Parameter C_NUM_TRANSFER_BITS bound to: 16 - type: integer 
@@ -99,7 +98,7 @@ INFO: [Synth 8-638] synthesizing module 'axi_quad_spi_top' [d:/Jahwa/windows/viv
 	Parameter C_XIP_PERF_MODE bound to: 1 - type: integer 
 	Parameter C_UC_FAMILY bound to: 0 - type: integer 
 	Parameter C_FIFO_DEPTH bound to: 16 - type: integer 
-	Parameter C_SCK_RATIO bound to: 4 - type: integer 
+	Parameter C_SCK_RATIO bound to: 16 - type: integer 
 	Parameter C_NUM_SS_BITS bound to: 2 - type: integer 
 	Parameter C_NUM_TRANSFER_BITS bound to: 16 - type: integer 
 	Parameter C_SPI_MODE bound to: 0 - type: integer 
@@ -324,7 +323,7 @@ INFO: [Synth 8-638] synthesizing module 'qspi_core_interface' [d:/Jahwa/windows/
 	Parameter Async_Clk bound to: 0 - type: integer 
 	Parameter C_NUM_CE_SIGNALS bound to: 32 - type: integer 
 	Parameter C_FIFO_DEPTH bound to: 16 - type: integer 
-	Parameter C_SCK_RATIO bound to: 4 - type: integer 
+	Parameter C_SCK_RATIO bound to: 16 - type: integer 
 	Parameter C_NUM_SS_BITS bound to: 2 - type: integer 
 	Parameter C_NUM_TRANSFER_BITS bound to: 16 - type: integer 
 	Parameter C_SPI_MODE bound to: 0 - type: integer 
@@ -911,7 +910,7 @@ INFO: [Synth 8-638] synthesizing module 'qspi_occupancy_reg' [d:/Jahwa/windows/v
 	Parameter C_OCCUPANCY_NUM_BITS bound to: 4 - type: integer 
 INFO: [Synth 8-256] done synthesizing module 'qspi_occupancy_reg' (20#1) [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ipshared/63ec/hdl/axi_quad_spi_v3_2_rfs.vhd:3647]
 INFO: [Synth 8-638] synthesizing module 'qspi_mode_0_module' [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ipshared/63ec/hdl/axi_quad_spi_v3_2_rfs.vhd:8775]
-	Parameter C_SCK_RATIO bound to: 4 - type: integer 
+	Parameter C_SCK_RATIO bound to: 16 - type: integer 
 	Parameter C_NUM_SS_BITS bound to: 2 - type: integer 
 	Parameter C_NUM_TRANSFER_BITS bound to: 16 - type: integer 
 	Parameter C_USE_STARTUP bound to: 0 - type: integer 
@@ -938,7 +937,7 @@ INFO: [Synth 8-113] binding component instance 'SCK_I_REG' to cell 'FD' [d:/Jahw
 	Parameter IS_C_INVERTED bound to: 1'b0 
 	Parameter IS_D_INVERTED bound to: 1'b0 
 	Parameter IS_R_INVERTED bound to: 1'b0 
-INFO: [Synth 8-113] binding component instance 'SCK_O_EQ_4_FDRE_INST' to cell 'FDRE' [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ipshared/63ec/hdl/axi_quad_spi_v3_2_rfs.vhd:10833]
+INFO: [Synth 8-113] binding component instance 'SCK_O_NE_4_FDRE_INST' to cell 'FDRE' [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ipshared/63ec/hdl/axi_quad_spi_v3_2_rfs.vhd:10685]
 INFO: [Synth 8-256] done synthesizing module 'qspi_mode_0_module' (21#1) [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ipshared/63ec/hdl/axi_quad_spi_v3_2_rfs.vhd:8775]
 INFO: [Synth 8-638] synthesizing module 'qspi_cntrl_reg' [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ipshared/63ec/hdl/axi_quad_spi_v3_2_rfs.vhd:13820]
 	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
@@ -1093,18 +1092,18 @@ INFO: [Synth 8-256] done synthesizing module 'axi_quad_spi_top' (27#1) [d:/Jahwa
 INFO: [Synth 8-256] done synthesizing module 'axi_quad_spi' (28#1) [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ipshared/63ec/hdl/axi_quad_spi_v3_2_rfs.vhd:36722]
 INFO: [Synth 8-256] done synthesizing module 'jahwa_daq_system_axi_quad_spi_0_0' (29#1) [d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_quad_spi_0_0_1/synth/jahwa_daq_system_axi_quad_spi_0_0.vhd:97]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:18 ; elapsed = 00:00:23 . Memory (MB): peak = 1373.547 ; gain = 247.582
+Finished RTL Elaboration : Time (s): cpu = 00:00:13 ; elapsed = 00:00:18 . Memory (MB): peak = 1376.223 ; gain = 232.430
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 1373.547 ; gain = 247.582
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:14 ; elapsed = 00:00:18 . Memory (MB): peak = 1376.223 ; gain = 232.430
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:23 . Memory (MB): peak = 1373.547 ; gain = 247.582
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:18 . Memory (MB): peak = 1376.223 ; gain = 232.430
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.054 . Memory (MB): peak = 1373.547 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.039 . Memory (MB): peak = 1376.223 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 109 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
@@ -1184,23 +1183,23 @@ Resolution: To avoid this warning, move constraints listed in [.Xil/jahwa_daq_sy
 INFO: [Project 1-1715] 3 XPM XDC files have been applied to the design.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1380.594 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1415.895 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 109 instances were transformed.
   FD => FDRE: 11 instances
   FDR => FDRE: 81 instances
   FDRSE => FDRSE (FDRE, LUT4, VCC): 17 instances
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.067 . Memory (MB): peak = 1384.559 ; gain = 3.965
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.055 . Memory (MB): peak = 1417.977 ; gain = 2.082
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:27 ; elapsed = 00:00:33 . Memory (MB): peak = 1384.559 ; gain = 258.594
+Finished Constraint Validation : Time (s): cpu = 00:00:21 ; elapsed = 00:00:26 . Memory (MB): peak = 1417.977 ; gain = 274.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:27 ; elapsed = 00:00:33 . Memory (MB): peak = 1384.559 ; gain = 258.594
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:21 ; elapsed = 00:00:26 . Memory (MB): peak = 1417.977 ; gain = 274.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -1221,7 +1220,7 @@ Applied set_property KEEP_HIERARCHY = SOFT for U0/\NO_DUAL_QUAD_MODE.QSPI_NORMAL
 Applied set_property KEEP_HIERARCHY = SOFT for U0/\NO_DUAL_QUAD_MODE.QSPI_NORMAL /\QSPI_LEGACY_MD_GEN.QSPI_CORE_INTERFACE_I /\FIFO_EXISTS.RX_FIFO_II . (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for U0/\NO_DUAL_QUAD_MODE.QSPI_NORMAL /\QSPI_LEGACY_MD_GEN.QSPI_CORE_INTERFACE_I /\FIFO_EXISTS.TX_FIFO_II /\xpm_fifo_instance.xpm_fifo_async_inst . (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:28 ; elapsed = 00:00:33 . Memory (MB): peak = 1384.559 ; gain = 258.594
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:21 ; elapsed = 00:00:26 . Memory (MB): peak = 1417.977 ; gain = 274.184
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'slave_attachment'
 INFO: [Synth 8-802] inferred FSM for state register 'gen_rst_ic.curr_wrst_state_reg' in module 'xpm_fifo_rst__xdcDup__1'
@@ -1311,7 +1310,7 @@ INFO: [Synth 8-3354] encoded FSM with state register 'gen_fwft.curr_fwft_state_r
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'LOCAL_TX_EMPTY_FIFO_12_GEN.spi_cntrl_ps_reg' using encoding 'sequential' in module 'qspi_mode_0_module'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:30 ; elapsed = 00:00:35 . Memory (MB): peak = 1384.559 ; gain = 258.594
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:22 ; elapsed = 00:00:27 . Memory (MB): peak = 1417.977 ; gain = 274.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -1325,8 +1324,8 @@ Detailed RTL Component Info :
 	   4 Input    4 Bit       Adders := 10    
 	   3 Input    4 Bit       Adders := 2     
 	   2 Input    4 Bit       Adders := 2     
+	   2 Input    3 Bit       Adders := 1     
 	   4 Input    2 Bit       Adders := 2     
-	   2 Input    1 Bit       Adders := 1     
 +---XORs : 
 	   2 Input      5 Bit         XORs := 4     
 	   2 Input      4 Bit         XORs := 4     
@@ -1339,8 +1338,9 @@ Detailed RTL Component Info :
 	                6 Bit    Registers := 2     
 	                5 Bit    Registers := 32    
 	                4 Bit    Registers := 30    
+	                3 Bit    Registers := 1     
 	                2 Bit    Registers := 12    
-	                1 Bit    Registers := 191   
+	                1 Bit    Registers := 189   
 +---RAMs : 
 	              256 Bit	(16 X 16 bit)          RAMs := 2     
 +---Muxes : 
@@ -1378,7 +1378,7 @@ Finished Part Resource Summary
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:35 ; elapsed = 00:00:41 . Memory (MB): peak = 1384.559 ; gain = 258.594
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:32 . Memory (MB): peak = 1417.977 ; gain = 274.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -1400,13 +1400,13 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:44 ; elapsed = 00:00:50 . Memory (MB): peak = 1384.559 ; gain = 258.594
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:33 ; elapsed = 00:00:39 . Memory (MB): peak = 1417.977 ; gain = 274.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:45 ; elapsed = 00:00:51 . Memory (MB): peak = 1384.559 ; gain = 258.594
+Finished Timing Optimization : Time (s): cpu = 00:00:34 ; elapsed = 00:00:40 . Memory (MB): peak = 1417.977 ; gain = 274.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -1427,7 +1427,7 @@ Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:46 ; elapsed = 00:00:52 . Memory (MB): peak = 1391.105 ; gain = 265.141
+Finished Technology Mapping : Time (s): cpu = 00:00:34 ; elapsed = 00:00:41 . Memory (MB): peak = 1417.977 ; gain = 274.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -1445,37 +1445,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:51 ; elapsed = 00:00:57 . Memory (MB): peak = 1391.105 ; gain = 265.141
+Finished IO Insertion : Time (s): cpu = 00:00:37 ; elapsed = 00:00:44 . Memory (MB): peak = 1417.977 ; gain = 274.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:51 ; elapsed = 00:00:57 . Memory (MB): peak = 1391.105 ; gain = 265.141
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:37 ; elapsed = 00:00:44 . Memory (MB): peak = 1417.977 ; gain = 274.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:51 ; elapsed = 00:00:57 . Memory (MB): peak = 1391.105 ; gain = 265.141
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:38 ; elapsed = 00:00:44 . Memory (MB): peak = 1417.977 ; gain = 274.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:51 ; elapsed = 00:00:57 . Memory (MB): peak = 1391.105 ; gain = 265.141
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:38 ; elapsed = 00:00:44 . Memory (MB): peak = 1417.977 ; gain = 274.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:51 ; elapsed = 00:00:57 . Memory (MB): peak = 1391.105 ; gain = 265.141
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:38 ; elapsed = 00:00:44 . Memory (MB): peak = 1417.977 ; gain = 274.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:51 ; elapsed = 00:00:57 . Memory (MB): peak = 1391.105 ; gain = 265.141
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:38 ; elapsed = 00:00:44 . Memory (MB): peak = 1417.977 ; gain = 274.184
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -1495,28 +1495,28 @@ Report Cell Usage:
 |2     |LUT2   |   100|
 |3     |LUT3   |    82|
 |4     |LUT4   |    75|
-|5     |LUT5   |   140|
-|6     |LUT6   |   133|
+|5     |LUT5   |   141|
+|6     |LUT6   |   134|
 |7     |RAM32M |     6|
 |8     |FD     |     6|
 |9     |FDR    |    45|
-|10    |FDRE   |   634|
+|10    |FDRE   |   635|
 |11    |FDSE   |    29|
 +------+-------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:51 ; elapsed = 00:00:57 . Memory (MB): peak = 1391.105 ; gain = 265.141
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:38 ; elapsed = 00:00:44 . Memory (MB): peak = 1417.977 ; gain = 274.184
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:30 ; elapsed = 00:00:54 . Memory (MB): peak = 1391.105 ; gain = 254.129
-Synthesis Optimization Complete : Time (s): cpu = 00:00:52 ; elapsed = 00:00:58 . Memory (MB): peak = 1391.105 ; gain = 265.141
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:21 ; elapsed = 00:00:41 . Memory (MB): peak = 1417.977 ; gain = 232.430
+Synthesis Optimization Complete : Time (s): cpu = 00:00:38 ; elapsed = 00:00:44 . Memory (MB): peak = 1417.977 ; gain = 274.184
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.029 . Memory (MB): peak = 1395.918 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.023 . Memory (MB): peak = 1417.977 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 57 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-WARNING: [Constraints 18-5572] Instance U0/NO_DUAL_QUAD_MODE.QSPI_NORMAL/QSPI_LEGACY_MD_GEN.QSPI_CORE_INTERFACE_I/LOGIC_FOR_MD_0_GEN.SPI_MODULE_I/RATIO_OF_4_GENERATE.SCK_O_EQ_4_NO_STARTUP_USED.SCK_O_EQ_4_FDRE_INST has IOB constraint set, However, the instance does not seem to have valid I/O connection to be placed into I/O. The constraint on the instance will be ignored.
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1406.328 ; gain = 0.000
+WARNING: [Constraints 18-5572] Instance U0/NO_DUAL_QUAD_MODE.QSPI_NORMAL/QSPI_LEGACY_MD_GEN.QSPI_CORE_INTERFACE_I/LOGIC_FOR_MD_0_GEN.SPI_MODULE_I/RATIO_NOT_EQUAL_4_GENERATE.SCK_O_NQ_4_NO_STARTUP_USED.SCK_O_NE_4_FDRE_INST has IOB constraint set, However, the instance does not seem to have valid I/O connection to be placed into I/O. The constraint on the instance will be ignored.
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.001 . Memory (MB): peak = 1422.945 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 57 instances were transformed.
   FD => FDRE: 6 instances
@@ -1526,11 +1526,11 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 INFO: [Common 17-83] Releasing license: Synthesis
 291 Infos, 9 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:01:00 ; elapsed = 00:01:11 . Memory (MB): peak = 1406.328 ; gain = 280.363
+synth_design: Time (s): cpu = 00:00:44 ; elapsed = 00:00:52 . Memory (MB): peak = 1422.945 ; gain = 279.152
 INFO: [Common 17-1381] The checkpoint 'D:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.runs/jahwa_daq_system_axi_quad_spi_0_0_synth_1/jahwa_daq_system_axi_quad_spi_0_0.dcp' has been generated.
 WARNING: [Common 17-576] 'use_project_ipc' is deprecated. This option is deprecated and no longer used.
-INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP jahwa_daq_system_axi_quad_spi_0_0, cache-ID = a1e36fb09a390245
+INFO: [Coretcl 2-1648] Added synthesis output to IP cache for IP jahwa_daq_system_axi_quad_spi_0_0, cache-ID = a21ee0ef589a9b78
 INFO: [Coretcl 2-1174] Renamed 81 cell refs.
 INFO: [Common 17-1381] The checkpoint 'D:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.runs/jahwa_daq_system_axi_quad_spi_0_0_synth_1/jahwa_daq_system_axi_quad_spi_0_0.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file jahwa_daq_system_axi_quad_spi_0_0_utilization_synth.rpt -pb jahwa_daq_system_axi_quad_spi_0_0_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Mon Sep 11 11:40:57 2023...
+INFO: [Common 17-206] Exiting Vivado at Fri Sep 15 14:42:15 2023...

@@ -540,7 +540,7 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.C_NUM_SS_BITS {2} \
    CONFIG.C_NUM_TRANSFER_BITS {16} \
-   CONFIG.C_SCK_RATIO {4} \
+   CONFIG.C_SCK_RATIO {16} \
    CONFIG.C_USE_STARTUP {0} \
    CONFIG.C_USE_STARTUP_INT {0} \
  ] $axi_quad_spi_0

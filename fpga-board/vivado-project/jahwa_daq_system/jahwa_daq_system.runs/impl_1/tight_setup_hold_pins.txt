@@ -1,6 +1,0 @@
-+--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
-|       Launch Clock       |      Capture Clock       |                                                 Pin                                                      |
-+--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
-|               clk_fpga_0 |               clk_fpga_0 |jahwa_daq_system_i/mb_softprocessor_0/microblaze_0/U0/MicroBlaze_Core_I/Performance.Core/Decode_I/PreFetch_Buffer_I1/Instruction_Prefetch_Mux[13].Gen_Instr_DFF/Using_FPGA.Native/D|
-|               clk_fpga_0 |               clk_fpga_0 |jahwa_daq_system_i/mb_softprocessor_0/microblaze_0/U0/MicroBlaze_Core_I/Performance.Core/Decode_I/PreFetch_Buffer_I1/Instruction_Prefetch_Mux[36].Gen_Instr_DFF/Using_FPGA.Native/D|
-+--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+

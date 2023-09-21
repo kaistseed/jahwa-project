@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Mon Sep 11 13:38:51 2023
+| Date         : Fri Sep 15 14:54:56 2023
 | Host         : DLT-SEED-PC running 64-bit major release  (build 9200)
 | Command      : report_drc -file jahwa_daq_system_wrapper_drc_routed.rpt -pb jahwa_daq_system_wrapper_drc_routed.pb -rpx jahwa_daq_system_wrapper_drc_routed.rpx
 | Design       : jahwa_daq_system_wrapper
@@ -20,7 +20,7 @@ Table of Contents
 1. REPORT SUMMARY
 -----------------
             Netlist: netlist
-          Floorplan: checkpoint_jahwa_daq_system_wrapper
+          Floorplan: design_1
       Design limits: <entire design considered>
            Ruledeck: default
              Max violations: <unlimited>

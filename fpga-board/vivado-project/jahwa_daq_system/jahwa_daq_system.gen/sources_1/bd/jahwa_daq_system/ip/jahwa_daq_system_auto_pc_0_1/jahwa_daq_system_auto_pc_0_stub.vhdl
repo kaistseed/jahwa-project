@@ -1,10 +1,10 @@
 -- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
--- Date        : Mon Sep 11 11:39:34 2023
+-- Date        : Mon Sep 11 11:39:33 2023
 -- Host        : DLT-SEED-PC running 64-bit major release  (build 9200)
--- Command     : write_vhdl -force -mode synth_stub
---               d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_auto_pc_0_1/jahwa_daq_system_auto_pc_0_stub.vhdl
+-- Command     : write_vhdl -force -mode synth_stub -rename_top jahwa_daq_system_auto_pc_0 -prefix
+--               jahwa_daq_system_auto_pc_0_ jahwa_daq_system_auto_pc_0_stub.vhdl
 -- Design      : jahwa_daq_system_auto_pc_0
 -- Purpose     : Stub declaration of top-level module interface
 -- Device      : xc7z020clg400-1

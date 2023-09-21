@@ -2,10 +2,10 @@
 <Root MajorVersion="0" MinorVersion="39">
   <CompositeFile CompositeFileTopName="jahwa_daq_system" CanBeSetAsTop="false" CanDisplayChildGraph="true">
     <Description>Composite Fileset</Description>
-    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1694399872"/>
-    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1694399872"/>
-    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1694399872"/>
-    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1694399872"/>
+    <Generation Name="SYNTHESIS" State="GENERATED" Timestamp="1694756467"/>
+    <Generation Name="IMPLEMENTATION" State="GENERATED" Timestamp="1694756467"/>
+    <Generation Name="SIMULATION" State="GENERATED" Timestamp="1694756467"/>
+    <Generation Name="HW_HANDOFF" State="GENERATED" Timestamp="1694756467"/>
     <FileCollection Name="SOURCES" Type="SOURCES">
       <File Name="synth\jahwa_daq_system.v" Type="Verilog">
         <Properties IsEditable="false" IsVisible="true" Timestamp="0" IsTrackable="false" IsStatusTracked="false"/>

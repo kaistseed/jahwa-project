@@ -1,7 +1,7 @@
 Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-| Date         : Mon Sep 11 11:40:57 2023
+| Date         : Fri Sep 15 14:42:15 2023
 | Host         : DLT-SEED-PC running 64-bit major release  (build 9200)
 | Command      : report_utilization -file jahwa_daq_system_axi_quad_spi_0_0_utilization_synth.rpt -pb jahwa_daq_system_axi_quad_spi_0_0_utilization_synth.pb
 | Design       : jahwa_daq_system_axi_quad_spi_0_0
@@ -30,13 +30,13 @@ Table of Contents
 +----------------------------+------+-------+-----------+-------+
 |          Site Type         | Used | Fixed | Available | Util% |
 +----------------------------+------+-------+-----------+-------+
-| Slice LUTs*                |  473 |     0 |     53200 |  0.89 |
-|   LUT as Logic             |  449 |     0 |     53200 |  0.84 |
+| Slice LUTs*                |  475 |     0 |     53200 |  0.89 |
+|   LUT as Logic             |  451 |     0 |     53200 |  0.85 |
 |   LUT as Memory            |   24 |     0 |     17400 |  0.14 |
 |     LUT as Distributed RAM |   24 |     0 |           |       |
 |     LUT as Shift Register  |    0 |     0 |           |       |
-| Slice Registers            |  714 |     1 |    106400 |  0.67 |
-|   Register as Flip Flop    |  714 |     1 |    106400 |  0.67 |
+| Slice Registers            |  715 |     1 |    106400 |  0.67 |
+|   Register as Flip Flop    |  715 |     1 |    106400 |  0.67 |
 |   Register as Latch        |    0 |     0 |    106400 |  0.00 |
 | F7 Muxes                   |    0 |     0 |     26600 |  0.00 |
 | F8 Muxes                   |    0 |     0 |     13300 |  0.00 |
@@ -59,7 +59,7 @@ Table of Contents
 | 0     |          Yes |           - |          Set |
 | 0     |          Yes |           - |        Reset |
 | 29    |          Yes |         Set |            - |
-| 685   |          Yes |       Reset |            - |
+| 686   |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -148,9 +148,9 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| FDRE     |  685 |        Flop & Latch |
-| LUT5     |  140 |                 LUT |
-| LUT6     |  133 |                 LUT |
+| FDRE     |  686 |        Flop & Latch |
+| LUT5     |  141 |                 LUT |
+| LUT6     |  134 |                 LUT |
 | LUT2     |  100 |                 LUT |
 | LUT3     |   82 |                 LUT |
 | LUT4     |   75 |                 LUT |

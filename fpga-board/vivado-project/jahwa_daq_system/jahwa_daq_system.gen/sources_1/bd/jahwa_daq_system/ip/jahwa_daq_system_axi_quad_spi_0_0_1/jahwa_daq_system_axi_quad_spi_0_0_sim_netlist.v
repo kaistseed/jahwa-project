@@ -1,7 +1,7 @@
 // Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2020.2 (win64) Build 3064766 Wed Nov 18 09:12:45 MST 2020
-// Date        : Mon Sep 11 11:40:57 2023
+// Date        : Fri Sep 15 14:42:15 2023
 // Host        : DLT-SEED-PC running 64-bit major release  (build 9200)
 // Command     : write_verilog -force -mode funcsim
 //               d:/Jahwa/windows/vivado/pynq_mb/jahwa_daq_system/jahwa_daq_system.gen/sources_1/bd/jahwa_daq_system/ip/jahwa_daq_system_axi_quad_spi_0_0_1/jahwa_daq_system_axi_quad_spi_0_0_sim_netlist.v
@@ -179,7 +179,7 @@ module jahwa_daq_system_axi_quad_spi_0_0
   (* C_NEW_SEQ_EN = "1" *) 
   (* C_NUM_SS_BITS = "2" *) 
   (* C_NUM_TRANSFER_BITS = "16" *) 
-  (* C_SCK_RATIO = "4" *) 
+  (* C_SCK_RATIO = "16" *) 
   (* C_SELECT_XPM = "1" *) 
   (* C_SHARED_STARTUP = "0" *) 
   (* C_SPI_MEMORY = "1" *) 
@@ -1763,7 +1763,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_async_fifo_fg
         .I4(\LEGACY_MD_IP2BUS_DATA_GEN.IP2Bus_Data_reg[28]_2 ),
         .I5(p_2_in),
         .O(\LEGACY_MD_IP2BUS_DATA_GEN.IP2Bus_Data[28]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair73" *) 
+  (* SOFT_HLUTNM = "soft_lutpair72" *) 
   LUT4 #(
     .INIT(16'h5556)) 
     \LEGACY_MD_IP2BUS_DATA_GEN.IP2Bus_Data[28]_i_5 
@@ -1772,7 +1772,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_async_fifo_fg
         .I2(Tx_FIFO_occ_Reversed[1]),
         .I3(Tx_FIFO_occ_Reversed[2]),
         .O(\LEGACY_MD_IP2BUS_DATA_GEN.IP2Bus_Data[28]_i_5_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair74" *) 
+  (* SOFT_HLUTNM = "soft_lutpair73" *) 
   LUT3 #(
     .INIT(8'hFE)) 
     \LEGACY_MD_IP2BUS_DATA_GEN.IP2Bus_Data[28]_i_8 
@@ -1790,7 +1790,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_async_fifo_fg
         .I4(\LEGACY_MD_IP2BUS_DATA_GEN.IP2Bus_Data_reg[29] ),
         .I5(\LEGACY_MD_IP2BUS_DATA_GEN.IP2Bus_Data_reg[29]_0 ),
         .O(D[2]));
-  (* SOFT_HLUTNM = "soft_lutpair74" *) 
+  (* SOFT_HLUTNM = "soft_lutpair73" *) 
   LUT3 #(
     .INIT(8'h56)) 
     \LEGACY_MD_IP2BUS_DATA_GEN.IP2Bus_Data[29]_i_2 
@@ -1818,7 +1818,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_async_fifo_fg
         .I4(Tx_FIFO_occ_Reversed[1]),
         .I5(Tx_FIFO_occ_Reversed[0]),
         .O(\LEGACY_MD_IP2BUS_DATA_GEN.IP2Bus_Data[30]_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair73" *) 
+  (* SOFT_HLUTNM = "soft_lutpair72" *) 
   LUT5 #(
     .INIT(32'hFFFFFFFE)) 
     \LEGACY_MD_IP2BUS_DATA_GEN.IP2Bus_Data[30]_i_8 
@@ -2721,7 +2721,7 @@ endmodule
 (* Async_Clk = "0" *) (* C_DUAL_QUAD_MODE = "0" *) (* C_FAMILY = "zynq" *) 
 (* C_FIFO_DEPTH = "16" *) (* C_INSTANCE = "axi_quad_spi_inst" *) (* C_LSB_STUP = "0" *) 
 (* C_NEW_SEQ_EN = "1" *) (* C_NUM_SS_BITS = "2" *) (* C_NUM_TRANSFER_BITS = "16" *) 
-(* C_SCK_RATIO = "4" *) (* C_SELECT_XPM = "1" *) (* C_SHARED_STARTUP = "0" *) 
+(* C_SCK_RATIO = "16" *) (* C_SELECT_XPM = "1" *) (* C_SHARED_STARTUP = "0" *) 
 (* C_SPI_MEMORY = "1" *) (* C_SPI_MEM_ADDR_BITS = "24" *) (* C_SPI_MODE = "0" *) 
 (* C_SUB_FAMILY = "zynq" *) (* C_S_AXI4_ADDR_WIDTH = "24" *) (* C_S_AXI4_BASEADDR = "-1" *) 
 (* C_S_AXI4_DATA_WIDTH = "32" *) (* C_S_AXI4_HIGHADDR = "0" *) (* C_S_AXI4_ID_WIDTH = "1" *) 
@@ -3743,11 +3743,11 @@ module jahwa_daq_system_axi_quad_spi_0_0_cross_clk_sync_fifo_1
     \s_axi_wdata[7] ,
     R,
     \LOGIC_GENERATION_FDR.SPICR_3_CPOL_AX2S_2_0 ,
-    \LOGIC_GENERATION_FDR.SPICR_3_CPOL_AX2S_2_1 ,
+    D,
+    \OTHER_RATIO_GENERATE.serial_dout_int_reg ,
     \LOGIC_GENERATION_FDR.SPICR_2_MST_N_SLV_AX2S_2_0 ,
     D_0,
     rst,
-    D,
     reset2ip_reset_int,
     s_axi_aclk,
     empty,
@@ -3784,8 +3784,8 @@ module jahwa_daq_system_axi_quad_spi_0_0_cross_clk_sync_fifo_1
     \GEN_IP_IRPT_STATUS_REG[7].GEN_REG_STATUS.ip_irpt_status_reg_reg[7] ,
     p_1_in22_in,
     p_1_in16_in,
-    Count_trigger,
-    Ratio_Count,
+    \OTHER_RATIO_GENERATE.Shift_Reg_reg[15] ,
+    dout,
     transfer_start_reg,
     transfer_start_reg_0,
     serial_dout_int,
@@ -3812,11 +3812,11 @@ module jahwa_daq_system_axi_quad_spi_0_0_cross_clk_sync_fifo_1
   output \s_axi_wdata[7] ;
   output R;
   output \LOGIC_GENERATION_FDR.SPICR_3_CPOL_AX2S_2_0 ;
-  output \LOGIC_GENERATION_FDR.SPICR_3_CPOL_AX2S_2_1 ;
+  output [0:0]D;
+  output [0:0]\OTHER_RATIO_GENERATE.serial_dout_int_reg ;
   output \LOGIC_GENERATION_FDR.SPICR_2_MST_N_SLV_AX2S_2_0 ;
   output D_0;
   output rst;
-  output [0:0]D;
   input reset2ip_reset_int;
   input s_axi_aclk;
   input empty;
@@ -3853,8 +3853,8 @@ module jahwa_daq_system_axi_quad_spi_0_0_cross_clk_sync_fifo_1
   input \GEN_IP_IRPT_STATUS_REG[7].GEN_REG_STATUS.ip_irpt_status_reg_reg[7] ;
   input p_1_in22_in;
   input p_1_in16_in;
-  input Count_trigger;
-  input Ratio_Count;
+  input \OTHER_RATIO_GENERATE.Shift_Reg_reg[15] ;
+  input [1:0]dout;
   input transfer_start_reg;
   input transfer_start_reg_0;
   input serial_dout_int;
@@ -3862,7 +3862,6 @@ module jahwa_daq_system_axi_quad_spi_0_0_cross_clk_sync_fifo_1
   input io0_i_sync;
 
   wire Bus_RNW_reg;
-  wire Count_trigger;
   wire [0:0]D;
   wire D0;
   wire D01_out;
@@ -3871,7 +3870,6 @@ module jahwa_daq_system_axi_quad_spi_0_0_cross_clk_sync_fifo_1
   wire \GEN_IP_IRPT_STATUS_REG[7].GEN_REG_STATUS.ip_irpt_status_reg_reg[7] ;
   wire \LOGIC_GENERATION_FDR.SPICR_2_MST_N_SLV_AX2S_2_0 ;
   wire \LOGIC_GENERATION_FDR.SPICR_3_CPOL_AX2S_2_0 ;
-  wire \LOGIC_GENERATION_FDR.SPICR_3_CPOL_AX2S_2_1 ;
   wire \LOGIC_GENERATION_FDR.SPICR_RX_FIFO_Rst_en_d1_i_1_n_0 ;
   wire \LOGIC_GENERATION_FDR.SPICR_RX_FIFO_Rst_en_d1_reg_n_0 ;
   wire \LOGIC_GENERATION_FDR.SYNC_SPIXFER_DONE_S2AX_2_0 ;
@@ -3881,8 +3879,9 @@ module jahwa_daq_system_axi_quad_spi_0_0_cross_clk_sync_fifo_1
   wire \LOGIC_GENERATION_FDR.TX_EMPT_4_SPISR_S2AX_2_0 ;
   wire \LOGIC_GENERATION_FDR.drr_Overrun_int_cdc_from_spi_int_2_reg_0 ;
   wire \LOGIC_GENERATION_FDR.spiXfer_done_cdc_from_spi_int_2_reg_0 ;
+  wire \OTHER_RATIO_GENERATE.Shift_Reg_reg[15] ;
+  wire [0:0]\OTHER_RATIO_GENERATE.serial_dout_int_reg ;
   wire R;
-  wire Ratio_Count;
   wire Rst_to_spi;
   wire SPICR_0_LOOP_cdc_from_axi_d1;
   wire SPICR_1_SPE_cdc_from_axi_d1;
@@ -3904,6 +3903,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_cross_clk_sync_fifo_1
   wire Tx_FIFO_Full_int;
   wire almost_full;
   wire bus2ip_reset_ipif_inverted;
+  wire [1:0]dout;
   wire drr_Overrun_int_cdc_from_spi_d1;
   wire drr_Overrun_int_cdc_from_spi_d2;
   wire drr_Overrun_int_cdc_from_spi_d3;
@@ -4432,37 +4432,35 @@ module jahwa_daq_system_axi_quad_spi_0_0_cross_clk_sync_fifo_1
         .D(D01_out),
         .Q(\LOGIC_GENERATION_FDR.spiXfer_done_cdc_from_spi_int_2_reg_0 ),
         .R(Rst_to_spi));
-  LUT1 #(
-    .INIT(2'h1)) 
-    \RATIO_OF_4_GENERATE.SCK_O_EQ_4_NO_STARTUP_USED.SCK_O_EQ_4_FDRE_INST_i_1 
-       (.I0(SPICR_2_MST_N_SLV_to_spi_clk),
-        .O(R));
+  LUT5 #(
+    .INIT(32'hB8BBB888)) 
+    \OTHER_RATIO_GENERATE.Shift_Reg[15]_i_1 
+       (.I0(\OTHER_RATIO_GENERATE.serial_dout_int_reg ),
+        .I1(\OTHER_RATIO_GENERATE.Shift_Reg_reg[15] ),
+        .I2(dout[1]),
+        .I3(spicr_9_lsb_to_spi_clk),
+        .I4(dout[0]),
+        .O(D));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
-    \RISING_EDGE_CLK_RATIO_4_GEN.Serial_Din_i_1 
+    \OTHER_RATIO_GENERATE.rx_shft_reg_mode_0110[15]_i_1 
        (.I0(serial_dout_int),
         .I1(spicr_0_loop_to_spi_clk),
         .I2(io1_i_sync),
         .I3(SPICR_2_MST_N_SLV_to_spi_clk),
         .I4(io0_i_sync),
-        .O(D));
-  (* SOFT_HLUTNM = "soft_lutpair48" *) 
-  LUT5 #(
-    .INIT(32'h0000F600)) 
-    \RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_i_3 
-       (.I0(spicr_3_cpol_to_spi_clk),
-        .I1(spicr_4_cpha_to_spi_clk),
-        .I2(Count_trigger),
-        .I3(SPICR_2_MST_N_SLV_to_spi_clk),
-        .I4(Ratio_Count),
-        .O(\LOGIC_GENERATION_FDR.SPICR_3_CPOL_AX2S_2_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair48" *) 
+        .O(\OTHER_RATIO_GENERATE.serial_dout_int_reg ));
+  LUT1 #(
+    .INIT(2'h1)) 
+    \RATIO_NOT_EQUAL_4_GENERATE.SCK_O_NQ_4_NO_STARTUP_USED.SCK_O_NE_4_FDRE_INST_i_1 
+       (.I0(SPICR_2_MST_N_SLV_to_spi_clk),
+        .O(R));
   LUT2 #(
     .INIT(4'h6)) 
     \RX_DATA_GEN_OTHER_SCK_RATIOS.receive_Data_int[0]_i_3 
        (.I0(spicr_3_cpol_to_spi_clk),
         .I1(spicr_4_cpha_to_spi_clk),
-        .O(\LOGIC_GENERATION_FDR.SPICR_3_CPOL_AX2S_2_1 ));
+        .O(\LOGIC_GENERATION_FDR.SPICR_3_CPOL_AX2S_2_0 ));
   LUT3 #(
     .INIT(8'hDF)) 
     SPI_TRISTATE_CONTROL_III_i_1
@@ -4673,7 +4671,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_interrupt_control
   wire tx_occ_msb_4;
   wire wrack;
 
-  (* SOFT_HLUTNM = "soft_lutpair75" *) 
+  (* SOFT_HLUTNM = "soft_lutpair74" *) 
   LUT3 #(
     .INIT(8'h6A)) 
     \GEN_IP_IRPT_STATUS_REG[0].GEN_REG_STATUS.ip_irpt_status_reg[0]_i_1 
@@ -4687,7 +4685,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_interrupt_control
         .D(\GEN_IP_IRPT_STATUS_REG[0].GEN_REG_STATUS.ip_irpt_status_reg[0]_i_1_n_0 ),
         .Q(\GEN_IP_IRPT_STATUS_REG[0].GEN_REG_STATUS.ip_irpt_status_reg_reg[0]_0 ),
         .R(reset2ip_reset_int));
-  (* SOFT_HLUTNM = "soft_lutpair75" *) 
+  (* SOFT_HLUTNM = "soft_lutpair74" *) 
   LUT3 #(
     .INIT(8'h6A)) 
     \GEN_IP_IRPT_STATUS_REG[1].GEN_REG_STATUS.ip_irpt_status_reg[1]_i_1 
@@ -5333,7 +5331,6 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_core_interface
   wire \CONTROL_REG_3_4_GENERATE[4].SPICR_data_int_reg[4] ;
   wire CONTROL_REG_I_n_12;
   wire CONTROL_REG_I_n_13;
-  wire Count_trigger;
   wire [6:0]D;
   wire D0;
   wire D01_out;
@@ -5349,7 +5346,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_core_interface
   wire \FIFO_EXISTS.CLK_CROSS_I_n_2 ;
   wire \FIFO_EXISTS.CLK_CROSS_I_n_21 ;
   wire \FIFO_EXISTS.CLK_CROSS_I_n_22 ;
-  wire \FIFO_EXISTS.CLK_CROSS_I_n_23 ;
+  wire \FIFO_EXISTS.CLK_CROSS_I_n_24 ;
   wire \FIFO_EXISTS.TX_FIFO_EMPTY_CNTR_I_n_0 ;
   wire \FIFO_EXISTS.TX_FIFO_EMPTY_CNTR_I_n_2 ;
   wire \FIFO_EXISTS.TX_FIFO_EMPTY_CNTR_I_n_4 ;
@@ -5375,14 +5372,14 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_core_interface
   wire \LEGACY_MD_IP2BUS_DATA_GEN.IP2Bus_Data_reg[31]_0 ;
   wire \LEGACY_MD_IP2BUS_DATA_GEN.IP2Bus_Data_reg[31]_1 ;
   wire \LEGACY_MD_WR_RD_ACK_GEN.IP2Bus_WrAck_reg_0 ;
+  wire \LOGIC_FOR_MD_0_GEN.SPI_MODULE_I_n_12 ;
   wire \LOGIC_FOR_MD_0_GEN.SPI_MODULE_I_n_13 ;
-  wire \LOGIC_FOR_MD_0_GEN.SPI_MODULE_I_n_14 ;
   wire \LOGIC_FOR_MD_0_GEN.SPI_MODULE_I_n_6 ;
+  wire \LOGIC_FOR_MD_0_GEN.SPI_MODULE_I_n_9 ;
   wire [6:0]Q;
   wire R;
   wire \RESET_FLOPS[15].RST_FLOPS ;
   wire RESET_SYNC_AXI_SPI_CLK_INST_n_0;
-  wire Ratio_Count;
   wire Rx_FIFO_Empty_Synced_in_SPI_domain;
   wire Rx_FIFO_Full_Fifo;
   wire Rx_FIFO_Full_Fifo_d1;
@@ -5405,7 +5402,6 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_core_interface
   wire data_Exists_RcFIFO_pulse028_in;
   wire [0:5]data_from_rx_fifo;
   wire [0:15]data_from_txfifo;
-  wire data_in;
   wire [0:15]data_to_rx_fifo;
   wire [9:0]dout;
   wire empty;
@@ -5454,6 +5450,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_core_interface
   wire p_1_in34_in;
   wire p_1_in_0;
   wire p_2_in;
+  wire [0:0]p_2_in_1;
   wire p_3_in;
   wire p_4_in;
   wire p_5_in;
@@ -5560,16 +5557,14 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_core_interface
         .spicr_bits_7_8_frm_axi_clk(spicr_bits_7_8_frm_axi_clk));
   jahwa_daq_system_axi_quad_spi_0_0_cross_clk_sync_fifo_1 \FIFO_EXISTS.CLK_CROSS_I 
        (.Bus_RNW_reg(Bus_RNW_reg),
-        .Count_trigger(Count_trigger),
-        .D(data_in),
+        .D(\FIFO_EXISTS.CLK_CROSS_I_n_22 ),
         .D0(D0),
         .D01_out(D01_out),
         .D_0(D_0),
         .\FIFO_EXISTS.RX_FULL_EMP_MD_0_GEN.rx_fifo_empty_i_reg (rx_fifo_empty_i),
         .\GEN_IP_IRPT_STATUS_REG[7].GEN_REG_STATUS.ip_irpt_status_reg_reg[7] (\GEN_IP_IRPT_STATUS_REG[3].GEN_REG_STATUS.ip_irpt_status_reg_reg[3] ),
-        .\LOGIC_GENERATION_FDR.SPICR_2_MST_N_SLV_AX2S_2_0 (\FIFO_EXISTS.CLK_CROSS_I_n_23 ),
+        .\LOGIC_GENERATION_FDR.SPICR_2_MST_N_SLV_AX2S_2_0 (\FIFO_EXISTS.CLK_CROSS_I_n_24 ),
         .\LOGIC_GENERATION_FDR.SPICR_3_CPOL_AX2S_2_0 (\FIFO_EXISTS.CLK_CROSS_I_n_21 ),
-        .\LOGIC_GENERATION_FDR.SPICR_3_CPOL_AX2S_2_1 (\FIFO_EXISTS.CLK_CROSS_I_n_22 ),
         .\LOGIC_GENERATION_FDR.SYNC_SPIXFER_DONE_S2AX_2_0 (\FIFO_EXISTS.CLK_CROSS_I_n_14 ),
         .\LOGIC_GENERATION_FDR.SYNC_SPIXFER_DONE_S2AX_3_0 (\FIFO_EXISTS.CLK_CROSS_I_n_11 ),
         .\LOGIC_GENERATION_FDR.SYNC_SPIXFER_DONE_S2AX_3_1 (\FIFO_EXISTS.CLK_CROSS_I_n_12 ),
@@ -5577,8 +5572,9 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_core_interface
         .\LOGIC_GENERATION_FDR.TX_EMPT_4_SPISR_S2AX_2_0 (Tx_FIFO_Empty_SPISR_to_axi_clk),
         .\LOGIC_GENERATION_FDR.drr_Overrun_int_cdc_from_spi_int_2_reg_0 (\FIFO_EXISTS.CLK_CROSS_I_n_10 ),
         .\LOGIC_GENERATION_FDR.spiXfer_done_cdc_from_spi_int_2_reg_0 (\FIFO_EXISTS.CLK_CROSS_I_n_2 ),
+        .\OTHER_RATIO_GENERATE.Shift_Reg_reg[15] (\LOGIC_FOR_MD_0_GEN.SPI_MODULE_I_n_9 ),
+        .\OTHER_RATIO_GENERATE.serial_dout_int_reg (p_2_in_1),
         .R(R),
-        .Ratio_Count(Ratio_Count),
         .Rst_to_spi(rst_to_spi_int),
         .SPICR_2_MST_N_SLV_to_spi_clk(SPICR_2_MST_N_SLV_to_spi_clk),
         .SPISSR_frm_axi_clk(SPISSR_frm_axi_clk),
@@ -5587,6 +5583,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_core_interface
         .Tx_FIFO_Full_int(Tx_FIFO_Full_int),
         .almost_full(almost_full),
         .bus2ip_reset_ipif_inverted(bus2ip_reset_ipif_inverted),
+        .dout({data_from_txfifo[0],data_from_txfifo[15]}),
         .empty(tx_fifo_empty),
         .ext_spi_clk(ext_spi_clk),
         .\icount_out_reg[0] (\RESET_FLOPS[15].RST_FLOPS ),
@@ -5622,7 +5619,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_core_interface
         .spicr_9_lsb_to_spi_clk(spicr_9_lsb_to_spi_clk),
         .spicr_bits_7_8_frm_axi_clk(spicr_bits_7_8_frm_axi_clk),
         .spisel_d1_reg_to_axi_clk(spisel_d1_reg_to_axi_clk),
-        .transfer_start_reg(\LOGIC_FOR_MD_0_GEN.SPI_MODULE_I_n_14 ),
+        .transfer_start_reg(\LOGIC_FOR_MD_0_GEN.SPI_MODULE_I_n_13 ),
         .transfer_start_reg_0(\LOGIC_FOR_MD_0_GEN.SPI_MODULE_I_n_6 ),
         .tx_fifo_count_d2(tx_fifo_count_d2),
         .tx_occ_msb(tx_occ_msb),
@@ -5768,7 +5765,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_core_interface
         .p_2_in(p_2_in),
         .p_5_in(p_5_in),
         .rd_data_count(Rx_FIFO_occ_Reversed[1:0]),
-        .rd_en(\LOGIC_FOR_MD_0_GEN.SPI_MODULE_I_n_13 ),
+        .rd_en(\LOGIC_FOR_MD_0_GEN.SPI_MODULE_I_n_12 ),
         .rst(reset_TxFIFO_ptr_int),
         .s_axi_aclk(s_axi_aclk),
         .s_axi_wdata(s_axi_wdata),
@@ -6185,21 +6182,20 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_core_interface
         .Q(read_ack_delay_7),
         .R(reset2ip_reset_int));
   jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module \LOGIC_FOR_MD_0_GEN.SPI_MODULE_I 
-       (.Count_trigger(Count_trigger),
-        .D(data_in),
+       (.D(\FIFO_EXISTS.CLK_CROSS_I_n_22 ),
         .D0(D0),
         .D01_out(D01_out),
         .D_0(D_0),
-        .\LOGIC_GENERATION_FDR.SPICR_0_LOOP_AX2S_2 (\LOGIC_FOR_MD_0_GEN.SPI_MODULE_I_n_14 ),
+        .\LOGIC_GENERATION_FDR.SPICR_0_LOOP_AX2S_2 (\LOGIC_FOR_MD_0_GEN.SPI_MODULE_I_n_13 ),
         .\LOGIC_GENERATION_FDR.drr_Overrun_int_cdc_from_spi_int_2_reg (\FIFO_EXISTS.CLK_CROSS_I_n_10 ),
         .\LOGIC_GENERATION_FDR.spiXfer_done_cdc_from_spi_int_2_reg (\FIFO_EXISTS.CLK_CROSS_I_n_2 ),
         .\OTHER_RATIO_GENERATE.Serial_Dout_reg_0 (\FIFO_EXISTS.TX_FIFO_II_n_23 ),
-        .\OTHER_RATIO_GENERATE.sck_o_int_reg_0 (\FIFO_EXISTS.CLK_CROSS_I_n_22 ),
+        .\OTHER_RATIO_GENERATE.rx_shft_reg_mode_0110_reg[15]_0 (p_2_in_1),
+        .\OTHER_RATIO_GENERATE.sck_o_int_reg_0 (\FIFO_EXISTS.CLK_CROSS_I_n_21 ),
         .\OTHER_RATIO_GENERATE.sck_o_int_reg_1 (RESET_SYNC_AXI_SPI_CLK_INST_n_0),
         .R(R),
         .\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_0 (\LOGIC_FOR_MD_0_GEN.SPI_MODULE_I_n_6 ),
-        .\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_1 (\FIFO_EXISTS.CLK_CROSS_I_n_21 ),
-        .Ratio_Count(Ratio_Count),
+        .\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_1 (\LOGIC_FOR_MD_0_GEN.SPI_MODULE_I_n_9 ),
         .Rst_to_spi(rst_to_spi_int),
         .SPICR_2_MST_N_SLV_to_spi_clk(SPICR_2_MST_N_SLV_to_spi_clk),
         .almost_full(almost_full_0),
@@ -6210,7 +6206,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_core_interface
         .io0_t(io0_t),
         .io1_o(io1_o),
         .io1_t(io1_t),
-        .rd_en(\LOGIC_FOR_MD_0_GEN.SPI_MODULE_I_n_13 ),
+        .rd_en(\LOGIC_FOR_MD_0_GEN.SPI_MODULE_I_n_12 ),
         .register_Data_slvsel_int(register_Data_slvsel_int),
         .sck_o(sck_o),
         .sck_t(sck_t),
@@ -6223,7 +6219,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_core_interface
         .spicr_9_lsb_to_spi_clk(spicr_9_lsb_to_spi_clk),
         .ss_o(ss_o),
         .ss_t(ss_t),
-        .transfer_start_reg_0(\FIFO_EXISTS.CLK_CROSS_I_n_23 ));
+        .transfer_start_reg_0(\FIFO_EXISTS.CLK_CROSS_I_n_24 ));
   jahwa_daq_system_axi_quad_spi_0_0_reset_sync_module RESET_SYNC_AXI_SPI_CLK_INST
        (.RESET_SYNC_AX2S_2_0(RESET_SYNC_AXI_SPI_CLK_INST_n_0),
         .Rst_to_spi(rst_to_spi_int),
@@ -6364,10 +6360,9 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
     sck_o,
     spiXfer_done_int,
     \RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_0 ,
-    Ratio_Count,
-    Count_trigger,
     io1_o,
     serial_dout_int,
+    \RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_1 ,
     D01_out,
     D0,
     rd_en,
@@ -6379,7 +6374,6 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
     R,
     Rst_to_spi,
     empty,
-    D,
     transfer_start_reg_0,
     SPICR_2_MST_N_SLV_to_spi_clk,
     \OTHER_RATIO_GENERATE.Serial_Dout_reg_0 ,
@@ -6387,14 +6381,15 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
     \OTHER_RATIO_GENERATE.sck_o_int_reg_1 ,
     \LOGIC_GENERATION_FDR.spiXfer_done_cdc_from_spi_int_2_reg ,
     \LOGIC_GENERATION_FDR.drr_Overrun_int_cdc_from_spi_int_2_reg ,
-    spicr_3_cpol_to_spi_clk,
-    \RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_1 ,
     spicr_9_lsb_to_spi_clk,
     dout,
     spicr_0_loop_to_spi_clk,
     register_Data_slvsel_int,
+    spicr_3_cpol_to_spi_clk,
     scndry_out,
     almost_full,
+    D,
+    \OTHER_RATIO_GENERATE.rx_shft_reg_mode_0110_reg[15]_0 ,
     spicr_7_ss_to_spi_clk);
   output sck_t;
   output io0_t;
@@ -6403,10 +6398,9 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
   output sck_o;
   output spiXfer_done_int;
   output \RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_0 ;
-  output Ratio_Count;
-  output Count_trigger;
   output io1_o;
   output serial_dout_int;
+  output \RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_1 ;
   output D01_out;
   output D0;
   output rd_en;
@@ -6418,7 +6412,6 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
   input R;
   input Rst_to_spi;
   input empty;
-  input [0:0]D;
   input transfer_start_reg_0;
   input SPICR_2_MST_N_SLV_to_spi_clk;
   input \OTHER_RATIO_GENERATE.Serial_Dout_reg_0 ;
@@ -6426,14 +6419,15 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
   input \OTHER_RATIO_GENERATE.sck_o_int_reg_1 ;
   input \LOGIC_GENERATION_FDR.spiXfer_done_cdc_from_spi_int_2_reg ;
   input \LOGIC_GENERATION_FDR.drr_Overrun_int_cdc_from_spi_int_2_reg ;
-  input spicr_3_cpol_to_spi_clk;
-  input \RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_1 ;
   input spicr_9_lsb_to_spi_clk;
   input [15:0]dout;
   input spicr_0_loop_to_spi_clk;
   input [0:1]register_Data_slvsel_int;
+  input spicr_3_cpol_to_spi_clk;
   input scndry_out;
   input almost_full;
+  input [0:0]D;
+  input [0:0]\OTHER_RATIO_GENERATE.rx_shft_reg_mode_0110_reg[15]_0 ;
   input spicr_7_ss_to_spi_clk;
 
   wire [1:0]Count;
@@ -6465,8 +6459,9 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
   wire \OTHER_RATIO_GENERATE.Count_trigger_d1_i_1_n_0 ;
   wire \OTHER_RATIO_GENERATE.Count_trigger_i_1_n_0 ;
   wire \OTHER_RATIO_GENERATE.Ratio_Count[0]_i_1_n_0 ;
+  wire \OTHER_RATIO_GENERATE.Ratio_Count[1]_i_1_n_0 ;
+  wire \OTHER_RATIO_GENERATE.Ratio_Count[2]_i_1_n_0 ;
   wire \OTHER_RATIO_GENERATE.Serial_Dout_i_1_n_0 ;
-  wire \OTHER_RATIO_GENERATE.Serial_Dout_i_2_n_0 ;
   wire \OTHER_RATIO_GENERATE.Serial_Dout_i_4_n_0 ;
   wire \OTHER_RATIO_GENERATE.Serial_Dout_i_5_n_0 ;
   wire \OTHER_RATIO_GENERATE.Serial_Dout_reg_0 ;
@@ -6477,7 +6472,6 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
   wire \OTHER_RATIO_GENERATE.Shift_Reg[12]_i_1_n_0 ;
   wire \OTHER_RATIO_GENERATE.Shift_Reg[13]_i_1_n_0 ;
   wire \OTHER_RATIO_GENERATE.Shift_Reg[14]_i_1_n_0 ;
-  wire \OTHER_RATIO_GENERATE.Shift_Reg[15]_i_1_n_0 ;
   wire \OTHER_RATIO_GENERATE.Shift_Reg[1]_i_1_n_0 ;
   wire \OTHER_RATIO_GENERATE.Shift_Reg[2]_i_1_n_0 ;
   wire \OTHER_RATIO_GENERATE.Shift_Reg[3]_i_1_n_0 ;
@@ -6487,6 +6481,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
   wire \OTHER_RATIO_GENERATE.Shift_Reg[7]_i_1_n_0 ;
   wire \OTHER_RATIO_GENERATE.Shift_Reg[8]_i_1_n_0 ;
   wire \OTHER_RATIO_GENERATE.Shift_Reg[9]_i_1_n_0 ;
+  wire [0:0]\OTHER_RATIO_GENERATE.rx_shft_reg_mode_0110_reg[15]_0 ;
   wire \OTHER_RATIO_GENERATE.sck_o_int_i_1_n_0 ;
   wire \OTHER_RATIO_GENERATE.sck_o_int_i_2_n_0 ;
   wire \OTHER_RATIO_GENERATE.sck_o_int_i_3_n_0 ;
@@ -6494,8 +6489,10 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
   wire \OTHER_RATIO_GENERATE.sck_o_int_reg_1 ;
   wire \OTHER_RATIO_GENERATE.serial_dout_int_i_1_n_0 ;
   wire R;
+  wire \RATIO_NOT_EQUAL_4_GENERATE.SCK_O_NQ_4_NO_STARTUP_USED.SCK_O_NE_4_FDRE_INST_i_2_n_0 ;
   wire \RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_i_1_n_0 ;
   wire \RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_i_2_n_0 ;
+  wire \RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_i_3_n_0 ;
   wire \RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_0 ;
   wire \RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_1 ;
   wire \RX_DATA_GEN_OTHER_SCK_RATIOS.receive_Data_int[0]_i_1_n_0 ;
@@ -6515,9 +6512,8 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
   wire \RX_DATA_GEN_OTHER_SCK_RATIOS.receive_Data_int[7]_i_1_n_0 ;
   wire \RX_DATA_GEN_OTHER_SCK_RATIOS.receive_Data_int[8]_i_1_n_0 ;
   wire \RX_DATA_GEN_OTHER_SCK_RATIOS.receive_Data_int[9]_i_1_n_0 ;
-  wire Ratio_Count;
+  wire [0:2]Ratio_Count;
   wire Rst_to_spi;
-  wire SCK_O_1;
   wire SPICR_2_MST_N_SLV_to_spi_clk;
   wire SPIXfer_done_int_d1;
   wire SPIXfer_done_int_pulse_d1;
@@ -6539,7 +6535,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
   wire io1_t;
   wire load;
   wire p_18_in;
-  wire [15:0]p_2_in__0;
+  wire [15:1]p_2_in__0;
   wire p_3_in;
   wire rd_en;
   wire [0:1]register_Data_slvsel_int;
@@ -6569,16 +6565,16 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
   wire transfer_start_reg_n_0;
 
   LUT6 #(
-    .INIT(64'h000F0008000FFF08)) 
+    .INIT(64'h111111110000FCCC)) 
     \FSM_sequential_LOCAL_TX_EMPTY_FIFO_12_GEN.spi_cntrl_ps[0]_i_1 
-       (.I0(\FSM_sequential_LOCAL_TX_EMPTY_FIFO_12_GEN.spi_cntrl_ps[0]_i_2_n_0 ),
-        .I1(SPICR_2_MST_N_SLV_to_spi_clk),
-        .I2(empty),
-        .I3(spi_cntrl_ps[1]),
-        .I4(spi_cntrl_ps[0]),
-        .I5(SR_5_Tx_comeplete_Empty),
+       (.I0(SR_5_Tx_comeplete_Empty),
+        .I1(spi_cntrl_ps[0]),
+        .I2(SPICR_2_MST_N_SLV_to_spi_clk),
+        .I3(\FSM_sequential_LOCAL_TX_EMPTY_FIFO_12_GEN.spi_cntrl_ps[0]_i_2_n_0 ),
+        .I4(empty),
+        .I5(spi_cntrl_ps[1]),
         .O(\FSM_sequential_LOCAL_TX_EMPTY_FIFO_12_GEN.spi_cntrl_ps[0]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair82" *) 
+  (* SOFT_HLUTNM = "soft_lutpair78" *) 
   LUT2 #(
     .INIT(4'h2)) 
     \FSM_sequential_LOCAL_TX_EMPTY_FIFO_12_GEN.spi_cntrl_ps[0]_i_2 
@@ -6595,14 +6591,14 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
         .I4(spi_cntrl_ps[0]),
         .O(\FSM_sequential_LOCAL_TX_EMPTY_FIFO_12_GEN.spi_cntrl_ps[1]_i_1_n_0 ));
   LUT6 #(
-    .INIT(64'h00000AAA3F000000)) 
+    .INIT(64'h0008300838083808)) 
     \FSM_sequential_LOCAL_TX_EMPTY_FIFO_12_GEN.spi_cntrl_ps[1]_i_2 
        (.I0(empty),
-        .I1(spicr_0_loop_to_spi_clk),
-        .I2(spiXfer_done_int),
+        .I1(spi_cntrl_ps[0]),
+        .I2(spi_cntrl_ps[1]),
         .I3(SR_5_Tx_comeplete_Empty),
-        .I4(spi_cntrl_ps[1]),
-        .I5(spi_cntrl_ps[0]),
+        .I4(spicr_0_loop_to_spi_clk),
+        .I5(spiXfer_done_int),
         .O(\FSM_sequential_LOCAL_TX_EMPTY_FIFO_12_GEN.spi_cntrl_ps[1]_i_2_n_0 ));
   (* FSM_ENCODED_STATES = "transfer_okay:01,temp_transfer_okay:10,idle:00" *) 
   FDRE \FSM_sequential_LOCAL_TX_EMPTY_FIFO_12_GEN.spi_cntrl_ps_reg[0] 
@@ -6662,14 +6658,14 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
     \OTHER_RATIO_GENERATE.Count[0]_i_1 
        (.I0(\OTHER_RATIO_GENERATE.Count_reg_n_0_[0] ),
         .O(Count[0]));
-  (* SOFT_HLUTNM = "soft_lutpair84" *) 
+  (* SOFT_HLUTNM = "soft_lutpair83" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \OTHER_RATIO_GENERATE.Count[1]_i_1 
        (.I0(\OTHER_RATIO_GENERATE.Count_reg_n_0_[1] ),
         .I1(\OTHER_RATIO_GENERATE.Count_reg_n_0_[0] ),
         .O(Count[1]));
-  (* SOFT_HLUTNM = "soft_lutpair84" *) 
+  (* SOFT_HLUTNM = "soft_lutpair83" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \OTHER_RATIO_GENERATE.Count[2]_i_1 
@@ -6677,7 +6673,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
         .I1(\OTHER_RATIO_GENERATE.Count_reg_n_0_[1] ),
         .I2(\OTHER_RATIO_GENERATE.Count_reg_n_0_[2] ),
         .O(\OTHER_RATIO_GENERATE.Count[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair78" *) 
+  (* SOFT_HLUTNM = "soft_lutpair77" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \OTHER_RATIO_GENERATE.Count[3]_i_1 
@@ -6686,7 +6682,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
         .I2(\OTHER_RATIO_GENERATE.Count_reg_n_0_[2] ),
         .I3(\OTHER_RATIO_GENERATE.Count_reg_n_0_[3] ),
         .O(\OTHER_RATIO_GENERATE.Count[3]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair78" *) 
+  (* SOFT_HLUTNM = "soft_lutpair77" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \OTHER_RATIO_GENERATE.Count[4]_i_1 
@@ -6705,13 +6701,13 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
         .I3(\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_0 ),
         .O(\OTHER_RATIO_GENERATE.Count[5]_i_1_n_0 ));
   LUT3 #(
-    .INIT(8'h06)) 
+    .INIT(8'h14)) 
     \OTHER_RATIO_GENERATE.Count[5]_i_2 
-       (.I0(Count_trigger),
+       (.I0(load),
         .I1(Count_trigger_d1),
-        .I2(load),
+        .I2(Count_trigger),
         .O(\OTHER_RATIO_GENERATE.Count[5]_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair77" *) 
+  (* SOFT_HLUTNM = "soft_lutpair76" *) 
   LUT5 #(
     .INIT(32'h80000000)) 
     \OTHER_RATIO_GENERATE.Count[5]_i_3 
@@ -6769,7 +6765,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
         .D(\OTHER_RATIO_GENERATE.Count[5]_i_3_n_0 ),
         .Q(load),
         .R(\OTHER_RATIO_GENERATE.Count[5]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair83" *) 
+  (* SOFT_HLUTNM = "soft_lutpair84" *) 
   LUT3 #(
     .INIT(8'h08)) 
     \OTHER_RATIO_GENERATE.Count_trigger_d1_i_1 
@@ -6783,14 +6779,15 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
         .D(\OTHER_RATIO_GENERATE.Count_trigger_d1_i_1_n_0 ),
         .Q(Count_trigger_d1),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair80" *) 
-  LUT4 #(
-    .INIT(16'h0090)) 
+  LUT6 #(
+    .INIT(64'h00000000AAA90000)) 
     \OTHER_RATIO_GENERATE.Count_trigger_i_1 
        (.I0(Count_trigger),
-        .I1(Ratio_Count),
-        .I2(transfer_start_reg_n_0),
-        .I3(Rst_to_spi),
+        .I1(Ratio_Count[0]),
+        .I2(Ratio_Count[1]),
+        .I3(Ratio_Count[2]),
+        .I4(transfer_start_reg_n_0),
+        .I5(Rst_to_spi),
         .O(\OTHER_RATIO_GENERATE.Count_trigger_i_1_n_0 ));
   FDRE \OTHER_RATIO_GENERATE.Count_trigger_reg 
        (.C(ext_spi_clk),
@@ -6798,25 +6795,56 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
         .D(\OTHER_RATIO_GENERATE.Count_trigger_i_1_n_0 ),
         .Q(Count_trigger),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair80" *) 
+  (* SOFT_HLUTNM = "soft_lutpair79" *) 
+  LUT5 #(
+    .INIT(32'hFFA9FFFF)) 
+    \OTHER_RATIO_GENERATE.Ratio_Count[0]_i_1 
+       (.I0(Ratio_Count[0]),
+        .I1(Ratio_Count[1]),
+        .I2(Ratio_Count[2]),
+        .I3(Rst_to_spi),
+        .I4(transfer_start_reg_n_0),
+        .O(\OTHER_RATIO_GENERATE.Ratio_Count[0]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair79" *) 
+  LUT4 #(
+    .INIT(16'hF9FF)) 
+    \OTHER_RATIO_GENERATE.Ratio_Count[1]_i_1 
+       (.I0(Ratio_Count[1]),
+        .I1(Ratio_Count[2]),
+        .I2(Rst_to_spi),
+        .I3(transfer_start_reg_n_0),
+        .O(\OTHER_RATIO_GENERATE.Ratio_Count[1]_i_1_n_0 ));
+  (* SOFT_HLUTNM = "soft_lutpair84" *) 
   LUT3 #(
     .INIT(8'hDF)) 
-    \OTHER_RATIO_GENERATE.Ratio_Count[0]_i_1 
-       (.I0(transfer_start_reg_n_0),
+    \OTHER_RATIO_GENERATE.Ratio_Count[2]_i_1 
+       (.I0(Ratio_Count[2]),
         .I1(Rst_to_spi),
-        .I2(Ratio_Count),
-        .O(\OTHER_RATIO_GENERATE.Ratio_Count[0]_i_1_n_0 ));
+        .I2(transfer_start_reg_n_0),
+        .O(\OTHER_RATIO_GENERATE.Ratio_Count[2]_i_1_n_0 ));
   FDRE \OTHER_RATIO_GENERATE.Ratio_Count_reg[0] 
        (.C(ext_spi_clk),
         .CE(1'b1),
         .D(\OTHER_RATIO_GENERATE.Ratio_Count[0]_i_1_n_0 ),
-        .Q(Ratio_Count),
+        .Q(Ratio_Count[0]),
+        .R(1'b0));
+  FDRE \OTHER_RATIO_GENERATE.Ratio_Count_reg[1] 
+       (.C(ext_spi_clk),
+        .CE(1'b1),
+        .D(\OTHER_RATIO_GENERATE.Ratio_Count[1]_i_1_n_0 ),
+        .Q(Ratio_Count[1]),
+        .R(1'b0));
+  FDRE \OTHER_RATIO_GENERATE.Ratio_Count_reg[2] 
+       (.C(ext_spi_clk),
+        .CE(1'b1),
+        .D(\OTHER_RATIO_GENERATE.Ratio_Count[2]_i_1_n_0 ),
+        .Q(Ratio_Count[2]),
         .R(1'b0));
   LUT5 #(
     .INIT(32'hB8FFB800)) 
     \OTHER_RATIO_GENERATE.Serial_Dout_i_1 
        (.I0(p_3_in),
-        .I1(\OTHER_RATIO_GENERATE.Serial_Dout_i_2_n_0 ),
+        .I1(\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_1 ),
         .I2(\OTHER_RATIO_GENERATE.Serial_Dout_reg_0 ),
         .I3(\OTHER_RATIO_GENERATE.Serial_Dout_i_4_n_0 ),
         .I4(io1_o),
@@ -6830,7 +6858,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
         .I3(SPIXfer_done_int_d1),
         .I4(SPICR_2_MST_N_SLV_to_spi_clk),
         .I5(\FSM_sequential_LOCAL_TX_EMPTY_FIFO_12_GEN.spi_cntrl_ps[0]_i_2_n_0 ),
-        .O(\OTHER_RATIO_GENERATE.Serial_Dout_i_2_n_0 ));
+        .O(\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_1 ));
   LUT6 #(
     .INIT(64'hFF7F0000FF7FFF5F)) 
     \OTHER_RATIO_GENERATE.Serial_Dout_i_4 
@@ -6841,7 +6869,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
         .I4(transfer_start_reg_n_0),
         .I5(\OTHER_RATIO_GENERATE.Serial_Dout_i_5_n_0 ),
         .O(\OTHER_RATIO_GENERATE.Serial_Dout_i_4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair79" *) 
+  (* SOFT_HLUTNM = "soft_lutpair80" *) 
   LUT4 #(
     .INIT(16'h000D)) 
     \OTHER_RATIO_GENERATE.Serial_Dout_i_5 
@@ -6857,19 +6885,19 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
         .Q(io1_o),
         .S(Rst_to_spi));
   LUT5 #(
-    .INIT(32'h0880FFFF)) 
+    .INIT(32'h2800FFFF)) 
     \OTHER_RATIO_GENERATE.Shift_Reg[0]_i_1 
        (.I0(SPICR_2_MST_N_SLV_to_spi_clk),
-        .I1(\OTHER_RATIO_GENERATE.Count_reg_n_0_[0] ),
+        .I1(Count_trigger),
         .I2(Count_trigger_d1),
-        .I3(Count_trigger),
-        .I4(\OTHER_RATIO_GENERATE.Serial_Dout_i_2_n_0 ),
+        .I3(\OTHER_RATIO_GENERATE.Count_reg_n_0_[0] ),
+        .I4(\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_1 ),
         .O(\OTHER_RATIO_GENERATE.Shift_Reg[0]_i_1_n_0 ));
   LUT5 #(
     .INIT(32'hB8BBB888)) 
     \OTHER_RATIO_GENERATE.Shift_Reg[0]_i_2 
        (.I0(p_2_in__0[15]),
-        .I1(\OTHER_RATIO_GENERATE.Serial_Dout_i_2_n_0 ),
+        .I1(\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_1 ),
         .I2(dout[0]),
         .I3(spicr_9_lsb_to_spi_clk),
         .I4(dout[15]),
@@ -6878,7 +6906,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
     .INIT(32'hB8BBB888)) 
     \OTHER_RATIO_GENERATE.Shift_Reg[10]_i_1 
        (.I0(p_2_in__0[5]),
-        .I1(\OTHER_RATIO_GENERATE.Serial_Dout_i_2_n_0 ),
+        .I1(\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_1 ),
         .I2(dout[10]),
         .I3(spicr_9_lsb_to_spi_clk),
         .I4(dout[5]),
@@ -6887,7 +6915,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
     .INIT(32'hB8BBB888)) 
     \OTHER_RATIO_GENERATE.Shift_Reg[11]_i_1 
        (.I0(p_2_in__0[4]),
-        .I1(\OTHER_RATIO_GENERATE.Serial_Dout_i_2_n_0 ),
+        .I1(\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_1 ),
         .I2(dout[11]),
         .I3(spicr_9_lsb_to_spi_clk),
         .I4(dout[4]),
@@ -6896,7 +6924,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
     .INIT(32'hB8BBB888)) 
     \OTHER_RATIO_GENERATE.Shift_Reg[12]_i_1 
        (.I0(p_2_in__0[3]),
-        .I1(\OTHER_RATIO_GENERATE.Serial_Dout_i_2_n_0 ),
+        .I1(\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_1 ),
         .I2(dout[12]),
         .I3(spicr_9_lsb_to_spi_clk),
         .I4(dout[3]),
@@ -6905,7 +6933,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
     .INIT(32'hB8BBB888)) 
     \OTHER_RATIO_GENERATE.Shift_Reg[13]_i_1 
        (.I0(p_2_in__0[2]),
-        .I1(\OTHER_RATIO_GENERATE.Serial_Dout_i_2_n_0 ),
+        .I1(\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_1 ),
         .I2(dout[13]),
         .I3(spicr_9_lsb_to_spi_clk),
         .I4(dout[2]),
@@ -6914,25 +6942,16 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
     .INIT(32'hB8BBB888)) 
     \OTHER_RATIO_GENERATE.Shift_Reg[14]_i_1 
        (.I0(p_2_in__0[1]),
-        .I1(\OTHER_RATIO_GENERATE.Serial_Dout_i_2_n_0 ),
+        .I1(\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_1 ),
         .I2(dout[14]),
         .I3(spicr_9_lsb_to_spi_clk),
         .I4(dout[1]),
         .O(\OTHER_RATIO_GENERATE.Shift_Reg[14]_i_1_n_0 ));
   LUT5 #(
     .INIT(32'hB8BBB888)) 
-    \OTHER_RATIO_GENERATE.Shift_Reg[15]_i_1 
-       (.I0(p_2_in__0[0]),
-        .I1(\OTHER_RATIO_GENERATE.Serial_Dout_i_2_n_0 ),
-        .I2(dout[15]),
-        .I3(spicr_9_lsb_to_spi_clk),
-        .I4(dout[0]),
-        .O(\OTHER_RATIO_GENERATE.Shift_Reg[15]_i_1_n_0 ));
-  LUT5 #(
-    .INIT(32'hB8BBB888)) 
     \OTHER_RATIO_GENERATE.Shift_Reg[1]_i_1 
        (.I0(p_2_in__0[14]),
-        .I1(\OTHER_RATIO_GENERATE.Serial_Dout_i_2_n_0 ),
+        .I1(\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_1 ),
         .I2(dout[1]),
         .I3(spicr_9_lsb_to_spi_clk),
         .I4(dout[14]),
@@ -6941,7 +6960,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
     .INIT(32'hB8BBB888)) 
     \OTHER_RATIO_GENERATE.Shift_Reg[2]_i_1 
        (.I0(p_2_in__0[13]),
-        .I1(\OTHER_RATIO_GENERATE.Serial_Dout_i_2_n_0 ),
+        .I1(\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_1 ),
         .I2(dout[2]),
         .I3(spicr_9_lsb_to_spi_clk),
         .I4(dout[13]),
@@ -6950,7 +6969,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
     .INIT(32'hB8BBB888)) 
     \OTHER_RATIO_GENERATE.Shift_Reg[3]_i_1 
        (.I0(p_2_in__0[12]),
-        .I1(\OTHER_RATIO_GENERATE.Serial_Dout_i_2_n_0 ),
+        .I1(\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_1 ),
         .I2(dout[3]),
         .I3(spicr_9_lsb_to_spi_clk),
         .I4(dout[12]),
@@ -6959,7 +6978,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
     .INIT(32'hB8BBB888)) 
     \OTHER_RATIO_GENERATE.Shift_Reg[4]_i_1 
        (.I0(p_2_in__0[11]),
-        .I1(\OTHER_RATIO_GENERATE.Serial_Dout_i_2_n_0 ),
+        .I1(\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_1 ),
         .I2(dout[4]),
         .I3(spicr_9_lsb_to_spi_clk),
         .I4(dout[11]),
@@ -6968,7 +6987,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
     .INIT(32'hB8BBB888)) 
     \OTHER_RATIO_GENERATE.Shift_Reg[5]_i_1 
        (.I0(p_2_in__0[10]),
-        .I1(\OTHER_RATIO_GENERATE.Serial_Dout_i_2_n_0 ),
+        .I1(\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_1 ),
         .I2(dout[5]),
         .I3(spicr_9_lsb_to_spi_clk),
         .I4(dout[10]),
@@ -6977,7 +6996,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
     .INIT(32'hB8BBB888)) 
     \OTHER_RATIO_GENERATE.Shift_Reg[6]_i_1 
        (.I0(p_2_in__0[9]),
-        .I1(\OTHER_RATIO_GENERATE.Serial_Dout_i_2_n_0 ),
+        .I1(\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_1 ),
         .I2(dout[6]),
         .I3(spicr_9_lsb_to_spi_clk),
         .I4(dout[9]),
@@ -6986,7 +7005,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
     .INIT(32'hB8BBB888)) 
     \OTHER_RATIO_GENERATE.Shift_Reg[7]_i_1 
        (.I0(p_2_in__0[8]),
-        .I1(\OTHER_RATIO_GENERATE.Serial_Dout_i_2_n_0 ),
+        .I1(\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_1 ),
         .I2(dout[7]),
         .I3(spicr_9_lsb_to_spi_clk),
         .I4(dout[8]),
@@ -6995,7 +7014,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
     .INIT(32'hB8BBB888)) 
     \OTHER_RATIO_GENERATE.Shift_Reg[8]_i_1 
        (.I0(p_2_in__0[7]),
-        .I1(\OTHER_RATIO_GENERATE.Serial_Dout_i_2_n_0 ),
+        .I1(\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_1 ),
         .I2(dout[8]),
         .I3(spicr_9_lsb_to_spi_clk),
         .I4(dout[7]),
@@ -7004,7 +7023,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
     .INIT(32'hB8BBB888)) 
     \OTHER_RATIO_GENERATE.Shift_Reg[9]_i_1 
        (.I0(p_2_in__0[6]),
-        .I1(\OTHER_RATIO_GENERATE.Serial_Dout_i_2_n_0 ),
+        .I1(\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_1 ),
         .I2(dout[9]),
         .I3(spicr_9_lsb_to_spi_clk),
         .I4(dout[6]),
@@ -7048,7 +7067,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
   FDRE \OTHER_RATIO_GENERATE.Shift_Reg_reg[15] 
        (.C(ext_spi_clk),
         .CE(\OTHER_RATIO_GENERATE.Shift_Reg[0]_i_1_n_0 ),
-        .D(\OTHER_RATIO_GENERATE.Shift_Reg[15]_i_1_n_0 ),
+        .D(D),
         .Q(p_2_in__0[1]),
         .R(Rst_to_spi));
   FDSE \OTHER_RATIO_GENERATE.Shift_Reg_reg[1] 
@@ -7165,7 +7184,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
     \OTHER_RATIO_GENERATE.rx_shft_reg_mode_0011_reg[15] 
        (.C(ext_spi_clk),
         .CE(rx_shft_reg_mode_00110),
-        .D(D),
+        .D(\OTHER_RATIO_GENERATE.rx_shft_reg_mode_0110_reg[15]_0 ),
         .Q(rx_shft_reg_mode_0011[15]),
         .R(Rst_to_spi));
   FDRE #(
@@ -7300,7 +7319,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
     \OTHER_RATIO_GENERATE.rx_shft_reg_mode_0110_reg[15] 
        (.C(ext_spi_clk),
         .CE(rx_shft_reg_mode_01100),
-        .D(D),
+        .D(\OTHER_RATIO_GENERATE.rx_shft_reg_mode_0110_reg[15]_0 ),
         .Q(rx_shft_reg_mode_0110[15]),
         .R(Rst_to_spi));
   FDRE #(
@@ -7403,7 +7422,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
        (.I0(Count_trigger_d1),
         .I1(Count_trigger),
         .O(\OTHER_RATIO_GENERATE.sck_o_int_i_2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair83" *) 
+  (* SOFT_HLUTNM = "soft_lutpair82" *) 
   LUT3 #(
     .INIT(8'h45)) 
     \OTHER_RATIO_GENERATE.sck_o_int_i_3 
@@ -7437,39 +7456,33 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
     .IS_C_INVERTED(1'b0),
     .IS_D_INVERTED(1'b0),
     .IS_R_INVERTED(1'b0)) 
-    \RATIO_OF_4_GENERATE.SCK_O_EQ_4_NO_STARTUP_USED.SCK_O_EQ_4_FDRE_INST 
+    \RATIO_NOT_EQUAL_4_GENERATE.SCK_O_NQ_4_NO_STARTUP_USED.SCK_O_NE_4_FDRE_INST 
        (.C(ext_spi_clk),
         .CE(1'b1),
-        .D(SCK_O_1),
+        .D(\RATIO_NOT_EQUAL_4_GENERATE.SCK_O_NQ_4_NO_STARTUP_USED.SCK_O_NE_4_FDRE_INST_i_2_n_0 ),
         .Q(sck_o),
         .R(R));
-  LUT6 #(
-    .INIT(64'hE0F0F0F020000000)) 
-    \RATIO_OF_4_GENERATE.SCK_O_EQ_4_NO_STARTUP_USED.SCK_O_EQ_4_FDRE_INST_i_2 
-       (.I0(sck_o_int),
+  (* SOFT_HLUTNM = "soft_lutpair78" *) 
+  LUT5 #(
+    .INIT(32'hBAAA8AAA)) 
+    \RATIO_NOT_EQUAL_4_GENERATE.SCK_O_NQ_4_NO_STARTUP_USED.SCK_O_NE_4_FDRE_INST_i_2 
+       (.I0(spicr_3_cpol_to_spi_clk),
         .I1(load),
-        .I2(SPICR_2_MST_N_SLV_to_spi_clk),
-        .I3(transfer_start_reg_n_0),
-        .I4(transfer_start_d1),
-        .I5(spicr_3_cpol_to_spi_clk),
-        .O(SCK_O_1));
-  FDRE \RISING_EDGE_CLK_RATIO_4_GEN.Serial_Din_reg 
-       (.C(ext_spi_clk),
-        .CE(1'b1),
-        .D(D),
-        .Q(p_2_in__0[0]),
-        .R(Rst_to_spi));
+        .I2(transfer_start_reg_n_0),
+        .I3(transfer_start_d1),
+        .I4(sck_o_int),
+        .O(\RATIO_NOT_EQUAL_4_GENERATE.SCK_O_NQ_4_NO_STARTUP_USED.SCK_O_NE_4_FDRE_INST_i_2_n_0 ));
   LUT6 #(
     .INIT(64'h0000000000000D00)) 
     \RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_i_1 
        (.I0(transfer_start_reg_n_0),
         .I1(transfer_start_d1),
         .I2(\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_i_2_n_0 ),
-        .I3(\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_1 ),
+        .I3(\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_i_3_n_0 ),
         .I4(\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_0 ),
         .I5(Rst_to_spi),
         .O(\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair77" *) 
+  (* SOFT_HLUTNM = "soft_lutpair76" *) 
   LUT5 #(
     .INIT(32'h7FFFFFFF)) 
     \RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_i_2 
@@ -7479,6 +7492,16 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
         .I3(\OTHER_RATIO_GENERATE.Count_reg_n_0_[2] ),
         .I4(\OTHER_RATIO_GENERATE.Count_reg_n_0_[4] ),
         .O(\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_i_2_n_0 ));
+  LUT6 #(
+    .INIT(64'h00000000000000E0)) 
+    \RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_i_3 
+       (.I0(\OTHER_RATIO_GENERATE.sck_o_int_reg_0 ),
+        .I1(Count_trigger),
+        .I2(SPICR_2_MST_N_SLV_to_spi_clk),
+        .I3(Ratio_Count[0]),
+        .I4(Ratio_Count[1]),
+        .I5(Ratio_Count[2]),
+        .O(\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_i_3_n_0 ));
   FDRE \RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg 
        (.C(ext_spi_clk),
         .CE(1'b1),
@@ -7785,7 +7808,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
         .D(\RX_DATA_GEN_OTHER_SCK_RATIOS.FIFO_PRESENT_GEN.SPIXfer_done_int_reg_0 ),
         .Q(SPIXfer_done_int_d1),
         .R(Rst_to_spi));
-  (* SOFT_HLUTNM = "soft_lutpair79" *) 
+  (* SOFT_HLUTNM = "soft_lutpair80" *) 
   LUT2 #(
     .INIT(4'h2)) 
     SPIXfer_done_int_pulse_d1_i_1
@@ -7893,7 +7916,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
         .I4(empty),
         .I5(spi_cntrl_ps[1]),
         .O(\LOGIC_GENERATION_FDR.SPICR_0_LOOP_AX2S_2 ));
-  (* SOFT_HLUTNM = "soft_lutpair76" *) 
+  (* SOFT_HLUTNM = "soft_lutpair75" *) 
   LUT5 #(
     .INIT(32'hFCECECEC)) 
     \SS_O[1]_i_3 
@@ -7903,7 +7926,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_qspi_mode_0_module
         .I3(register_Data_slvsel_int[0]),
         .I4(register_Data_slvsel_int[1]),
         .O(\SS_O[1]_i_3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair76" *) 
+  (* SOFT_HLUTNM = "soft_lutpair75" *) 
   LUT2 #(
     .INIT(4'h8)) 
     \SS_O[1]_i_4 
@@ -9646,14 +9669,14 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_cdc_gray
        (.I0(\dest_graysync_ff[1] [2]),
         .I1(\dest_graysync_ff[1] [3]),
         .O(\^dest_out_bin [2]));
-  (* SOFT_HLUTNM = "soft_lutpair52" *) 
+  (* SOFT_HLUTNM = "soft_lutpair51" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \src_gray_ff[0]_i_1 
        (.I0(src_in_bin[1]),
         .I1(src_in_bin[0]),
         .O(gray_enc[0]));
-  (* SOFT_HLUTNM = "soft_lutpair52" *) 
+  (* SOFT_HLUTNM = "soft_lutpair51" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \src_gray_ff[1]_i_1 
@@ -10138,14 +10161,14 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_cdc_gray__3
        (.I0(\dest_graysync_ff[1] [2]),
         .I1(\dest_graysync_ff[1] [3]),
         .O(\^dest_out_bin [2]));
-  (* SOFT_HLUTNM = "soft_lutpair49" *) 
+  (* SOFT_HLUTNM = "soft_lutpair48" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \src_gray_ff[0]_i_1 
        (.I0(src_in_bin[1]),
         .I1(src_in_bin[0]),
         .O(gray_enc[0]));
-  (* SOFT_HLUTNM = "soft_lutpair49" *) 
+  (* SOFT_HLUTNM = "soft_lutpair48" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \src_gray_ff[1]_i_1 
@@ -10421,28 +10444,28 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_cdc_gray__parameterized0
        (.I0(\dest_graysync_ff[3] [3]),
         .I1(\dest_graysync_ff[3] [4]),
         .O(\^dest_out_bin [3]));
-  (* SOFT_HLUTNM = "soft_lutpair50" *) 
+  (* SOFT_HLUTNM = "soft_lutpair49" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \src_gray_ff[0]_i_1 
        (.I0(src_in_bin[1]),
         .I1(src_in_bin[0]),
         .O(gray_enc[0]));
-  (* SOFT_HLUTNM = "soft_lutpair50" *) 
+  (* SOFT_HLUTNM = "soft_lutpair49" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \src_gray_ff[1]_i_1 
        (.I0(src_in_bin[2]),
         .I1(src_in_bin[1]),
         .O(gray_enc[1]));
-  (* SOFT_HLUTNM = "soft_lutpair51" *) 
+  (* SOFT_HLUTNM = "soft_lutpair50" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \src_gray_ff[2]_i_1 
        (.I0(src_in_bin[3]),
         .I1(src_in_bin[2]),
         .O(gray_enc[2]));
-  (* SOFT_HLUTNM = "soft_lutpair51" *) 
+  (* SOFT_HLUTNM = "soft_lutpair50" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \src_gray_ff[3]_i_1 
@@ -10923,28 +10946,28 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_cdc_gray__parameterized1
        (.I0(\dest_graysync_ff[1] [3]),
         .I1(\dest_graysync_ff[1] [4]),
         .O(\^dest_out_bin [3]));
-  (* SOFT_HLUTNM = "soft_lutpair54" *) 
+  (* SOFT_HLUTNM = "soft_lutpair53" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \src_gray_ff[0]_i_1 
        (.I0(src_in_bin[1]),
         .I1(src_in_bin[0]),
         .O(gray_enc[0]));
-  (* SOFT_HLUTNM = "soft_lutpair54" *) 
+  (* SOFT_HLUTNM = "soft_lutpair53" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \src_gray_ff[1]_i_1 
        (.I0(src_in_bin[2]),
         .I1(src_in_bin[1]),
         .O(gray_enc[1]));
-  (* SOFT_HLUTNM = "soft_lutpair53" *) 
+  (* SOFT_HLUTNM = "soft_lutpair52" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \src_gray_ff[2]_i_1 
        (.I0(src_in_bin[3]),
         .I1(src_in_bin[2]),
         .O(gray_enc[2]));
-  (* SOFT_HLUTNM = "soft_lutpair53" *) 
+  (* SOFT_HLUTNM = "soft_lutpair52" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \src_gray_ff[3]_i_1 
@@ -11372,20 +11395,20 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_counter_updn
   wire wr_pntr_plus1_pf_carry;
   wire wrst_busy;
 
-  (* SOFT_HLUTNM = "soft_lutpair56" *) 
+  (* SOFT_HLUTNM = "soft_lutpair55" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \count_value_i[0]_i_1__2 
        (.I0(Q[0]),
         .O(\count_value_i[0]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair56" *) 
+  (* SOFT_HLUTNM = "soft_lutpair55" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \count_value_i[1]_i_1__2 
        (.I0(Q[0]),
         .I1(Q[1]),
         .O(\count_value_i[1]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair55" *) 
+  (* SOFT_HLUTNM = "soft_lutpair54" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \count_value_i[2]_i_1__2 
@@ -11393,7 +11416,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_counter_updn
         .I1(Q[1]),
         .I2(Q[2]),
         .O(\count_value_i[2]_i_1__2_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair55" *) 
+  (* SOFT_HLUTNM = "soft_lutpair54" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \count_value_i[3]_i_1__2 
@@ -11551,7 +11574,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_counter_updn__parameterized0
        (.I0(Q[0]),
         .I1(Q[1]),
         .O(\count_value_i[1]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair68" *) 
+  (* SOFT_HLUTNM = "soft_lutpair67" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \count_value_i[2]_i_1 
@@ -11559,7 +11582,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_counter_updn__parameterized0
         .I1(Q[1]),
         .I2(Q[2]),
         .O(\count_value_i[2]_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair68" *) 
+  (* SOFT_HLUTNM = "soft_lutpair67" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \count_value_i[3]_i_1 
@@ -11982,7 +12005,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_counter_updn__parameterized2
   wire \src_gray_ff_reg[4] ;
   wire [3:0]src_in_bin;
 
-  (* SOFT_HLUTNM = "soft_lutpair58" *) 
+  (* SOFT_HLUTNM = "soft_lutpair57" *) 
   LUT4 #(
     .INIT(16'h10EF)) 
     \count_value_i[0]_i_1__4 
@@ -11991,7 +12014,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_counter_updn__parameterized2
         .I2(\count_value_i_reg[0]_0 [1]),
         .I3(\count_value_i_reg[3]_0 [0]),
         .O(\count_value_i[0]_i_1__4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair58" *) 
+  (* SOFT_HLUTNM = "soft_lutpair57" *) 
   LUT5 #(
     .INIT(32'h02FFFD00)) 
     \count_value_i[1]_i_1__4 
@@ -12001,7 +12024,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_counter_updn__parameterized2
         .I3(\count_value_i_reg[3]_0 [0]),
         .I4(\count_value_i_reg[3]_0 [1]),
         .O(\count_value_i[1]_i_1__4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair59" *) 
+  (* SOFT_HLUTNM = "soft_lutpair58" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \count_value_i[2]_i_1__4 
@@ -12009,7 +12032,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_counter_updn__parameterized2
         .I1(\count_value_i_reg[3]_0 [1]),
         .I2(\count_value_i_reg[3]_0 [2]),
         .O(\count_value_i[2]_i_1__4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair60" *) 
+  (* SOFT_HLUTNM = "soft_lutpair59" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \count_value_i[3]_i_1__4 
@@ -12018,7 +12041,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_counter_updn__parameterized2
         .I2(\count_value_i_reg[3]_0 [2]),
         .I3(\count_value_i_reg[3]_0 [3]),
         .O(\count_value_i[3]_i_1__4_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair60" *) 
+  (* SOFT_HLUTNM = "soft_lutpair59" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \count_value_i[4]_i_1__0 
@@ -12088,7 +12111,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_counter_updn__parameterized2
         .I4(\count_value_i_reg[3]_0 [0]),
         .I5(\count_value_i_reg[3]_0 [3]),
         .O(src_in_bin[2]));
-  (* SOFT_HLUTNM = "soft_lutpair59" *) 
+  (* SOFT_HLUTNM = "soft_lutpair58" *) 
   LUT5 #(
     .INIT(32'hB0FB4F04)) 
     \gen_cdc_pntr.rd_pntr_cdc_dc_inst_i_3 
@@ -12104,7 +12127,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_counter_updn__parameterized2
        (.I0(\count_value_i_reg[3]_0 [0]),
         .I1(\grdc.rd_data_count_i_reg[0] ),
         .O(src_in_bin[0]));
-  (* SOFT_HLUTNM = "soft_lutpair61" *) 
+  (* SOFT_HLUTNM = "soft_lutpair60" *) 
   LUT2 #(
     .INIT(4'hB)) 
     \gen_cdc_pntr.rd_pntr_cdc_dc_inst_i_6 
@@ -12156,7 +12179,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_counter_updn__parameterized2
         .I2(rd_en),
         .I3(ram_empty_i),
         .O(\FSM_sequential_gen_fwft.curr_fwft_state_reg[1] ));
-  (* SOFT_HLUTNM = "soft_lutpair61" *) 
+  (* SOFT_HLUTNM = "soft_lutpair60" *) 
   LUT3 #(
     .INIT(8'h96)) 
     \grdc.rd_data_count_i[0]_i_1 
@@ -12623,20 +12646,20 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_counter_updn__parameterized2_3
   wire wr_clk;
   wire wrst_busy;
 
-  (* SOFT_HLUTNM = "soft_lutpair66" *) 
+  (* SOFT_HLUTNM = "soft_lutpair65" *) 
   LUT1 #(
     .INIT(2'h1)) 
     \count_value_i[0]_i_1__1 
        (.I0(Q[0]),
         .O(\count_value_i[0]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair65" *) 
+  (* SOFT_HLUTNM = "soft_lutpair64" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \count_value_i[1]_i_1__1 
        (.I0(Q[0]),
         .I1(Q[1]),
         .O(\count_value_i[1]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair65" *) 
+  (* SOFT_HLUTNM = "soft_lutpair64" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \count_value_i[2]_i_1__1 
@@ -12644,7 +12667,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_counter_updn__parameterized2_3
         .I1(Q[1]),
         .I2(Q[2]),
         .O(\count_value_i[2]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair64" *) 
+  (* SOFT_HLUTNM = "soft_lutpair63" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \count_value_i[3]_i_1__1 
@@ -12653,7 +12676,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_counter_updn__parameterized2_3
         .I2(Q[2]),
         .I3(Q[3]),
         .O(\count_value_i[3]_i_1__1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair64" *) 
+  (* SOFT_HLUTNM = "soft_lutpair63" *) 
   LUT5 #(
     .INIT(32'h7FFF8000)) 
     \count_value_i[4]_i_1 
@@ -12703,7 +12726,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_counter_updn__parameterized2_3
         .D(\count_value_i[4]_i_1_n_0 ),
         .Q(Q[4]),
         .R(wrst_busy));
-  (* SOFT_HLUTNM = "soft_lutpair66" *) 
+  (* SOFT_HLUTNM = "soft_lutpair65" *) 
   LUT2 #(
     .INIT(4'h6)) 
     \gwdc.wr_data_count_i[0]_i_1 
@@ -12765,7 +12788,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_counter_updn__parameterized3
         .I3(Q[0]),
         .I4(Q[1]),
         .O(\count_value_i[1]_i_1__3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair62" *) 
+  (* SOFT_HLUTNM = "soft_lutpair61" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \count_value_i[2]_i_1__3 
@@ -12773,7 +12796,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_counter_updn__parameterized3
         .I1(Q[1]),
         .I2(Q[2]),
         .O(\count_value_i[2]_i_1__3_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair62" *) 
+  (* SOFT_HLUTNM = "soft_lutpair61" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \count_value_i[3]_i_1__3 
@@ -13023,7 +13046,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_counter_updn__parameterized3_4
        (.I0(Q[0]),
         .I1(Q[1]),
         .O(\count_value_i[1]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair67" *) 
+  (* SOFT_HLUTNM = "soft_lutpair66" *) 
   LUT3 #(
     .INIT(8'h78)) 
     \count_value_i[2]_i_1__0 
@@ -13031,7 +13054,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_counter_updn__parameterized3_4
         .I1(Q[1]),
         .I2(Q[2]),
         .O(\count_value_i[2]_i_1__0_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair67" *) 
+  (* SOFT_HLUTNM = "soft_lutpair66" *) 
   LUT4 #(
     .INIT(16'h7F80)) 
     \count_value_i[3]_i_1__0 
@@ -14357,7 +14380,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_fifo_base__parameterized0
   assign dbiterr = \<const0> ;
   assign full_n = \<const0> ;
   assign sbiterr = \<const0> ;
-  (* SOFT_HLUTNM = "soft_lutpair72" *) 
+  (* SOFT_HLUTNM = "soft_lutpair71" *) 
   LUT4 #(
     .INIT(16'h6A85)) 
     \FSM_sequential_gen_fwft.curr_fwft_state[0]_i_1 
@@ -14516,7 +14539,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_fifo_base__parameterized0
         .D(data_valid_fwft1),
         .Q(empty),
         .S(rd_rst_busy));
-  (* SOFT_HLUTNM = "soft_lutpair71" *) 
+  (* SOFT_HLUTNM = "soft_lutpair70" *) 
   LUT5 #(
     .INIT(32'hFDDD4000)) 
     \gen_fwft.gae_fwft.aempty_fwft_i_i_1 
@@ -14534,7 +14557,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_fifo_base__parameterized0
         .D(aempty_fwft_i0),
         .Q(almost_empty),
         .S(rd_rst_busy));
-  (* SOFT_HLUTNM = "soft_lutpair72" *) 
+  (* SOFT_HLUTNM = "soft_lutpair71" *) 
   LUT4 #(
     .INIT(16'h3575)) 
     \gen_fwft.gdvld_fwft.data_valid_fwft_i_1 
@@ -14749,7 +14772,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_fifo_base__parameterized0
         .sleep(sleep),
         .wea(1'b0),
         .web(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair71" *) 
+  (* SOFT_HLUTNM = "soft_lutpair70" *) 
   LUT3 #(
     .INIT(8'h62)) 
     \gen_sdpram.xpm_memory_base_inst_i_3 
@@ -14958,7 +14981,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_fifo_reg_bit
         .D(wrst_busy),
         .Q(rst_d1),
         .R(1'b0));
-  (* SOFT_HLUTNM = "soft_lutpair63" *) 
+  (* SOFT_HLUTNM = "soft_lutpair62" *) 
   LUT3 #(
     .INIT(8'h04)) 
     \gen_pf_ic_rc.gen_full_rst_val.ram_full_i_i_4 
@@ -14975,7 +14998,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_fifo_reg_bit
         .I3(\gof.overflow_i_reg ),
         .I4(prog_full),
         .O(\gen_pf_ic_rc.gpf_ic.diff_pntr_pf_q_reg[4] ));
-  (* SOFT_HLUTNM = "soft_lutpair63" *) 
+  (* SOFT_HLUTNM = "soft_lutpair62" *) 
   LUT4 #(
     .INIT(16'hFE00)) 
     \gof.overflow_i_i_1 
@@ -15669,7 +15692,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_fifo_reg_vec__parameterized0
         .I2(Q[1]),
         .I3(\gwdc.wr_data_count_i_reg[4] [1]),
         .O(D[0]));
-  (* SOFT_HLUTNM = "soft_lutpair57" *) 
+  (* SOFT_HLUTNM = "soft_lutpair56" *) 
   LUT3 #(
     .INIT(8'h69)) 
     \gwdc.wr_data_count_i[3]_i_1 
@@ -15677,7 +15700,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_fifo_reg_vec__parameterized0
         .I1(\reg_out_i_reg_n_0_[3] ),
         .I2(\gwdc.wr_data_count_i_reg[4] [3]),
         .O(D[1]));
-  (* SOFT_HLUTNM = "soft_lutpair57" *) 
+  (* SOFT_HLUTNM = "soft_lutpair56" *) 
   LUT5 #(
     .INIT(32'h718E8E71)) 
     \gwdc.wr_data_count_i[4]_i_1 
@@ -16278,7 +16301,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_fifo_rst
         .I4(\gen_rst_ic.fifo_wr_rst_ic_i_3_n_0 ),
         .I5(\gen_rst_ic.fifo_wr_rst_ic ),
         .O(\gen_rst_ic.fifo_wr_rst_ic_i_1_n_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair69" *) 
+  (* SOFT_HLUTNM = "soft_lutpair68" *) 
   LUT2 #(
     .INIT(4'hE)) 
     \gen_rst_ic.fifo_wr_rst_ic_i_2 
@@ -16314,7 +16337,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_fifo_rst
        (.dest_clk(wr_clk),
         .dest_rst(\gen_rst_ic.fifo_rd_rst_wr_i ),
         .src_rst(\gen_rst_ic.fifo_rd_rst_ic_reg_0 ));
-  (* SOFT_HLUTNM = "soft_lutpair69" *) 
+  (* SOFT_HLUTNM = "soft_lutpair68" *) 
   LUT3 #(
     .INIT(8'h02)) 
     \gen_rst_ic.rst_seq_reentered_i_1 
@@ -16386,7 +16409,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_fifo_rst
         .I2(wrst_busy),
         .I3(rst_d1),
         .O(E));
-  (* SOFT_HLUTNM = "soft_lutpair70" *) 
+  (* SOFT_HLUTNM = "soft_lutpair69" *) 
   LUT3 #(
     .INIT(8'hAB)) 
     \grdc.rd_data_count_i[4]_i_1 
@@ -16394,7 +16417,7 @@ module jahwa_daq_system_axi_quad_spi_0_0_xpm_fifo_rst
         .I1(Q[0]),
         .I2(Q[1]),
         .O(SR));
-  (* SOFT_HLUTNM = "soft_lutpair70" *) 
+  (* SOFT_HLUTNM = "soft_lutpair69" *) 
   LUT3 #(
     .INIT(8'hE0)) 
     \guf.underflow_i_i_1 

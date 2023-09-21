@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="impl_1" LaunchPart="xc7z020clg400-1" LaunchTime="1694406867">
-  <File Type="OPT-HWDEF" Name="jahwa_daq_system_wrapper.hwdef"/>
-  <File Type="ROUTE-BUS-SKEW" Name="jahwa_daq_system_wrapper_bus_skew_routed.rpt"/>
-  <File Type="PA-DCP" Name="jahwa_daq_system_wrapper.dcp"/>
+<GenRun Id="impl_1" LaunchPart="xc7z020clg400-1" LaunchTime="1694756982">
   <File Type="BITSTR-BMM" Name="jahwa_daq_system_wrapper_bd.bmm"/>
   <File Type="OPT-METHODOLOGY-DRC" Name="jahwa_daq_system_wrapper_methodology_drc_opted.rpt"/>
   <File Type="INIT-TIMING" Name="jahwa_daq_system_wrapper_timing_summary_init.rpt"/>
@@ -13,6 +10,7 @@
   <File Type="ROUTE-PWR-SUM" Name="jahwa_daq_system_wrapper_power_summary_routed.pb"/>
   <File Type="REPORTS-TCL" Name="jahwa_daq_system_wrapper_reports.tcl"/>
   <File Type="OPT-DRC" Name="jahwa_daq_system_wrapper_drc_opted.rpt"/>
+  <File Type="OPT-HWDEF" Name="jahwa_daq_system_wrapper.hwdef"/>
   <File Type="PWROPT-DCP" Name="jahwa_daq_system_wrapper_pwropt.dcp"/>
   <File Type="PWROPT-DRC" Name="jahwa_daq_system_wrapper_drc_pwropted.rpt"/>
   <File Type="PWROPT-TIMING" Name="jahwa_daq_system_wrapper_timing_summary_pwropted.rpt"/>
@@ -50,6 +48,7 @@
   <File Type="ROUTE-TIMING-RPX" Name="jahwa_daq_system_wrapper_timing_summary_routed.rpx"/>
   <File Type="ROUTE-SIMILARITY" Name="jahwa_daq_system_wrapper_incremental_reuse_routed.rpt"/>
   <File Type="ROUTE-CLK" Name="jahwa_daq_system_wrapper_clock_utilization_routed.rpt"/>
+  <File Type="ROUTE-BUS-SKEW" Name="jahwa_daq_system_wrapper_bus_skew_routed.rpt"/>
   <File Type="ROUTE-BUS-SKEW-PB" Name="jahwa_daq_system_wrapper_bus_skew_routed.pb"/>
   <File Type="ROUTE-BUS-SKEW-RPX" Name="jahwa_daq_system_wrapper_bus_skew_routed.rpx"/>
   <File Type="POSTROUTE-PHYSOPT-DCP" Name="jahwa_daq_system_wrapper_postroute_physopt.dcp"/>
@@ -118,9 +117,7 @@
     </Config>
   </FileSet>
   <Strategy Version="1" Minor="2">
-    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020">
-      <Desc>Default settings for Implementation.</Desc>
-    </StratHandle>
+    <StratHandle Name="Vivado Implementation Defaults" Flow="Vivado Implementation 2020"/>
     <Step Id="init_design"/>
     <Step Id="opt_design"/>
     <Step Id="power_opt_design"/>
@@ -133,16 +130,13 @@
   </Strategy>
   <BlockFileSet Type="BlockSrcs" Name="jahwa_daq_system_processing_system7_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="jahwa_daq_system_mdm_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="jahwa_daq_system_auto_pc_1"/>
-  <BlockFileSet Type="BlockSrcs" Name="jahwa_daq_system_axi_clock_divider_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="jahwa_daq_system_xbar_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="jahwa_daq_system_ilmb_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="jahwa_daq_system_axi_timer_2_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="jahwa_daq_system_auto_pc_0"/>
   <BlockFileSet Type="BlockSrcs" Name="jahwa_daq_system_axi_timer_1_0"/>
   <BlockFileSet Type="BlockSrcs" Name="jahwa_daq_system_axi_bram_ctrl_0_0"/>
-  <BlockFileSet Type="BlockSrcs" Name="jahwa_daq_system_axi_gpio_1_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="jahwa_daq_system_ilmb_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="jahwa_daq_system_axi_timer_2_0"/>
   <BlockFileSet Type="BlockSrcs" Name="jahwa_daq_system_axi_gpio_0_1"/>
+  <BlockFileSet Type="BlockSrcs" Name="jahwa_daq_system_axi_gpio_1_0"/>
   <BlockFileSet Type="BlockSrcs" Name="jahwa_daq_system_axi_gpio_5_0"/>
   <BlockFileSet Type="BlockSrcs" Name="jahwa_daq_system_axi_quad_spi_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="jahwa_daq_system_axi_timer_0_0"/>
@@ -160,4 +154,5 @@
   <BlockFileSet Type="BlockSrcs" Name="jahwa_daq_system_dlmb_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="jahwa_daq_system_ilmb_bram_ctrl_0_0"/>
   <BlockFileSet Type="BlockSrcs" Name="jahwa_daq_system_lmb_bram_0_0"/>
+  <BlockFileSet Type="BlockSrcs" Name="jahwa_daq_system_axi_clock_divider_0_0"/>
 </GenRun>
