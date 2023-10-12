@@ -254,6 +254,26 @@ async def tcp_client_test(server_addr, server_port):
     print("ADC Value: {}".format(adc_value))
     print("ADC Voltage: {}".format(adc_voltage))
 
+    ######################################################################################
+    #                                    Laser Trigger                                   #
+    ######################################################################################
+    print("Sending laser trigger packet")
+    div_ratio = 8
+    actv_count = 10
+    for i in range(100):
+        # Send packet to PYNQ server
+        packet = encode_packet(
+            'measurement_sequence',
+            sequence='laser_trigger',
+            data_buf=[div_ratio, actv_count]
+        )
+        writer.write(packet)
+        # Receive response from PYNQ server
+        response = await reader.read(1024)
+        if not response:
+            print("No response from PYNQ server (laser trigger)")
+            raise Exception("Closing connection")
+
     ##############################################################################################
     #                                       Configure Relay                                      #
     ##############################################################################################
