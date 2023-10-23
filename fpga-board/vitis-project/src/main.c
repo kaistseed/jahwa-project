@@ -743,7 +743,7 @@ int main(void) {
                     1
                 );
                 // Wait for laser trigger to finish
-                while(AXI_CLOCK_DIVIDER_mReadReg(CLK_DIV_BASEADDR, CLK_DIV_ACTV_CNT_OUT_REG) < mb_data_host[1]);
+                while(AXI_CLOCK_DIVIDER_mReadReg(CLK_DIV_BASEADDR, CLK_DIV_ACTV_CNT_OUT_REG) <= mb_data_host[1]);
                 // Stop laser trigger
                 AXI_CLOCK_DIVIDER_mWriteReg(
                     CLK_DIV_BASEADDR, 
